@@ -1,9 +1,6 @@
 import { ArrowRight } from "lucide-react";
-import one from "../../assets/managedoffices.jpg";
-import two from "../../assets/meeting.jpg";
-import three from "../../assets/privatecabin.jpg";
-import four from "../../assets/offerings/enterprisesolutions/3.jpg";
-import five from "../../assets/offerings/managedoffices/1.jpg";
+import four from "../../assets/offerings/privatecabins/3.jpg";
+import five from "../../assets/offerings/dedicateddesks/2.jpg";
 import Slide from "./Slide";
 
 const SmallAbout = () => {
@@ -14,12 +11,12 @@ const SmallAbout = () => {
                 <p className="text-sm text-gray-500 mb-2">/ About /</p>
                 <div className="flex items-center">
                     <h2 className="text-4xl font-serif font-bold max-w-2xl mb-4">
-                    Redefining the Future of Workspaces.
-                </h2>
-                <p className="text-gray-500 max-w-md">
-                    Integer tincidunt cras dapibus. Vivamus elementum semper nisi, aenean
-                    vulputate eleifend tellus.
-                </p>
+                        Redefining the Future of Workspaces.
+                    </h2>
+                    <p className="text-gray-500 max-w-md">
+                        Integer tincidunt cras dapibus. Vivamus elementum semper nisi, aenean
+                        vulputate eleifend tellus.
+                    </p>
                 </div>
             </div>
 
@@ -32,15 +29,16 @@ const SmallAbout = () => {
                 {/* Right side */}
                 <div className="md:col-span-2 flex flex-col h-[520px]">
                     {/* Top two images filling height */}
+                    {/* Top two images filling height */}
                     <div className="flex flex-1 gap-6">
-                        <div className="w-1/2 overflow-hidden rounded-xl">
+                        <div className="group flex-1 basis-1/2 overflow-hidden rounded-xl transition-[flex-basis] duration-500 hover:basis-[85%]">
                             <img
                                 src={four}
                                 alt="Meeting room"
                                 className="w-full h-full object-cover"
                             />
                         </div>
-                        <div className="w-1/2 overflow-hidden rounded-xl">
+                        <div className="group flex-1 basis-1/2 overflow-hidden rounded-xl transition-[flex-basis] duration-500 hover:basis-[85%]">
                             <img
                                 src={five}
                                 alt="Cafe workspace"
@@ -48,6 +46,7 @@ const SmallAbout = () => {
                             />
                         </div>
                     </div>
+
 
                     {/* Text and button */}
                     <div className="mt-4 flex items-center justify-between">

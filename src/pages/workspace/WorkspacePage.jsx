@@ -28,6 +28,29 @@ import {
 import StartWithUs from "./StartWithUs";
 import LearnMoreForm from "../../components/LearnMoreForm";
 
+import ManagedOffices from "../../assets/raw/all/DSC07782-min.jpg";
+import ManagedOffices2 from "../../assets/raw/chn/PUR08687-min.jpg";
+
+import EnterPriseSol from "../../assets/raw/chn/YAV00102-min.jpg";
+import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.jpg";
+
+import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpeg";
+import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
+
+import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpeg";
+import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
+
+import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
+import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
+
+import meetings from "../../assets/raw/chn/HVE04223-min.jpg";
+import meetings2 from "../../assets/raw/blr/_SPL9744-min.jpg";
+
+
+import whyChooseUs from "../../assets/raw/chn/skcl/IMG_7932.jpg";
+
+
+
 const WorkspacePage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
@@ -61,7 +84,7 @@ const WorkspacePage = () => {
 
   // Get appropriate image based on workspace type
   const getWorkspaceImage = (slug) => {
-    const imageMap = {
+    const imageMapOld = {
       "managed-offices":
         "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop",
       "enterprise-solutions":
@@ -75,11 +98,26 @@ const WorkspacePage = () => {
       "meetings-and-event-spaces":
         "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=600&fit=crop",
     };
+
+    const imageMap = {
+      "managed-offices":
+        ManagedOffices,
+      "enterprise-solutions":
+        EnterPriseSol,
+      "private-cabins":
+        privateCabins,
+      "dedicated-desks":
+        dedicatedDesks,
+      "hot-desks":
+        hotdesks,
+      "meetings-and-event-spaces":
+        meetings,
+    };
     return imageMap[slug] || imageMap["managed-offices"];
   };
 
   const getSecondaryImage = (slug) => {
-    const imageMap = {
+    const imageMapOld = {
       "managed-offices":
         "https://images.unsplash.com/photo-1497366672149-e5e4b4d34eb3?w=800&h=500&fit=crop",
       "enterprise-solutions":
@@ -92,6 +130,21 @@ const WorkspacePage = () => {
         "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=500&fit=crop",
       "meetings-and-event-spaces":
         "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=500&fit=crop",
+    };
+
+    const imageMap = {
+      "managed-offices":
+        ManagedOffices2,
+      "enterprise-solutions":
+        EnterPriseSol2,
+      "private-cabins":
+        privateCabins2,
+      "dedicated-desks":
+        dedicatedDesks2,
+      "hot-desks":
+        hotdesks2,
+      "meetings-and-event-spaces":
+        meetings2,
     };
     return imageMap[slug] || imageMap["managed-offices"];
   };
@@ -314,7 +367,7 @@ const WorkspacePage = () => {
             {/* Left Image */}
             <div className="relative">
               <img
-                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?auto=format&fit=crop&w=1200&q=80"
+                src={whyChooseUs}
                 alt="Workspace Benefits"
                 className="rounded-2xl shadow-lg object-cover"
               />

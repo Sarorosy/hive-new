@@ -26,8 +26,18 @@ import building from "../assets/buildings_2.png";
 import daypass from "../assets/day-pass.svg";
 import { useNavigate } from "react-router-dom";
 
+import hero1 from "../assets/raw/all/DSC07729-min.jpg";
+import hero2 from "../assets/raw/all/DSC07855-min.jpg";
+import hero3 from "../assets/raw/chn/YAV00102-min.jpg";
+
 // Background images
 const heroImages = [
+  hero1,
+  hero2,
+  hero3
+];
+// Background images
+const heroImages2 = [
   "https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1532916123995-50bad0fc528e?auto=format&fit=crop&w=1920&q=80",
   "https://images.unsplash.com/photo-1606836576983-8b458e75221d?auto=format&fit=crop&w=1920&q=80"

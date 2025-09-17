@@ -5,6 +5,12 @@ import four from "../assets/featured/4.jpg";
 import five from "../assets/featured/5.jpg";
 import six from "../assets/featured/6.jpg";
 
+import meetingrooms from "../assets/offerings/meetingsandevents/3.jpg";
+import hotdesks from "../assets/offerings/hotdesks/2.jpg";
+import privatecabins from "../assets/offerings/privatecabins/2.jpg";
+import openspaces from "../assets/raw/chn/YAV00075-min.jpg";
+import dedicateddesks from "../assets/offerings/dedicateddesks/2.jpg";
+
 import {
   Monitor,
   Users,
@@ -47,7 +53,7 @@ const makeAmenities = (list) =>
 export const allSpaces = [
   // 🔹 Original Products
   {
-    img: one,
+    img: hotdesks, //one
     title: "Hot Desks",
     desc: "Designed for professionals who need flexibility and collaboration in a vibrant atmosphere.",
     desk: "1 Desk",
@@ -82,7 +88,7 @@ export const allSpaces = [
     ]),
   },
   {
-    img: two,
+    img: dedicateddesks, //two
     title: "Dedicated Desk",
     desc: "Your personal desk in a shared space — consistency with community vibes.",
     desk: "1 Desk",
@@ -99,7 +105,7 @@ export const allSpaces = [
     ]),
   },
   {
-    img: four,
+    img: openspaces, //four
     title: "Open Spaces",
     desc: "Collaborative workspaces designed for dynamic teams and energetic discussions.",
     desk: "4 Desk",
@@ -116,7 +122,7 @@ export const allSpaces = [
     ]),
   },
   {
-    img: five,
+    img: privatecabins, //five
     title: "Private Office",
     desc: "A secure, private cabin tailored for small teams seeking productivity and privacy.",
     desk: "10 Desk",
@@ -133,7 +139,7 @@ export const allSpaces = [
     ]),
   },
   {
-    img: six,
+    img: meetingrooms, //six
     title: "Meeting Room",
     desc: "Premium meeting room setup with privacy, AV support, and a professional vibe.",
     desk: "6 Desk",
@@ -153,7 +159,7 @@ export const allSpaces = [
   // 🔹 Appended Location-Specific Products
   // Pune
   {
-    img: one,
+    img: hotdesks, //one
     title: "Hot Desks - Pune",
     desc: "Vibrant, flexible seating in the heart of Pune for individuals and creatives.",
     desk: "1 Desk",
@@ -229,7 +235,7 @@ export const allSpaces = [
 
   // Chennai - VR & OMR
   {
-    img: one,
+    img: hotdesks, //one
     title: "Hot Desks - VR Chennai",
     desc: "Dynamic hot desk access in the vibrant VR Chennai workspace.",
     desk: "1 Desk",
@@ -247,7 +253,7 @@ export const allSpaces = [
     ]),
   },
   {
-    img: one,
+    img: hotdesks, //one
     title: "Hot Desks - OMR Chennai",
     desc: "Open seating with high-speed internet, perfect for individuals on OMR stretch.",
     desk: "1 Desk",

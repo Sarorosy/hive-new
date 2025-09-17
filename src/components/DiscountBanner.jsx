@@ -2,6 +2,8 @@ import React from 'react';
 import { ArrowRight, Quote } from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
 
+import picture from "../assets/raw/all/RAJA8221-min.jpg";
+
 export default function DiscountBanner() {
 
     const { setContactFormOpen } = useOutletContext();
@@ -14,7 +16,8 @@ export default function DiscountBanner() {
                     <div className="flex-1 relative group">
                         <div className="h-full overflow-hidden relative">
                             <img
-                                src="https://images.unsplash.com/photo-1524758631624-e2822e304c36?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80"
+                                src={picture}
+                                loading='lazy'
                                 alt="Elegant coworking space with private meeting rooms"
                                 className="w-full h-full object-cover filter brightness-95 contrast-110 transition-transform duration-700"
                             />

@@ -2,9 +2,13 @@
 import { useEffect, useRef } from "react";
 import * as THREE from "three";
 
-import one from "../../assets/managedoffices.jpg";
-import two from "../../assets/meeting.jpg";
-import three from "../../assets/privatecabin.jpg";
+// import one from "../../assets/managedoffices.jpg";
+// import two from "../../assets/meeting.jpg";
+// import three from "../../assets/privatecabin.jpg";
+
+import one from "../../assets/raw/all/RAJA8361-min.jpg";
+import two from "../../assets/raw/blr/_SPL9642-min.jpg";
+import three from "../../assets/raw/pune/PUR04056-min.jpg";
 
 // Simple easing function to replace GSAP
 const easeInOutExpo = (t) => {
