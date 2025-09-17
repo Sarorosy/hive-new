@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" id="office">
+  <path d="M29.27,6l-14-4A1,1,0,0,0,14,3V6H13V3a1,1,0,0,0-1-1H6A1,1,0,0,0,5,3V6H3A1,1,0,0,0,2,7V29a1,1,0,0,0,1,1H29a1,1,0,0,0,1-1V7A1,1,0,0,0,29.27,6ZM7,4h4V6H7ZM4,8H14V28H4ZM28,28H16V4.33L28,7.75Z"></path>
+  <rect width="8" height="2" x="18" y="8"></rect>
+  <rect width="8" height="2" x="18" y="12"></rect>
+  <rect width="8" height="2" x="18" y="16"></rect>
+  <rect width="8" height="2" x="18" y="20"></rect>
+  <rect width="8" height="2" x="18" y="24"></rect>
+  <rect width="6" height="2" x="6" y="22"></rect>
+  <rect width="2" height="2" x="6" y="10"></rect>
+  <rect width="2" height="2" x="10" y="10"></rect>
+  <rect width="2" height="2" x="6" y="14"></rect>
+  <rect width="2" height="2" x="10" y="14"></rect>
+  <rect width="2" height="2" x="6" y="18"></rect>
+  <rect width="2" height="2" x="10" y="18"></rect>
+</svg>

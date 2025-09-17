@@ -1,0 +1,198 @@
+#root {
+  max-width: 100%;
+}
+
+#curve {
+  border-bottom-left-radius: 100% 80px;
+  border-bottom-right-radius: 100% 80px;
+}
+
+@font-face {
+  font-family: 'CircularStd';
+  src: url('./assets/circular-std-medium-500.ttf') format('truetype');
+  font-weight: 500;
+  font-style: normal;
+  font-display: swap;
+}
+
+body {
+  font-family: 'CircularStd', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.crimson {
+  font-family: "Crimson Text", serif;
+}
+
+.hei-98 {
+  height: 98%;
+}
+
+.custom-bullet {
+  width: 12px !important;
+  height: 12px !important;
+  background: rgba(255, 255, 255, 0.5) !important;
+  border-radius: 50% !important;
+  transition: all 0.3s ease !important;
+}
+
+.custom-bullet-active {
+  background: black !important;
+  width: 32px !important;
+  border-radius: 16px !important;
+}
+
+.swiper-pagination {
+  bottom: 20px !important;
+}
+
+.swiper-button-disabled {
+  opacity: 0.3 !important;
+}
+
+@keyframes marquee {
+  0% {
+    transform: translateX(0);
+  }
+
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 20s linear infinite;
+}
+
+@media (max-width: 640px) {
+  .animate-marquee {
+    animation: marquee 12s linear infinite;
+  }
+}
+
+.pause-marquee:hover {
+  animation-play-state: paused;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+body::selection{
+  background: black;
+  color: white;
+}
+
+/* hide year dropdown in calendar header */
+.rdrMonthAndYearPickers select:nth-of-type(2) {
+  display: none !important;
+}
+
+/* Full width wrapper */
+.rdrCalendarWrapper {
+  width: 100% !important;
+  padding: 1rem !important;   /* adds inner padding */
+  border-radius: 0.75rem;     /* rounded corners */
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08); /* subtle shadow */
+  background: #fff;          /* white background */
+}
+
+/* Months stack full width */
+.rdrMonthsVertical {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;                 /* space between stacked months */
+}
+
+.rdrMonth {
+  width: 100% !important;
+}
+
+/* Fix header alignment */
+.rdrMonthAndYearWrapper {
+  padding: 0.5rem 0;
+}
+
+.rdrMonthName{
+  display: none;
+}
+
+.members-image{
+  filter: grayscale(1);
+}
+.members-image:hover{
+  filter: grayscale(0);
+  cursor: pointer;
+ 
+}
+
+.shimmer {
+		font-family: "Lato";
+		font-weight: 300;
+		font-size: 3em;
+		margin: 0 auto;
+		padding: 0 140px 0 0;
+		display: inline;
+		margin-bottom: 0;
+}
+.shimmer {
+		text-align: center;
+		color: rgba(255, 255, 255, 0.1);
+		background: -webkit-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff));
+		background: -moz-gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff));
+		background: gradient(linear, left top, right top, from(#222), to(#222), color-stop(0.5, #fff));
+		-webkit-background-size: 125px 100%;
+		-moz-background-size: 125px 100%;
+		background-size: 125px 100%;
+		-webkit-background-clip: text;
+		-moz-background-clip: text;
+		background-clip: text;
+		-webkit-animation-name: shimmer;
+		-moz-animation-name: shimmer;
+		animation-name: shimmer;
+		-webkit-animation-duration: 2s;
+		-moz-animation-duration: 2s;
+		animation-duration: 2s;
+		-webkit-animation-iteration-count: infinite;
+		-moz-animation-iteration-count: infinite;
+		animation-iteration-count: infinite;
+		background-repeat: no-repeat;
+		background-position: 0 0;
+		background-color: #222;
+}
+
+@-moz-keyframes shimmer {
+		0% {
+				background-position: top left;
+		}
+		100% {
+				background-position: top right;
+		}
+}
+
+@-webkit-keyframes shimmer {
+		0% {
+				background-position: top left;
+		}
+		100% {
+				background-position: top right;
+		}
+}
+
+@-o-keyframes shimmer {
+		0% {
+				background-position: top left;
+		}
+		100% {
+				background-position: top right;
+		}
+}
+
+@keyframes shimmer {
+		0% {
+				background-position: top left;
+		}
+		100% {
+				background-position: top right;
+		}
+}
