@@ -78,7 +78,7 @@ const DayPass = () => {
                                     disabled={!selectedCity}
                                     className="w-full px-4 py-3 pl-10 border rounded-xl appearance-none cursor-pointer focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition disabled:bg-gray-100 disabled:cursor-not-allowed"
                                 >
-                                    <option value="">-- Show All Branches --</option>
+                                    <option value="">Select a branch</option>
                                     {branches.map(([branchKey, branch]) => (
                                         <option key={branchKey} value={branchKey}>
                                             {branch.name}

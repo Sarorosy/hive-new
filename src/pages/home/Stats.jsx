@@ -6,17 +6,27 @@ const Counter = ({ end, duration = 1000 }) => {
 
   useEffect(() => {
     let start = 0;
-    const incrementTime = duration / end;
+    const frameRate = 30; // updates per second
+    const totalFrames = Math.round((duration / 1000) * frameRate);
+    const increment = end / totalFrames;
+
     const timer = setInterval(() => {
-      start += 1;
-      setCount(start);
-      if (start === end) clearInterval(timer);
-    }, incrementTime);
+      start += increment;
+      if (start >= end) {
+        setCount(end);
+        clearInterval(timer);
+      } else {
+        setCount(Math.ceil(start));
+      }
+    }, 1000 / frameRate);
+
     return () => clearInterval(timer);
   }, [end, duration]);
 
-  return <span>{count} {end == 99 ? "%" : "+"}</span>;
+  return <span>{count} {end === 99 ? "%" : "+"}</span>;
 };
+
+
 
 const Stats = () => {
   return (
@@ -46,7 +56,7 @@ const Stats = () => {
         </div>
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={20000} />{" "}
+            <Counter end={20000} duration={1} />{" "}
           </p>
           <p className="opacity-80">Workstations</p>
         </div>

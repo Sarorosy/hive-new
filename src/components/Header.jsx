@@ -84,6 +84,12 @@ const Header = ({ onBookTourClick }) => {
   // }, []);
 
   return (
+    <>
+    <div className="z-50  bg-white hover:bg-black hover:text-white border rounded hidden md:block fixed -right-10 top-1/2  -translate-y-1/2 -rotate-90 origin-center">
+      <button  onClick={onBookTourClick} className="cursor-pointer rounded-l-2xl rounded-r-none px-6 py-2 shadow-lg ">
+        Book Tour
+      </button>
+    </div>
     <header
       className={`
       fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out
@@ -94,6 +100,7 @@ const Header = ({ onBookTourClick }) => {
       }
     `}
     >
+      
       <div className="mx-auto flex items-center justify-between px-4 py-3">
         <div className="flex items-center justify-center space-x-2">
           {/* Left - Logo */}
@@ -267,6 +274,13 @@ const Header = ({ onBookTourClick }) => {
               className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
             >
               Enterprise Solutions
+            </button>
+
+            <button
+              onClick={() => navigate("/day_pass")}
+              className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
+            >
+              Day Pass
             </button>
 
             <button
@@ -465,6 +479,27 @@ const Header = ({ onBookTourClick }) => {
             )}
           </div>
 
+          <button
+              onClick={() => navigate("/workspaces/enterprise-solutions")}
+              className="block w-full text-left hover:underline transition-all duration-200"
+            >
+              Enterprise Solutions
+            </button>
+
+          <button
+              onClick={() => navigate("/day_pass")}
+              className="block w-full text-left hover:underline transition-all duration-200"
+            >
+              Day Pass
+            </button>
+
+            <button
+              onClick={() => navigate("/landlord-relationships")}
+              className="block w-full text-left hover:underline transition-all duration-200"
+            >
+              Landlord Relationships
+            </button>
+
           {/* Info Dropdown in mobile - Click to toggle */}
           <div className="space-y-2">
             <button
@@ -533,6 +568,7 @@ const Header = ({ onBookTourClick }) => {
         </div>
       )}
     </header>
+    </>
   );
 };
 

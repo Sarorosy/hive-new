@@ -20,6 +20,63 @@ body {
   scroll-behavior: smooth;
 }
 
+/* For Chrome, Edge, Safari */
+.cs::-webkit-scrollbar {
+  width: 6px;              /* thin */
+}
+
+.cs::-webkit-scrollbar-track {
+  background: transparent; /* clean look */
+}
+
+.cs::-webkit-scrollbar-thumb {
+  background-color: black; /* scrollbar color */
+  border-radius: 10px;     /* smooth rounded edges */
+}
+
+/* For Firefox */
+.cs {
+  scrollbar-width: thin;          /* makes it thin */
+  scrollbar-color: black transparent; /* thumb + track */
+}
+
+/* ======= Put this in your global stylesheet (styles/globals.css) ======= */
+
+/* Apply to root so Firefox picks it up */
+html, body {
+  height: 100%;
+  scrollbar-width: thin; /* Firefox: thin */
+  scrollbar-color: rgba(0,0,0,0.9) transparent; /* Firefox: thumb + track */
+}
+
+/* Chromium / WebKit (Chrome, Edge, Safari) */
+/* Use * to style any scrollable element; replace * with body if you only want page scrollbar */
+*::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+*::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+*::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.85);
+  border-radius: 9999px;
+  border: 2px solid transparent;   /* gives thumb some breathing room */
+  background-clip: content-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: rgba(0,0,0,1);
+}
+
+/* Optional: corner for two-axis scroll containers */
+*::-webkit-scrollbar-corner {
+  background: transparent;
+}
+
+
 .crimson {
   font-family: "Crimson Text", serif;
 }

@@ -14,7 +14,7 @@ export default function Layout() {
     },8000)
   },[])
   return (
-    <div className="min-h-screen flex flex-col w-full" >
+    <div className="min-h-screen flex flex-col w-full cs" >
       <Header onBookTourClick={()=> setContactFormOpen(true)} />
       <main className="flex-grow w-full pt-6" id="scroll-container">
         <div className="container m-0 max-w-[100%]">

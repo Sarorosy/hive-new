@@ -45,7 +45,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
         {type === "modal" && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300"
+            className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer"
           >
             <X className="w-5 h-5" />
           </button>

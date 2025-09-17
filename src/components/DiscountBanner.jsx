@@ -18,12 +18,7 @@ export default function DiscountBanner() {
                                 alt="Elegant coworking space with private meeting rooms"
                                 className="w-full h-full object-cover filter brightness-95 contrast-110 transition-transform duration-700"
                             />
-                            {/* Geometric overlay */}
-                            <div className="absolute inset-0">
-                                <div className="absolute top-8 left-8 w-24 h-24 border-4 border-white/40 rotate-12"></div>
-                                <div className="absolute bottom-12 right-12 w-16 h-16 bg-black/20 rotate-45"></div>
-                                <div className="absolute top-1/2 right-8 w-2 h-20 bg-white/60"></div>
-                            </div>
+                           
                         </div>
                     </div>
 
@@ -54,7 +49,7 @@ export default function DiscountBanner() {
 
                             {/* Terms */}
                             <p className="text-gray-400 text-sm mb-12 font-serif uppercase tracking-wide">
-                                Terms & Conditions Apply
+                                Terms & Conditions Apply*
                             </p>
 
                             {/* CTA Section */}
@@ -83,7 +78,7 @@ export default function DiscountBanner() {
                         </div>
 
                         {/* Corner decoration */}
-                        <div className="absolute top-0 right-0 w-32 h-32 border-l-4 border-b-4 border-gray-200"></div>
+                        
                     </div>
                 </div>
             </div>

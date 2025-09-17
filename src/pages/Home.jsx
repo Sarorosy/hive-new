@@ -9,6 +9,7 @@ import Members from './home/Members'
 import Testimonials from './home/Testimonials'
 import HeroVideo from './home/HeroVideo'
 import DiscountBanner from '../components/DiscountBanner'
+import NearestHive from '../components/NearestHive'
 
 function Home() {
   return (
@@ -23,6 +24,7 @@ function Home() {
         <Faq />
         <Members />
         <Testimonials />
+        <NearestHive />
     </div>
   )
 }
