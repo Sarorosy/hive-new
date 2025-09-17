@@ -54,7 +54,7 @@ function NearestHive() {
                     animate={{ scale: 1, opacity: 1 }}
                     exit={{ scale: 0.8, opacity: 0 }}
                     transition={{ type: "spring", stiffness: 120, damping: 15 }}
-                    className="fixed bottom-4 left-4 z-50"
+                    className="fixed bottom-4 left-4 z-48"
                 >
                     {/* Collapsed card with green ping */}
                     {!expanded && (

@@ -102,7 +102,7 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
   }, [setIsOpen]);
 
   return (
-    <div className="relative" ref={ref}>
+    <div className="relative " ref={ref}>
       <div
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center justify-between w-full border border-gray-200 rounded-xl px-4 py-3 cursor-pointer hover:border-black transition"
@@ -211,7 +211,7 @@ const Hero = () => {
   }, [selectedCity, selectedOffering,selectedOfferingSlug]);
 
   return (
-    <div className="relative h-screen w-full overflow-hidden"
+    <div className="relative h-screen w-full overflow-hidden z-49"
       id="curve"
     >
       {/* Swiper Background */}
