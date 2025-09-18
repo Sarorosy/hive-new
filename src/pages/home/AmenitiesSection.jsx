@@ -82,7 +82,7 @@ const AmenitiesSection = () => {
                 const IconComponent = amenity.icon;
                 return (
                   <div key={index} className="text-center group">
-                    <div className="w-12 h-12 border border-gray-300 bg-white rounded-none flex items-center justify-center mx-auto mb-3 group-hover:border-gray-400 transition-all duration-300">
+                    <div className="w-12 h-12 border border-gray-700 bg-white rounded-none flex items-center justify-center mx-auto mb-3 group-hover:border-gray-400 transition-all duration-300">
                       <IconComponent className="w-6 h-6 text-gray-600" strokeWidth={1.5} />
                     </div>
                     <span className="text-gray-600 text-xs leading-tight block">
