@@ -25,7 +25,7 @@ import MarzipanoViewer from "../pages/MarzipanoViewer";
 
 export default function AppRouter() {
   return (
-    <Router>
+    <Router basename="/hive">
       <ScrollToTop />
       <Routes>
         <Route element={<PrivateRoute />}>
