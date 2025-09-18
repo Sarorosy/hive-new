@@ -216,8 +216,8 @@ const Hero = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    console.log("Selected City:", selectedCity);
-    console.log("Selected Offering:", selectedOffering);
+    // console.log("Selected City:", selectedCity);
+    // console.log("Selected Offering:", selectedOffering);
   }, [selectedCity, selectedOffering,selectedOfferingSlug]);
 
   return (
