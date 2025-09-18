@@ -1,7 +1,7 @@
 # Vite SPA routing
 Options -MultiViews
 RewriteEngine On
-RewriteBase /hive
+RewriteBase /
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteRule ^ index.html [QSA,L]
 
