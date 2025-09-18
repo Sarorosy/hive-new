@@ -3,32 +3,32 @@ import React from "react";
 const testimonials = [
   {
     quote:
-      "The flexibility here is unmatched! I can book a desk when I need it, collaborate with other professionals, and still have my quiet space when I need to focus. It’s the perfect balance.",
-    name: "Juliana Doe",
-    role: "Marketing Manager",
+      "The Hive transformed how our team works and collaborates. Impeccable service and space.",
+    name: "Juliana",
+    role: "Technology Startup CEO",
     image: "https://randomuser.me/api/portraits/women/44.jpg",
     class: "bg-[#dae2e5]"
   },
   {
     quote:
-      "Fast internet, ergonomic chairs, and great coffee — what else could a developer ask for? This coworking space has seriously boosted my productivity.",
-    name: "Bastian Doe",
-    role: "Software Engineer",
+      "There’s a rare balance of privacy, energy, and luxury – absolutely unmatched.",
+    name: "Bastian",
+    role: "Senior Marketing Director",
     image: "https://randomuser.me/api/portraits/men/46.jpg",
     class: "bg-[#ede6e7]"
   },
   {
     quote:
-      "I’ve met so many amazing entrepreneurs here. The networking opportunities and events have helped me grow my client base more than I expected.",
+      "Onboarding and bookings made effortless for our team through The Hive app",
     name: "Sarah Doe",
-    role: "Freelance Consultant",
+    role: "Operations Lead, Consulting Firm",
     image: "https://randomuser.me/api/portraits/women/47.jpg",
     class: "bg-[#92031f] text-white"
   },
   {
     quote:
-      "As a startup founder, having a cost-effective yet professional environment for my team has been game-changing. The meeting rooms are modern and fully equipped.",
-    name: "Albert Doe",
+      "As a startup founder, having a cost-effective yet professional environment for my team has been game-changing.",
+    name: "Albert",
     role: "Startup Founder",
     image: "https://randomuser.me/api/portraits/men/48.jpg",
     class: "bg-[#544c41] text-white "
@@ -44,7 +44,7 @@ export default function Testimonials() {
           <div>
             <p className="text-gray-500 text-sm mb-2 ">/ Testimonials /</p>
             <h2 className="text-4xl font-bold leading-snug mb-4 font-serif">
-              What Our Customers <br /> Say About Us.
+              Voices of Our Community
             </h2>
           </div>
           <p className="text-gray-500 max-w-md">

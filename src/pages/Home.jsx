@@ -11,6 +11,7 @@ import HeroVideo from './home/HeroVideo'
 import DiscountBanner from '../components/DiscountBanner'
 import NearestHive from '../components/NearestHive'
 import AmenitiesSection from './home/AmenitiesSection'
+import SmartWorkflowSection from './home/SmartWorkflowSection'
 
 function Home() {
   return (

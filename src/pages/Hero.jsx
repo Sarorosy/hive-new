@@ -265,10 +265,10 @@ const Hero = () => {
           {/* Left Side Text */}
           <div className="text-white space-y-4">
             <h1 className="text-4xl xl:text-5xl font-bold leading-tight">
-              Your Next-Gen Workspace,
+              Elevate Your Ambition.
               <span className="block">
-                 Managed for 
-                <span className="text-orange-400 ml-2">You</span>
+                  Redefine Your 
+                <span className="text-orange-400 ml-2">Workspace.</span>
               </span>
             </h1>
           </div>

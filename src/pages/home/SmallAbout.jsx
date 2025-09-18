@@ -14,8 +14,7 @@ const SmallAbout = () => {
                         Redefining the Future of Workspaces.
                     </h2>
                     <p className="text-gray-500 max-w-md">
-                        Integer tincidunt cras dapibus. Vivamus elementum semper nisi, aenean
-                        vulputate eleifend tellus.
+                        Welcome to The Hive – India’s premier coworking destination where visionaries, enterprises, and creators converge.
                     </p>
                 </div>
             </div>
@@ -51,9 +50,8 @@ const SmallAbout = () => {
                     {/* Text and button */}
                     <div className="mt-4 flex items-center justify-between">
                         <p className="text-gray-500 text-md mb-4 w-3/4">
-                            Duis leo sed fringilla mauris sit amet nibh donec sodales sagittis
-                            magna. Sed consequat, leo eget bibendum sodales augue velit cursus
-                            nunc.
+                           Discover custom-designed workspaces in landmark urban locations, crafted for those who demand more than ordinary. Here, luxury meets productivity, and community fuels growth. At The Hive, possibilities truly have no bounds.
+
                         </p>
                         <button className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-md">
                             <ArrowRight className="w-5 h-5" />
