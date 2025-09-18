@@ -35,8 +35,8 @@ const navigate = useNavigate();
             Tailored Solutions for Your Unique Work Needs.
           </h2>
           <p className="text-gray-500 max-w-sm mt-4 md:mt-0">
-            Integer tincidunt cras dapibus vivamus elementum semper nisi. Aenean
-            vulputate eleifend tellus.
+            Coworking, Reimagined for Visionaries and Leaders.
+
           </p>
         </div>
 

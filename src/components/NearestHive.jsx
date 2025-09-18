@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { centersData } from "../data/centersData";
 import { ArrowUpRightIcon, Minimize2 } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
 function NearestHive() {
     const [nearest, setNearest] = useState(null);
     const [error, setError] = useState("");
     const [expanded, setExpanded] = useState(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!navigator.geolocation) {
@@ -21,18 +23,25 @@ function NearestHive() {
                 let closest = null;
                 let minDist = Infinity;
 
-                Object.values(centersData).forEach((city) => {
-                    Object.values(city.branches).forEach((branch) => {
+                Object.entries(centersData).forEach(([citySlug, city]) => {
+                    Object.entries(city.branches).forEach(([branchSlug, branch]) => {
                         if (branch.lat && branch.lng) {
                             const dist = haversineDistance(
                                 latitude,
                                 longitude,
-                                branch.lat,
-                                branch.lng
+                                parseFloat(branch.lat),
+                                parseFloat(branch.lng)
                             );
+
                             if (dist < minDist) {
                                 minDist = dist;
-                                closest = { ...branch, city: city.name, distance: dist };
+                                closest = {
+                                    ...branch,
+                                    city: city.name,   // human-readable city name
+                                    citySlug,          // e.g., "chennai"
+                                    branchSlug,        // e.g., "anna-nagar"
+                                    distance: dist,
+                                };
                             }
                         }
                     });
@@ -44,7 +53,9 @@ function NearestHive() {
         );
     }, []);
 
+
     if (error) return null;
+
 
     return (
         <AnimatePresence>
@@ -61,7 +72,7 @@ function NearestHive() {
                         <motion.div
                             whileHover={{ scale: 1.02 }}
                             className="bg-white shadow-lg rounded-xl p-3 cursor-pointer w-64 flex items-center gap-3"
-                            onClick={() => setExpanded(true)}
+                            onMouseEnter={() => setExpanded(true)}
                         >
                             {/* Green ping circle */}
                             <div className="relative w-2 h-2 flex-shrink-0">
@@ -87,7 +98,7 @@ function NearestHive() {
                                 </span> */}
                                 <h2 className="text-[10px] font-thin mb-2">{nearest.name}</h2>
                                 <span className="text-xs text-gray-500 flex items-center hover:underline">
-                                    View <ArrowUpRightIcon className="ml-2" size={13}/>
+                                    View <ArrowUpRightIcon className="ml-2" size={13} />
                                 </span>
                             </div>
                         </motion.div>
@@ -100,20 +111,30 @@ function NearestHive() {
                             animate={{ y: 0, opacity: 1 }}
                             exit={{ y: 200, opacity: 0 }}
                             transition={{ type: "spring", stiffness: 120, damping: 20 }}
+                            onMouseLeave={() => { setExpanded(false) }}
                             className="bg-white shadow-2xl rounded-2xl p-4 w-[90vw] md:w-[400px] max-h-[80vh] overflow-y-auto relative"
                         >
-                            <button
+                            {/* <button
                                 className="absolute top-2 right-2 text-gray-600 hover:text-black cursor-pointer"
                                 onClick={() => setExpanded(false)}
                             >
                                 <Minimize2 size={18} />   
-                            </button>
+                            </button> */}
 
                             <h2 className="text-lg font-bold mb-2">{nearest.name}</h2>
                             <p className="mb-2 text-sm">{nearest.details}</p>
                             {/* <p className="text-gray-500 text-sm mb-2">
                                 Distance: {nearest.distance.toFixed(2)} km
                             </p> */}
+                            {nearest.citySlug && nearest.branchSlug && (
+                                <div className="flex items-center justify-end">
+                                    <span
+                                        onClick={() => { navigate(`${nearest.citySlug}/${nearest.branchSlug}`) }}
+                                        className="text-xs text-gray-500 flex items-center border  hover:underline cursor-pointer my-3 px-2 py-1 rounded hover:bg-black hover:text-white">
+                                        View <ArrowUpRightIcon className="ml-2" size={13} />
+                                    </span>
+                                </div>
+                            )}
                             <iframe
                                 src={nearest.map}
                                 width="100%"
