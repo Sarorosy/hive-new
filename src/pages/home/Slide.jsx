@@ -6,9 +6,9 @@ import * as THREE from "three";
 // import two from "../../assets/meeting.jpg";
 // import three from "../../assets/privatecabin.jpg";
 
-import one from "../../assets/raw/all/RAJA8361-min.jpg";
-import two from "../../assets/raw/blr/_SPL9642-min.jpg";
-import three from "../../assets/raw/pune/PUR04056-min.jpg";
+import one from "../../assets/raw/all/RAJA8361-min.JPG";
+import two from "../../assets/raw/blr/_SPL9642-min.JPG";
+import three from "../../assets/raw/pune/PUR04056-min.JPG";
 
 // Simple easing function to replace GSAP
 const easeInOutExpo = (t) => {
