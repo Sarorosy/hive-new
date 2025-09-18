@@ -12,12 +12,12 @@ import five from '../assets/featured/5.jpg';
 import six from '../assets/featured/6.jpg';
 
 //images for chennai
-import ch1 from "../assets/raw/chn/YAV00095-min.jpg";
-import ch2 from "../assets/raw/chn/PUR08662-min.jpg";
-import ch3 from "../assets/raw/chn/PUR08687-min.jpg";
-import ch4 from "../assets/raw/chn/YAV00075-min.jpg";
-import ch5 from "../assets/raw/chn/YAV00102-min.jpg";
-import ch6 from "../assets/raw/chn/YAV00089-min.jpg";
+import ch1 from "../assets/raw/chn/YAV00095-min.JPG";
+import ch2 from "../assets/raw/chn/PUR08662-min.JPG";
+import ch3 from "../assets/raw/chn/PUR08687-min.JPG";
+import ch4 from "../assets/raw/chn/YAV00075-min.JPG";
+import ch5 from "../assets/raw/chn/YAV00102-min.JPG";
+import ch6 from "../assets/raw/chn/YAV00089-min.JPG";
 
 //images for chennai SKCL
 import ch7 from "../assets/raw/chn/skcl/IMGGGSYA.jpeg";
@@ -26,25 +26,25 @@ import ch9 from "../assets/raw/chn/skcl/IMGGIISAH.jpeg";
 import ch10 from "../assets/raw/chn/skcl/IMGDHJDJS.jpeg";
 
 //images for bangalore
-import blr1 from "../assets/raw/blr/_SPL0002-min.jpg";
-import blr2 from "../assets/raw/blr/_SPL9627-min.jpg";
+import blr1 from "../assets/raw/blr/_SPL0002-min.JPG";
+import blr2 from "../assets/raw/blr/_SPL9627-min.JPG";
 import blr3 from "../assets/raw/blr/IMG_20250318_011402314-min.jpg";
-import blr4 from "../assets/raw/blr/_SPL9496-min.jpg";
+import blr4 from "../assets/raw/blr/_SPL9496-min.JPG";
 import blr5 from "../assets/raw/blr/IMG_8788-min.jpg";
-import blr6 from "../assets/raw/blr/VV101259-min.jpg";
+import blr6 from "../assets/raw/blr/VV101259-min.JPG";
 
 //images for Hyderabad
 import hyd1 from "../assets/raw/hyd/PUR01477-min.jpg";
-import hyd2 from "../assets/raw/hyd/PUR01489-min.jpg";
-import hyd3 from "../assets/raw/hyd/PUR01544-min.jpg";
-import hyd4 from "../assets/raw/hyd/PUR01637-min.jpg";
+import hyd2 from "../assets/raw/hyd/PUR01489-min.JPG";
+import hyd3 from "../assets/raw/hyd/PUR01544-min.JPG";
+import hyd4 from "../assets/raw/hyd/PUR01637-min.JPG";
 
 //images for Pune
-import pune1 from "../assets/raw/pune/PUR03651-min.jpg";
-import pune2 from "../assets/raw/pune/PUR03650-min.jpg";
-import pune3 from "../assets/raw/pune/PUR04056-min.jpg";
-import pune4 from "../assets/raw/pune/PUR03658-min.jpg";
-import pune5 from "../assets/raw/pune/PUR04124-min.jpg";
+import pune1 from "../assets/raw/pune/PUR03651-min.JPG";
+import pune2 from "../assets/raw/pune/PUR03650-min.JPG";
+import pune3 from "../assets/raw/pune/PUR04056-min.JPG";
+import pune4 from "../assets/raw/pune/PUR03658-min.JPG";
+import pune5 from "../assets/raw/pune/PUR04124-min.JPG";
 
 export const centersData = {
   chennai: {

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import toast from "react-hot-toast";
 import { centersData } from "../data/centersData";
 
-import ContactFormImg from "../assets/raw/all/RAJA8221-min.jpg";
+import ContactFormImg from "../assets/raw/all/RAJA8221-min.JPG";
 
 export default function LearnMoreForm() {
   const [formData, setFormData] = useState({

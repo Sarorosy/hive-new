@@ -33,16 +33,16 @@ const AmenitiesSection = () => {
       <div className="grid grid-cols-1 lg:grid-cols-2 min-h-screen">
         
         {/* Premium Amenities - Left Side */}
-        <div className="bg-black text-white p-8 lg:p-12 flex flex-col justify-center">
+        <div className="bg-white p-8 lg:p-12 flex flex-col justify-center border-r border-gray-100 shadow-sm">
           <div className="max-w-md mx-auto w-full">
             <div className="mb-12">
-              <p className="text-gray-400 text-sm mb-4 tracking-widest">PREMIUM</p>
-              <h2 className="text-3xl lg:text-4xl font-light mb-4 leading-tight">
+              <p className="text-amber-600 text-sm mb-4 tracking-widest font-medium">PREMIUM</p>
+              <h2 className="text-3xl lg:text-4xl font-extralight mb-4 leading-tight text-black">
                 Unrivaled
-                <span className="block font-bold">Experience</span>
+                <span className="block font-bold bg-gradient-to-r from-amber-600 to-orange-500 bg-clip-text text-transparent">Experience</span>
               </h2>
-              <div className="w-16 h-px bg-white mb-6"></div>
-              <p className="text-gray-300 text-sm">Elevated workspace amenities</p>
+              <div className="w-16 h-px bg-gradient-to-r from-amber-500 to-orange-400 mb-6"></div>
+              <p className="text-gray-600 text-sm italic">Elevated workspace amenities</p>
             </div>
             
             <div className="space-y-6">
@@ -50,10 +50,10 @@ const AmenitiesSection = () => {
                 const IconComponent = amenity.icon;
                 return (
                   <div key={index} className="flex items-center space-x-4 group">
-                    <div className="w-12 h-12 bg-white bg-opacity-10 rounded-full flex items-center justify-center group-hover:bg-opacity-20 transition-all duration-300">
+                    <div className="w-12 h-12 bg-gradient-to-br from-amber-500 to-orange-500 rounded-xl flex items-center justify-center group-hover:shadow-lg group-hover:scale-105 transition-all duration-300">
                       <IconComponent className="w-6 h-6 text-white" strokeWidth={1.5} />
                     </div>
-                    <span className="text-white group-hover:text-gray-200 transition-colors duration-300 text-sm">
+                    <span className="text-gray-800 group-hover:text-amber-700 transition-colors duration-300 text-sm font-medium">
                       {amenity.title}
                     </span>
                   </div>
@@ -64,7 +64,7 @@ const AmenitiesSection = () => {
         </div>
 
         {/* Essential Amenities - Right Side */}
-        <div className="bg-gray-50 p-8 lg:p-12 flex flex-col justify-center">
+        <div className="bg-white p-8 lg:p-12 flex flex-col justify-center">
           <div className="max-w-md mx-auto w-full">
             <div className="mb-12">
               <p className="text-gray-500 text-sm mb-4 tracking-widest">ESSENTIALS</p>
@@ -81,7 +81,7 @@ const AmenitiesSection = () => {
                 const IconComponent = amenity.icon;
                 return (
                   <div key={index} className="text-center group">
-                    <div className="w-12 h-12 bg-black rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-gray-700 transition-colors duration-300">
+                    <div className="w-12 h-12 bg-gray-800 rounded-full flex items-center justify-center mx-auto mb-3 group-hover:bg-gray-700 transition-colors duration-300">
                       <IconComponent className="w-6 h-6 text-white" strokeWidth={1.5} />
                     </div>
                     <span className="text-gray-700 text-xs leading-tight block">
