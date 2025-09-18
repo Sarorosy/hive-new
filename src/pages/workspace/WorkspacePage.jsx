@@ -38,10 +38,10 @@ import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpeg";
 import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
 
 import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpeg";
-import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.JPG";
+import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
 
-import hotdesks from "../../assets/offerings/hotdesks/2.JPG";
-import hotdesks2 from "../../assets/offerings/hotdesks/1.JPG";
+import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
+import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
 
 import meetings from "../../assets/raw/chn/HVE04223-min.JPG";
 import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";

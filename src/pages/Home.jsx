@@ -10,6 +10,7 @@ import Testimonials from './home/Testimonials'
 import HeroVideo from './home/HeroVideo'
 import DiscountBanner from '../components/DiscountBanner'
 import NearestHive from '../components/NearestHive'
+import AmenitiesSection from './home/AmenitiesSection'
 
 function Home() {
   return (
@@ -19,8 +20,9 @@ function Home() {
         <SmallAbout />
         <FeaturedSpaces />
         <DiscountBanner />
+        <AmenitiesSection/>
+        {/* <Amenities /> */}
         <HeroVideo />
-        <Amenities />
         <Faq />
         <Members />
         <Testimonials />
