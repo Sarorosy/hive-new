@@ -43,7 +43,7 @@ import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
 import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
 import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
 
-import meetings from "../../assets/raw/chn/HVE04223-min.JPG";
+import meetings from "../../assets/raw/chn/HVE04223-min.jpg";
 import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";
 
 
