@@ -26,9 +26,9 @@ import building from "../assets/buildings_2.png";
 import daypass from "../assets/day-pass.svg";
 import { useNavigate } from "react-router-dom";
 
-import hero1 from "../assets/raw/all/DSC07729-min.jpg";
-import hero2 from "../assets/raw/all/DSC07855-min.jpg";
-import hero3 from "../assets/raw/chn/YAV00102-min.jpg";
+import hero1 from "../assets/raw/all/DSC07729-min.JPG";
+import hero2 from "../assets/raw/all/DSC07855-min.JPG";
+import hero3 from "../assets/raw/chn/YAV00102-min.JPG";
 
 // Background images
 const heroImages = [
