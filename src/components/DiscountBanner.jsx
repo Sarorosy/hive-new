@@ -2,7 +2,7 @@ import React from 'react';
 import { ArrowRight, Quote } from 'lucide-react';
 import { useOutletContext } from 'react-router-dom';
 
-import picture from "../assets/raw/all/RAJA8221-min.jpg";
+import picture from "../assets/raw/all/RAJA8221-min.JPG";
 
 export default function DiscountBanner() {
 
