@@ -17,7 +17,7 @@ import ch2 from "../assets/raw/chn/PUR08662-min.JPG";
 import ch3 from "../assets/raw/chn/PUR08687-min.JPG";
 import ch4 from "../assets/raw/chn/YAV00075-min.JPG";
 import ch5 from "../assets/raw/chn/YAV00102-min.JPG";
-import ch6 from "../assets/raw/chn/YAV00089-min.JPG";
+import ch6 from "../assets/raw/chn/YAV00089-min.jpg";
 
 //images for chennai SKCL
 import ch7 from "../assets/raw/chn/skcl/IMGGGSYA.jpeg";
