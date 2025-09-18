@@ -28,26 +28,26 @@ import {
 import StartWithUs from "./StartWithUs";
 import LearnMoreForm from "../../components/LearnMoreForm";
 
-import ManagedOffices from "../../assets/raw/all/DSC07782-min.jpg";
-import ManagedOffices2 from "../../assets/raw/chn/PUR08687-min.jpg";
+import ManagedOffices from "../../assets/raw/all/DSC07782-min.JPG";
+import ManagedOffices2 from "../../assets/raw/chn/PUR08687-min.JPG";
 
-import EnterPriseSol from "../../assets/raw/chn/YAV00102-min.jpg";
-import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.jpg";
+import EnterPriseSol from "../../assets/raw/chn/YAV00102-min.JPG";
+import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.JPG";
 
 import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpeg";
-import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
+import privateCabins2 from "../../assets/offerings/privatecabins/2.JPG";
 
-import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpeg";
-import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
+import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.JPEG";
+import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.JPG";
 
-import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
-import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
+import hotdesks from "../../assets/offerings/hotdesks/2.JPG";
+import hotdesks2 from "../../assets/offerings/hotdesks/1.JPG";
 
-import meetings from "../../assets/raw/chn/HVE04223-min.jpg";
-import meetings2 from "../../assets/raw/blr/_SPL9744-min.jpg";
+import meetings from "../../assets/raw/chn/HVE04223-min.JPG";
+import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";
 
 
-import whyChooseUs from "../../assets/raw/chn/skcl/IMG_7932.jpg";
+import whyChooseUs from "../../assets/raw/chn/skcl/IMG_7932.JPG";
 
 
 
