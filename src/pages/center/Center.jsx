@@ -132,7 +132,7 @@ function Center() {
                   </div>
                 </SwiperSlide>
               )) : (
-                cityData.centerImages.map((img, idx) => (
+                cityData.centerImages.map((img, idx) => (   
                 <SwiperSlide key={idx}>
                   <div className="relative h-full group/slide">
                     <img
