@@ -205,7 +205,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
           animate={{ scale: 1 }}
           exit={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
-          className="bg-gray-100 overflow-hidden rounded-2xl shadow-2xl w-full max-w-5xl"
+          className="bg-gray-100 overflow-y-scroll overflow-x-hidden rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh]"
         >
           {content}
         </motion.div>
