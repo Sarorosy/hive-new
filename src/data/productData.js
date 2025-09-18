@@ -8,7 +8,7 @@ import six from "../assets/featured/6.jpg";
 import meetingrooms from "../assets/offerings/meetingsandevents/3.jpg";
 import hotdesks from "../assets/offerings/hotdesks/2.jpg";
 import privatecabins from "../assets/offerings/privatecabins/2.jpg";
-import openspaces from "../assets/raw/chn/YAV00075-min.jpg";
+import openspaces from "../assets/raw/chn/YAV00075-min.JPG";
 import dedicateddesks from "../assets/offerings/dedicateddesks/2.jpg";
 
 import {
