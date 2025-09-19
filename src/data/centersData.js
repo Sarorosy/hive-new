@@ -25,6 +25,11 @@ import ch8 from "../assets/raw/chn/skcl/IMGBSGIAGUGU.jpeg";
 import ch9 from "../assets/raw/chn/skcl/IMGGIISAH.jpeg";
 import ch10 from "../assets/raw/chn/skcl/IMGDHJDJS.jpeg";
 
+//images for chennai Porur
+import ch11 from "../assets/raw/chn/porur/868cd7b9f7db93a1b44f0f2d1c105e1bb2bd2c0e1a9b9ae9c6cb761320c9c8b2.jpeg";
+import ch12 from "../assets/raw/chn/porur/85537134.jpeg";
+import ch13 from "../assets/raw/chn/porur/bg_9_5700fae993.webp";
+
 //images for bangalore
 import blr1 from "../assets/raw/blr/_SPL0002-min.JPG";
 import blr2 from "../assets/raw/blr/_SPL9627-min.JPG";
@@ -101,7 +106,22 @@ export const centersData = {
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.362000448057!2d80.20681027512359!3d13.012604287306493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267583ea87459%3A0xe203dc67d754aab6!2sThe%20Hive%20-%20Flexible%20Workspace%2CSKCL%20Guindy%2C%20Chennai!5e0!3m2!1sen!2sin!4v1755267876394!5m2!1sen!2sin",
         lat:"13.012813353724379",
         lng:"80.20940665333461"
-      }
+      },
+      "porur": {
+        name: "The Hive at Keppal One Paramount, Chennai",
+        breadcrumb: [
+          { label: "Home", path: "/" },
+          { label: "Coworking Spaces in Chennai", path: "/chennai" },
+          { label: "Keppal One Paramount, porur" },
+        ],
+        details: "Located in the heart of Porur, this coworking space offers modern amenities, high-speed internet, meeting rooms, and vibrant interiors.",
+        images: [
+          ch11,ch12,ch13
+        ],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0864119176167!2d80.1679723!3d13.030168999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260dfaa0769c7%3A0xcf7641206670f745!2sOne%20Paramount%2C%20110%2C%20Mount%20Poonamallee%20Rd%2C%20Porur%2C%20Chennai%2C%20Tamil%20Nadu%20600116!5e0!3m2!1sen!2sin!4v1758278930855!5m2!1sen!2sin",
+        lat:"13.03036759902071",
+        lng:"80.16790792698652"
+      },
     }
   },
   bangalore: {
@@ -220,6 +240,10 @@ export const citiesData = {
       {
         name: "The Hive at SKCL Guindy, Chennai",
         route: "/chennai/skcl-guindy",
+      },
+      {
+        name: "The Hive at Keppal One Paramount, Chennai",
+        route: "/chennai/porur",
       },
     ],
   },

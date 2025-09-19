@@ -61,27 +61,6 @@ const Header = ({ onBookTourClick }) => {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // useEffect(() => {
-  //   const handleClickOutside = (event) => {
-  //     if (infoRef.current && !infoRef.current.contains(event.target)) {
-  //       setInfoOpen(false);
-  //     }
-  //     if (centresRef.current && !centresRef.current.contains(event.target)) {
-  //       setCentresOpen(false);
-  //       setHoveredCity("");
-  //     }
-  //     if (
-  //       workspacesRef.current &&
-  //       !workspacesRef.current.contains(event.target)
-  //     ) {
-  //       setWorkspacesOpen(false);
-  //       setHoveredOffering("");
-  //     }
-  //   };
-
-  //   document.addEventListener("mousedown", handleClickOutside);
-  //   return () => document.removeEventListener("mousedown", handleClickOutside);
-  // }, []);
 
   return (
     <>
