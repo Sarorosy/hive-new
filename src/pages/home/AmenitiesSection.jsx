@@ -55,11 +55,11 @@ const AmenitiesSection = () => {
                       <div
                         data-tooltip-id="my-tooltip"
                         data-tooltip-content={amenity.title}
-                        className={`w-12 h-12 flex items-center justify-center transition-all duration-300 rounded-md
-                        ${isBlack ? "bg-black text-white" : "bg-white text-black border"}`}
+                        className={`w-12 h-12 flex items-center justify-center transition-all duration-300 rounded-md border border-gold 
+                        ${isBlack ? "bg-black text-gold " : "bg-gradient-to-br from-goldt via-gold to-goldt text-black "}`}
                       >
                         <IconComponent
-                          className={`w-6 h-6 ${isBlack ? "text-white" : "text-black"}`}
+                          className={`w-6 h-6 ${isBlack ? "text-gold" : "text-black"}`}
                           strokeWidth={1.5}
                         />
                       </div>

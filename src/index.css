@@ -1,4 +1,10 @@
-@import "tailwindcss";
-@import "swiper/css";
 @import "swiper/css/navigation";
 @import "swiper/css/pagination";
+
+@import "tailwindcss";
+
+@theme {
+  --color-gold: oklch(0.8942 0.0793 82.79);
+  --color-goldt:oklch(0.7957 0.0924 82.2);
+}
+

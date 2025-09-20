@@ -1,4 +1,5 @@
 import React from "react";
+import { Star } from "lucide-react";
 
 const testimonials = [
   {
@@ -62,12 +63,25 @@ export default function Testimonials() {
             >
               <p className="text-black text-3xl mb-4">❝</p>
               <p className="text-gray-600 mb-6">{t.quote}</p>
+
               <div className="flex items-center gap-4 mt-auto">
-                
+
                 {/* <div className={`w-10 h-10 rounded-full object-cover font-serif flex items-center justify-center ${t.class}`}>
                 {t.name.charAt(0)}
                 </div> */}
                 <div>
+                  {/* Gradient Gold Stars */}
+                  <div className="flex">
+                    {[...Array(5)].map((_, i) => (
+                      <span
+                        key={i}
+                        className="mr-1 text-lg bg-gradient-to-br from-goldt via-gold to-goldt bg-clip-text text-transparent"
+                      >
+                        ★
+                      </span>
+                    ))}
+                  </div>
+
                   <p className="font-semibold">{t.name}</p>
                   <p className="text-sm text-gray-500">{t.role}</p>
                 </div>
@@ -76,7 +90,7 @@ export default function Testimonials() {
           ))}
         </div>
 
-        
+
       </div>
     </section>
   );
