@@ -34,10 +34,10 @@ import ManagedOffices2 from "../../assets/raw/chn/PUR08687-min.JPG";
 import EnterPriseSol from "../../assets/raw/chn/YAV00102-min.JPG";
 import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.JPG";
 
-import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpeg";
+import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpg";
 import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
 
-import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpeg";
+import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpg";
 import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
 
 import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
