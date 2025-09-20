@@ -68,8 +68,8 @@ import blr17 from "../assets/raw/blr/IMG_20250318_123453359.jpg";
 
 //images for Hyderabad
 import hyd1 from "../assets/raw/hyd/PUR01477-min.jpg";
-import hyd2 from "../assets/raw/hyd/PUR01489-min.JPG";
-import hyd3 from "../assets/raw/hyd/PUR01544-min.JPG";
+import hyd2 from "../assets/raw/hyd/PUR01489-min.jpg";
+import hyd3 from "../assets/raw/hyd/PUR01544-min.jpg";
 import hyd4 from "../assets/raw/hyd/PUR01637-min.JPG";
 import hyd5 from "../assets/raw/hyd/PUR01497-min.JPG";
 
