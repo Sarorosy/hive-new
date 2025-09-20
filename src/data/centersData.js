@@ -58,13 +58,13 @@ import blr7 from "../assets/raw/blr/VV100107-min.JPG";
 import blr8 from "../assets/raw/blr/VV100108-min.JPG";
 import blr9 from "../assets/raw/blr/VV101196-min.JPG";
 import blr10 from "../assets/raw/blr/VV101259-min.JPG";
-import blr11 from "../assets/raw/blr/IMG_8792-min.JPG";
+import blr11 from "../assets/raw/blr/IMG_8792-min.jpg";
 import blr12 from "../assets/raw/blr/_SPL9617-min.JPG";
 import blr13 from "../assets/raw/blr/_SPL9637-min.JPG";
 import blr14 from "../assets/raw/blr/_SPL9726-min.JPG";
 import blr15 from "../assets/raw/blr/_SPL9642-min.JPG";
-import blr16 from "../assets/raw/blr/IMG_20250318_113128119.JPG";
-import blr17 from "../assets/raw/blr/IMG_20250318_123453359.JPG";
+import blr16 from "../assets/raw/blr/IMG_20250318_113128119.jpg";
+import blr17 from "../assets/raw/blr/IMG_20250318_123453359.jpg";
 
 //images for Hyderabad
 import hyd1 from "../assets/raw/hyd/PUR01477-min.jpg";
