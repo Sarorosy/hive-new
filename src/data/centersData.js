@@ -42,9 +42,9 @@ import ch21 from "../assets/raw/chn/skcl/IMGSIAGDY.jpeg";
 import ch22 from "../assets/raw/chn/skcl/IMG66DSF.jpeg";
 import ch23 from "../assets/raw/chn/skcl/IMG83542.jpeg";
 import ch24 from "../assets/raw/chn/skcl/IMG665DA.jpeg";
-import ch25 from "../assets/raw/chn/PUR08815-min.jpg";
-import ch26 from "../assets/raw/chn/YAV00004-min.jpg";
-import ch27 from "../assets/raw/chn/YAV00080-min.jpg";
+import ch25 from "../assets/raw/chn/PUR08815-min.JPG";
+import ch26 from "../assets/raw/chn/YAV00004-min.JPG";
+import ch27 from "../assets/raw/chn/YAV00080-min.JPG";
 
 
 //images for bangalore
