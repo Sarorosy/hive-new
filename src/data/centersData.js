@@ -13,8 +13,8 @@ import six from '../assets/featured/6.jpg';
 
 //images for chennai
 import ch1 from "../assets/raw/chn/YAV00095-min.JPG";
-import ch2 from "../assets/raw/chn/PUR08662-min.JPG";
-import ch3 from "../assets/raw/chn/PUR08687-min.JPG";
+import ch2 from "../assets/raw/chn/PUR08662-min.jpg";
+import ch3 from "../assets/raw/chn/PUR08687-min.jpg";
 import ch4 from "../assets/raw/chn/YAV00075-min.JPG";
 import ch5 from "../assets/raw/chn/YAV00102-min.JPG";
 import ch6 from "../assets/raw/chn/YAV00089-min.jpg";
