@@ -84,13 +84,13 @@ const calcCost = () => {
                     key={idx}
                     className="flex items-center gap-2 bg-gray-50 p-2 rounded-lg shadow-sm"
                   >
-                    {Icon && <Icon className="w-5 h-5 text-orange-500" />}
+                    {Icon && <Icon className="w-5 h-5 gt" />}
                     <span className="text-gray-700 text-sm">{a.caption}</span>
                   </div>
                 );
               })}
-              <div className="flex items-center justify-center bg-gray-100 p-2 rounded-lg shadow-sm transition">
-                <span className="text-orange-500 font-medium text-sm">and More ++</span>
+              <div className="gbg flex items-center justify-center bg-gray-100 p-2 rounded-lg shadow-sm transition">
+                <span className="text-black font-medium text-sm">and More ++</span>
               </div>
             </div>
           </div>
@@ -123,7 +123,7 @@ const calcCost = () => {
             editableDateInputs={true}
           />
 
-          <div className="mt-4 bg-orange-100 p-3 rounded-lg">
+          <div className="mt-4 bg-gray-100 p-3 rounded-lg">
             <p>
               <strong>Booking:</strong>{" "}
               {range[0].startDate.toLocaleDateString()} to{" "}
@@ -134,7 +134,7 @@ const calcCost = () => {
             </p>
           </div>
 
-          <button className="mt-4 bg-orange-500 text-white px-4 py-2 rounded-lg hover:bg-orange-600">
+          <button className="mt-4 gbg text-white px-4 py-2 rounded-lg">
             Book Now
           </button>
         </div>

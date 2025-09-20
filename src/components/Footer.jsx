@@ -82,7 +82,7 @@ export default function Footer() {
                         />
                         <button
                             type="button"
-                            className="bg-orange-500 hover:bg-orange-600 transition text-white px-6 py-1 rounded-lg font-medium"
+                            className="gbg  transition text-white px-6 py-1 rounded-lg font-medium"
                         >
                             Subscribe
                         </button>

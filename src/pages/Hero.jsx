@@ -264,11 +264,11 @@ const Hero = () => {
         <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
           {/* Left Side Text */}
           <div className="text-white space-y-4">
-            <h1 className="text-4xl xl:text-5xl font-bold leading-tight">
+            <h1 className="text-4xl xl:text-5xl font-bold leading-tight tracking-tight">
               Elevate Your Ambition.
               <span className="block">
                   Redefine Your 
-                <span className="text-orange-400 ml-2">Workspace.</span>
+                <span className="gt ml-2 tracking-none">Workspace.</span>
               </span>
             </h1>
           </div>

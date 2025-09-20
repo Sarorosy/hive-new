@@ -59,24 +59,24 @@ const ContactForm = ({ type = "regular", onClose }) => {
           </p>
 
           <div className="flex items-center mb-3">
-            <span className="p-3 bg-black rounded-full">
-              <Phone className="text-white" />
+            <span className="p-3 gbg rounded-full">
+              <Phone className="text-black" />
             </span>
             <a
               href="tel:+917022274000"
-              className="ml-3 text-orange-500 font-medium"
+              className="ml-3 text-black font-medium"
             >
               +91-70222 74000
             </a>
           </div>
 
           <div className="flex items-center mb-6">
-            <span className="p-3 bg-black rounded-full">
-              <Mail className="text-white" />
+            <span className="p-3 gbg rounded-full">
+              <Mail className="text-black" />
             </span>
             <a
               href="mailto:hello@hiveworkspaces.com"
-              className="ml-3 text-orange-500 font-medium"
+              className="ml-3 text-black font-medium lowercase"
             >
               hello@hiveworkspaces.com
             </a>

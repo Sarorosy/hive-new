@@ -13,7 +13,7 @@ function BlogDetails() {
           <h2 className="text-2xl font-bold text-black">Blog not found</h2>
           <Link
             to="/blogs"
-            className="mt-4 inline-block rounded-full border border-black px-4 py-2 font-semibold text-black transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white"
+            className="mt-4 inline-block rounded-full border border-black px-4 py-2 font-semibold text-black transition-all hover:gbg hover:border-gold hover:text-white"
           >
             Back to Blogs
           </Link>
@@ -67,7 +67,7 @@ function BlogDetails() {
 
           {/* Content */}
           <div
-            className="prose prose-lg mt-8 max-w-none text-gray-800 prose-headings:text-black prose-a:text-orange-600"
+            className="prose prose-lg mt-8 max-w-none text-gray-800 prose-headings:text-black"
             dangerouslySetInnerHTML={{
               __html: blog.content.replace(/\n/g, "<br/>"),
             }}
@@ -80,7 +80,7 @@ function BlogDetails() {
                 <span
                   key={i}
                   className="inline-flex items-center rounded-full border border-gray-300 px-3 py-1 text-sm font-medium
-                             text-gray-700 hover:border-orange-500 hover:text-orange-600 transition-colors"
+                             text-gray-700 hover:border-gold  transition-colors"
                 >
                   #{tag}
                 </span>
@@ -92,7 +92,7 @@ function BlogDetails() {
           <div className="mt-12">
             <Link
               to="/blogs"
-              className="inline-flex items-center gap-2 rounded-full border border-black px-5 py-2 text-sm font-semibold text-black transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white"
+              className="inline-flex items-center gap-2 rounded-full border border-black px-5 py-2 text-sm font-semibold text-black transition-all hover:gbg hover:border-gold hover:text-white"
             >
               ← Back to Blogs
             </Link>
@@ -108,7 +108,7 @@ function BlogDetails() {
                 <Link
                   key={rb.id}
                   to={`/blog/${rb.slug}`}
-                  className="group block rounded-xl border border-gray-200 overflow-hidden hover:border-orange-500 transition-all"
+                  className="group block rounded-xl border border-gray-200 overflow-hidden hover:border-gold transition-all"
                 >
                   <div className="relative h-36 overflow-hidden">
                     <img
@@ -118,7 +118,7 @@ function BlogDetails() {
                     />
                   </div>
                   <div className="p-4">
-                    <h4 className="text-sm font-bold text-black line-clamp-2 group-hover:text-orange-500">
+                    <h4 className="text-sm font-bold text-black line-clamp-2 group-hover:gt">
                       {rb.title}
                     </h4>
                     <p className="mt-2 text-xs text-gray-600 line-clamp-2">

@@ -53,7 +53,7 @@ const SmallAbout = () => {
                            Discover custom-designed workspaces in landmark urban locations, crafted for those who demand more than ordinary. Here, luxury meets productivity, and community fuels growth. At The Hive, possibilities truly have no bounds.
 
                         </p>
-                        <button className="bg-orange-500 hover:bg-orange-600 text-white p-3 rounded-md">
+                        <button className="gbg text-black p-3 rounded-md">
                             <ArrowRight className="w-5 h-5" />
                         </button>
                     </div>

@@ -25,7 +25,7 @@ function CareersListPage() {
           {jobs.map((job) => (
             <div
               key={job.title}
-              className="group flex flex-col justify-between rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:border-orange-500"
+              className="group flex flex-col justify-between rounded-2xl border border-gray-200 bg-white shadow-sm transition-all duration-300 hover:shadow-xl hover:border-gold"
             >
               <div className="p-6 flex-1">
                 {/* Job Meta */}
@@ -45,7 +45,7 @@ function CareersListPage() {
                 </div>
 
                 {/* Title */}
-                <h2 className="text-lg sm:text-xl font-bold text-black group-hover:text-orange-500 transition-colors">
+                <h2 className="text-lg sm:text-xl font-bold text-black group-hover:gt transition-colors">
                   {job.title}
                 </h2>
 
@@ -57,7 +57,7 @@ function CareersListPage() {
               <div className="p-6 pt-0 flex items-center justify-end">
                 <button
                   onClick={() => setSelectedJob(job)}
-                  className="cursor-pointer rounded-full border border-black px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white"
+                  className="cursor-pointer rounded-full border border-black px-4 py-2 text-sm font-semibold text-black transition-all hover:gbg hover:border-gold hover:text-white"
                 >
                   {job.applyText}
                 </button>
@@ -71,7 +71,7 @@ function CareersListPage() {
           <p className="text-gray-700 font-medium">
             Don’t see the perfect role? We’re always looking for exceptional talent.
           </p>
-          <button className="mt-4 inline-flex items-center rounded-full border border-black px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white">
+          <button className="mt-4 inline-flex items-center rounded-full border border-black px-6 py-3 text-sm font-semibold text-black transition-all hover:gbg hover:border-gold hover:text-white">
             Send Your Resume
           </button>
         </div>
@@ -108,7 +108,7 @@ function CareersListPage() {
             <p className="text-gray-700 text-sm leading-relaxed">{selectedJob.excerpt}</p>
 
             <div className="mt-6">
-              <button className="w-full rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600">
+              <button className="w-full rounded-full gbg px-4 py-2 text-sm font-semibold text-white transition">
                 Apply Now
               </button>
             </div>

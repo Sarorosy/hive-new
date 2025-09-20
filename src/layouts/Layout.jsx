@@ -19,6 +19,8 @@ export default function Layout() {
       <SmokeyCursor
         autoColors={false} 
         backgroundColor={{ r: 1, g: 0.84, b: 0 }} 
+        velocityDissipation={5}
+        splatRadius={0.2}
        />
       <Header onBookTourClick={()=> setContactFormOpen(true)} />
       <main className="flex-grow w-full pt-6" id="scroll-container">

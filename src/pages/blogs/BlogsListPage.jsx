@@ -27,7 +27,7 @@ function BlogsListPage() {
             >
               {/* Featured badge */}
               {post.featured && (
-                <span className="absolute left-4 top-4 z-10 inline-flex items-center rounded-full bg-orange-500 px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
+                <span className="absolute left-4 top-4 z-10 inline-flex items-center rounded-full gbg px-3 py-1 text-xs font-semibold uppercase tracking-wide text-white">
                   Featured
                 </span>
               )}
@@ -61,7 +61,7 @@ function BlogsListPage() {
 
                 {/* Title */}
                 <a href={`/blog/${post.slug}`} className="block">
-                  <h2 className="text-lg sm:text-xl font-bold text-black transition-colors group-hover:text-orange-500 line-clamp-2">
+                  <h2 className="text-lg sm:text-xl font-bold text-black transition-colors group-hover:gt line-clamp-2">
                     {post.title}
                   </h2>
                 </a>
@@ -76,7 +76,7 @@ function BlogsListPage() {
                       <span
                         key={i}
                         className="inline-flex items-center rounded-full border px-2 py-1 text-xs font-medium
-                                   border-gray-300 text-gray-700 hover:border-orange-500 hover:text-orange-600 transition-colors"
+                                   border-gray-300 text-gray-700 hover:border-gold  transition-colors"
                       >
                         #{tag}
                       </span>
@@ -99,7 +99,7 @@ function BlogsListPage() {
                   <a
                     href={`/blog/${post.slug}`}
                     className="inline-flex items-center gap-2 rounded-full border border-black px-4 py-2 text-sm font-semibold
-                               text-black transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white"
+                               text-black transition-all hover:gbg hover:border-gold hover:text-white"
                   >
                     Read more
                     <svg xmlns="http://www.w3.org/2000/svg" className="h-4 w-4" viewBox="0 0 24 24" fill="none">

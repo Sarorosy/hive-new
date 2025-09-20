@@ -29,12 +29,12 @@ const DayPass = () => {
       : branches;
 
   return (
-    <div className="mt-5 min-h-screen bg-gradient-to-br from-orange-50 via-white to-indigo-50 py-8 px-4 sm:px-6 md:px-12">
+    <div className="mt-5 min-h-screen bg-gray-100 py-8 px-4 sm:px-6 md:px-12">
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row w-full gap-6">
         {/* Left Side - Filters */}
         <div className="w-full md:w-1/3 bg-white/80 backdrop-blur-xl p-4 rounded shadow-xl border border-gray-100 md:sticky top-0">
           <h2 className="text-2xl md:text-3xl font-extrabold font-serif text-gray-900 mb-4">
-            Book a <span className="text-orange-600">Day Pass</span>
+            Book a <span className="gt">Day Pass</span>
           </h2>
           <p className="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">
             Choose your preferred center, branch, and date to explore our
@@ -54,7 +54,7 @@ const DayPass = () => {
                     setSelectedCity(e.target.value);
                     setSelectedBranch("");
                   }}
-                  className="w-full px-4 py-3 pl-10 border rounded-xl appearance-none cursor-pointer focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-sm md:text-base"
+                  className="w-full px-4 py-3 pl-10 border rounded-xl appearance-none cursor-pointer   focus:border-gold transition text-sm md:text-base"
                 >
                   {cities.map(([cityKey, city]) => (
                     <option key={cityKey} value={cityKey}>
@@ -83,7 +83,7 @@ const DayPass = () => {
                   value={selectedBranch}
                   onChange={(e) => setSelectedBranch(e.target.value)}
                   disabled={!selectedCity}
-                  className="w-full px-4 py-3 pl-10 border rounded-xl appearance-none cursor-pointer focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition disabled:bg-gray-100 disabled:cursor-not-allowed text-sm md:text-base"
+                  className="w-full px-4 py-3 pl-10 border rounded-xl appearance-none cursor-pointer   focus:border-gold transition disabled:bg-gray-100 disabled:cursor-not-allowed text-sm md:text-base"
                 >
                   <option value="">Select a branch</option>
                   {branches.map(([branchKey, branch]) => (
@@ -113,7 +113,7 @@ const DayPass = () => {
                   type="date"
                   value={date}
                   onChange={(e) => setDate(e.target.value)}
-                  className="w-full px-4 py-3 pl-10 border rounded-xl focus:ring-2 focus:ring-orange-500 focus:border-orange-500 transition text-sm md:text-base"
+                  className="w-full px-4 py-3 pl-10 border rounded-xl   focus:border-gold transition text-sm md:text-base"
                 />
                 <CalendarDays
                   className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
@@ -154,7 +154,7 @@ const DayPass = () => {
                       {branch.details}
                     </p>
                     {date && (
-                      <p className="text-orange-600 font-medium flex items-center text-sm">
+                      <p className="gt font-medium flex items-center text-sm">
                         <Calendar size={15} className="text-black mr-2" />{" "}
                         Selected Date: {date}
                       </p>
@@ -165,7 +165,7 @@ const DayPass = () => {
                           key={i}
                           className="p-1 rounded-xl transition cursor-pointer"
                         >
-                          <Icon size={18} className="text-orange-600" />
+                          <Icon size={18} className="gt" />
                         </div>
                       ))}
                     </div>
@@ -185,7 +185,7 @@ const DayPass = () => {
                           defaultChecked={days === "1"}
                           className="hidden peer"
                         />
-                        <span className="px-3 sm:px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm sm:text-base peer-checked:bg-orange-600 peer-checked:text-white peer-checked:border-orange-600 hover:bg-orange-100 transition">
+                        <span className="px-3 sm:px-4 py-2 rounded-lg border border-gray-300 text-gray-700 text-sm sm:text-base peer-checked:bg-gold  peer-checked:border-gold peer-checked:text-black  transition">
                           {days} Day{days !== "1" && "s"} Access
                         </span>
                       </label>
@@ -197,14 +197,14 @@ const DayPass = () => {
                     <label className="text-gray-700 font-medium text-sm">
                       No. of Passes
                     </label>
-                    <select className="border px-2 py-2 rounded-lg focus:ring-2 focus:ring-orange-500 focus:border-orange-500 text-sm">
+                    <select className="border px-2 py-2 rounded-lg   focus:border-gold text-sm">
                       {Array.from({ length: 99 }, (_, i) => (
                         <option key={i + 1} value={i + 1}>
                           {i + 1}
                         </option>
                       ))}
                     </select>
-                    <button className="bg-orange-600 text-white px-4 py-2 rounded-lg shadow-md hover:bg-orange-700 transition text-sm">
+                    <button className="bg-gold text-black px-4 py-2 rounded-lg shadow-md  transition text-sm">
                       Book Now
                     </button>
                   </div>

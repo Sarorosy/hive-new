@@ -174,7 +174,7 @@ const ChoosePreference = ({ cityData, centersData }) => {
                                     onClick={()=>{
                                         window.location.href = "#Form"
                                     }}
-                                    className="mt-3 px-4 py-2 text-sm font-medium bg-orange-500 text-white rounded-md cursor-pointer">
+                                    className="mt-3 px-4 py-2 text-sm font-medium gbg text-white rounded-md cursor-pointer">
                                         Know more
                                     </button>
                                 </div>
