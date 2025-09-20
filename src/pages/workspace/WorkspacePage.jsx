@@ -29,10 +29,10 @@ import StartWithUs from "./StartWithUs";
 import LearnMoreForm from "../../components/LearnMoreForm";
 
 import ManagedOffices from "../../assets/raw/all/DSC07782-min.JPG";
-import ManagedOffices2 from "../../assets/raw/chn/PUR08687-min.JPG";
+import ManagedOffices2 from "../../assets/raw/chn/PUR08687-min.jpg";
 
 import EnterPriseSol from "../../assets/raw/chn/YAV00102-min.JPG";
-import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.JPG";
+import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.jpg";
 
 import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpg";
 import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
