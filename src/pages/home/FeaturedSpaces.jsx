@@ -4,6 +4,7 @@ import { Monitor, Wifi, Snowflake, ChevronRight } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { allSpaces } from "../../data/productData";
 
+
 const FeaturedSpaces = () => {
   
 
@@ -28,6 +29,8 @@ const navigate = useNavigate();
   return (
     <div className="bg-gray-50 py-10">
       {/* Heading */}
+      
+
       <div className="max-w-6xl mx-auto px-4">
         <p className="text-sm text-gray-500">/ Featured Workspaces /</p>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-2">

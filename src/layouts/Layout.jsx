@@ -3,6 +3,7 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
 import { useEffect, useState } from "react";
+import SmokeyCursor from "../components/ui/SmokeyCursor";
 
 export default function Layout() {
   const navigate = useNavigate();
@@ -15,6 +16,10 @@ export default function Layout() {
   },[])
   return (
     <div className="min-h-screen flex flex-col w-full cs" >
+      <SmokeyCursor
+        autoColors={false} 
+        backgroundColor={{ r: 1, g: 0.84, b: 0 }} 
+       />
       <Header onBookTourClick={()=> setContactFormOpen(true)} />
       <main className="flex-grow w-full pt-6" id="scroll-container">
         <div className="container m-0 max-w-[100%]">
