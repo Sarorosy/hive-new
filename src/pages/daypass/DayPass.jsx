@@ -192,7 +192,7 @@ const DayPass = () => {
                     ))}
                   </div>
 
-                  {/* Pass Count + Button */}
+                  {/* Pass Count + Button  */}
                   <div className="flex flex-wrap items-center gap-3">
                     <label className="text-gray-700 font-medium text-sm">
                       No. of Passes
