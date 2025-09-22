@@ -14,7 +14,9 @@ import {
   Home,
   MoveLeft,
   MoveRight,
-  SquareUserRound
+  SquareUserRound,
+  Building2,
+  UserLock
 } from "lucide-react";
 
 import "swiper/css";
@@ -46,15 +48,13 @@ const heroImages2 = [
 // Workspace types
 const workspaceTypes = [
   { icon: <Building className="w-6 h-6" />, label: "Dedicated", sublabel: "Desks" },
+  { icon: <UserLock className="w-6 h-6" />, label: "Private", sublabel: "Office" },
+  { icon: <Building2 className="w-6 h-6" />, label: "Enterprise", sublabel: "Office" },
+  { icon: <Users className="w-6 h-6" />, label: "Meeting", sublabel: "Room" },
   { icon: <Home className="w-6 h-6" />, label: "Hot", sublabel: "Desks" },
   { icon: <SquareUserRound className="w-6 h-6" />, label: "Flexi", sublabel: "Passes" },
-  { icon: <Building className="w-6 h-6" />, label: "Private", sublabel: "Office" },
-  { icon: <Users className="w-6 h-6" />, label: "Meeting", sublabel: "Room" },
-  { icon: <Users className="w-6 h-6" />, label: "Conference", sublabel: "Room" },
-  { icon: <Camera className="w-6 h-6" />, label: "Event", sublabel: "Space" },
-  { icon: <Camera className="w-6 h-6" />, label: "Studio", sublabel: "Space" },
-  { icon: <Store className="w-6 h-6" />, label: "Retail", sublabel: "Space" },
-  { icon: <Users className="w-6 h-6" />, label: "Co-living", sublabel: "Space" }
+  { icon: <Users className="w-6 h-6" />, label: "Managed", sublabel: "Office" },
+  { icon: <Camera className="w-6 h-6" />, label: "Virtual", sublabel: "Office" },
 ];
 
 // Data
@@ -274,7 +274,7 @@ const Hero = () => {
           </div>
 
           {/* Right Side Form */}
-          <div className="bg-white rounded-2xl p-6 w-full max-w-lg ml-auto space-y-6">
+          <div className="bg-white rounded-2xl p-6 w-full max-w-md ml-auto space-y-6">
             <div className="space-y-4">
               <CityDropdown
                 selected={selectedCity}
@@ -292,7 +292,7 @@ const Hero = () => {
             </div>
 
             {/* Workspace Types */}
-            <div className="grid grid-cols-5 gap-3">
+            <div className="grid grid-cols-4 gap-2">
               {workspaceTypes.map((type, i) => (
                 <div
                   key={i}

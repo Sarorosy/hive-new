@@ -15,10 +15,10 @@ const easeInOutExpo = (t) => {
   return t === 0
     ? 0
     : t === 1
-    ? 1
-    : t < 0.5
-    ? Math.pow(2, 20 * t - 10) / 2
-    : (2 - Math.pow(2, -20 * t + 10)) / 2;
+      ? 1
+      : t < 0.5
+        ? Math.pow(2, 20 * t - 10) / 2
+        : (2 - Math.pow(2, -20 * t + 10)) / 2;
 };
 
 export default function Slide() {
@@ -122,6 +122,8 @@ export default function Slide() {
         const texture = loader.load(img + "?v=" + Date.now(), onLoad);
         texture.minFilter = THREE.LinearFilter;
         texture.generateMipmaps = false;
+
+
         textures.push(texture);
       });
 
@@ -132,6 +134,25 @@ export default function Slide() {
       disp.magFilter = disp.minFilter = THREE.LinearFilter;
       disp.wrapS = disp.wrapT = THREE.RepeatWrapping;
     }
+
+    function createCoverPlane(containerWidth, containerHeight, texture) {
+      const imageAspect = texture.image.width / texture.image.height;
+      const containerAspect = containerWidth / containerHeight;
+
+      let planeWidth, planeHeight;
+      if (imageAspect > containerAspect) {
+        // image is wider → match height, crop sides
+        planeHeight = containerHeight;
+        planeWidth = containerHeight * imageAspect;
+      } else {
+        // image is taller → match width, crop top/bottom
+        planeWidth = containerWidth;
+        planeHeight = containerWidth / imageAspect;
+      }
+
+      return new THREE.PlaneGeometry(planeWidth, planeHeight, 1);
+    }
+
 
     function createMesh() {
       mat = new THREE.ShaderMaterial({
@@ -147,14 +168,10 @@ export default function Slide() {
         fragmentShader: frag,
       });
 
-      const geometry = new THREE.PlaneGeometry(
-        el.offsetWidth,
-        el.offsetHeight,
-        1
-      );
-
+      const geometry = createCoverPlane(el.offsetWidth, el.offsetHeight, textures[data.current]);
       const mesh = new THREE.Mesh(geometry, mat);
       scene.add(mesh);
+
     }
 
     function render() {
