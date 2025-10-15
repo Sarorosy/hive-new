@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Calendar, User, Phone, Menu, X, Briefcase, BriefcaseBusiness } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
 import { citiesData } from "../data/centersData";
+import { useAuth } from "../utils/idb";
 
 
 const Header = ({ onBookTourClick }) => {
@@ -17,6 +18,7 @@ const Header = ({ onBookTourClick }) => {
   const infoRef = useRef(null);
   const centresRef = useRef(null);
   const workspacesRef = useRef(null);
+  const { user } = useAuth();
   
 
   // Offerings data
@@ -333,11 +335,11 @@ const Header = ({ onBookTourClick }) => {
             Book a Tour
           </button>
           <button
-            onClick={() => navigate("/account")}
+            onClick={() => user ? navigate("/account/profile") : navigate("/account/login")}
             className="flex items-center gap-1 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
           >
             <User className="w-4 h-4" />
-            My Account
+            {user ? user?.name : "My Account"}
           </button>
           <a
             href="tel:+917022274000"
@@ -531,11 +533,11 @@ const Header = ({ onBookTourClick }) => {
             Book a Tour
           </button>
           <button
-            onClick={() => navigate("/account")}
+            onClick={() => user ? navigate("/account/profile") : navigate("/account/login")}
             className="flex items-center gap-1 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
           >
             <User className="w-4 h-4" />
-            My Account
+            {user ? user?.name : "My Account"}
           </button>
           <a
             href="tel:+917022274000"

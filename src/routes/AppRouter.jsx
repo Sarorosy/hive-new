@@ -18,10 +18,17 @@ import TermsAndConditions from "../pages/TermsAndConditions";
 import BlogsListPage from "../pages/blogs/BlogsListPage";
 import BlogDetails from "../pages/blogs/BlogDetails";
 import CareersListPage from "../pages/careers/CareersListPage";
-import Account from "./Account";
+import AccountForm from "../pages/account/AccountForm";
+import Profile from "../pages/account/Profile";
 import AllFaq from "../pages/faq/AllFaq";
 import DayPass from "../pages/daypass/DayPass";
 import MarzipanoViewer from "../pages/MarzipanoViewer";
+import Test from "../pages/account/Test";
+import AdminPrivateRoute from "./AdminPrivateRoute";
+import WebmasterLayout from "../layouts/webmasterLayout";
+import Login from "../pages/webmaster/Login";
+import Dashboard from "../pages/webmaster/pages/Dashboard";
+import ManageUsers from "../pages/webmaster/pages/users/ManageUsers";
 
 export default function AppRouter() {
   return (
@@ -54,7 +61,8 @@ export default function AppRouter() {
 
             <Route path="/careers" element={<CareersListPage />} />
 
-            <Route path="/account" element={<Account />} />
+            <Route path="/account/login/:SESSION_EXPIRED?" element={<AccountForm />} />
+            <Route path="/account/profile" element={<Profile />} />
 
             <Route path="/support/faq" element={<AllFaq />} />
             <Route path="/day_pass" element={<DayPass />} />
@@ -62,10 +70,24 @@ export default function AppRouter() {
 
             <Route path="/m" element={<MarzipanoViewer />} />
 
+            <Route path="/test" element={<Test />} />
+
             <Route path="*" element={<NotFound />} />
             <Route path="/404" element={<NotFound />} />
           </Route>
         </Route>
+
+
+        <Route element={<AdminPrivateRoute />}>
+          <Route element={<WebmasterLayout />}>
+            <Route path="/webmaster" element={<Dashboard />} />
+            <Route path="/webmaster/users/" element={<ManageUsers />} />
+            
+            
+          </Route>
+        </Route>
+
+        <Route path="/webmaster/login" element={<Login />} />
       </Routes>
     </Router>
   );

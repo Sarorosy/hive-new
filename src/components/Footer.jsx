@@ -39,7 +39,7 @@ export default function Footer() {
                             { title: "Refund Policy", slug: "/refund-policy" },
                         ].map((item) => (
                             <li
-                                key={item.slug}
+                                key={item.title}
                                 className="hover:text-white hover:translate-x-1 transition duration-200 cursor-pointer"
                             >
                                 <button

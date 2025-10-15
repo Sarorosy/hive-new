@@ -85,6 +85,11 @@ html, body {
   height: 98%;
 }
 
+button:not(:disabled) {
+  cursor: pointer;
+}
+
+
 .custom-bullet {
   width: 12px !important;
   height: 12px !important;
