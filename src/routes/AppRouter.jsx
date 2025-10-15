@@ -25,7 +25,7 @@ import DayPass from "../pages/daypass/DayPass";
 import MarzipanoViewer from "../pages/MarzipanoViewer";
 import Test from "../pages/account/Test";
 import AdminPrivateRoute from "./AdminPrivateRoute";
-import WebmasterLayout from "../layouts/webmasterLayout";
+import WebmasterLayout from "../layouts/WebmasterLayout";
 import Login from "../pages/webmaster/Login";
 import Dashboard from "../pages/webmaster/pages/Dashboard";
 import ManageUsers from "../pages/webmaster/pages/users/ManageUsers";
