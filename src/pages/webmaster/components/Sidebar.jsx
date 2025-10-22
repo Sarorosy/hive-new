@@ -5,10 +5,14 @@ import {
     Users,
     Settings,
     LogOut,
-    BarChart2,
     User,
     Check,
     X,
+    LayoutList,
+    BriefcaseBusiness,
+    MapIcon,
+    Layers,
+    Store,
 } from "lucide-react";
 import { Tooltip } from "react-tooltip";
 import { useAuth } from "../../../utils/idb";
@@ -26,15 +30,18 @@ export default function Sidebar() {
         }
     },[]);
     
-    console.log(admin)
     
 
     const menuItems = [
-        { name: "Dashboard", icon: <Home size={20} />, path: "/webmaster/" },
-        { name: "Users", icon: <Users size={20} />, path: "/webmaster/users" },
-        { name: "Reports", icon: <BarChart2 size={20} />, path: "/webmaster/reports" },
-        { name: "Settings", icon: <Settings size={20} />, path: "/webmaster/settings" },
-    ];
+        { name: "Dashboard", icon: <Home size={20} />, path: "/webmaster/", roles: ["admin", "HR", "blog_admin"] },
+        { name: "Users", icon: <Users size={20} />, path: "/webmaster/users", roles: ["admin"] },
+        { name: "Blogs", icon: <LayoutList size={20} />, path: "/webmaster/blogs", roles: ["admin", "blog_admin"] },
+        { name: "Jobs", icon: <BriefcaseBusiness size={20} />, path: "/webmaster/jobs", roles: ["admin", "HR"] },
+        { name: "Job Applications", icon: <Layers size={20} />, path: "/webmaster/job-applications", roles: ["admin", "HR"] },
+        { name: "Products", icon: <Store size={20} />, path: "/webmaster/products", roles: ["admin"] },
+        { name: "Others", icon: <Settings size={20} />, path: "/webmaster/others", roles: ["admin", "HR", "blog_admin"] },
+      ];
+      
 
     return (
         <div
@@ -57,7 +64,7 @@ export default function Sidebar() {
 
             {/* Menu */}
             <nav className="flex-1 p-2">
-                {menuItems.map((item) => (
+                {menuItems.filter(item => item.roles.includes(admin.role)).map((item) => (
                     <div key={item.name} onClick={() => navigate(item.path)} className="relative my-1 transition-all duration-200 hover:bg-gray-800 cursor-pointer">
                         <button
                             type="button"

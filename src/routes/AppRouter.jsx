@@ -29,8 +29,92 @@ import WebmasterLayout from "../layouts/WebmasterLayout";
 import Login from "../pages/webmaster/Login";
 import Dashboard from "../pages/webmaster/pages/Dashboard";
 import ManageUsers from "../pages/webmaster/pages/users/ManageUsers";
+import VerifyToken from "../pages/account/VerifyToken";
+import AddBlog from "../pages/webmaster/pages/blog/AddBlog";
+import ManageBlogs from "../pages/webmaster/pages/blog/ManageBlogs";
+import { useEffect, useState } from "react";
+import { API_URL } from "../utils/constants";
+import ManageJobs from "../pages/webmaster/pages/jobs/ManageJobs";
+import Locations from "../pages/webmaster/pages/common/Locations";
+import Others from "../pages/webmaster/pages/Others";
+import JobCategories from "../pages/webmaster/pages/common/JobCategories";
+import Tags from "../pages/webmaster/pages/common/Tags";
+import Category from "../pages/webmaster/pages/common/Category";
+import CareerDetails from "../pages/careers/CareerDetails";
+import JobApplications from "../pages/webmaster/pages/jobs/JobApplications";
+import ProductCategories from "../pages/webmaster/pages/common/ProductCategories";
+import ProductTags from "../pages/webmaster/pages/common/ProductTags";
+import ManageProducts from "../pages/webmaster/pages/products/ManageProducts";
+import Cart from '../pages/account/Cart';
+import { useAuth } from "../utils/idb";
+
 
 export default function AppRouter() {
+
+  const [blogs, setBlogs] = useState([]);
+  const [blogLoading, setBlogLoading] = useState(false);
+  const fetchBlogs = async () => {
+    try {
+      setBlogLoading(true);
+      const res = await fetch(`${API_URL}/api/blogs`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+
+      if (data.status) {
+        setBlogs(data.blogs || []);
+        // setTotal(data.total || 0);
+        // setTotalBlogs(data.total_blogs || 0);
+      } else {
+        console.error(data.message || "Failed to fetch blogs");
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setBlogLoading(false)
+    }
+  };
+
+  const [jobs, setJobs] = useState([]);
+  const [jobLoading, setJobLoading] = useState(false);
+  const fetchJobs = async () => {
+    try {
+      setJobLoading(true);
+      const res = await fetch(`${API_URL}/api/jobs`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+
+      if (data.status) {
+        setJobs(data.jobs || []);
+        // setTotal(data.total || 0);
+        // setTotalBlogs(data.total_blogs || 0);
+      } else {
+        console.error(data.message || "Failed to fetch blogs");
+      }
+    } catch (err) {
+      console.error(err);
+    } finally {
+      setJobLoading(false)
+    }
+  };
+
+
+  useEffect(() => {
+    fetchBlogs();
+    fetchJobs();
+  }, []);
+
+  const { user } = useAuth();
+
   return (
     <Router>
       <ScrollToTop />
@@ -56,10 +140,11 @@ export default function AppRouter() {
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
 
-            <Route path="/blog" element={<BlogsListPage />} />
-            <Route path="/blog/:slug" element={<BlogDetails />} />
+            <Route path="/blog" element={<BlogsListPage blogs={blogs} blogLoading={blogLoading} />} />
+            <Route path="/blog/:slug" element={<BlogDetails blogs={blogs} blogLoading={blogLoading} />} />
 
-            <Route path="/careers" element={<CareersListPage />} />
+            <Route path="/careers" element={<CareersListPage jobs={jobs} jobLoading={jobLoading} />} />
+            <Route path="/job/:slug" element={<CareerDetails />} />
 
             <Route path="/account/login/:SESSION_EXPIRED?" element={<AccountForm />} />
             <Route path="/account/profile" element={<Profile />} />
@@ -67,23 +152,41 @@ export default function AppRouter() {
             <Route path="/support/faq" element={<AllFaq />} />
             <Route path="/day_pass" element={<DayPass />} />
 
+            <Route path="/cart" element={<Cart />} />
 
             <Route path="/m" element={<MarzipanoViewer />} />
 
             <Route path="/test" element={<Test />} />
 
+
             <Route path="*" element={<NotFound />} />
             <Route path="/404" element={<NotFound />} />
           </Route>
         </Route>
+        <Route path="/verify-email" element={<VerifyToken />} />
 
 
         <Route element={<AdminPrivateRoute />}>
           <Route element={<WebmasterLayout />}>
             <Route path="/webmaster" element={<Dashboard />} />
             <Route path="/webmaster/users/" element={<ManageUsers />} />
-            
-            
+            <Route path="/webmaster/blogs/" element={<ManageBlogs />} />
+            <Route path="/webmaster/jobs/" element={<ManageJobs />} />
+            <Route path="/webmaster/others/" element={<Others />} />
+            <Route path="/webmaster/locations/" element={<Locations />} />
+            <Route path="/webmaster/job-categories/" element={<JobCategories />} />
+            <Route path="/webmaster/tags/" element={<Tags />} />
+            <Route path="/webmaster/blog-categories/" element={<Category />} />
+            <Route path="/webmaster/product-categories/" element={<ProductCategories />} />
+            <Route path="/webmaster/product-tags/" element={<ProductTags />} />
+
+
+            <Route path="/webmaster/products/" element={<ManageProducts />} />
+
+
+            <Route path="/webmaster/job-applications/" element={<JobApplications />} />
+
+
           </Route>
         </Route>
 

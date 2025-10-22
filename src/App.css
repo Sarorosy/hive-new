@@ -188,6 +188,10 @@ body::selection{
  
 }
 
+.f-11{
+  font-size: 11px;
+}
+
 .shimmer {
 		font-family: "Lato";
 		font-weight: 300;
@@ -222,6 +226,8 @@ body::selection{
 		background-position: 0 0;
 		background-color: #222;
 }
+
+
 
 @-moz-keyframes shimmer {
 		0% {

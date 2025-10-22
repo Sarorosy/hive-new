@@ -155,6 +155,8 @@ const AddUser = ({ onClose, onSuccess }) => {
             >
               <option value="customer">Customer</option>
               <option value="blog_admin">Blog Admin</option>
+              <option value="HR">HR</option>
+              <option value="admin">Admin</option>
             </select>
           </div>
 

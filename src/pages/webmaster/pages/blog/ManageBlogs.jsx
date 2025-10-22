@@ -2,51 +2,52 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../../utils/idb";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { API_URL } from "../../../../utils/constants";
+import { API_URL, formatTime } from "../../../../utils/constants";
 import { AnimatePresence } from "framer-motion";
-import AddUser from "./AddUser";
-import EditUser from "./EditUser";
+import AddBlog from "./AddBlog";
+import EditBlog from "./EditBlog";
+import { Eye, Star } from "lucide-react";
 
-const ManageUsers = () => {
+const ManageBlogs = () => {
     const { admin, adminlogout } = useAuth();
     const navigate = useNavigate();
 
-    const [users, setUsers] = useState([]);
-    const [role, setRole] = useState("customer");
+    const [blogs, setBlogs] = useState([]);
+    const [tags, setTags] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [keyword, setKeyword] = useState("");
     const [page, setPage] = useState(1);
     const [total, setTotal] = useState(0);
-    const [totalCustomer, setTotalCustomer] = useState(0);
-    const [totalBlogAdmin, setTotalBlogAdmin] = useState(0);
-    const [totalHR, setTotalHr] = useState(0);
+    const [totalBlogs, setTotalBlogs] = useState(0);
     const [loading, setLoading] = useState(false);
     const [actionLoading, setActionLoading] = useState(null);
 
-    const [addUserOpen, setAddUserOpen] = useState(false);
-    const [editUserOpen, setEditUserOpen] = useState(false);
-    const [selectedUserId, setSelectedUserId] = useState(null);
+    const [addBlogOpen, setAddBlogOpen] = useState(false);
+    const [editBlogOpen, setEditBlogOpen] = useState(false);
+    const [selectedBlogId, setSelectedBlogId] = useState(null);
 
-    const PER_PAGE = 100;
+    const PER_PAGE = 10;
 
     useEffect(() => {
         if (!admin?.token) {
             navigate("/webmaster/login");
         } else {
-            fetchUsers();
+            fetchBlogs();
+            fetchTags();
+            fetchCategories();
         }
-    }, [role, page]);
+    }, [page]);
 
-    const fetchUsers = async (searchKeyword = keyword) => {
+    const fetchBlogs = async (searchKeyword = keyword) => {
         try {
             setLoading(true);
-            const res = await fetch(`${API_URL}/api/admin/users`, {
+            const res = await fetch(`${API_URL}/api/admin/blogs`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${admin.token}`,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    role,
                     keyword: searchKeyword,
                     page,
                 }),
@@ -55,53 +56,106 @@ const ManageUsers = () => {
             const data = await res.json();
 
             if (data.status) {
-                setUsers(data.users || []);
+                setBlogs(data.blogs || []);
                 setTotal(data.total || 0);
-                setTotalCustomer(data.total_customer || 0);
-                setTotalBlogAdmin(data.total_blog_admin || 0);
-                setTotalHr(data.total_hr || 0);
+                setTotalBlogs(data.total_blogs || 0);
             } else {
                 if (["Token expired", "Invalid token"].includes(data.message)) {
                     toast.error("Session expired. Please login again.");
                     adminlogout();
                     navigate("/webmaster/login");
                 } else {
-                    toast.error(data.message || "Failed to fetch users");
+                    toast.error(data.message || "Failed to fetch blogs");
                 }
             }
         } catch (err) {
             console.error(err);
-            toast.error("Error fetching users");
+            toast.error("Error fetching blogs");
         }
         finally {
             setLoading(false);
         }
     };
 
+    const fetchTags = async () => {
+        try {
+            const res = await fetch(`${API_URL}/api/admin/tags`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${admin.token}`,
+                    "Content-Type": "application/json",
+                }
+            });
+
+            const data = await res.json();
+
+            if (data.status) {
+                setTags(data.tags || []);
+            } else {
+                if (["Token expired", "Invalid token"].includes(data.message)) {
+                    toast.error("Session expired. Please login again.");
+                    adminlogout();
+                    navigate("/webmaster/login");
+                } else {
+                    toast.error(data.message || "Failed to fetch tags");
+                }
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+    const fetchCategories = async () => {
+        try {
+            const res = await fetch(`${API_URL}/api/admin/categories`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${admin.token}`,
+                    "Content-Type": "application/json",
+                }
+            });
+
+            const data = await res.json();
+
+            if (data.status) {
+                setCategories(data.categories || []);
+            } else {
+                if (["Token expired", "Invalid token"].includes(data.message)) {
+                    toast.error("Session expired. Please login again.");
+                    adminlogout();
+                    navigate("/webmaster/login");
+                } else {
+                    toast.error(data.message || "Failed to fetch categories");
+                }
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
     const handleSearch = (e) => {
         e.preventDefault();
         setPage(1);
-        fetchUsers(keyword);
+        fetchBlogs(keyword);
     };
 
     const totalPages = Math.ceil(total / PER_PAGE);
 
     // Handle status toggle
-    const handleStatusToggle = async (userId, currentStatus) => {
+    const handleStatusToggle = async (blogId, currentStatus) => {
         const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
-        const confirmMessage = `Are you sure you want to ${newStatus === 'active' ? 'activate' : 'deactivate'} this user?`;
+        const confirmMessage = `Are you sure you want to ${newStatus === 'active' ? 'activate' : 'deactivate'} this blog?`;
 
         if (window.confirm(confirmMessage)) {
             try {
-                setActionLoading(userId);
-                const res = await fetch(`${API_URL}/api/admin/users/status`, {
+                setActionLoading(blogId);
+                const res = await fetch(`${API_URL}/api/admin/blogs/status`, {
                     method: "PUT",
                     headers: {
                         Authorization: `Bearer ${admin.token}`,
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        userId,
+                        blogId,
                         status: newStatus,
                     }),
                 });
@@ -109,8 +163,8 @@ const ManageUsers = () => {
                 const data = await res.json();
 
                 if (data.status) {
-                    toast.success(`User ${newStatus === 'active' ? 'activated' : 'deactivated'} successfully`);
-                    fetchUsers(); // Refresh the users list
+                    toast.success(`Blog ${newStatus === 'active' ? 'activated' : 'deactivated'} successfully`);
+                    fetchBlogs(); // Refresh the blogs list
                 } else {
                     if (["Token expired", "Invalid token"].includes(data.message)) {
                         toast.error("Session expired. Please login again.");
@@ -118,12 +172,12 @@ const ManageUsers = () => {
                         adminlogout();
                         navigate("/webmaster/login");
                     } else {
-                        toast.error(data.message || "Failed to update user status");
+                        toast.error(data.message || "Failed to update blog status");
                     }
                 }
             } catch (err) {
                 console.error(err);
-                toast.error("Error updating user status");
+                toast.error("Error updating blog status");
             } finally {
                 setActionLoading(null);
             }
@@ -131,11 +185,11 @@ const ManageUsers = () => {
     };
 
     // Handle delete user
-    const handleDeleteUser = async (userId, userName) => {
-        if (window.confirm(`Are you sure you want to delete user "${userName}"? This action cannot be undone.`)) {
+    const handleDeleteBlog = async (blogId, blogName) => {
+        if (window.confirm(`Are you sure you want to delete blog "${blogName}"? This action cannot be undone.`)) {
             try {
-                setActionLoading(userId);
-                const res = await fetch(`${API_URL}/api/admin/users/${userId}`, {
+                setActionLoading(blogId);
+                const res = await fetch(`${API_URL}/api/admin/blogs/${blogId}`, {
                     method: "DELETE",
                     headers: {
                         Authorization: `Bearer ${admin.token}`,
@@ -145,20 +199,20 @@ const ManageUsers = () => {
                 const data = await res.json();
 
                 if (data.status) {
-                    toast.success("User deleted successfully");
-                    fetchUsers(); // Refresh the users list
+                    toast.success("blog deleted successfully");
+                    fetchBlogs(); // Refresh the blogs list
                 } else {
                     if (["Token expired", "Invalid token"].includes(data.message)) {
                         toast.error("Session expired. Please login again.");
                         adminlogout();
                         navigate("/webmaster/login");
                     } else {
-                        toast.error(data.message || "Failed to delete user");
+                        toast.error(data.message || "Failed to delete blog");
                     }
                 }
             } catch (err) {
                 console.error(err);
-                toast.error("Error deleting user");
+                toast.error("Error deleting blog");
             } finally {
                 setActionLoading(null);
             }
@@ -166,72 +220,34 @@ const ManageUsers = () => {
     };
 
     // Handle edit user
-    const handleEditUser = (user) => {
-        setSelectedUserId(user.id);
-        setEditUserOpen(true);
+    const handleEditBlog = (user) => {
+        setSelectedBlogId(user.id);
+        setEditBlogOpen(true);
     };
 
-    // Handle add user
-    const handleAddUser = () => {
-        // For now, we'll show an alert. You can implement a modal or navigate to add user page
-        alert("Add user functionality - Implement add user modal or navigate to add user page");
-    };
+
 
     return (
         <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold">Manage Users</h2>
+                <h2 className="text-xl font-semibold">Manage Blogs</h2>
                 <button
-                    onClick={()=>{setAddUserOpen(true);}}
+                    onClick={() => { setAddBlogOpen(true); }}
                     className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex items-center gap-2"
                 >
                     <span>+</span>
-                    Add User
+                    Add blog
                 </button>
             </div>
 
 
-            {/* Role Tabs */}
-<div className="flex gap-4 mb-4">
-  {["customer", "blog_admin", "HR"].map((r) => {
-    const labels = {
-      customer: "Customers",
-      blog_admin: "Blog Admins",
-      HR: "HR",
-    };
-
-    const counts = {
-      customer: totalCustomer || 0,
-      blog_admin: totalBlogAdmin || 0,
-      HR: totalHR || 0, // make sure you have this count
-    };
-
-    return (
-      <button
-        key={r}
-        onClick={() => {
-          setRole(r);
-          setPage(1);
-        }}
-        className={`px-2 py-1 f-12 rounded-lg font-medium ${
-          role === r ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"
-        }`}
-      >
-        {labels[r]}
-        <span className="ml-2 text-black bg-white rounded-full px-2 py-0.5">
-          {counts[r]}
-        </span>
-      </button>
-    );
-  })}
-</div>
 
 
             {/* Filter Search */}
             <form onSubmit={handleSearch} className="flex gap-3 mb-4">
                 <input
                     type="text"
-                    placeholder="Search by name or email"
+                    placeholder="Search by title"
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
                     className="border px-3 py-2 rounded w-1/3"
@@ -244,66 +260,79 @@ const ManageUsers = () => {
                 </button>
             </form>
 
-            {/* Users Table */}
-            {users.length > 0 ? (
+            {/* Blogs Table */}
+            {blogs.length > 0 ? (
                 <div className="overflow-x-auto bg-white p-2 rounded">
                     <table className="min-w-full border border-gray-200 text-sm">
                         <thead className="bg-gray-100">
                             <tr>
-                                <th className="border px-4 py-2 text-left">Name</th>
-                                <th className="border px-4 py-2 text-left">Email</th>
-                                <th className="border px-4 py-2 text-left">Role</th>
-                                <th className="border px-4 py-2 text-left">Status</th>
+                                <th className="border px-4 py-2 text-left">Thumbnail</th>
+                                <th className="border px-4 py-2 text-left">Title</th>
+                                <th className="border px-4 py-2 text-left">status</th>
                                 <th className="border px-4 py-2 text-left">Created</th>
                                 <th className="border px-4 py-2 text-left">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((u) => (
-                                <tr key={u.id} className="hover:bg-gray-50">
-                                    <td className="border px-4 py-2">{u.name}</td>
-                                    <td className="border px-4 py-2">{u.email}</td>
+                            {blogs.map((b) => (
+                                <tr key={b.id} className="hover:bg-gray-50">
                                     <td className="border px-4 py-2">
-                                        <span className={`px-2 py-1 rounded-full text-xs ${u.role === 'customer' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'
-                                            }`}>
-                                            {u.role}
-                                        </span>
+                                        <div className="flex items-center justify-start space-x-1">
+                                            <img src={`${API_URL}/${b.thumbnail}`} alt="img" className="h-10" />
+                                            
+                                            <a href={`http://localhost:5175/blog/${b.slug}`} target="blank"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content="View Post"
+                                                className="f-11 flex items-center rounded border px-2 py-1"
+                                            >
+                                                View <Eye size={15} className="ml-1" />
+                                            </a>
+
+                                            {b.is_featured == 1 && <Star
+                                                size={18}
+                                                fill="orange"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content="Featured Post"
+                                            />}
+                                        </div>
                                     </td>
+                                    <td className="border px-4 py-2">{b.title}</td>
                                     <td className="border px-4 py-2">
                                         <button
-                                            onClick={() => handleStatusToggle(u.id, u.status || 'active')}
-                                            disabled={actionLoading === u.id}
-                                            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${(u.status || 'active') === 'active'
+                                            onClick={() => handleStatusToggle(b.id, b.status || 'active')}
+                                            disabled={actionLoading === b.id}
+                                            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${(b.status || 'active') === 'active'
                                                     ? 'bg-green-100 text-green-800 hover:bg-green-200'
                                                     : 'bg-red-100 text-red-800 hover:bg-red-200'
                                                 } disabled:opacity-50`}
                                         >
-                                            {actionLoading === u.id ? (
+                                            {actionLoading === b.id ? (
                                                 <div className="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
                                             ) : (
-                                                (u.status || 'active').charAt(0).toUpperCase() + (u.status || 'active').slice(1)
+                                                (b.status || 'active').charAt(0).toUpperCase() + (b.status || 'active').slice(1)
                                             )}
                                         </button>
                                     </td>
+
                                     <td className="border px-4 py-2">
-                                        {u.registered_at ? u.registered_at.split(" ")[0] : "-"}
+                                        {b.created_at ? formatTime(b.created_at) : "-"}
                                     </td>
                                     <td className="border px-4 py-2">
                                         <div className="flex gap-2">
                                             <button
-                                                onClick={() => handleEditUser(u)}
+                                                onClick={() => handleEditBlog(b)}
                                                 className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
-                                                title="Edit User"
+                                                title="Edit Blog"
                                             >
                                                 Edit
                                             </button>
                                             <button
-                                                onClick={() => handleDeleteUser(u.id, u.name)}
-                                                disabled={actionLoading === u.id}
+                                                onClick={() => handleDeleteBlog(b.id, b.title)}
+                                                disabled={actionLoading === b.id}
                                                 className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600 transition-colors disabled:opacity-50"
-                                                title="Delete User"
+                                                title="Delete Blog"
                                             >
-                                                {actionLoading === u.id ? (
+                                                {actionLoading === b.id ? (
                                                     <div className="h-3 w-3 rounded-full border-2 border-white border-t-transparent animate-spin" />
                                                 ) : (
                                                     'Delete'
@@ -323,7 +352,7 @@ const ManageUsers = () => {
                     </div>
                 ) :
 
-                    <p className="text-gray-500">No users found.</p>
+                    <p className="text-gray-500">No blogs found.</p>
             )}
 
             {/* Pagination */}
@@ -350,20 +379,24 @@ const ManageUsers = () => {
             )}
 
             <AnimatePresence>
-                {addUserOpen && (
-                    <AddUser
-                        onClose={() => { setAddUserOpen(false); }}
-                        onSuccess={fetchUsers}
+                {addBlogOpen && (
+                    <AddBlog
+                        onClose={() => { setAddBlogOpen(false); }}
+                        onSuccess={fetchBlogs}
+                        tags={tags}
+                        categories={categories}
                     />
                 )}
-                {editUserOpen && (
-                    <EditUser
-                        onClose={() => { 
-                            setEditUserOpen(false); 
-                            setSelectedUserId(null); 
+                {editBlogOpen && (
+                    <EditBlog
+                        onClose={() => {
+                            setEditBlogOpen(false);
+                            setSelectedBlogId(null);
                         }}
-                        onSuccess={fetchUsers}
-                        userId={selectedUserId}
+                        onSuccess={fetchBlogs}
+                        blogId={selectedBlogId}
+                        tags={tags}
+                        categories={categories}
                     />
                 )}
             </AnimatePresence>
@@ -371,4 +404,4 @@ const ManageUsers = () => {
     );
 };
 
-export default ManageUsers;
+export default ManageBlogs;

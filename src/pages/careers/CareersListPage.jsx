@@ -1,10 +1,11 @@
 // src/pages/CareersListPage.jsx
 import React, { useState } from "react";
-import { jobs } from "../../data/careersData";
+// import { jobs } from "../../data/careersData";
 import { MapPin, Briefcase, Tag, X } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-function CareersListPage() {
-  const [selectedJob, setSelectedJob] = useState(null);
+function CareersListPage({ jobs, jobLoading }) {
+  const navigate = useNavigate();
 
   return (
     <div className="min-h-screen bg-white">
@@ -32,16 +33,22 @@ function CareersListPage() {
                 <div className="flex flex-wrap items-center gap-3 text-xs text-gray-500 mb-3">
                   <span className="inline-flex items-center gap-1">
                     <Briefcase className="w-3.5 h-3.5" />
-                    {job.type}
+                    {job.job_type}
                   </span>
-                  <span className="inline-flex items-center gap-1">
-                    <Tag className="w-3.5 h-3.5" />
-                    {job.department}
-                  </span>
-                  <span className="inline-flex items-center gap-1">
-                    <MapPin className="w-3.5 h-3.5" />
-                    {job.location}
-                  </span>
+                  {job.category_name && (
+                    <span className="inline-flex items-center gap-1">
+                      <Tag className="w-3.5 h-3.5" />
+                      {job.category_name}
+                    </span>
+                  )}
+
+                  {job.location_name && (
+                    <span className="inline-flex items-center gap-1">
+                      <MapPin className="w-3.5 h-3.5" />
+                      {job.location_name}
+                    </span>
+                  )}
+
                 </div>
 
                 {/* Title */}
@@ -49,72 +56,32 @@ function CareersListPage() {
                   {job.title}
                 </h2>
 
-                {/* Excerpt */}
-                <p className="mt-2 text-sm text-gray-600 line-clamp-3">{job.excerpt}</p>
+                {/* Description */}
+                <p
+                    className="mt-2 text-sm text-gray-600 line-clamp-3"
+                    dangerouslySetInnerHTML={{
+                      __html: job.description.replace(/<img[^>]*>/gi, ""),
+                    }}
+                  ></p>
               </div>
 
               {/* Footer Button */}
               <div className="p-6 pt-0 flex items-center justify-end">
                 <button
-                  onClick={() => setSelectedJob(job)}
+                  onClick={() => navigate(`/job/${job.slug}`)}
                   className="cursor-pointer rounded-full border border-black px-4 py-2 text-sm font-semibold text-black transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white"
                 >
-                  {job.applyText}
+                  View Details
                 </button>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Footer CTA */}
-        <div className="mt-16 text-center">
-          <p className="text-gray-700 font-medium">
-            Don’t see the perfect role? We’re always looking for exceptional talent.
-          </p>
-          <button className="mt-4 inline-flex items-center rounded-full border border-black px-6 py-3 text-sm font-semibold text-black transition-all hover:bg-orange-500 hover:border-orange-500 hover:text-white">
-            Send Your Resume
-          </button>
-        </div>
+        
       </div>
 
-      {/* Modal */}
-      {selectedJob && (
-        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50">
-          <div className="relative bg-white rounded-2xl shadow-lg max-w-lg w-full p-6">
-            {/* Close button */}
-            <button
-              onClick={() => setSelectedJob(null)}
-              className="absolute top-3 right-3 text-gray-400 hover:text-black"
-            >
-              <X className="w-6 h-6" />
-            </button>
-
-            {/* Job Details */}
-            <h2 className="text-2xl font-bold text-black mb-4">{selectedJob.title}</h2>
-            <div className="flex flex-wrap items-center gap-4 text-sm text-gray-500 mb-4">
-              <span className="inline-flex items-center gap-1">
-                <Briefcase className="w-4 h-4" />
-                {selectedJob.type}
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <Tag className="w-4 h-4" />
-                {selectedJob.department}
-              </span>
-              <span className="inline-flex items-center gap-1">
-                <MapPin className="w-4 h-4" />
-                {selectedJob.location}
-              </span>
-            </div>
-            <p className="text-gray-700 text-sm leading-relaxed">{selectedJob.excerpt}</p>
-
-            <div className="mt-6">
-              <button className="w-full rounded-full bg-orange-500 px-4 py-2 text-sm font-semibold text-white transition hover:bg-orange-600">
-                Apply Now
-              </button>
-            </div>
-          </div>
-        </div>
-      )}
+      
     </div>
   );
 }

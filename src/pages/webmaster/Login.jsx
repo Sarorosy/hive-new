@@ -105,7 +105,6 @@ export default function Login() {
 
             const data = await response.json();
             if (data?.status && data?.user) {
-                console.log(data.token);
                 adminlogin({ ...data.user, token: data.token });
                 setShowOtpModal(false);
                 toast.success("Login Successfull");

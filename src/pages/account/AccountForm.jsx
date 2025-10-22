@@ -7,6 +7,7 @@ import toast from "react-hot-toast";
 import axios from "axios";
 import { useAuth } from "../../utils/idb";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
+import { Eye, EyeOff } from "lucide-react";
 
 function AccountForm() {
     const [activeTab, setActiveTab] = useState("login");
@@ -141,7 +142,7 @@ function LoginForm() {
                             className="absolute inset-y-0 right-3 mt-1 flex items-center text-gray-500 hover:text-gray-700 text-xs"
                             aria-label={showPassword ? "Hide password" : "Show password"}
                         >
-                            {showPassword ? "Hide" : "Show"}
+                            {showPassword ? (<EyeOff />) : (<Eye />)}
                         </button>
                     </div>
                 </div>
@@ -214,6 +215,11 @@ function RegisterForm() {
 
             if (data.status) {
                 toast.success("Registration successful");
+                setFullName("");
+                setEmail("");
+                setPassword("");
+                setConfirmPassword("");
+                setCaptchaValue(null);
             } else {
                 toast.error(data.message || "Registration failed");
                 recaptchaRef.current.reset();
@@ -267,7 +273,7 @@ function RegisterForm() {
                         className="absolute inset-y-0 right-3 mt-1 flex items-center text-gray-500 hover:text-gray-700 text-xs"
                         aria-label={showPassword ? "Hide password" : "Show password"}
                     >
-                        {showPassword ? "Hide" : "Show"}
+                        {showPassword ? (<EyeOff />) : (<Eye />)}
                     </button>
                 </div>
             </div>
@@ -288,7 +294,7 @@ function RegisterForm() {
                         className="absolute inset-y-0 right-3 mt-1 flex items-center text-gray-500 hover:text-gray-700 text-xs"
                         aria-label={showConfirmPassword ? "Hide password" : "Show password"}
                     >
-                        {showConfirmPassword ? "Hide" : "Show"}
+                        {showConfirmPassword ? (<EyeOff />) : (<Eye />)}
                     </button>
                 </div>
             </div>
@@ -308,7 +314,7 @@ function RegisterForm() {
                 disabled={registering}
             >
                 {registering ? "Please wait..." : "Register"}
-                Register
+                
             </button>
         </form>
     );

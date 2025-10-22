@@ -8,6 +8,7 @@ import { Tooltip } from "react-tooltip";
 
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
+import "react-quill-new/dist/quill.snow.css";
 
 
 function App() {

@@ -2,51 +2,53 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../../utils/idb";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { API_URL } from "../../../../utils/constants";
+import { API_URL, formatTime } from "../../../../utils/constants";
 import { AnimatePresence } from "framer-motion";
-import AddUser from "./AddUser";
-import EditUser from "./EditUser";
+import { Eye, Star } from "lucide-react";
+import AddJob from "./AddJob";
+import EditJob from "./EditJob";
 
-const ManageUsers = () => {
+const ManageJobs = () => {
     const { admin, adminlogout } = useAuth();
     const navigate = useNavigate();
 
-    const [users, setUsers] = useState([]);
-    const [role, setRole] = useState("customer");
+    const [jobs, setJobs] = useState([]);
+    const [locations, setLocations] = useState([]);
+    const [categories, setCategories] = useState([]);
     const [keyword, setKeyword] = useState("");
     const [page, setPage] = useState(1);
     const [total, setTotal] = useState(0);
-    const [totalCustomer, setTotalCustomer] = useState(0);
-    const [totalBlogAdmin, setTotalBlogAdmin] = useState(0);
-    const [totalHR, setTotalHr] = useState(0);
+    const [totalJobs, setTotalJobs] = useState(0);
     const [loading, setLoading] = useState(false);
     const [actionLoading, setActionLoading] = useState(null);
 
-    const [addUserOpen, setAddUserOpen] = useState(false);
-    const [editUserOpen, setEditUserOpen] = useState(false);
-    const [selectedUserId, setSelectedUserId] = useState(null);
+    const [addJobOpen, setAddJobOpen] = useState(false);
+    const [editJobOpen, setEditJobOpen] = useState(false);
+    const [selectedJobId, setSelectedJobId] = useState(null);
 
-    const PER_PAGE = 100;
+    const PER_PAGE = 10;
 
     useEffect(() => {
-        if (!admin?.token) {
+        if (!admin || (admin.role !== "HR" && admin.role !== "admin")) {
             navigate("/webmaster/login");
         } else {
-            fetchUsers();
+            fetchJobs();
+            fetchLocations();
+            fetchcategories();
         }
-    }, [role, page]);
+    }, [page]);
+    
 
-    const fetchUsers = async (searchKeyword = keyword) => {
+    const fetchJobs = async (searchKeyword = keyword) => {
         try {
             setLoading(true);
-            const res = await fetch(`${API_URL}/api/admin/users`, {
+            const res = await fetch(`${API_URL}/api/admin/jobs`, {
                 method: "POST",
                 headers: {
                     Authorization: `Bearer ${admin.token}`,
                     "Content-Type": "application/json",
                 },
                 body: JSON.stringify({
-                    role,
                     keyword: searchKeyword,
                     page,
                 }),
@@ -55,53 +57,108 @@ const ManageUsers = () => {
             const data = await res.json();
 
             if (data.status) {
-                setUsers(data.users || []);
+                setJobs(data.jobs || []);
                 setTotal(data.total || 0);
-                setTotalCustomer(data.total_customer || 0);
-                setTotalBlogAdmin(data.total_blog_admin || 0);
-                setTotalHr(data.total_hr || 0);
+                setTotalJobs(data.total_jobs || 0);
             } else {
                 if (["Token expired", "Invalid token"].includes(data.message)) {
                     toast.error("Session expired. Please login again.");
                     adminlogout();
                     navigate("/webmaster/login");
                 } else {
-                    toast.error(data.message || "Failed to fetch users");
+                    toast.error(data.message || "Failed to fetch jobs");
                 }
             }
         } catch (err) {
             console.error(err);
-            toast.error("Error fetching users");
+            toast.error("Error fetching jobs");
         }
         finally {
             setLoading(false);
         }
     };
 
+    const fetchLocations = async () => {
+        try {
+            const res = await fetch(`${API_URL}/api/admin/locations`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${admin.token}`,
+                    "Content-Type": "application/json",
+                }
+            });
+
+            const data = await res.json();
+
+            if (data.status) {
+                setLocations(data.locations || []);
+            } else {
+                if (["Token expired", "Invalid token"].includes(data.message)) {
+                    toast.error("Session expired. Please login again.");
+                    adminlogout();
+                    navigate("/webmaster/login");
+                } else {
+                    toast.error(data.message || "Failed to fetch locations");
+                }
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+    const fetchcategories = async () => {
+        try {
+            const res = await fetch(`${API_URL}/api/admin/jobcategories`, {
+                method: "GET",
+                headers: {
+                    Authorization: `Bearer ${admin.token}`,
+                    "Content-Type": "application/json",
+                }
+            });
+
+            const data = await res.json();
+
+            if (data.status) {
+                setCategories(data.categories || []);
+            } else {
+                if (["Token expired", "Invalid token"].includes(data.message)) {
+                    toast.error("Session expired. Please login again.");
+                    adminlogout();
+                    navigate("/webmaster/login");
+                } else {
+                    toast.error(data.message || "Failed to fetch categories");
+                }
+            }
+        } catch (err) {
+            console.error(err);
+        }
+    };
+
+
     const handleSearch = (e) => {
         e.preventDefault();
         setPage(1);
-        fetchUsers(keyword);
+        fetchJobs(keyword);
     };
 
     const totalPages = Math.ceil(total / PER_PAGE);
 
     // Handle status toggle
-    const handleStatusToggle = async (userId, currentStatus) => {
+    const handleStatusToggle = async (jobId, currentStatus) => {
         const newStatus = currentStatus === 'active' ? 'inactive' : 'active';
-        const confirmMessage = `Are you sure you want to ${newStatus === 'active' ? 'activate' : 'deactivate'} this user?`;
+        const confirmMessage = `Are you sure you want to ${newStatus === 'active' ? 'activate' : 'deactivate'} this job?`;
 
         if (window.confirm(confirmMessage)) {
             try {
-                setActionLoading(userId);
-                const res = await fetch(`${API_URL}/api/admin/users/status`, {
+                setActionLoading(jobId);
+                const res = await fetch(`${API_URL}/api/admin/jobs/status`, {
                     method: "PUT",
                     headers: {
                         Authorization: `Bearer ${admin.token}`,
                         "Content-Type": "application/json",
                     },
                     body: JSON.stringify({
-                        userId,
+                        jobId,
                         status: newStatus,
                     }),
                 });
@@ -109,8 +166,8 @@ const ManageUsers = () => {
                 const data = await res.json();
 
                 if (data.status) {
-                    toast.success(`User ${newStatus === 'active' ? 'activated' : 'deactivated'} successfully`);
-                    fetchUsers(); // Refresh the users list
+                    toast.success(`Job ${newStatus === 'active' ? 'activated' : 'deactivated'} successfully`);
+                    fetchJobs(); // Refresh the jobs list
                 } else {
                     if (["Token expired", "Invalid token"].includes(data.message)) {
                         toast.error("Session expired. Please login again.");
@@ -118,12 +175,12 @@ const ManageUsers = () => {
                         adminlogout();
                         navigate("/webmaster/login");
                     } else {
-                        toast.error(data.message || "Failed to update user status");
+                        toast.error(data.message || "Failed to update job status");
                     }
                 }
             } catch (err) {
                 console.error(err);
-                toast.error("Error updating user status");
+                toast.error("Error updating job status");
             } finally {
                 setActionLoading(null);
             }
@@ -131,11 +188,11 @@ const ManageUsers = () => {
     };
 
     // Handle delete user
-    const handleDeleteUser = async (userId, userName) => {
-        if (window.confirm(`Are you sure you want to delete user "${userName}"? This action cannot be undone.`)) {
+    const handleDeleteJob = async (jobId, jobTitle) => {
+        if (window.confirm(`Are you sure you want to delete job "${jobTitle}"? This action cannot be undone.`)) {
             try {
-                setActionLoading(userId);
-                const res = await fetch(`${API_URL}/api/admin/users/${userId}`, {
+                setActionLoading(jobId);
+                const res = await fetch(`${API_URL}/api/admin/jobs/${jobId}`, {
                     method: "DELETE",
                     headers: {
                         Authorization: `Bearer ${admin.token}`,
@@ -145,93 +202,55 @@ const ManageUsers = () => {
                 const data = await res.json();
 
                 if (data.status) {
-                    toast.success("User deleted successfully");
-                    fetchUsers(); // Refresh the users list
+                    toast.success("Job deleted successfully");
+                    fetchJobs(); // Refresh the jobs list
                 } else {
                     if (["Token expired", "Invalid token"].includes(data.message)) {
                         toast.error("Session expired. Please login again.");
                         adminlogout();
                         navigate("/webmaster/login");
                     } else {
-                        toast.error(data.message || "Failed to delete user");
+                        toast.error(data.message || "Failed to delete job");
                     }
                 }
             } catch (err) {
                 console.error(err);
-                toast.error("Error deleting user");
+                toast.error("Error deleting job");
             } finally {
                 setActionLoading(null);
             }
         }
     };
 
-    // Handle edit user
-    const handleEditUser = (user) => {
-        setSelectedUserId(user.id);
-        setEditUserOpen(true);
+    // Handle edit job
+    const handleEditJob = (job) => {
+        setSelectedJobId(job.id);
+        setEditJobOpen(true);
     };
 
-    // Handle add user
-    const handleAddUser = () => {
-        // For now, we'll show an alert. You can implement a modal or navigate to add user page
-        alert("Add user functionality - Implement add user modal or navigate to add user page");
-    };
+
 
     return (
         <div className="p-6">
             <div className="flex justify-between items-center mb-4">
-                <h2 className="text-xl font-semibold">Manage Users</h2>
+                <h2 className="text-xl font-semibold">Manage Jobs</h2>
                 <button
-                    onClick={()=>{setAddUserOpen(true);}}
+                    onClick={() => { setAddJobOpen(true); }}
                     className="bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700 flex items-center gap-2"
                 >
                     <span>+</span>
-                    Add User
+                    Add Job
                 </button>
             </div>
 
 
-            {/* Role Tabs */}
-<div className="flex gap-4 mb-4">
-  {["customer", "blog_admin", "HR"].map((r) => {
-    const labels = {
-      customer: "Customers",
-      blog_admin: "Blog Admins",
-      HR: "HR",
-    };
-
-    const counts = {
-      customer: totalCustomer || 0,
-      blog_admin: totalBlogAdmin || 0,
-      HR: totalHR || 0, // make sure you have this count
-    };
-
-    return (
-      <button
-        key={r}
-        onClick={() => {
-          setRole(r);
-          setPage(1);
-        }}
-        className={`px-2 py-1 f-12 rounded-lg font-medium ${
-          role === r ? "bg-blue-600 text-white" : "bg-gray-200 hover:bg-gray-300"
-        }`}
-      >
-        {labels[r]}
-        <span className="ml-2 text-black bg-white rounded-full px-2 py-0.5">
-          {counts[r]}
-        </span>
-      </button>
-    );
-  })}
-</div>
 
 
             {/* Filter Search */}
             <form onSubmit={handleSearch} className="flex gap-3 mb-4">
                 <input
                     type="text"
-                    placeholder="Search by name or email"
+                    placeholder="Search by title"
                     value={keyword}
                     onChange={(e) => setKeyword(e.target.value)}
                     className="border px-3 py-2 rounded w-1/3"
@@ -244,66 +263,66 @@ const ManageUsers = () => {
                 </button>
             </form>
 
-            {/* Users Table */}
-            {users.length > 0 ? (
+            {/* Jobs Table */}
+            {jobs.length > 0 ? (
                 <div className="overflow-x-auto bg-white p-2 rounded">
                     <table className="min-w-full border border-gray-200 text-sm">
                         <thead className="bg-gray-100">
                             <tr>
-                                <th className="border px-4 py-2 text-left">Name</th>
-                                <th className="border px-4 py-2 text-left">Email</th>
-                                <th className="border px-4 py-2 text-left">Role</th>
-                                <th className="border px-4 py-2 text-left">Status</th>
+                                <th className="border px-4 py-2 text-left">Title</th>
+                                <th className="border px-4 py-2 text-left">status</th>
                                 <th className="border px-4 py-2 text-left">Created</th>
                                 <th className="border px-4 py-2 text-left">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
-                            {users.map((u) => (
-                                <tr key={u.id} className="hover:bg-gray-50">
-                                    <td className="border px-4 py-2">{u.name}</td>
-                                    <td className="border px-4 py-2">{u.email}</td>
-                                    <td className="border px-4 py-2">
-                                        <span className={`px-2 py-1 rounded-full text-xs ${u.role === 'customer' ? 'bg-blue-100 text-blue-800' : 'bg-purple-100 text-purple-800'
-                                            }`}>
-                                            {u.role}
-                                        </span>
-                                    </td>
+                            {jobs.map((j) => (
+                                <tr key={j.id} className="hover:bg-gray-50">
+
+                                    <td className="border px-4 py-2">{j.title}</td>
                                     <td className="border px-4 py-2">
                                         <button
-                                            onClick={() => handleStatusToggle(u.id, u.status || 'active')}
-                                            disabled={actionLoading === u.id}
-                                            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${(u.status || 'active') === 'active'
-                                                    ? 'bg-green-100 text-green-800 hover:bg-green-200'
-                                                    : 'bg-red-100 text-red-800 hover:bg-red-200'
+                                            onClick={() => handleStatusToggle(j.id, j.status || 'active')}
+                                            disabled={actionLoading === j.id}
+                                            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${(j.status || 'active') === 'active'
+                                                ? 'bg-green-100 text-green-800 hover:bg-green-200'
+                                                : 'bg-red-100 text-red-800 hover:bg-red-200'
                                                 } disabled:opacity-50`}
                                         >
-                                            {actionLoading === u.id ? (
+                                            {actionLoading === j.id ? (
                                                 <div className="h-3 w-3 rounded-full border-2 border-current border-t-transparent animate-spin" />
                                             ) : (
-                                                (u.status || 'active').charAt(0).toUpperCase() + (u.status || 'active').slice(1)
+                                                (j.status || 'active').charAt(0).toUpperCase() + (j.status || 'active').slice(1)
                                             )}
                                         </button>
                                     </td>
+
                                     <td className="border px-4 py-2">
-                                        {u.registered_at ? u.registered_at.split(" ")[0] : "-"}
+                                        {j.created_at ? formatTime(j.created_at) : "-"}
                                     </td>
                                     <td className="border px-4 py-2">
                                         <div className="flex gap-2">
+                                            <a href={`http://localhost:5175/jobs/${j.slug}`} target="blank"
+                                                data-tooltip-id="my-tooltip"
+                                                data-tooltip-content="View Job"
+                                                className="f-11 flex items-center rounded border px-2 py-1"
+                                            >
+                                                View <Eye size={15} className="ml-1" />
+                                            </a>
                                             <button
-                                                onClick={() => handleEditUser(u)}
+                                                onClick={() => handleEditJob(j)}
                                                 className="bg-blue-500 text-white px-2 py-1 rounded text-xs hover:bg-blue-600 transition-colors"
-                                                title="Edit User"
+                                                title="Edit Job"
                                             >
                                                 Edit
                                             </button>
                                             <button
-                                                onClick={() => handleDeleteUser(u.id, u.name)}
-                                                disabled={actionLoading === u.id}
+                                                onClick={() => handleDeleteJob(j.id, j.title)}
+                                                disabled={actionLoading === j.id}
                                                 className="bg-red-500 text-white px-2 py-1 rounded text-xs hover:bg-red-600 transition-colors disabled:opacity-50"
-                                                title="Delete User"
+                                                title="Delete Job"
                                             >
-                                                {actionLoading === u.id ? (
+                                                {actionLoading === j.id ? (
                                                     <div className="h-3 w-3 rounded-full border-2 border-white border-t-transparent animate-spin" />
                                                 ) : (
                                                     'Delete'
@@ -323,7 +342,7 @@ const ManageUsers = () => {
                     </div>
                 ) :
 
-                    <p className="text-gray-500">No users found.</p>
+                    <p className="text-gray-500">No Jobs found.</p>
             )}
 
             {/* Pagination */}
@@ -350,20 +369,24 @@ const ManageUsers = () => {
             )}
 
             <AnimatePresence>
-                {addUserOpen && (
-                    <AddUser
-                        onClose={() => { setAddUserOpen(false); }}
-                        onSuccess={fetchUsers}
+                {addJobOpen && (
+                    <AddJob
+                        onClose={() => { setAddJobOpen(false); }}
+                        onSuccess={fetchJobs}
+                        locations={locations}
+                        categories={categories}
                     />
                 )}
-                {editUserOpen && (
-                    <EditUser
-                        onClose={() => { 
-                            setEditUserOpen(false); 
-                            setSelectedUserId(null); 
+                {editJobOpen && (
+                    <EditJob
+                        onClose={() => {
+                            setEditJobOpen(false);
+                            setSelectedJobId(null);
                         }}
-                        onSuccess={fetchUsers}
-                        userId={selectedUserId}
+                        onSuccess={fetchJobs}
+                        jobId={selectedJobId}
+                        locations={locations}
+                        categories={categories}
                     />
                 )}
             </AnimatePresence>
@@ -371,4 +394,4 @@ const ManageUsers = () => {
     );
 };
 
-export default ManageUsers;
+export default ManageJobs;

@@ -8,6 +8,7 @@ export const AuthProvider = ({ children }) => {
   const [admin, setAdmin] = useState(null);
   const [loading, setLoading] = useState(true);
   const [adminLoading, setAdminLoading] = useState(true);
+  const [cart, setCart] = useState([]);
 
   useEffect(() => {
     const fetchUser = async () => {
@@ -26,8 +27,16 @@ export const AuthProvider = ({ children }) => {
       setAdminLoading(false);
     };
 
+    const fetchCart = async () => {
+      const storedCart = await get("HiveCart");
+      if (storedCart) {
+        setCart(storedCart);
+      }
+    };
+
     fetchUser();
     fetchAdmin();
+    fetchCart();
   }, []);
 
   const login = async (userData) => {
@@ -73,9 +82,45 @@ export const AuthProvider = ({ children }) => {
     });
   };
 
+  const addToCart = async (cartItem) => {
+    setCart((prev) => {
+      const updatedCart = [...prev, cartItem];
+      set("HiveCart", updatedCart);
+      return updatedCart;
+    });
+  };
+
+  const removeFromCart = async (cartItemId) => {
+    setCart((prev) => {
+      const updatedCart = prev.filter(item => item.id !== cartItemId);
+      set("HiveCart", updatedCart);
+      return updatedCart;
+    });
+  };
+
+  const clearCart = async () => {
+    setCart([]);
+    await del("HiveCart");
+  };
+
   return (
     <AuthContext.Provider
-      value={{ user, admin, login, logout, adminlogin, adminlogout, loading, adminLoading, setFavourites, setBillingAddress }}
+      value={{ 
+        user, 
+        admin, 
+        cart,
+        login, 
+        logout, 
+        adminlogin, 
+        adminlogout, 
+        loading, 
+        adminLoading, 
+        setFavourites, 
+        setBillingAddress,
+        addToCart,
+        removeFromCart,
+        clearCart
+      }}
     >
       {children}
     </AuthContext.Provider>

@@ -1,13 +1,15 @@
 import { useState, useRef, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
-import { Calendar, User, Phone, Menu, X, Briefcase, BriefcaseBusiness } from "lucide-react";
+import { useNavigate, useLocation } from "react-router-dom";
+import { Calendar, User, Phone, Menu, X, Briefcase, BriefcaseBusiness, ShoppingCart } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
 import { citiesData } from "../data/centersData";
 import { useAuth } from "../utils/idb";
+import { API_URL } from "../utils/constants";
 
 
 const Header = ({ onBookTourClick }) => {
   const navigate = useNavigate();
+  const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [infoOpen, setInfoOpen] = useState(false);
   const [centresOpen, setCentresOpen] = useState(false);
@@ -15,10 +17,11 @@ const Header = ({ onBookTourClick }) => {
   const [hoveredCity, setHoveredCity] = useState("");
   const [hoveredOffering, setHoveredOffering] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
+  const [cartCount, setCartCount] = useState(0);
   const infoRef = useRef(null);
   const centresRef = useRef(null);
   const workspacesRef = useRef(null);
-  const { user } = useAuth();
+  const { user, cart, logout } = useAuth();
   
 
   // Offerings data
@@ -62,6 +65,45 @@ const Header = ({ onBookTourClick }) => {
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  // Fetch cart items when location changes or user changes
+  useEffect(() => {
+    const fetchCartItems = async () => {
+      try {
+        if (user) {
+          // User is logged in - fetch from API
+          const response = await fetch(`${API_URL}/user/getcartitems`, {
+            method: 'GET',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${user.token || ''}`
+            }
+          });
+
+          const data = await response.json();
+          
+          if (data.status) {
+            const items = data.cart_items || [];
+            setCartCount(items.length);
+          } else {
+            if (data.message === "Token expired" || data.message === "Invalid token") {
+              logout();
+              navigate("/account/login");
+            }
+            setCartCount(0);
+          }
+        } else {
+          // User is not logged in - use local cart
+          setCartCount(cart.length);
+        }
+      } catch (error) {
+        console.error("Error fetching cart items:", error);
+        setCartCount(0);
+      }
+    };
+
+    fetchCartItems();
+  }, [location.pathname, user, cart, logout, navigate]);
 
 
   return (
@@ -341,6 +383,15 @@ const Header = ({ onBookTourClick }) => {
             <User className="w-4 h-4" />
             {user ? user?.name : "My Account"}
           </button>
+          {((user && cartCount > 0) || cartCount > 0) && (
+          <button
+            onClick={() => navigate("/cart")}
+            className="flex items-center gap-1 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            Cart ({cartCount})
+          </button>
+          )}
           <a
             href="tel:+917022274000"
             className="flex items-center gap-1 hover:underline transition-all duration-200 cursor-pointer"
@@ -539,6 +590,15 @@ const Header = ({ onBookTourClick }) => {
             <User className="w-4 h-4" />
             {user ? user?.name : "My Account"}
           </button>
+          {((user && cartCount > 0) || cartCount > 0) && (
+          <button
+            onClick={() => navigate("/cart")}
+            className="flex items-center gap-1 hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
+          >
+            <ShoppingCart className="w-4 h-4" />
+            Cart ({cartCount})
+          </button>
+          )}
           <a
             href="tel:+917022274000"
             className="flex items-center gap-1 hover:underline transition-all duration-200"
