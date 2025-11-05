@@ -8,7 +8,7 @@ import { useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 
 export default function Checkout({ onClose , cartItems }) {
-  const { user, logout, cart } = useAuth();
+  const { user, logout, cart, clearCart,  } = useAuth();
   const navigate = useNavigate();
 
   // const [cartItems, setCartItems] = useState([]);
@@ -196,12 +196,19 @@ export default function Checkout({ onClose , cartItems }) {
       );
 
       const data = response.data;
+      
       if (data?.status) {
-        toast.success("Order placed successfully!");
-        // Clear cart and redirect to success page
-        navigate("/account/orders");
+
+        if(data?.payment_response?.responseCode === 200 && data?.payment_response?.url){
+            await clearCart();
+            // Redirect to PhonePe simulator
+            window.location.href = data.payment_response.url;
+        } else {
+            toast.error(data.message || "Payment initi  ation failed");
+        }
+        
       } else {
-        if (data?.message === "Token expired") {
+        if (data?.message === "Token expired" || data?.message === "Invalid token") {
           toast.error("Please login to place order");
           logout();
           navigate("/account/login?SESSION_EXPIRED=true");

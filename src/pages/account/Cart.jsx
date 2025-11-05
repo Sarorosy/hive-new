@@ -194,7 +194,7 @@ const Cart = () => {
     
 
     fetchCartItems();
-  }, [user, cart]);
+  }, []);
 
   setInterval(() => {
     fetchCartItems();
@@ -479,7 +479,7 @@ useEffect(()=>{
             className="flex-1 bg-orange-500 text-white px-6 py-3 rounded-lg hover:bg-orange-600 transition-colors duration-200 font-medium disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {checkingOut ? "Checking out..." : "Proceed to Checkout"}
-            Proceed to Checkout
+            
           </button>
           
         </div>

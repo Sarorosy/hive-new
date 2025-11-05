@@ -23,6 +23,7 @@ const Header = ({ onBookTourClick }) => {
   const workspacesRef = useRef(null);
   const { user, cart, logout } = useAuth();
   
+  console.log(cart)
 
   // Offerings data
   const offerings = [
@@ -67,43 +68,43 @@ const Header = ({ onBookTourClick }) => {
   }, []);
 
   // Fetch cart items when location changes or user changes
-  useEffect(() => {
-    const fetchCartItems = async () => {
-      try {
-        if (user) {
-          // User is logged in - fetch from API
-          const response = await fetch(`${API_URL}/user/getcartitems`, {
-            method: 'GET',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${user.token || ''}`
-            }
-          });
-
-          const data = await response.json();
-          
-          if (data.status) {
-            const items = data.cart_items || [];
-            setCartCount(items.length);
-          } else {
-            if (data.message === "Token expired" || data.message === "Invalid token") {
-              logout();
-              navigate("/account/login");
-            }
-            setCartCount(0);
+  const fetchCartItems = async () => {
+    try {
+      if (user) {
+        // User is logged in - fetch from API
+        const response = await fetch(`${API_URL}/user/getcartitems`, {
+          method: 'GET',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${user.token || ''}`
           }
-        } else {
-          // User is not logged in - use local cart
-          setCartCount(cart.length);
-        }
-      } catch (error) {
-        console.error("Error fetching cart items:", error);
-        setCartCount(0);
-      }
-    };
+        });
 
+        const data = await response.json();
+        
+        if (data.status) {
+          const items = data.cart_items || [];
+          setCartCount(items.length);
+        } else {
+          if (data.message === "Token expired" || data.message === "Invalid token") {
+            logout();
+            navigate("/account/login");
+          }
+          setCartCount(0);
+        }
+      } else {
+        // User is not logged in - use local cart
+        setCartCount(cart.length);
+      }
+    } catch (error) {
+      console.error("Error fetching cart items:", error);
+      setCartCount(0);
+    }
+  };
+
+  useEffect(() => {
     fetchCartItems();
-  }, [location.pathname, user, cart, logout, navigate]);
+  }, []);
 
 
   return (

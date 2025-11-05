@@ -563,7 +563,7 @@ const ProductPage = () => {
         
         if (data.status) {
           toast.success("Item added to cart successfully!");
-          navigate('/cart');
+          navigate('/cart');  
         } else {
           if(data.message == "Token expired" || data.message == "Invalid token"){
             toast.error("Session expired. Please login again.");
