@@ -242,7 +242,7 @@ const Hero = () => {
   }, [selectedCity, selectedOffering,selectedOfferingSlug]);
 
   return (
-    <div className="relative h-[95vh] w-full overflow-hidden z-49"
+    <div className="relative h-[97vh] w-full overflow-hidden z-49"
       id="curve"
     >
       {/* Swiper Background */}
