@@ -178,10 +178,15 @@ const ContactForm = ({ type = "regular", onClose }) => {
 
           <h3 className="font-bold mb-2">We Offer:</h3>
           <ul className="list-disc list-inside text-gray-600 space-y-1">
-            <li>Customized Workspaces</li>
+            <li>Hot Desks</li>
+            <li>Flexi Passes</li>
             <li>Private Cabins</li>
             <li>Dedicated Desks</li>
-            <li>Hot Desks</li>
+            <li>Managed Offices</li>
+            <li>Enterprise Offices</li>
+            <li>Virtual Offices</li>
+            <li>Meeting Rooms</li>
+            <li>Customized Workspaces</li>
           </ul>
         </div>
 

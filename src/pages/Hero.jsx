@@ -53,11 +53,11 @@ const heroImages = [
   '/imagecompressor/14.jpg',
   '/imagecompressor/15.jpg',
   '/imagecompressor/16.jpg',
-  '/imagecompressor/17.jpg',
+  '/imagecompressor/17.png',
   '/imagecompressor/18.jpg',
   '/imagecompressor/19.jpg',
   '/imagecompressor/20.jpg',
-  '/imagecompressor/21.jpg',
+  '/imagecompressor/21.png',
 ];
 // Background images
 const heroImages2 = [
