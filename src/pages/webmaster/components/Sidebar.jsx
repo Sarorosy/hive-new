@@ -13,6 +13,7 @@ import {
     MapIcon,
     Layers,
     Store,
+    Calendar,
 } from "lucide-react";
 import { Tooltip } from "react-tooltip";
 import { useAuth } from "../../../utils/idb";
@@ -39,6 +40,7 @@ export default function Sidebar() {
         { name: "Jobs", icon: <BriefcaseBusiness size={20} />, path: "/webmaster/jobs", roles: ["admin", "HR"] },
         { name: "Job Applications", icon: <Layers size={20} />, path: "/webmaster/job-applications", roles: ["admin", "HR"] },
         { name: "Products", icon: <Store size={20} />, path: "/webmaster/products", roles: ["admin"] },
+        { name: "Orders", icon: <Calendar size={20} />, path: "/webmaster/orders", roles: ["admin"] },
         { name: "Others", icon: <Settings size={20} />, path: "/webmaster/others", roles: ["admin", "HR", "blog_admin"] },
       ];
       

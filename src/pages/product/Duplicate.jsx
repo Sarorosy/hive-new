@@ -34,7 +34,7 @@ const ProductPage = () => {
 
       if (data.status) {
         setProduct(data.data || null);
-        console.log("Fetched product:", data.data);
+        // console.log("Fetched product:", data.data);
       } else {
         console.error(data.message || "Failed to fetch product");
         setProduct(null);

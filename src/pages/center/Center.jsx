@@ -162,7 +162,7 @@ function Center() {
       </div>
 
       <ChoosePreference cityData={cityData} centersData={centersData}/>
-      <Viewer360 images={panoramas} />
+      {/* <Viewer360 images={panoramas} /> */}
       <RelatedProducts location={city.charAt(0).toUpperCase() + city.slice(1)} currentRoute={""} />
       <Gallery images={cityData.gallery} />
       <ContactForm type="regular" />

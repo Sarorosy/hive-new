@@ -26,7 +26,7 @@ const AmenitiesSection = () => {
 
   return (
     <section className="bg-white py-16 overflow-hidden">
-      <div className="max-w-5xl mx-auto px-6">
+      <div className=" mx-auto px-6">
 
         {/* Title Section */}
         <div className="mb-12 text-center">
@@ -55,7 +55,7 @@ const AmenitiesSection = () => {
                       <div
                         data-tooltip-id="my-tooltip"
                         data-tooltip-content={amenity.title}
-                        className={`w-12 h-12 flex items-center justify-center transition-all duration-300 rounded-md border border-gold 
+                        className={`w-12 h-12 flex items-center justify-center transition-all duration-300 rounded-full border border-gold 
                         ${isBlack ? "bg-black text-gold " : "bg-gradient-to-br from-goldt via-gold to-goldt text-black "}`}
                       >
                         <IconComponent

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import { centersData } from "../data/centersData";
 import {
   Mail,
@@ -11,6 +11,9 @@ import {
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
+import ReCAPTCHA from "react-google-recaptcha";
+import { SITE_KEY, API_URL } from "../utils/constants";
+import axios from "axios";
 
 const ContactForm = ({ type = "regular", onClose }) => {
   const [formData, setFormData] = useState({
@@ -21,6 +24,9 @@ const ContactForm = ({ type = "regular", onClose }) => {
     message: "",
     location: "",
   });
+  const [captchaValue, setCaptchaValue] = useState(null);
+  const [submitting, setSubmitting] = useState(false);
+  const recaptchaRef = useRef(null);
 
   // Flatten all locations from centersData
   const allLocations = Object.values(centersData)
@@ -31,11 +37,99 @@ const ContactForm = ({ type = "regular", onClose }) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = (e) => {
+  const handleCaptchaChange = (value) => {
+    setCaptchaValue(value);
+  };
+
+  const validateForm = () => {
+    if (!formData.name.trim()) {
+      toast.error("Please enter your name.");
+      return false;
+    }
+    if (!formData.email.trim()) {
+      toast.error("Please enter your email.");
+      return false;
+    }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.email)) {
+      toast.error("Please enter a valid email address.");
+      return false;
+    }
+    if (!formData.phone.trim()) {
+      toast.error("Please enter your phone number.");
+      return false;
+    }
+    // Basic phone validation (at least 10 digits)
+    const phoneRegex = /^[0-9]{10,}$/;
+    const cleanPhone = formData.phone.replace(/\D/g, "");
+    if (!phoneRegex.test(cleanPhone)) {
+      toast.error("Please enter a valid phone number (at least 10 digits).");
+      return false;
+    }
+    if (!formData.location) {
+      toast.error("Please select a location.");
+      return false;
+    }
+    if (!captchaValue) {
+      toast.error("Please complete the reCAPTCHA verification.");
+      return false;
+    }
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
-    toast.success("We will get back to you shortly!");
-    // API call logic here
+    if (!validateForm()) return;
+
+    try {
+      setSubmitting(true);
+      const response = await axios.post(`${API_URL}/api/contact`, {
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        seats: formData.seats || null,
+        message: formData.message || null,
+        location: formData.location,
+        captcha: captchaValue,
+      });
+
+      const data = response.data;
+      if (data.status) {
+        toast.success("We will get back to you shortly!");
+        // Reset form
+        setFormData({
+          name: "",
+          email: "",
+          phone: "",
+          seats: "",
+          message: "",
+          location: "",
+        });
+        setCaptchaValue(null);
+        recaptchaRef.current?.reset();
+        // Close modal if it's a modal type
+        if (type === "modal" && onClose) {
+          setTimeout(() => {
+            onClose();
+          }, 1000);
+        }
+      } else {
+        toast.error(data.message || "Failed to submit form. Please try again.");
+        if (data.message && data.message.includes("Captcha")) {
+          recaptchaRef.current?.reset();
+          setCaptchaValue(null);
+        }
+      }
+    } catch (error) {
+      console.error("Contact form error:", error);
+      toast.error("Something went wrong. Please try again later.");
+      if (error.response?.data?.message?.includes("Captcha")) {
+        recaptchaRef.current?.reset();
+        setCaptchaValue(null);
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   const content = (
@@ -94,6 +188,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
         {/* Right Section (Form) */}
         <form
           className="bg-white shadow-xl p-6 rounded-2xl"
+          onSubmit={handleSubmit}
         >
           <h3 className="text-2xl font-bold mb-4 font-serif">Book A Tour</h3>
 
@@ -107,7 +202,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
                 value={formData.name}
                 onChange={handleChange}
                 className="w-full py-2 outline-none"
-                required
+                
               />
             </div>
             <div className="flex items-center border rounded-lg px-3">
@@ -119,7 +214,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
                 value={formData.email}
                 onChange={handleChange}
                 className="w-full py-2 outline-none"
-                required
+                
               />
             </div>
           </div>
@@ -134,7 +229,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
                 value={formData.phone}
                 onChange={handleChange}
                 className="w-full py-2 outline-none"
-                required
+                
               />
             </div>
             <div className="flex items-center border rounded-lg px-3">
@@ -169,7 +264,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
               value={formData.location}
               onChange={handleChange}
               className="w-full py-2 outline-none"
-              required
+              
             >
               <option value="">Select Location</option>
               {allLocations.map((loc, idx) => (
@@ -180,12 +275,21 @@ const ContactForm = ({ type = "regular", onClose }) => {
             </select>
           </div>
 
+          {/* reCAPTCHA */}
+          <div className="flex justify-center mb-4">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={SITE_KEY}
+              onChange={handleCaptchaChange}
+            />
+          </div>
+
           <button
-            type="button"
-            onClick={handleSubmit}
-            className="w-full cursor-pointer py-3 bg-black text-white font-mediumx rounded-lg shadow-lg hover:opacity-90 transition"
+            type="submit"
+            disabled={submitting}
+            className="w-full cursor-pointer py-3 bg-black text-white font-medium rounded-lg shadow-lg hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
           >
-            SUBMIT
+            {submitting ? "Submitting..." : "SUBMIT"}
           </button>
         </form>
       </div>

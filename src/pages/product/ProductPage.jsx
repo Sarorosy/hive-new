@@ -131,7 +131,7 @@ const ProductPage = () => {
     setSelectedSlot(null);
   }, [product, range]);
 
-  function formatAMPM(date) {
+  function formatAMPM(date) { // function for  formatting AM /Pm
     const hours = date.getHours();
     const minutes = date.getMinutes();
     const ampm = hours >= 12 ? "PM" : "AM";
@@ -156,7 +156,7 @@ const ProductPage = () => {
     return `${year}-${month}-${day}`;
   };
 
-  const fetchProduct = async () => {
+  const fetchProduct = async () => { // api function to fetch product details
     try {
       setLoading(true);
       setFetched(false);
@@ -220,7 +220,7 @@ const ProductPage = () => {
     ]);
   }, [product]);
 
-  const handleSelect = (ranges) => {
+  const handleSelect = (ranges) => { // onclikc of date , the function triggered
     const selection = ranges.selection;
     const blockLength = Number(product?.booking_length) || 1;
     const multiDaySelection = product?.multi_day_selection === "1";
@@ -413,7 +413,7 @@ const ProductPage = () => {
     return allDiscounts.find(d => d.isApplicable) || null;
   };
 
-  const calcCost = () => {
+  const calcCost = () => { // calculate cost of that product
     if (!product) return 0;
     const base = Number(product.cost) || 0;
 
@@ -455,7 +455,7 @@ const ProductPage = () => {
     return total.toLocaleString("en-IN", { maximumFractionDigits: 2 });
   };
 
-  const handleSubmit = async () => {
+  const handleSubmit = async () => { //submit function Api
     // Validation: Check if date is selected
     if (!range || !range[0] || !range[0].startDate) {
       toast.error("Please select a date for your booking.");
@@ -545,7 +545,7 @@ const ProductPage = () => {
       booking_source: "web"
     };
 
-    console.log("Booking Payload:", payload);
+    // console.log("Booking Payload:", payload);
 
     try {
       if (user) {

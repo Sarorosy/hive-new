@@ -12,7 +12,7 @@ const Test = () => {
                     'Authorization': `Bearer ${token}`
                 }
             });
-            console.log('Response:', response.data);
+            // console.log('Response:', response.data);
         } catch (error) {
             if (error.response) {
                 // Backend returned an error

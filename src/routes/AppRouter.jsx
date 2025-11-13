@@ -45,6 +45,7 @@ import JobApplications from "../pages/webmaster/pages/jobs/JobApplications";
 import ProductCategories from "../pages/webmaster/pages/common/ProductCategories";
 import ProductTags from "../pages/webmaster/pages/common/ProductTags";
 import ManageProducts from "../pages/webmaster/pages/products/ManageProducts";
+import ManageOrders from "../pages/webmaster/pages/orders/ManageOrders";
 import Cart from '../pages/account/Cart';
 import { useAuth } from "../utils/idb";
 
@@ -182,6 +183,7 @@ export default function AppRouter() {
 
 
             <Route path="/webmaster/products/" element={<ManageProducts />} />
+            <Route path="/webmaster/orders/" element={<ManageOrders />} />
 
 
             <Route path="/webmaster/job-applications/" element={<JobApplications />} />

@@ -23,7 +23,7 @@ const Header = ({ onBookTourClick }) => {
   const workspacesRef = useRef(null);
   const { user, cart, logout } = useAuth();
   
-  console.log(cart)
+  // console.log(cart)
 
   // Offerings data
   const offerings = [

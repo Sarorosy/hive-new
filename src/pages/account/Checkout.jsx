@@ -20,7 +20,7 @@ export default function Checkout({ onClose , cartItems }) {
     return user?.billing_address || user?.billling_address || null;
   }, [user]);
 
-  console.log(existingBillingAddress);
+  // console.log(existingBillingAddress);
 
   // Form state for billing details
   const [formValues, setFormValues] = useState({

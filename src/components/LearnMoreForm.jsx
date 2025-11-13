@@ -31,7 +31,7 @@ export default function LearnMoreForm() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    console.log("Form submitted:", formData);
+    // console.log("Form submitted:", formData);
     toast.success("We will get back to you shortly");
   };
 

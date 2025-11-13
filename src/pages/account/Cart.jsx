@@ -101,7 +101,7 @@ const Cart = () => {
     const validItems = items.filter(item => !isItemExpired(item));
     
     if (expiredItems.length > 0) {
-      console.log(`Removing ${expiredItems.length} expired items from cart`);
+      // console.log(`Removing ${expiredItems.length} expired items from cart`);
       
       // Remove expired items from backend if user is logged in
       if (user) {

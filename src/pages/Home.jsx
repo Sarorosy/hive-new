@@ -20,7 +20,7 @@ function Home() {
         <FeaturedSpaces />
         <DiscountBanner />
         <AmenitiesSection/>
-        <HeroVideo />
+        {/* <HeroVideo /> */}
         <Faq />
         <Members />
         <Testimonials />
