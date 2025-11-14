@@ -141,6 +141,7 @@ export default function Footer() {
                 notificationSound
                 darkMode={false}
                 allowEsc={false}
+                className="text-black"
             />
         </footer>
     );

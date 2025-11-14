@@ -27,7 +27,7 @@ export default function Layout() {
       {contactFormOpen && (
         <ContactForm type="modal" onClose={()=>{setContactFormOpen(false)}} />
       )}
-      <CookieConsent />
+      <CookieConsent isContactFormOpen={contactFormOpen} />
     </div>
   );
 }
