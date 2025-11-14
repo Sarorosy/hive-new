@@ -7,6 +7,12 @@ import { citiesData } from "../data/centersData";
 export default function Footer() {
     const navigate = useNavigate();
 
+    const openCookieSettings = () => {
+        if (typeof window !== "undefined") {
+            window.dispatchEvent(new Event("open-cookie-consent"));
+        }
+    };
+
 
 
     return (
@@ -33,10 +39,11 @@ export default function Footer() {
                     <ul className="space-y-2 text-gray-400 text-sm">
                         {[
                             { title: "Home", slug: "/" },
-                            { title: "Careers", slug: "/" },
-                            { title: "Blogs", slug: "/" },
+                            { title: "Careers", slug: "/careers" },
+                            { title: "Blogs", slug: "/blog" },
                             { title: "Terms & Conditions", slug: "/terms-and-conditions" },
                             { title: "Refund Policy", slug: "/refund-policy" },
+                            { title: "Cookie Policy", slug: "/cookie-policy" },
                         ].map((item) => (
                             <li
                                 key={item.title}
@@ -114,6 +121,13 @@ export default function Footer() {
                 <p className="mt-1">
                     Developed by <span className="text-white font-semibold">The Hive Marketing Team</span>
                 </p>
+                <button
+                    type="button"
+                    onClick={openCookieSettings}
+                    className="mt-4 inline-flex items-center justify-center rounded-full border border-white/30 px-5 py-2 text-sm font-semibold text-white/80 hover:text-white hover:border-white transition"
+                >
+                    Cookie Settings
+                </button>
             </div>
             <FloatingWhatsApp
                 phoneNumber="918072075487"

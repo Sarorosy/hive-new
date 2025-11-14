@@ -1,6 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
 import toast from "react-hot-toast";
+import axios from "axios";
 import { centersData } from "../data/centersData";
+import ReCAPTCHA from "react-google-recaptcha";
+import { API_URL, SITE_KEY } from "../utils/constants";
 
 import ContactFormImg from "../assets/raw/all/RAJA8221-min.JPG";
 
@@ -14,6 +17,9 @@ export default function LearnMoreForm() {
     area: "",
     tourOption: "learnMore",
   });
+  const [submitting, setSubmitting] = useState(false);
+  const [captchaValue, setCaptchaValue] = useState(null);
+  const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -29,10 +35,114 @@ export default function LearnMoreForm() {
     ? Object.keys(centersData[formData.city]?.branches || {})
     : [];
 
-  const handleSubmit = (e) => {
+  const validateForm = () => {
+    if (!formData.fullName.trim()) {
+      toast.error("Please enter your full name.");
+      return false;
+    }
+    if (!formData.companyName.trim()) {
+      toast.error("Please enter your company name.");
+      return false;
+    }
+    if (!formData.companyEmail.trim()) {
+      toast.error("Please enter your company email.");
+      return false;
+    }
+
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    if (!emailRegex.test(formData.companyEmail)) {
+      toast.error("Please enter a valid email address.");
+      return false;
+    }
+
+    const digitsOnly = formData.phone.replace(/\D/g, "");
+    if (!digitsOnly || digitsOnly.length < 10) {
+      toast.error("Please enter a valid phone number (min 10 digits).");
+      return false;
+    }
+
+    if (!formData.city) {
+      toast.error("Please select a city.");
+      return false;
+    }
+
+    if (!formData.area) {
+      toast.error("Please select an area.");
+      return false;
+    }
+
+    if (!captchaValue) {
+      toast.error("Please complete the reCAPTCHA verification.");
+      return false;
+    }
+
+    return true;
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // console.log("Form submitted:", formData);
-    toast.success("We will get back to you shortly");
+    if (!validateForm()) return;
+
+    const cityName = centersData[formData.city]?.name || formData.city;
+    const areaName =
+      centersData[formData.city]?.branches?.[formData.area]?.name ||
+      formData.area;
+    const locationLabel = [cityName, areaName].filter(Boolean).join(" - ");
+
+    const additionalMessage = [
+      `Company: ${formData.companyName}`,
+      `Tour Preference: ${
+        formData.tourOption === "scheduleTour"
+          ? "Schedule my tour"
+          : "Learn more first"
+      }`,
+    ].join("\n");
+
+    try {
+      setSubmitting(true);
+      const response = await axios.post(`${API_URL}/api/contact`, {
+        name: formData.fullName,
+        email: formData.companyEmail,
+        phone: formData.phone,
+        seats: null,
+        message: additionalMessage,
+        location: locationLabel,
+        source: "learnMoreForm",
+        captcha: captchaValue,
+      });
+
+      if (response.data?.status) {
+        toast.success("We will get back to you shortly!");
+        setFormData({
+          fullName: "",
+          companyName: "",
+          companyEmail: "",
+          phone: "",
+          city: "",
+          area: "",
+          tourOption: "learnMore",
+        });
+        setCaptchaValue(null);
+        recaptchaRef.current?.reset();
+      } else {
+        toast.error(
+          response.data?.message || "Failed to submit form. Please try again."
+        );
+        if (response.data?.message?.includes("Captcha")) {
+          setCaptchaValue(null);
+          recaptchaRef.current?.reset();
+        }
+      }
+    } catch (error) {
+      console.error("Learn more form error:", error);
+      toast.error("Something went wrong. Please try again later.");
+      if (error.response?.data?.message?.includes("Captcha")) {
+        setCaptchaValue(null);
+        recaptchaRef.current?.reset();
+      }
+    } finally {
+      setSubmitting(false);
+    }
   };
 
   return (
@@ -167,13 +277,27 @@ export default function LearnMoreForm() {
             </div>
           </div>
 
+          {/* reCAPTCHA */}
+          <div className="md:col-span-2 flex justify-center">
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={SITE_KEY}
+              onChange={setCaptchaValue}
+            />
+          </div>
+
           {/* Submit button full width */}
           <div className="md:col-span-2">
             <button
-              type="button"
-              className="w-full cursor-pointer bg-black text-white font-semibold py-2 rounded  transition"
+              type="submit"
+              disabled={submitting}
+              className="w-full cursor-pointer bg-black text-white font-semibold py-2 rounded transition disabled:opacity-50 disabled:cursor-not-allowed"
             >
-              {formData.tourOption == "learnMore" ? "Submit" : "Schedule my tour"}
+              {submitting
+                ? "Submitting..."
+                : formData.tourOption === "learnMore"
+                ? "Submit"
+                : "Schedule my tour"}
             </button>
           </div>
         </form>

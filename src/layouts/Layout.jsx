@@ -2,6 +2,7 @@ import { Outlet, useNavigate } from "react-router-dom";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import ContactForm from "../components/ContactForm";
+import CookieConsent from "../components/CookieConsent";
 import { useEffect, useState } from "react";
 
 export default function Layout() {
@@ -26,6 +27,7 @@ export default function Layout() {
       {contactFormOpen && (
         <ContactForm type="modal" onClose={()=>{setContactFormOpen(false)}} />
       )}
+      <CookieConsent />
     </div>
   );
 }

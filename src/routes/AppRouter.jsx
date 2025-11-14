@@ -15,6 +15,7 @@ import ProductPage from "../pages/product/ProductPage";
 import ExplorePage from "../pages/explore/ExplorePage";
 import RefundPolicy from "../pages/RefundPolicy";
 import TermsAndConditions from "../pages/TermsAndConditions";
+import CookiePolicy from "../pages/CookiePolicy";
 import BlogsListPage from "../pages/blogs/BlogsListPage";
 import BlogDetails from "../pages/blogs/BlogDetails";
 import CareersListPage from "../pages/careers/CareersListPage";
@@ -140,6 +141,7 @@ export default function AppRouter() {
 
             <Route path="/terms-and-conditions" element={<TermsAndConditions />} />
             <Route path="/refund-policy" element={<RefundPolicy />} />
+            <Route path="/cookie-policy" element={<CookiePolicy />} />
 
             <Route path="/blog" element={<BlogsListPage blogs={blogs} blogLoading={blogLoading} />} />
             <Route path="/blog/:slug" element={<BlogDetails blogs={blogs} blogLoading={blogLoading} />} />

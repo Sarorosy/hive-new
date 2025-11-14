@@ -1,51 +1,68 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
-import one from "../../assets/sponsors/1.png";
-import two from "../../assets/sponsors/2.png";
-import three from "../../assets/sponsors/3.png";
-import four from "../../assets/sponsors/4.png";
-import five from "../../assets/sponsors/5.png";
-import six from "../../assets/sponsors/6.png";
-import seven from "../../assets/sponsors/7.png";
-import eight from "../../assets/sponsors/8.png";
-import nine from "../../assets/sponsors/9.png";
-import ten from "../../assets/sponsors/10.png";
-import eleven from "../../assets/sponsors/11.png";
 
 export default function Members() {
   const [isVisible, setIsVisible] = useState(false);
 
-  // Sponsor images
-  const sponsors = [
-    { id: 1, src: one, alt: "Sponsor 1" },
-    { id: 2, src: two, alt: "Sponsor 2" },
-    { id: 3, src: three, alt: "Sponsor 3" },
-    { id: 4, src: four, alt: "Sponsor 4" },
-    { id: 5, src: five, alt: "Sponsor 5" },
-    { id: 6, src: six, alt: "Sponsor 6" },
-    { id: 7, src: seven, alt: "Sponsor 7" },
-    { id: 8, src: eight, alt: "Sponsor 8" },
-    { id: 9, src: nine, alt: "Sponsor 9" },
-    { id: 10, src: ten, alt: "Sponsor 10" },
-    { id: 11, src: eleven, alt: "Sponsor 11" },
+  // All sponsor images from public/sponsors folder
+  const sponsorFiles = [
+    "1.jpg",
+    "2.jpg",
+    "3.jpg",
+    "4.jpg",
+    "5.jpg",
+    "6.jpg",
+    "7.jpg",
+    "8.jpg",
+    "9.jpg",
+    "10.jpg",
+    "11.jpg",
+    "12.jpg",
+    "13.jpg",
+    "14.jpg",
+    "15.jpg",
+    "16.jpg",
+    "17.jpg",
+    "18.jpg",
+    "19.jpg",
+    "20.jpg",
+    "21.jpg",
+    "22.jpg",
+    "23.jpg",
+    "24.jpg",
+    "25.jpg",
+    "26.jpg",
+    "27.jpg",
+    "28.jpg",
+    "29.jpg",
+    "30.jpg",
+    "31.jpg",
+    "32.jpg",
+    "33.jpg",
+    "34.jpg",
+    "35.jpg",
+    "36.jpg",
+    "37.jpg",
+    "38.jpg",
+    "39.jpg",
+    "40.jpg",
+    "41.jpg",
+    "42.jpg",
+    "43.jpg",
+    "44.jpg",
+    "46.jpg",
+    "48.jpg",
   ];
 
-    const sponsorsClone = [
-    { id: 12, src: one, alt: "Sponsor 1" },
-    { id: 13, src: two, alt: "Sponsor 2" },
-    { id: 14, src: three, alt: "Sponsor 3" },
-    { id: 15, src: four, alt: "Sponsor 4" },
-    { id: 16, src: five, alt: "Sponsor 5" },
-    { id: 17, src: six, alt: "Sponsor 6" },
-    { id: 18, src: seven, alt: "Sponsor 7" },
-    { id: 19, src: eight, alt: "Sponsor 8" },
-    { id: 20, src: nine, alt: "Sponsor 9" },
-    { id: 21, src: ten, alt: "Sponsor 10" },
-    { id: 22, src: eleven, alt: "Sponsor 11" },
-  ];
+  // Create sponsor objects with public path
+  const sponsors = sponsorFiles.map((filename, index) => ({
+    id: index + 1,
+    src: `/sponsors/${filename}`,
+    alt: `Sponsor ${filename.replace(".jpg", "")}`,
+  }));
 
-  // Duplicate for seamless scroll
-  const duplicatedSponsors = [...sponsors, ...sponsorsClone];
+  // Duplicate multiple times for seamless infinite scroll
+  const duplicatedSponsors = [...sponsors, ...sponsors, ...sponsors];
 
   useEffect(() => {
     setIsVisible(true);
@@ -72,33 +89,44 @@ export default function Members() {
             Our Members
           </h2>
           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
-            We’re proud to be supported by these amazing sponsors.
+            We're proud to be supported by these amazing sponsors.
           </p>
         </motion.div>
 
-        {/* Scrolling sponsors */}
+        {/* Marquee Scrolling sponsors */}
         <div className="overflow-hidden relative">
-          <motion.div
-            className="flex gap-12"
-            animate={{ x: ["0%", "-50%"] }}
-            transition={{
-              repeat: Infinity,
-              duration: 20,
-              ease: "linear",
-            }}
-          >
-            {duplicatedSponsors.map((sponsor) => (
-              <div key={sponsor.id} className="flex-shrink-0">
+          <div className="flex gap-8 md:gap-12 animate-marquee">
+            {duplicatedSponsors.map((sponsor, index) => (
+              <div 
+                key={`${sponsor.id}-${index}`} 
+                className="flex-shrink-0 flex items-center justify-center px-2"
+              >
                 <img
                   src={sponsor.src}
                   alt={sponsor.alt}
-                  className="h-20 w-auto object-contain members-image"
+                  className="h-16 md:h-20 w-auto object-contain members-image max-w-[150px]"
+                  loading="lazy"
                 />
               </div>
             ))}
-          </motion.div>
+          </div>
         </div>
       </div>
+
+      <style>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(calc(-100% / 3));
+          }
+        }
+        .animate-marquee {
+          animation: marquee 40s linear infinite;
+          will-change: transform;
+        }
+      `}</style>
     </section>
   );
 }

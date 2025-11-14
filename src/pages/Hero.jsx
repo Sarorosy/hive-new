@@ -37,27 +37,27 @@ const heroImages = [
   // hero1,
   // hero2,
   // hero3,
-  '/imagecompressor/1.jpg',
-  '/imagecompressor/2.jpg', 
-  '/imagecompressor/3.jpg',
-  '/imagecompressor/4.jpg',
-  '/imagecompressor/5.jpg',
-  '/imagecompressor/6.jpg',
-  '/imagecompressor/7.jpg',
-  '/imagecompressor/8.jpg',
-  '/imagecompressor/9.jpg',
-  '/imagecompressor/10.jpg',
-  '/imagecompressor/11.jpg',
-  '/imagecompressor/12.jpg',
-  '/imagecompressor/13.jpg',
-  '/imagecompressor/14.jpg',
-  '/imagecompressor/15.jpg',
-  '/imagecompressor/16.jpg',
-  '/imagecompressor/17.png',
-  '/imagecompressor/18.jpg',
-  '/imagecompressor/19.jpg',
-  '/imagecompressor/20.jpg',
-  '/imagecompressor/21.png',
+  // '/imagecompressor/1.jpg',
+  // '/imagecompressor/2.jpg', 
+  // '/imagecompressor/3.jpg',
+  // '/imagecompressor/4.jpg',
+  // '/imagecompressor/5.jpg',
+  // '/imagecompressor/6.jpg',
+  // '/imagecompressor/7.jpg',
+  // '/imagecompressor/8.jpg',
+  // '/imagecompressor/9.jpg',
+  '/imagecompressor/10.jpg', //
+  '/imagecompressor/11.jpg', //
+  '/imagecompressor/12.jpg',//
+  // '/imagecompressor/13.jpg',
+  '/imagecompressor/14.jpg',//
+  // '/imagecompressor/15.jpg',
+  // '/imagecompressor/16.jpg',
+  // '/imagecompressor/17.png',
+  // '/imagecompressor/18.jpg',
+  // '/imagecompressor/19.jpg',
+  // '/imagecompressor/20.jpg',
+  '/imagecompressor/21.png', //
 ];
 // Background images
 const heroImages2 = [
