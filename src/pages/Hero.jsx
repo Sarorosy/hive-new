@@ -234,12 +234,100 @@ const Hero = () => {
   const [selectedOfferingSlug, setSelectedOfferingSlug] = useState("");
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
   const [offeringDropdownOpen, setOfferingDropdownOpen] = useState(false);
+  const [isMarqueePaused, setIsMarqueePaused] = useState(false);
+  const marqueeContainerRef = useRef(null);
+  const marqueeContentRef = useRef(null);
+  const animationFrameRef = useRef(null);
+  const scrollTimeoutRef = useRef(null);
   const navigate = useNavigate();
 
   useEffect(() => {
     // console.log("Selected City:", selectedCity);
     // console.log("Selected Offering:", selectedOffering);
   }, [selectedCity, selectedOffering,selectedOfferingSlug]);
+
+  // Cleanup timeout on unmount
+  useEffect(() => {
+    return () => {
+      if (scrollTimeoutRef.current) {
+        clearTimeout(scrollTimeoutRef.current);
+      }
+    };
+  }, []);
+
+  // Auto-scroll marquee animation
+  useEffect(() => {
+    if (!marqueeContainerRef.current || !marqueeContentRef.current) {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+      return;
+    }
+
+    const container = marqueeContainerRef.current;
+    const content = marqueeContentRef.current;
+    const scrollSpeed = 2; // pixels per frame (smooth continuous movement at ~120px/sec)
+    const contentWidth = content.scrollWidth / 2; // Half because we duplicate items
+
+    const animate = () => {
+      if (container && !isMarqueePaused) {
+        let currentScroll = container.scrollLeft;
+        currentScroll += scrollSpeed;
+        
+        // Reset to 0 when we've scrolled through one set of items
+        if (currentScroll >= contentWidth) {
+          currentScroll = 0;
+        }
+        
+        container.scrollLeft = currentScroll;
+        animationFrameRef.current = requestAnimationFrame(animate);
+      } else if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+
+    if (!isMarqueePaused) {
+      animationFrameRef.current = requestAnimationFrame(animate);
+    }
+
+    return () => {
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
+      }
+    };
+  }, [isMarqueePaused]);
+
+  // Handle marquee pause/resume on interaction
+  const handleMarqueeInteraction = () => {
+    setIsMarqueePaused(true);
+    // Clear any existing timeout
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+  };
+
+  const handleMarqueeInteractionEnd = () => {
+    // Clear any existing timeout
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    // Resume after a short delay
+    scrollTimeoutRef.current = setTimeout(() => {
+      setIsMarqueePaused(false);
+    }, 1500);
+  };
+
+  const handleMarqueeScroll = () => {
+    setIsMarqueePaused(true);
+    // Clear any existing timeout
+    if (scrollTimeoutRef.current) {
+      clearTimeout(scrollTimeoutRef.current);
+    }
+    // Resume after scrolling stops
+    scrollTimeoutRef.current = setTimeout(() => {
+      setIsMarqueePaused(false);
+    }, 1500);
+  };
 
   return (
     <div className="relative h-[97vh] w-full overflow-hidden z-49"
@@ -313,7 +401,47 @@ const Hero = () => {
             </div>
 
             {/* Workspace Types */}
-            <div className="grid grid-cols-4 gap-1">
+            {/* Mobile: Horizontal Marquee with Drag Support */}
+            <div 
+              className="md:hidden overflow-x-auto scrollbar-hide -mx-4 px-4 scroll-smooth touch-pan-x"
+              ref={marqueeContainerRef}
+              onTouchStart={handleMarqueeInteraction}
+              onTouchEnd={handleMarqueeInteractionEnd}
+              onScroll={handleMarqueeScroll}
+              onMouseDown={handleMarqueeInteraction}
+              onMouseUp={handleMarqueeInteractionEnd}
+              onMouseLeave={handleMarqueeInteractionEnd}
+            >
+              <div 
+                ref={marqueeContentRef}
+                className="flex gap-1"
+                style={{ width: 'max-content' }}
+              >
+                {workspaceTypes.map((type, i) => (
+                  <div
+                    key={i}
+                    className="flex flex-col items-center p-1.5 rounded-xl hover:bg-gray-900 hover:text-white cursor-pointer group flex-shrink-0 min-w-[80px]"
+                  >
+                    <div className="p-3 bg-gray-100 rounded-lg mb-1 group-hover:text-black ">{type.icon}</div>
+                    <div className="text-xs font-medium">{type.label}</div>
+                    <div className="text-xs">{type.sublabel}</div>
+                  </div>
+                ))}
+                {/* Duplicate for seamless loop */}
+                {workspaceTypes.map((type, i) => (
+                  <div
+                    key={`duplicate-${i}`}
+                    className="flex flex-col items-center p-1.5 rounded-xl hover:bg-gray-900 hover:text-white cursor-pointer group flex-shrink-0 min-w-[80px]"
+                  >
+                    <div className="p-3 bg-gray-100 rounded-lg mb-1 group-hover:text-black ">{type.icon}</div>
+                    <div className="text-xs font-medium">{type.label}</div>
+                    <div className="text-xs">{type.sublabel}</div>
+                  </div>
+                ))}
+              </div>
+            </div>
+            {/* Desktop: Grid */}
+            <div className="hidden md:grid grid-cols-4 gap-1">
               {workspaceTypes.map((type, i) => (
                 <div
                   key={i}

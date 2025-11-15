@@ -8,3 +8,13 @@
   --color-goldt:oklch(0.7957 0.0924 82.2);
 }
 
+/* Hide scrollbar */
+.scrollbar-hide {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;
+}
+
