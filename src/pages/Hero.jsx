@@ -239,6 +239,8 @@ const Hero = () => {
   const marqueeContentRef = useRef(null);
   const animationFrameRef = useRef(null);
   const scrollTimeoutRef = useRef(null);
+  const isUserScrollingRef = useRef(false);
+  const lastScrollLeftRef = useRef(0);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -251,6 +253,9 @@ const Hero = () => {
     return () => {
       if (scrollTimeoutRef.current) {
         clearTimeout(scrollTimeoutRef.current);
+      }
+      if (animationFrameRef.current) {
+        cancelAnimationFrame(animationFrameRef.current);
       }
     };
   }, []);
@@ -266,27 +271,45 @@ const Hero = () => {
 
     const container = marqueeContainerRef.current;
     const content = marqueeContentRef.current;
-    const scrollSpeed = 2; // pixels per frame (smooth continuous movement at ~120px/sec)
-    const contentWidth = content.scrollWidth / 2; // Half because we duplicate items
+    const scrollSpeed = 1.5; // pixels per frame (smooth continuous movement)
+    
+    // Calculate content width - need to wait for layout
+    const getContentWidth = () => {
+      if (!content) return 0;
+      const firstChild = content.firstElementChild;
+      if (!firstChild) return 0;
+      // Calculate width of one set of items
+      return Array.from(content.children)
+        .slice(0, workspaceTypes.length)
+        .reduce((sum, child) => sum + child.offsetWidth + 4, 0); // 4px for gap-1
+    };
 
     const animate = () => {
-      if (container && !isMarqueePaused) {
+      if (container && !isMarqueePaused && !isUserScrollingRef.current) {
+        const contentWidth = getContentWidth();
+        if (contentWidth === 0) {
+          animationFrameRef.current = requestAnimationFrame(animate);
+          return;
+        }
+        
         let currentScroll = container.scrollLeft;
         currentScroll += scrollSpeed;
         
-        // Reset to 0 when we've scrolled through one set of items
+        // Seamless loop: when we reach the end of first set, reset seamlessly
         if (currentScroll >= contentWidth) {
-          currentScroll = 0;
+          currentScroll = currentScroll - contentWidth;
         }
         
         container.scrollLeft = currentScroll;
+        lastScrollLeftRef.current = currentScroll;
         animationFrameRef.current = requestAnimationFrame(animate);
-      } else if (animationFrameRef.current) {
-        cancelAnimationFrame(animationFrameRef.current);
+      } else if (animationFrameRef.current && !isMarqueePaused && !isUserScrollingRef.current) {
+        // Resume animation if not paused and user not scrolling
+        animationFrameRef.current = requestAnimationFrame(animate);
       }
     };
 
-    if (!isMarqueePaused) {
+    if (!isMarqueePaused && !isUserScrollingRef.current) {
       animationFrameRef.current = requestAnimationFrame(animate);
     }
 
@@ -299,6 +322,7 @@ const Hero = () => {
 
   // Handle marquee pause/resume on interaction
   const handleMarqueeInteraction = () => {
+    isUserScrollingRef.current = true;
     setIsMarqueePaused(true);
     // Clear any existing timeout
     if (scrollTimeoutRef.current) {
@@ -313,20 +337,59 @@ const Hero = () => {
     }
     // Resume after a short delay
     scrollTimeoutRef.current = setTimeout(() => {
+      isUserScrollingRef.current = false;
       setIsMarqueePaused(false);
-    }, 1500);
+    }, 2000);
   };
 
   const handleMarqueeScroll = () => {
-    setIsMarqueePaused(true);
+    if (!marqueeContainerRef.current || !marqueeContentRef.current) return;
+    
+    const container = marqueeContainerRef.current;
+    const content = marqueeContentRef.current;
+    
+    // Calculate content width same way as animation
+    const getContentWidth = () => {
+      if (!content) return 0;
+      const firstChild = content.firstElementChild;
+      if (!firstChild) return 0;
+      return Array.from(content.children)
+        .slice(0, workspaceTypes.length)
+        .reduce((sum, child) => sum + child.offsetWidth + 4, 0);
+    };
+    
+    const contentWidth = getContentWidth();
+    if (contentWidth === 0) return;
+    
+    const currentScroll = container.scrollLeft;
+    
+    // Detect if user is scrolling (not auto-scroll)
+    const scrollDelta = Math.abs(currentScroll - lastScrollLeftRef.current);
+    if (scrollDelta > 3) {
+      isUserScrollingRef.current = true;
+      setIsMarqueePaused(true);
+    }
+    
+    lastScrollLeftRef.current = currentScroll;
+    
+    // Handle seamless loop during manual scroll (infinite scroll in both directions)
+    if (currentScroll >= contentWidth) {
+      container.scrollLeft = currentScroll - contentWidth;
+      lastScrollLeftRef.current = container.scrollLeft;
+    } else if (currentScroll <= 0) {
+      container.scrollLeft = contentWidth + currentScroll;
+      lastScrollLeftRef.current = container.scrollLeft;
+    }
+    
     // Clear any existing timeout
     if (scrollTimeoutRef.current) {
       clearTimeout(scrollTimeoutRef.current);
     }
     // Resume after scrolling stops
     scrollTimeoutRef.current = setTimeout(() => {
+      isUserScrollingRef.current = false;
       setIsMarqueePaused(false);
-    }, 1500);
+    }, 2000);
   };
 
   return (
@@ -403,10 +466,16 @@ const Hero = () => {
             {/* Workspace Types */}
             {/* Mobile: Horizontal Marquee with Drag Support */}
             <div 
-              className="md:hidden overflow-x-auto scrollbar-hide -mx-4 px-4 scroll-smooth touch-pan-x"
+              className="md:hidden overflow-x-auto scrollbar-hide -mx-4 px-4 touch-pan-x"
               ref={marqueeContainerRef}
+              style={{ 
+                scrollbarWidth: 'none',
+                msOverflowStyle: 'none',
+                WebkitOverflowScrolling: 'touch'
+              }}
               onTouchStart={handleMarqueeInteraction}
               onTouchEnd={handleMarqueeInteractionEnd}
+              onTouchMove={handleMarqueeScroll}
               onScroll={handleMarqueeScroll}
               onMouseDown={handleMarqueeInteraction}
               onMouseUp={handleMarqueeInteractionEnd}
