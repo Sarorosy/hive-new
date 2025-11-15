@@ -102,7 +102,7 @@ export default function Footer() {
               <a
                 href="https://www.facebook.com/hiveworkspaces/"
                 target="_blank"
-                className="text-gold hover:text-white transition"
+                className="text-gold transition"
               >
                 <Facebook className="stroke-[1.2]" />
               </a>
@@ -110,7 +110,7 @@ export default function Footer() {
               <a
                 href="https://www.instagram.com/hiveworkspaces/"
                 target="_blank"
-                className="text-gold hover:text-white transition"
+                className="text-gold transition"
               >
                 <Instagram className="stroke-[1.2]" />
               </a>
@@ -118,7 +118,7 @@ export default function Footer() {
               <a
                 href="https://www.linkedin.com/company/hiveworkspaces"
                 target="_blank"
-                className="text-gold hover:text-white transition"
+                className="text-gold transition"
               >
                 <Linkedin className="stroke-[1.2]" />
               </a>
@@ -126,7 +126,7 @@ export default function Footer() {
               <a
                 href="https://twitter.com/hiveworkspaces?s=20"
                 target="_blank"
-                className="text-gold hover:text-white transition"
+                className="text-gold transition"
               >
                 <Twitter className="stroke-[1.2]" />
               </a>
