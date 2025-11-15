@@ -1,5 +1,10 @@
 import React from "react";
 import { Star } from "lucide-react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Navigation, Pagination, Autoplay } from "swiper/modules";
+import "swiper/css";
+import "swiper/css/navigation";
+import "swiper/css/pagination";
 
 const testimonials = [
   {
@@ -38,10 +43,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-white py-12 px-6 lg:px-20">
-      <div className="max-w-7xl mx-auto">
+    <section className="bg-white py-12">
+      <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-12">
         {/* Heading */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center">
           <div>
             <p className="text-gray-500 text-sm mb-2 ">/ Testimonials /</p>
             <h2 className="text-4xl font-bold leading-snug mb-4 font-serif">
@@ -53,44 +58,46 @@ export default function Testimonials() {
             vulputate eleifend tellus.
           </p>
         </div>
+      </div>
 
-        {/* Testimonials Grid */}
-        <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {/* Testimonials Carousel - Full Width */}
+      <div className="w-full">
+        <Swiper
+          modules={[Navigation, Pagination, Autoplay]}
+          spaceBetween={0}
+          slidesPerView={1}
+          navigation={true}
+          pagination={{ clickable: true }}
+          autoplay={{ delay: 5000, disableOnInteraction: false }}
+          loop={true}
+          className="testimonials-swiper w-full"
+        >
           {testimonials.map((t, index) => (
-            <div
-              key={index}
-              className="bg-gray-50 rounded-xl p-6 flex flex-col justify-between shadow-sm"
-            >
-              <p className="text-black text-3xl mb-4">❝</p>
-              <p className="text-gray-600 mb-6">{t.quote}</p>
-
-              <div className="flex items-center gap-4 mt-auto">
-
-                {/* <div className={`w-10 h-10 rounded-full object-cover font-serif flex items-center justify-center ${t.class}`}>
-                {t.name.charAt(0)}
-                </div> */}
-                <div>
-                  {/* Gradient Gold Stars */}
-                  <div className="flex">
-                    {[...Array(5)].map((_, i) => (
-                      <span
-                        key={i}
-                        className="mr-1 text-lg bg-gradient-to-br from-goldt via-gold to-goldt bg-clip-text text-transparent"
-                      >
-                        ★
-                      </span>
-                    ))}
+            <SwiperSlide key={index} className="w-full">
+              <div
+                className="bg-gray-50 flex flex-col justify-center shadow-sm relative overflow-hidden min-h-[250px] w-full px-6 lg:px-20 py-8"
+                style={{ 
+                  backgroundImage: 'url(/test.jpg)',
+                  backgroundSize: 'cover',
+                  backgroundRepeat: 'no-repeat',
+                  backgroundPosition: 'center'
+                }}
+              >
+                <div className="absolute inset-0 bg-black/40"></div>
+                <div className="relative z-10 flex flex-row items-center justify-between h-full w-full max-w-6xl mx-auto gap-8">
+                  <div className="flex-1">
+                    <p className="text-white text-2xl mb-3">❝</p>
+                    <p className="text-white mb-4 text-lg lg:text-xl leading-relaxed">{t.quote}</p>
                   </div>
-
-                  <p className="font-semibold">{t.name}</p>
-                  <p className="text-sm text-gray-500">{t.role}</p>
+                  <div className="flex-shrink-0">
+                    <p className="font-semibold text-white text-lg lg:text-xl text-right">{t.name}</p>
+                    {/* <p className="text-sm text-gray-500">{t.role}</p> */}
+                  </div>
                 </div>
               </div>
-            </div>
+            </SwiperSlide>
           ))}
-        </div>
-
-
+        </Swiper>
       </div>
     </section>
   );
