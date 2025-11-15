@@ -1,10 +1,5 @@
 import React from "react";
 import { Star } from "lucide-react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
 
 const testimonials = [
   {
@@ -43,10 +38,10 @@ const testimonials = [
 
 export default function Testimonials() {
   return (
-    <section className="bg-white py-12">
-      <div className="max-w-7xl mx-auto px-6 lg:px-20 mb-12">
+    <section className="bg-white py-12 px-6 lg:px-20 relative overflow-hidden">
+      <div className="mx-auto">
         {/* Heading */}
-        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center">
+        <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 relative z-10">
           <div>
             <p className="text-gray-500 text-sm mb-2 ">/ Testimonials /</p>
             <h2 className="text-4xl font-bold leading-snug mb-4 font-serif">
@@ -58,46 +53,45 @@ export default function Testimonials() {
             vulputate eleifend tellus.
           </p>
         </div>
-      </div>
 
-      {/* Testimonials Carousel - Full Width */}
-      <div className="w-full">
-        <Swiper
-          modules={[Navigation, Pagination, Autoplay]}
-          spaceBetween={0}
-          slidesPerView={1}
-          navigation={true}
-          pagination={{ clickable: true }}
-          autoplay={{ delay: 5000, disableOnInteraction: false }}
-          loop={true}
-          className="testimonials-swiper w-full"
+        {/* Testimonials Grid with Background Image */}
+        <div 
+          className="grid gap-6 md:grid-cols-2 lg:grid-cols-4 relative rounded-xl"
+          id="testimonials"
+          style={{
+            backgroundImage: 'url(/hotdesk.jpg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            padding: '2rem',
+            position: 'relative'
+          }}
         >
+          {/* Overlay for better contrast */}
+          <div className="absolute inset-0 bg-black/20 rounded-xl"></div>  
+          
           {testimonials.map((t, index) => (
-            <SwiperSlide key={index} className="w-full">
-              <div
-                className="bg-gray-50 flex flex-col justify-center shadow-sm relative overflow-hidden min-h-[250px] w-full px-6 lg:px-20 py-8"
-                style={{ 
-                  backgroundImage: 'url(/test.jpg)',
-                  backgroundSize: 'cover',
-                  backgroundRepeat: 'no-repeat',
-                  backgroundPosition: 'center'
-                }}
-              >
-                <div className="absolute inset-0 bg-black/40"></div>
-                <div className="relative z-10 flex flex-row items-center justify-between h-full w-full max-w-6xl mx-auto gap-8">
-                  <div className="flex-1">
-                    <p className="text-white text-2xl mb-3">❝</p>
-                    <p className="text-white mb-4 text-lg lg:text-xl leading-relaxed">{t.quote}</p>
-                  </div>
-                  <div className="flex-shrink-0">
-                    <p className="font-semibold text-white text-lg lg:text-xl text-right">{t.name}</p>
-                    {/* <p className="text-sm text-gray-500">{t.role}</p> */}
-                  </div>
+            <div
+              key={index}
+              className="relative z-10 rounded-xl p-6 flex flex-col justify-between backdrop-blur-md bg-white/20 border border-white/30 shadow-lg hover:bg-white/30 transition-all duration-300"
+              id={`testimonial-${index}`}
+              style={{
+                backdropFilter: 'blur(12px) saturate(180%)',
+                WebkitBackdropFilter: 'blur(12px) saturate(180%)',
+              }}
+            >
+              <p className="text-white mb-6 drop-shadow-md leading-relaxed">{t.quote}</p>
+
+              <div className="flex items-center gap-4 mt-auto">
+                <div>
+                  <p className="font-semibold text-white drop-shadow-md">{t.name}</p>
                 </div>
               </div>
-            </SwiperSlide>
+            </div>
           ))}
-        </Swiper>
+        </div>
+
+
       </div>
     </section>
   );
