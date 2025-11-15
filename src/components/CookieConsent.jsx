@@ -126,7 +126,7 @@ export default function CookieConsent({ isContactFormOpen = false }) {
     setPreferences((prev) => ({ ...prev, [key]: !prev[key] }));
 
   return (
-    <div className="fixed inset-x-0 bottom-0 z-50 px-4 pb-4 pointer-events-none">
+    <div className="fixed inset-x-0 bottom-0 z-[9999] px-4 pb-4 pointer-events-none">
       <div className="pointer-events-auto mx-auto max-w-2xl rounded-2xl border border-slate-200 bg-white/98 backdrop-blur-xl shadow-[0_20px_60px_rgba(15,23,42,0.15)] transform transition-all duration-300 ease-out translate-y-0 opacity-100">
         <div className="px-4 py-3.5 space-y-3 text-slate-800">
           {/* Compact Header */}
