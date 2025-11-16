@@ -6,6 +6,8 @@ import { API_URL } from "../../utils/constants";
 import ProductLoader from "./ProductLoader";
 import toast from "react-hot-toast";
 import { useAuth } from "../../utils/idb";
+import ShareModal from "../../components/ShareModal";
+import { Share2 } from "lucide-react";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -27,6 +29,9 @@ const ProductPage = () => {
   const [timeSlots, setTimeSlots] = useState([]);
   const [selectedSlot, setSelectedSlot] = useState(null);
   const [hourRange, setHourRange] = useState({ start: null, end: null });
+
+  // Share modal state
+  const [isShareModalOpen, setIsShareModalOpen] = useState(false);
 
   const today = startOfDay(new Date());
 
@@ -619,7 +624,17 @@ const ProductPage = () => {
               {product.category_name}
             </span>
           )}
-          <h1 className="text-3xl font-bold mt-4">{product.title}</h1>
+          <div className="flex items-center justify-between mt-4">
+            <h1 className="text-3xl font-bold">{product.title}</h1>
+            <button
+              onClick={() => setIsShareModalOpen(true)}
+              className="flex items-center gap-2 px-4 py-2 rounded-lg border border-gray-300 hover:bg-gray-50 transition-colors duration-200"
+              aria-label="Share product"
+            >
+              <Share2 className="w-5 h-5 text-gray-600" />
+              <span className="text-sm font-medium text-gray-700">Share</span>
+            </button>
+          </div>
 
           <div className="mt-4">
             <p className="text-2xl font-bold text-green-600 shimmer">
@@ -957,6 +972,15 @@ const ProductPage = () => {
           </div>
         </div>
       )}
+
+      {/* Share Modal */}
+      <ShareModal
+        isOpen={isShareModalOpen}
+        onClose={() => setIsShareModalOpen(false)}
+        productTitle={product?.title || ""}
+        productUrl={window.location.href}
+        productImage={product?.thumbnail ? getImageUrl(product.thumbnail) : ""}
+      />
     </>
   );
 };

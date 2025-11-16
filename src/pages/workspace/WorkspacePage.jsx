@@ -66,7 +66,7 @@ const WorkspacePage = () => {
 
   const formatPrice = (price) => {
     if (price >= 1000) {
-      return `₹${(price / 1000).toFixed(0)}K`;
+      return `₹${(price / 1000).toFixed(1)}K`;
     }
     return `₹${price}`;
   };

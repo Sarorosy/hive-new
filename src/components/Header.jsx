@@ -300,12 +300,12 @@ const Header = ({ onBookTourClick }) => {
               Enterprise Solutions
             </button>
 
-            <button
+            {/* <button
               onClick={() => navigate("/day_pass")}
               className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
             >
               Day Pass
-            </button>
+            </button> */}
 
             <button
               onClick={() => navigate("/landlord-relationships")}
@@ -519,12 +519,12 @@ const Header = ({ onBookTourClick }) => {
               Enterprise Solutions
             </button>
 
-          <button
+          {/* <button
               onClick={() => navigate("/day_pass")}
               className="block w-full text-left hover:underline transition-all duration-200"
             >
               Day Pass
-            </button>
+            </button> */}
 
             <button
               onClick={() => navigate("/landlord-relationships")}

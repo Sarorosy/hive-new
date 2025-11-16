@@ -373,7 +373,7 @@ export const workspaces = [
     targetAudience: 'Businesses of all sizes hosting meetings, training, and events',
     capacity: '2-200 people',
     pricing: {
-      from: 1500,
+      from: 3500,
       period: 'hour'
     }
   }

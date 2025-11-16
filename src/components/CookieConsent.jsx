@@ -131,7 +131,7 @@ export default function CookieConsent({ isContactFormOpen = false }) {
         <div className="px-4 py-3.5 space-y-3 text-slate-800">
           {/* Compact Header */}
           <div className="flex items-center gap-3">
-            <div className="flex-shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 text-amber-600">
+            <div className="flex-shrink-0 inline-flex h-10 w-10 items-center justify-center rounded-xl bg-black text-orange-400">
               <Cookie size={20} />
             </div>
             <div className="flex-1 min-w-0">
@@ -226,7 +226,7 @@ export default function CookieConsent({ isContactFormOpen = false }) {
               )}
               <button
                 type="button"
-                className="btn-cookie-primary text-xs px-4 py-1.5"
+                className="bg-orange-400 text-white rounded-2xl hover:bg-orange-500 transition-colors text-xs px-4 py-1.5"
                 onClick={() =>
                   saveConsent({ analytics: true, personalization: true })
                 }
