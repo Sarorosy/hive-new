@@ -1,1 +1,2 @@
+*.mp4 filter=lfs diff=lfs merge=lfs -text
 public/THE_HIVE_BRAND_VIDEO.mp4 filter=lfs diff=lfs merge=lfs -text
