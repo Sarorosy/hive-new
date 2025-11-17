@@ -7,7 +7,7 @@ import ProductLoader from "./ProductLoader";
 import toast from "react-hot-toast";
 import { useAuth } from "../../utils/idb";
 import ShareModal from "../../components/ShareModal";
-import { Share2 } from "lucide-react";
+import { Calendar, BadgePercent, Share2 } from "lucide-react";
 
 const ProductPage = () => {
   const navigate = useNavigate();
@@ -655,7 +655,7 @@ const ProductPage = () => {
               return (
                 <div className="mt-4">
                   <h3 className="text-lg font-semibold text-gray-800 mb-3 flex items-center gap-2">
-                    <span className="text-orange-500">🎉</span>
+                    <span className="text-orange-500"><BadgePercent /></span>
                     Available Offers
                   </h3>
 
@@ -728,7 +728,7 @@ const ProductPage = () => {
                   {currentDiscount && (
                     <div className="mt-3 p-3 bg-green-50 border border-green-200 rounded-lg">
                       <p className="text-sm text-green-700 font-medium">
-                        🎯 You're currently getting the best available discount!
+                      You're currently getting the best available discount!
                       </p>
                     </div>
                   )}
@@ -842,7 +842,7 @@ const ProductPage = () => {
 
           <div className="mt-4 bg-gradient-to-r from-orange-50 to-amber-50 border border-orange-200 p-4 rounded-xl">
             <div className="flex items-center gap-2 mb-3">
-              <span className="text-orange-600">📅</span>
+              <span className="text-orange-600"><Calendar /></span>
               <span className="font-semibold text-gray-800">Booking Summary</span>
             </div>
 
@@ -929,7 +929,7 @@ const ProductPage = () => {
                     return (
                       <div className="mt-2 p-2 bg-green-100 border border-green-200 rounded-lg">
                         <div className="flex items-center justify-between">
-                          <span className="text-sm font-medium text-green-800">🎉 Discount Applied!</span>
+                          <span className="text-sm font-medium text-green-800 flex items-center gap-2"> Discount Applied!</span>
                           <span className="text-sm font-bold text-green-600">
                             You save ₹{savings.toLocaleString("en-IN", { maximumFractionDigits: 2 })}
                           </span>
