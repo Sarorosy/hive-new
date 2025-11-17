@@ -27,7 +27,7 @@ const SmallAbout = () => {
 
                 {/* Right side */}
                 <div className="md:col-span-2 flex flex-col h-[520px]">
-                    {/* Top two images filling height */}
+                    
                     {/* Top two images filling height */}
                     <div className="flex flex-1 gap-6">
                         <div className="group flex-1 basis-1/2 overflow-hidden rounded-xl transition-[flex-basis] duration-500 hover:basis-[85%]">
@@ -39,7 +39,7 @@ const SmallAbout = () => {
                         </div>
                         <div className="group flex-1 basis-1/2 overflow-hidden rounded-xl transition-[flex-basis] duration-500 hover:basis-[85%]">
                             <img
-                                src="/HiveHyd_15-Seater-Cabin.jpg"
+                                src="/ecosystem/hyadr/HiveHyderabad_8-Seater-MR.jpg"
                                 alt="Cafe workspace"
                                 className="w-full h-full object-cover"
                             />

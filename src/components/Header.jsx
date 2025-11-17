@@ -300,6 +300,13 @@ const Header = ({ onBookTourClick }) => {
               Enterprise Solutions
             </button>
 
+            <button
+              onClick={() => navigate("/landlord-relationships")}
+              className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
+            >
+              Landlord Relationships
+            </button>
+
             {/* <button
               onClick={() => navigate("/day_pass")}
               className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
@@ -510,6 +517,13 @@ const Header = ({ onBookTourClick }) => {
               className="block w-full text-left hover:underline transition-all duration-200"
             >
               Enterprise Solutions
+            </button>
+
+          <button
+              onClick={() => navigate("/landlord-relationships")}
+              className="block w-full text-left hover:underline transition-all duration-200"
+            >
+              Landlord Relationships
             </button>
 
           {/* <button

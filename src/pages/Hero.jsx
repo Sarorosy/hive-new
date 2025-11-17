@@ -91,12 +91,12 @@ const cityBranches = {
 };
 
 const offerings = [
-  {
-    icon: "/icons/additional.svg",
-    title: "Day Pass",
-    slug: "day-pass",
-    subtitle: "Solutions that go beyond workspaces"
-  },
+  // {
+  //   icon: "/icons/additional.svg",
+  //   title: "Day Pass",
+  //   slug: "day-pass",
+  //   subtitle: "Solutions that go beyond workspaces"
+  // },
   {
     icon: "/icons/coworking.svg",
     title: "Coworking Spaces",
