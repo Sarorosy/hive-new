@@ -39,7 +39,7 @@ const SmallAbout = () => {
                         </div>
                         <div className="group flex-1 basis-1/2 overflow-hidden rounded-xl transition-[flex-basis] duration-500 hover:basis-[85%]">
                             <img
-                                src={five}
+                                src="/HiveHyd_15-Seater-Cabin.jpg"
                                 alt="Cafe workspace"
                                 className="w-full h-full object-cover"
                             />

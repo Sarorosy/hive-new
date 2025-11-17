@@ -226,7 +226,7 @@ export default function CookieConsent({ isContactFormOpen = false }) {
               )}
               <button
                 type="button"
-                className="bg-orange-400 text-white rounded-2xl hover:bg-orange-500 transition-colors text-xs px-4 py-1.5"
+                className="bg-black text-white rounded-2xl hover:bg-gray-900 transition-colors text-xs px-4 py-1.5"
                 onClick={() =>
                   saveConsent({ analytics: true, personalization: true })
                 }
