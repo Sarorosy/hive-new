@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { MapPin, Car, Users, Monitor, Heart, ChevronDown } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 
@@ -8,6 +8,9 @@ const ChoosePreference = ({ cityData, centersData }) => {
     const branches = Object.entries(cityData.branches);
 
     const [selectedAreas, setSelectedAreas] = useState(["all"]);
+    const [selectedBranchKey, setSelectedBranchKey] = useState(
+        branches[0]?.[0] ?? null
+    );
 
     const toggleArea = (key) => {
         if (selectedAreas.includes("all")) {
@@ -37,6 +40,20 @@ const ChoosePreference = ({ cityData, centersData }) => {
         selectedAreas.includes("all")
             ? branches
             : branches.filter(([key]) => selectedAreas.includes(key));
+
+    useEffect(() => {
+        if (!filteredBranches.length) {
+            setSelectedBranchKey(null);
+            return;
+        }
+
+        const branchExists = filteredBranches.some(([key]) => key === selectedBranchKey);
+        if (!branchExists) {
+            setSelectedBranchKey(filteredBranches[0][0]);
+        }
+    }, [filteredBranches, selectedBranchKey]);
+
+    const activeBranch = filteredBranches.find(([key]) => key === selectedBranchKey)?.[1] ?? null;
 
 
     const [open, setOpen] = useState(false);
@@ -152,7 +169,9 @@ const ChoosePreference = ({ cityData, centersData }) => {
                     {filteredBranches.map(([key, branch]) => (
                         <div
                             key={key}
-                            className="border rounded-lg p-4 cursor-pointer hover:shadow-lg transition"
+                            className={`border rounded-lg p-4 cursor-pointer hover:shadow-lg transition ${selectedBranchKey === key ? "border-blue-500 shadow-lg" : ""
+                                }`}
+                            onClick={() => setSelectedBranchKey(key)}
                         >
                             <div className="flex items-start gap-4">
                                 <img
@@ -186,9 +205,9 @@ const ChoosePreference = ({ cityData, centersData }) => {
                 {/* Right - Map */}
                 {showMap && (
                     <div className="h-[500px] w-full border rounded-lg overflow-hidden sticky top-0">
-                        {filteredBranches.length > 0 ? (
+                        {activeBranch ? (
                             <iframe
-                                src={filteredBranches[0][1].map}
+                                src={activeBranch.map}
                                 width="100%"
                                 height="100%"
                                 allowFullScreen=""
