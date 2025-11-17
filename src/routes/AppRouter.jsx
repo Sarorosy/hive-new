@@ -25,6 +25,7 @@ import AllFaq from "../pages/faq/AllFaq";
 import DayPass from "../pages/daypass/DayPass";
 import MarzipanoViewer from "../pages/MarzipanoViewer";
 import Test from "../pages/account/Test";
+import EcosystemPage from "../pages/EcosystemPage";
 import AdminPrivateRoute from "./AdminPrivateRoute";
 import WebmasterLayout from "../layouts/WebmasterLayout";
 import Login from "../pages/webmaster/Login";
@@ -154,6 +155,7 @@ export default function AppRouter() {
 
             <Route path="/support/faq" element={<AllFaq />} />
             <Route path="/day_pass" element={<DayPass />} />
+            <Route path="/Ecosystem" element={<EcosystemPage />} />
 
             <Route path="/cart" element={<Cart />} />
 

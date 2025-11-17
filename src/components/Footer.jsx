@@ -39,6 +39,7 @@ export default function Footer() {
               { title: "Home", slug: "/" },
               { title: "Careers", slug: "/careers" },
               { title: "Blogs", slug: "/blog" },
+              { title: "Landlord Relationships", slug: "/landlord-relationships" },
               { title: "Terms & Conditions", slug: "/terms-and-conditions" },
               { title: "Refund Policy", slug: "/refund-policy" },
               { title: "Cookie Policy", slug: "/cookie-policy" },

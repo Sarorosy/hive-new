@@ -177,8 +177,8 @@ const ProductPage = () => {
       if (data.status) {
         setProduct(data.data || null);
         setDiscounts(data.data?.discounts || []);
-        console.log("Fetched product:", data.data);
-        console.log("Fetched discounts:", data.data?.discounts);
+        // console.log("Fetched product:", data.data);
+        // console.log("Fetched discounts:", data.data?.discounts);
       } else {
         console.error(data.message || "Failed to fetch product");
         setProduct(null);

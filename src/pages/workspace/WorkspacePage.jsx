@@ -66,11 +66,16 @@ const WorkspacePage = () => {
 
   const formatPrice = (price) => {
     if (price >= 1000) {
-      return `₹${(price / 1000).toFixed(1)}K`;
+      let val = (price / 1000).toFixed(1); // produces 1.0, 10.0, 3.5 etc.
+  
+      // Remove trailing ".0"
+      val = val.endsWith(".0") ? val.slice(0, -2) : val;
+  
+      return `₹${val}K`;
     }
     return `₹${price}`;
   };
-
+  
   const amenityIcons = {
     "High-Speed Internet": Wifi,
     "Coffee & Tea": Coffee,
