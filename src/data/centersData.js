@@ -119,11 +119,11 @@ import pune6 from "../assets/raw/pune/_VAL1233.jpg";
 import pune7 from "../assets/raw/pune/C0121T01.jpg";
 import pune8 from "../assets/raw/pune/C0125T01.jpg";
 import pune9 from "../assets/raw/pune/C0122T01.jpg";
-import pune10 from "../assets/raw/pune/PUR03658-min.jpg";
-import pune11 from "../assets/raw/pune/PUR03663-min.jpg";
-import pune12 from "../assets/raw/pune/PUR04101-min.jpg";
-import pune13 from "../assets/raw/pune/PUR03650-min.jpg";
-import pune14 from "../assets/raw/pune/PUR03651-min.jpg";
+import pune10 from "../assets/raw/pune/PUR03658-min.JPG";
+import pune11 from "../assets/raw/pune/PUR03663-min.JPG";
+import pune12 from "../assets/raw/pune/PUR04101-min.JPG";
+import pune13 from "../assets/raw/pune/PUR03650-min.JPG";
+import pune14 from "../assets/raw/pune/PUR03651-min.JPG";
 
 
 export const centersData = {
