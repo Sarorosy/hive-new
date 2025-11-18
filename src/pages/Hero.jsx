@@ -136,7 +136,7 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
     <div className="relative " ref={ref}>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full border border-gray-200 rounded-xl px-3 py-2 cursor-pointer hover:border-black transition"
+        className="flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 cursor-pointer hover:border-black transition"
       >
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4 text-gray-400" />
@@ -189,7 +189,7 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
     <div className="relative" ref={ref}>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full border border-gray-200 rounded-xl px-3 py-2 cursor-pointer hover:border-black transition"
+        className="flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 cursor-pointer hover:border-black transition"
       >
         <div className="flex items-center gap-2">
           <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
@@ -446,7 +446,7 @@ const Hero = () => {
           </div>
 
           {/* Right Side Form */}
-          <div className="bg-white rounded-2xl p-4 w-full max-w-[380px] ml-auto space-y-3">
+          <div className="bg-white rounded-lg p-4 w-full max-w-[380px] ml-auto space-y-3">
             <div className="space-y-4">
               <CityDropdown
                 selected={selectedCity}
@@ -463,10 +463,9 @@ const Hero = () => {
               />
             </div>
 
-            {/* Workspace Types */}
-            {/* Mobile: Horizontal Marquee with Drag Support */}
+            {/* Workspace Types - Marquee Scroll for Both Mobile and Desktop */}
             <div 
-              className="md:hidden overflow-x-auto scrollbar-hide -mx-4 px-4 touch-pan-x"
+              className="overflow-x-auto scrollbar-hide -mx-4 px-4 touch-pan-x"
               ref={marqueeContainerRef}
               style={{ 
                 scrollbarWidth: 'none',
@@ -508,19 +507,6 @@ const Hero = () => {
                   </div>
                 ))}
               </div>
-            </div>
-            {/* Desktop: Grid */}
-            <div className="hidden md:grid grid-cols-4 gap-1">
-              {workspaceTypes.map((type, i) => (
-                <div
-                  key={i}
-                  className="flex flex-col items-center p-1.5 rounded-xl hover:bg-gray-900 hover:text-white cursor-pointer group"
-                >
-                  <div className="p-3 bg-gray-100 rounded-lg mb-1 group-hover:text-black ">{type.icon}</div>
-                  <div className="text-xs font-medium">{type.label}</div>
-                  <div className="text-xs">{type.sublabel}</div>
-                </div>
-              ))}
             </div>
 
             {/* Search Button */}
