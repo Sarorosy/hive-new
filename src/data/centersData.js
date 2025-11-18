@@ -91,6 +91,13 @@ import blr17 from "../assets/raw/blr/IMG_20250318_123453359.jpg";
 import wh1 from '../assets/raw/blr/whitefield/Common-Areas_2.jpg';
 import wh2 from '../assets/raw/blr/whitefield/Hive-Blr_-Reception.jpg';
 import wh3 from '../assets/raw/blr/whitefield/HiveBlr_Cabin3.jpg';
+import wh4 from '../assets/raw/blr/whitefield/_SPL9460-min.jpg';
+import wh5 from '../assets/raw/blr/whitefield/_SPL9466-min.jpg';
+import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.jpg';
+import wh7 from '../assets/raw/blr/whitefield/_SPL9535-min.jpg';
+import wh8 from '../assets/raw/blr/whitefield/_SPL9549-min.jpg';
+import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.jpg';
+import wh10 from '../assets/raw/blr/whitefield/_SPL9783-min.jpg';
 
 //images for Hyderabad
 import hyd1 from "../assets/raw/hyd/HiveHyd_15-Seater-Cabin.jpg";
@@ -98,6 +105,9 @@ import hyd2 from "../assets/raw/hyd/HiveHyd_Enterprise-Pantry_11zon.jpg";
 import hyd3 from "../assets/raw/hyd/HiveHyd_Pantry_11zon.jpg";
 import hyd4 from "../assets/raw/hyd/HiveHyderabad_8-Seater-MR.jpg";
 import hyd5 from "../assets/raw/hyd/PUR01493-min.jpg";
+import hyd6 from "../assets/raw/hyd/PUR01489-min.jpg";
+import hyd7 from "../assets/raw/hyd/PUR01544-min.jpg";
+import hyd8 from "../assets/raw/hyd/PUR01637-min.jpg";
 
 //images for Pune
 import pune1 from "../assets/raw/pune/HivePune_18-Seater-MR.jpg";
@@ -109,6 +119,12 @@ import pune6 from "../assets/raw/pune/_VAL1233.jpg";
 import pune7 from "../assets/raw/pune/C0121T01.jpg";
 import pune8 from "../assets/raw/pune/C0125T01.jpg";
 import pune9 from "../assets/raw/pune/C0122T01.jpg";
+import pune10 from "../assets/raw/pune/PUR03658-min.jpg";
+import pune11 from "../assets/raw/pune/PUR03663-min.jpg";
+import pune12 from "../assets/raw/pune/PUR04101-min.jpg";
+import pune13 from "../assets/raw/pune/PUR03650-min.jpg";
+import pune14 from "../assets/raw/pune/PUR03651-min.jpg";
+
 
 export const centersData = {
   chennai: {
@@ -208,7 +224,7 @@ export const centersData = {
         ],
         details: "A dynamic coworking hub in the bustling Whitefield tech district.",
         images: [
-        blr4,wh1,wh2,wh3
+        wh4,wh5,wh6,wh7,wh8,wh9,wh10
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.614679956308!2d77.69306677512326!3d12.99647918732121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110b3c1ae257%3A0x338aab3b907ba3d6!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20VR%20Bengaluru!5e0!3m2!1sen!2sin!4v1755268041583!5m2!1sen!2sin",
         lat : "12.997064975550622",
@@ -251,7 +267,7 @@ export const centersData = {
         ],
         details: "Located in the IT hub of Gachibowli, ideal for startups and enterprises.",
         images: [
-          hyd2,hyd3,hyd1,hyd4
+          hyd6,hyd7,hyd8
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7801531452105!2d78.33395617521116!3d17.422335083470823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93455c8cb175%3A0xc500bc3048009943!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20Gachibowli%20Hyderabad!5e0!3m2!1sen!2sin!4v1755268250690!5m2!1sen!2sin",
         lat:"17.422550052708335",
@@ -279,7 +295,7 @@ export const centersData = {
         ],
         details: "Set in the vibrant cultural heart of Pune, combining heritage and modern workspaces.",
         images: [
-          pune1,pune2,pune3,pune4,pune5
+          pune10,pune11,pune12,pune13,pune14
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.9180653057538!2d73.8685052752371!3d18.532604382563267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c107842d09cd%3A0x27f3b911ea375cb4!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20The%20Mills!5e0!3m2!1sen!2sin!4v1755268291348!5m2!1sen!2sin",
         lat:"18.532807831841136",
