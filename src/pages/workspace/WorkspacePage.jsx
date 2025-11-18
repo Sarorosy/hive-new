@@ -89,20 +89,7 @@ const WorkspacePage = () => {
 
   // Get appropriate image based on workspace type
   const getWorkspaceImage = (slug) => {
-    const imageMapOld = {
-      "managed-offices":
-        "https://images.unsplash.com/photo-1497366216548-37526070297c?w=1200&h=600&fit=crop",
-      "enterprise-solutions":
-        "https://images.unsplash.com/photo-1497366811353-6870744d04b2?w=1200&h=600&fit=crop",
-      "private-cabins":
-        "https://images.unsplash.com/photo-1524758631624-e2822e304c36?w=1200&h=600&fit=crop",
-      "dedicated-desks":
-        "https://images.unsplash.com/photo-1497366754035-f200968a6e72?w=1200&h=600&fit=crop",
-      "hot-desks":
-        "https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=1200&h=600&fit=crop",
-      "meetings-and-event-spaces":
-        "https://images.unsplash.com/photo-1511578314322-379afb476865?w=1200&h=600&fit=crop",
-    };
+    
 
     const imageMap = {
       "managed-offices":
@@ -122,20 +109,7 @@ const WorkspacePage = () => {
   };
 
   const getSecondaryImage = (slug) => {
-    const imageMapOld = {
-      "managed-offices":
-        "https://images.unsplash.com/photo-1497366672149-e5e4b4d34eb3?w=800&h=500&fit=crop",
-      "enterprise-solutions":
-        "https://images.unsplash.com/photo-1559136555-9303baea8ebd?w=800&h=500&fit=crop",
-      "private-cabins":
-        "https://images.unsplash.com/photo-1557804506-669a67965ba0?w=800&h=500&fit=crop",
-      "dedicated-desks":
-        "https://images.unsplash.com/photo-1556761175-b413da4baf72?w=800&h=500&fit=crop",
-      "hot-desks":
-        "https://images.unsplash.com/photo-1542744173-8e7e53415bb0?w=800&h=500&fit=crop",
-      "meetings-and-event-spaces":
-        "https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=800&h=500&fit=crop",
-    };
+   
 
     const imageMap = {
       "managed-offices":
