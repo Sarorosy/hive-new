@@ -13,12 +13,12 @@ import six from '../assets/featured/6.jpg';
 
 //images for VR
 
-import vr1 from "../assets/raw/chn/vr/THEHIVEVR10.jpg";
-import vr2 from "../assets/raw/chn/vr/THEHIVEVR14.jpg";
-import vr3 from "../assets/raw/chn/vr/THEHIVEVR18.jpg";
-import vr5 from "../assets/raw/chn/vr/THEHIVEVR23.jpg";
-import vr6 from "../assets/raw/chn/vr/THEHIVEVR25.jpg";
-import vr7 from "../assets/raw/chn/vr/THEHIVEVR27.jpg";
+import vr1 from "../assets/raw/chn/vr/1.jpg";
+import vr2 from "../assets/raw/chn/vr/2.jpg";
+import vr3 from "../assets/raw/chn/vr/3.jpg";
+import vr5 from "../assets/raw/chn/vr/4.jpg";
+import vr6 from "../assets/raw/chn/vr/5.jpg";
+import vr7 from "../assets/raw/chn/vr/6.jpg";
 
 //images for chennai
 import ch1 from "../assets/raw/chn/YAV00095-min.JPG";
@@ -31,12 +31,12 @@ import ch77 from "../assets/raw/chn/skcl/IMGIDSHCVSHU.jpg";
 
 //images for OMR
 
-import omr1 from "../assets/raw/chn/omr/20200304_201547.jpg";
-import omr2 from "../assets/raw/chn/omr/20200304_202312.jpg";
-import omr3 from "../assets/raw/chn/omr/Hive_OMR_10-Seater.jpg";
-import omr4 from "../assets/raw/chn/omr/Hot-Desk_OMR-1.jpg";
-import omr5 from "../assets/raw/chn/omr/THEHIVE86.jpg";
-import omr6 from "../assets/raw/chn/omr/Hive_Enterprise_OMR.jpg";
+import omr1 from "../assets/raw/chn/omr/1.jpg";
+import omr2 from "../assets/raw/chn/omr/2.jpg";
+import omr3 from "../assets/raw/chn/omr/3.jpg";
+import omr4 from "../assets/raw/chn/omr/4.jpg";
+import omr5 from "../assets/raw/chn/omr/5.jpg";
+import omr6 from "../assets/raw/chn/omr/6.jpg";
 
 //images for chennai SKCL
 import skcl1 from "../assets/raw/chn/skcl/IMG_7932.JPG";
