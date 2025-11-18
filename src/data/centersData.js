@@ -39,12 +39,12 @@ import omr5 from "../assets/raw/chn/omr/5.jpg";
 import omr6 from "../assets/raw/chn/omr/6.jpg";
 
 //images for chennai SKCL
-import skcl1 from "../assets/raw/chn/skcl/IMG_7932.JPG";
-import skcl2 from "../assets/raw/chn/skcl/IMG665DA.jpeg";
-import skcl3 from "../assets/raw/chn/skcl/IMG83542.jpeg";
-import skcl4 from "../assets/raw/chn/skcl/IMGDHJDJS.jpeg";
-import skcl5 from "../assets/raw/chn/skcl/IMGGGSYA.jpeg";
-import skcl6 from "../assets/raw/chn/skcl/IMGGIISAH.jpeg";
+import skcl1 from "../assets/raw/chn/skcl/1.JPG";
+import skcl2 from "../assets/raw/chn/skcl/2.jpeg";
+import skcl3 from "../assets/raw/chn/skcl/3.jpeg";
+import skcl4 from "../assets/raw/chn/skcl/4.jpeg";
+import skcl5 from "../assets/raw/chn/skcl/5.jpeg";
+import skcl6 from "../assets/raw/chn/skcl/6.jpeg";
 
 
 //images for chennai Porur
