@@ -36,6 +36,7 @@ import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.jpg";
 
 import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpg";
 import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
+import privateCabins3 from "../../assets/offerings/privatecabins/1.jpg";
 
 import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpg";
 import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
@@ -45,6 +46,7 @@ import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
 
 import meetings from "../../assets/raw/chn/HVE04223-min.jpg";
 import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";
+import meetings3 from "../../assets/raw/blr/THEHIVEVR16.jpg";
 
 
 import whyChooseUs from "../../assets/raw/chn/skcl/IMG_7932.JPG";
@@ -108,13 +110,13 @@ const WorkspacePage = () => {
       "enterprise-solutions":
         EnterPriseSol,
       "private-cabins":
-        privateCabins,
+      privateCabins3,
       "dedicated-desks":
         dedicatedDesks,
       "hot-desks":
         hotdesks,
       "meetings-and-event-spaces":
-        meetings,
+        meetings3,
     };
     return imageMap[slug] || imageMap["managed-offices"];
   };

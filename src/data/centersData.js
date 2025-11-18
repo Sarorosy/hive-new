@@ -11,6 +11,15 @@ import four from '../assets/featured/4.jpg';
 import five from '../assets/featured/5.jpg';
 import six from '../assets/featured/6.jpg';
 
+//images for VR
+
+import vr1 from "../assets/raw/chn/vr/THEHIVEVR10.jpg";
+import vr2 from "../assets/raw/chn/vr/THEHIVEVR14.jpg";
+import vr3 from "../assets/raw/chn/vr/THEHIVEVR18.jpg";
+import vr5 from "../assets/raw/chn/vr/THEHIVEVR23.jpg";
+import vr6 from "../assets/raw/chn/vr/THEHIVEVR25.jpg";
+import vr7 from "../assets/raw/chn/vr/THEHIVEVR27.jpg";
+
 //images for chennai
 import ch1 from "../assets/raw/chn/YAV00095-min.JPG";
 import ch2 from "../assets/raw/chn/PUR08662-min.jpg";
@@ -20,17 +29,29 @@ import ch5 from "../assets/raw/chn/YAV00102-min.JPG";
 import ch6 from "../assets/raw/chn/YAV00089-min.jpg";
 import ch77 from "../assets/raw/chn/skcl/IMGIDSHCVSHU.jpg";
 
+//images for OMR
+
+import omr1 from "../assets/raw/chn/omr/20200304_201547.jpg";
+import omr2 from "../assets/raw/chn/omr/20200304_202312.jpg";
+import omr3 from "../assets/raw/chn/omr/Hive_OMR_10-Seater.jpg";
+import omr4 from "../assets/raw/chn/omr/Hot-Desk_OMR-1.jpg";
+import omr5 from "../assets/raw/chn/omr/THEHIVE86.jpg";
+import omr6 from "../assets/raw/chn/omr/Hive_Enterprise_OMR.jpg";
+
 //images for chennai SKCL
-import ch7 from "../assets/raw/chn/skcl/IMGGGSYA.jpeg";
-import ch8 from "../assets/raw/chn/skcl/IMGBSGIAGUGU.jpeg";
-import ch9 from "../assets/raw/chn/skcl/IMGGIISAH.jpeg";
-import ch10 from "../assets/raw/chn/skcl/IMGDHJDJS.jpeg";
+import skcl1 from "../assets/raw/chn/skcl/IMG_7932.JPG";
+import skcl2 from "../assets/raw/chn/skcl/IMG665DA.jpeg";
+import skcl3 from "../assets/raw/chn/skcl/IMG83542.jpeg";
+import skcl4 from "../assets/raw/chn/skcl/IMGDHJDJS.jpeg";
+import skcl5 from "../assets/raw/chn/skcl/IMGGGSYA.jpeg";
+import skcl6 from "../assets/raw/chn/skcl/IMGGIISAH.jpeg";
+
 
 //images for chennai Porur
 import ch11 from "../assets/raw/chn/porur/868cd7b9f7db93a1b44f0f2d1c105e1bb2bd2c0e1a9b9ae9c6cb761320c9c8b2.jpeg";
 import ch12 from "../assets/raw/chn/porur/85537134.jpeg";
 import ch13 from "../assets/raw/chn/porur/bg_9_5700fae993.webp";
-import ch14 from "../assets/raw/chn/porur/one.jpg";
+import ch14 from "../assets/raw/chn/porur/9.jpg";
 import ch15 from "../assets/raw/chn/porur/two.jpg";
 import ch16 from "../assets/raw/chn/porur/three.jpg";
 
@@ -48,8 +69,6 @@ import ch27 from "../assets/raw/chn/YAV00080-min.JPG";
 
 
 //images for bangalore
-import b1 from "../assets/B1.jpg";
-import b2 from "../assets/B2.jpg";
 import blr1 from "../assets/raw/blr/_SPL0002-min.JPG";
 import blr2 from "../assets/raw/blr/_SPL9627-min.JPG";
 import blr3 from "../assets/raw/blr/IMG_20250318_011402314-min.jpg";
@@ -68,19 +87,24 @@ import blr15 from "../assets/raw/blr/_SPL9642-min.JPG";
 import blr16 from "../assets/raw/blr/IMG_20250318_113128119.jpg";
 import blr17 from "../assets/raw/blr/IMG_20250318_123453359.jpg";
 
+//whitefield
+import wh1 from '../assets/raw/blr/whitefield/Common-Areas_2.jpg';
+import wh2 from '../assets/raw/blr/whitefield/Hive-Blr_-Reception.jpg';
+import wh3 from '../assets/raw/blr/whitefield/HiveBlr_Cabin3.jpg';
+
 //images for Hyderabad
-import hyd1 from "../assets/raw/hyd/PUR01477-min.jpg";
-import hyd2 from "../assets/raw/hyd/PUR01489-min.jpg";
-import hyd3 from "../assets/raw/hyd/PUR01544-min.jpg";
-import hyd4 from "../assets/raw/hyd/PUR01637-min.JPG";
-import hyd5 from "../assets/raw/hyd/PUR01497-min.JPG";
+import hyd1 from "../assets/raw/hyd/HiveHyd_15-Seater-Cabin.jpg";
+import hyd2 from "../assets/raw/hyd/HiveHyd_Enterprise-Pantry_11zon.jpg";
+import hyd3 from "../assets/raw/hyd/HiveHyd_Pantry_11zon.jpg";
+import hyd4 from "../assets/raw/hyd/HiveHyderabad_8-Seater-MR.jpg";
+import hyd5 from "../assets/raw/hyd/PUR01493-min.jpg";
 
 //images for Pune
-import pune1 from "../assets/raw/pune/PUR03651-min.JPG";
-import pune2 from "../assets/raw/pune/PUR03650-min.JPG";
-import pune3 from "../assets/raw/pune/PUR04056-min.JPG";
-import pune4 from "../assets/raw/pune/PUR03658-min.JPG";
-import pune5 from "../assets/raw/pune/PUR04124-min.JPG";
+import pune1 from "../assets/raw/pune/HivePune_18-Seater-MR.jpg";
+import pune2 from "../assets/raw/pune/HivePune_Amphitheater.jpg";
+import pune3 from "../assets/raw/pune/HivePune_Cafe.jpg";
+import pune4 from "../assets/raw/pune/HivePune_CommonAr.jpg";
+import pune5 from "../assets/raw/pune/HivePune_Pantry1_11zon.jpg";
 import pune6 from "../assets/raw/pune/_VAL1233.jpg";
 import pune7 from "../assets/raw/pune/C0121T01.jpg";
 import pune8 from "../assets/raw/pune/C0125T01.jpg";
@@ -92,7 +116,7 @@ export const centersData = {
     description: "Find flexible coworking spaces in Chennai with ready-to-move and customizable options. Located in prime areas, built for teams of any size.",
     image: chennai,
     centerImages:[ch1,ch2,ch3,ch4,ch5,ch6],
-    gallery:[ch17,ch18,ch19,ch20,ch21,ch22,ch23,ch24,ch25,ch26,ch27,ch1,ch2,ch3,ch4,ch5,ch6,ch77,ch7,ch8,ch9,ch10,ch11,ch13,ch14,ch15,ch16],
+    gallery:[ch17,ch18,ch19,ch20,ch21,ch22,ch23,ch24,ch25,ch26,ch27,ch1,ch2,ch3,ch4,ch5,ch6,ch77,ch11,ch13,ch14,ch15,ch16],
     breadcrumb: [
       { label: "Home", path: "/" },
       { label: "Coworking Spaces in Chennai" }
@@ -107,7 +131,7 @@ export const centersData = {
         ],
         details: "Located in the heart of Anna Nagar, this coworking space offers modern amenities, high-speed internet, meeting rooms, and vibrant interiors.",
         images: [
-          ch1,ch2,ch3,ch4,ch5,ch6,ch77
+          vr1,vr2,vr3,vr5,vr6,vr7
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.2932777426718!2d80.19485637512473!3d13.080590287244858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265b5d8e2606b%3A0x648fcc48a540559f!2sThe%20Hive!5e0!3m2!1sen!2sin!4v1755267396136!5m2!1sen!2sin",
         lat:"13.080893350150644",
@@ -122,7 +146,7 @@ export const centersData = {
         ],
         details: "A premium coworking space situated on Old Mahabalipuram Road, ideal for tech startups and corporates alike.",
         images: [
-         ch77,ch2,ch3,ch4,ch5,ch6
+         omr1,omr2,omr3,omr4,omr5,omr6
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9123547422114!2d80.24918017512297!3d12.977457387338474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dfe5e034cf9%3A0x1e1d1f590d1c1f4a!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20OMR%20Chennai%20(Pre-toll)!5e0!3m2!1sen!2sin!4v1755267801817!5m2!1sen!2sin",
         lat:"12.977739666919542",
@@ -137,7 +161,7 @@ export const centersData = {
         ],
         details: "Located near Guindy, this space offers excellent connectivity, collaborative environments, and top-notch facilities.",
         images: [
-          ch5,ch6,ch7,ch8,ch9,ch10
+          skcl1,skcl2,skcl3,skcl4,skcl5,skcl6
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.362000448057!2d80.20681027512359!3d13.012604287306493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267583ea87459%3A0xe203dc67d754aab6!2sThe%20Hive%20-%20Flexible%20Workspace%2CSKCL%20Guindy%2C%20Chennai!5e0!3m2!1sen!2sin!4v1755267876394!5m2!1sen!2sin",
         lat:"13.012813353724379",
@@ -184,7 +208,7 @@ export const centersData = {
         ],
         details: "A dynamic coworking hub in the bustling Whitefield tech district.",
         images: [
-          b1,blr1,blr2,blr3,blr4,blr5,blr6
+        blr4,wh1,wh2,wh3
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.614679956308!2d77.69306677512326!3d12.99647918732121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110b3c1ae257%3A0x338aab3b907ba3d6!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20VR%20Bengaluru!5e0!3m2!1sen!2sin!4v1755268041583!5m2!1sen!2sin",
         lat : "12.997064975550622",
@@ -199,7 +223,7 @@ export const centersData = {
         ],
         details: "Perfect for professionals and creatives, located at Prestige Tech Park.",
         images: [
-           b2,blr1,blr2,blr3,blr4,blr5,blr6
+           blr2,blr5
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8177.653847263165!2d77.68972939874689!3d12.944424787895871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13b26af6ecc7%3A0x8e8d6f4f7363dfb7!2sPrestige%20Tech%20Platina!5e0!3m2!1sen!2sin!4v1755268196685!5m2!1sen!2sin",
         lat:"12.944307674401166",
