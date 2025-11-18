@@ -107,7 +107,7 @@ import hyd4 from "../assets/raw/hyd/HiveHyderabad_8-Seater-MR.jpg";
 import hyd5 from "../assets/raw/hyd/PUR01493-min.jpg";
 import hyd6 from "../assets/raw/hyd/PUR01489-min.jpg";
 import hyd7 from "../assets/raw/hyd/PUR01544-min.jpg";
-import hyd8 from "../assets/raw/hyd/PUR01637-min.jpg";
+import hyd8 from "../assets/raw/hyd/PUR01637-min.JPG";
 
 //images for Pune
 import pune1 from "../assets/raw/pune/HivePune_18-Seater-MR.jpg";
