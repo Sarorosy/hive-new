@@ -280,7 +280,7 @@ const ManageBlogs = () => {
                                         <div className="flex items-center justify-start space-x-1">
                                             <img src={`${API_URL}/${b.thumbnail}`} alt="img" className="h-10" />
                                             
-                                            <a href={`http://localhost:5175/blog/${b.slug}`} target="blank"
+                                            <a href={`https://kavin-hive-two.vercel.app/blog/${b.slug}`} target="blank"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content="View Post"
                                                 className="f-11 flex items-center rounded border px-2 py-1"
