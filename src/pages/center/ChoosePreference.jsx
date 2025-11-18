@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
 import { MapPin, Car, Users, Monitor, Heart, ChevronDown } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ChoosePreference = ({ cityData, centersData }) => {
     const [showMap, setShowMap] = useState(true);
+    const { city } = useParams();
+    const navigate = useNavigate();
 
     const branches = Object.entries(cityData.branches);
 
@@ -55,9 +57,7 @@ const ChoosePreference = ({ cityData, centersData }) => {
 
     const activeBranch = filteredBranches.find(([key]) => key === selectedBranchKey)?.[1] ?? null;
 
-
     const [open, setOpen] = useState(false);
-    const navigate = useNavigate();
 
     const handleSelect = (cityKey) => {
         setOpen(false);
@@ -190,8 +190,9 @@ const ChoosePreference = ({ cityData, centersData }) => {
                                         <Heart size={18} title="Wellness room" />
                                     </div>
                                     <button 
-                                    onClick={()=>{
-                                        window.location.href = "#Form"
+                                    onClick={(e) => {
+                                        e.stopPropagation();
+                                        navigate(`/${city}/${key}`);
                                     }}
                                     className="mt-3 px-4 py-2 text-sm font-medium bg-orange-500 text-white rounded-md cursor-pointer">
                                         Know more
