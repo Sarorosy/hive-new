@@ -239,7 +239,7 @@ export const centersData = {
         ],
         details: "Perfect for professionals and creatives, located at Prestige Tech Park.",
         images: [
-           blr2,blr5
+           blr5
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8177.653847263165!2d77.68972939874689!3d12.944424787895871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13b26af6ecc7%3A0x8e8d6f4f7363dfb7!2sPrestige%20Tech%20Platina!5e0!3m2!1sen!2sin!4v1755268196685!5m2!1sen!2sin",
         lat:"12.944307674401166",
