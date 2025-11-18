@@ -91,13 +91,13 @@ import blr17 from "../assets/raw/blr/IMG_20250318_123453359.jpg";
 import wh1 from '../assets/raw/blr/whitefield/Common-Areas_2.jpg';
 import wh2 from '../assets/raw/blr/whitefield/Hive-Blr_-Reception.jpg';
 import wh3 from '../assets/raw/blr/whitefield/HiveBlr_Cabin3.jpg';
-import wh4 from '../assets/raw/blr/whitefield/_SPL9460-min.jpg';
-import wh5 from '../assets/raw/blr/whitefield/_SPL9466-min.jpg';
-import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.jpg';
-import wh7 from '../assets/raw/blr/whitefield/_SPL9535-min.jpg';
-import wh8 from '../assets/raw/blr/whitefield/_SPL9549-min.jpg';
-import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.jpg';
-import wh10 from '../assets/raw/blr/whitefield/_SPL9783-min.jpg';
+import wh4 from '../assets/raw/blr/whitefield/_SPL9460-min.JPG';
+import wh5 from '../assets/raw/blr/whitefield/_SPL9466-min.JPG';
+import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.JPG';
+import wh7 from '../assets/raw/blr/whitefield/_SPL9535-min.JPG';
+import wh8 from '../assets/raw/blr/whitefield/_SPL9549-min.JPG';
+import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.JPG';
+import wh10 from '../assets/raw/blr/whitefield/_SPL9783-min.JPG';
 
 //images for Hyderabad
 import hyd1 from "../assets/raw/hyd/HiveHyd_15-Seater-Cabin.jpg";
