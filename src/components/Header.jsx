@@ -9,6 +9,7 @@ import {
   Briefcase,
   BriefcaseBusiness,
   ShoppingCart,
+  Globe,
 } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
 import { citiesData } from "../data/centersData";
@@ -139,19 +140,34 @@ const Header = ({ onBookTourClick }) => {
       >
         <div className="bg-black text-white text-[11px] sm:text-xs">
           <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-2 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-center gap-4 font-semibold uppercase tracking-wide">
+            <div className="flex items-center gap-3 font-semibold tracking-wide">
               <RouterLink to="/about-us" className="hover:text-orange-400 transition-colors">
                 About Us
               </RouterLink>
+              <span
+                className="hidden h-3.5 w-0.5 bg-white/60 sm:inline-block"
+                aria-hidden="true"
+              />
               <RouterLink to="/Ecosystem" className="hover:text-orange-400 transition-colors">
                 Ecosystem
               </RouterLink>
             </div>
-            <div className="flex flex-wrap items-center gap-4 text-[11px] font-semibold uppercase tracking-wide">
-              <span className="opacity-80">India</span>
+            <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold tracking-wide">
+              <span className="flex items-center gap-1 opacity-80">
+                <Globe className="h-3.5 w-3.5" />
+                India
+              </span>
+              <span
+                className="hidden h-3.5 w-0.5 bg-white/60 sm:inline-block"
+                aria-hidden="true"
+              />
               <RouterLink to="/contact" className="hover:text-orange-400 transition-colors">
                 Contact Us
               </RouterLink>
+              <span
+                className="hidden h-3.5 w-0.5 bg-white/60 sm:inline-block"
+                aria-hidden="true"
+              />
               <span className="flex items-center gap-1">
                 <Phone className="h-3.5 w-3.5" />
                 <a href="tel:+918072075487" className="hover:text-orange-400 transition-colors">
