@@ -4,13 +4,6 @@ import bangalore from '../assets/bangalore.png';
 import hyderabad from '../assets/hyderabad.png';
 import pune from '../assets/pune.png';
 
-import one from '../assets/featured/1.jpg';
-import two from '../assets/featured/2.jpg';
-import three from '../assets/featured/3.jpg';
-import four from '../assets/featured/4.jpg';
-import five from '../assets/featured/5.jpg';
-import six from '../assets/featured/6.jpg';
-
 //images for VR
 
 import vr1 from "../assets/raw/chn/vr/1.jpg";
@@ -118,11 +111,11 @@ import pune6 from "../assets/raw/pune/_VAL1233.jpg";
 import pune7 from "../assets/raw/pune/C0121T01.jpg";
 import pune8 from "../assets/raw/pune/C0125T01.jpg";
 import pune9 from "../assets/raw/pune/C0122T01.jpg";
-import pune10 from "../assets/raw/pune/PUR03658-min.JPG";
-import pune11 from "../assets/raw/pune/PUR03663-min.JPG";
-import pune12 from "../assets/raw/pune/PUR04101-min.JPG";
-import pune13 from "../assets/raw/pune/PUR03650-min.JPG";
-import pune14 from "../assets/raw/pune/PUR03651-min.JPG";
+import pune10 from "../assets/raw/pune/4.jpg";
+import pune11 from "../assets/raw/pune/5.jpg";
+import pune12 from "../assets/raw/pune/3.jpg";
+import pune13 from "../assets/raw/pune/1.jpg";
+import pune14 from "../assets/raw/pune/2.jpg";
 
 
 export const centersData = {

@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
 const Counter = ({ end, duration = 1000 }) => {
@@ -32,21 +32,14 @@ const Counter = ({ end, duration = 1000 }) => {
 const Stats = () => {
   const outletContext = useOutletContext?.() || {};
   const { setContactFormOpen } = outletContext;
-
-  const handleJoinClick = () => {
-    if (typeof setContactFormOpen === "function") {
-      setContactFormOpen(true);
-    } else {
-      window.location.href = "https://hiveworkspaces.com";
-    }
-  };
+  const navigate = useNavigate();
 
   return (
     <div className="bg-black text-white py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-7xl mx-auto mt-4" >
       {/* Left CTA */}
       <button
         type="button"
-        onClick={handleJoinClick}
+        onClick={() => navigate("/about-us")}
         className="bg-gradient-to-br from-goldt via-gold to-goldt border border-white/20 rounded-tl-[25px] rounded-br-[25px] px-6 py-3 flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer"
       >
         <span className="text-sm opacity-90 flex items-center gap-1">

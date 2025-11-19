@@ -10,19 +10,21 @@ import HeroVideo from './home/HeroVideo'
 import DiscountBanner from '../components/DiscountBanner'
 import NearestHive from '../components/NearestHive'
 import AmenitiesSection from './home/AmenitiesSection'
+import WorkspaceTypes from './home/WorkspaceTypes'
 
 function Home() {
   return (
     <div>
         <Hero />
+        <WorkspaceTypes />
         <Stats />
         <SmallAbout />
-        <FeaturedSpaces />
-        <DiscountBanner />
-        <AmenitiesSection/>
         <HeroVideo />
-        <Faq />
+        <AmenitiesSection/>
         <Members />
+        <DiscountBanner />
+        <Faq />
+        {/* <FeaturedSpaces /> */}
         <Testimonials />
         <NearestHive />
     </div>

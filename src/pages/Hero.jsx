@@ -51,7 +51,7 @@ const heroImages = [
   '/imagecompressor/11.jpg', //
   '/imagecompressor/12.jpg',//
   // '/imagecompressor/13.jpg',
-  '/imagecompressor/14.jpg',//
+  '/imagecompressor/6.jpg',//
   // '/imagecompressor/15.jpg',
   // '/imagecompressor/16.jpg',
   // '/imagecompressor/17.png',
@@ -125,11 +125,11 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
     <div className="relative " ref={ref}>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 cursor-pointer hover:border-black transition"
+        className="flex items-center justify-between w-full border border-gray-300 rounded px-3 py-2 cursor-pointer hover:border-black transition"
       >
         <div className="flex items-center gap-2">
           <MapPin className="w-4 h-4 text-gray-400" />
-          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
+          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-900"}`}>
             {selected || "Choose a City"}
           </span>
         </div>
@@ -141,7 +141,7 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
       </div>
 
       {isOpen && (
-        <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+        <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-50 max-h-64 overflow-y-auto">
           {cities.map((city, idx) => (
             <div
               key={idx}
@@ -179,13 +179,13 @@ const CenterDropdown = ({ selected, setSelected, selectedCity, isOpen, setIsOpen
     <div className="relative" ref={ref}>
       <div
         onClick={() => selectedCity && setIsOpen(!isOpen)}
-        className={`flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 transition ${
-          !selectedCity ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-black"
+        className={`flex items-center justify-between w-full border border-gray-300 rounded px-3 py-2 transition ${
+          !selectedCity ? " cursor-not-allowed" : "cursor-pointer hover:border-black"
         }`}
       >
         <div className="flex items-center gap-2">
           <Building className="w-4 h-4 text-gray-400" />
-          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
+          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-900"}`}>
             {selected || "Choose a Center"}
           </span>
         </div>
@@ -197,7 +197,7 @@ const CenterDropdown = ({ selected, setSelected, selectedCity, isOpen, setIsOpen
       </div>
 
       {isOpen && selectedCity && centers.length > 0 && (
-        <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+        <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-50 max-h-64 overflow-y-auto">
           {centers.map((center, idx) => (
             <div
               key={idx}
@@ -217,7 +217,7 @@ const CenterDropdown = ({ selected, setSelected, selectedCity, isOpen, setIsOpen
 };
 
 // Simple Offering Dropdown Component
-const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOpen, setIsOpen, selectedCenter }) => {
+const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOpen, setIsOpen }) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -233,13 +233,11 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
   return (
     <div className="relative" ref={ref}>
       <div
-        onClick={() => selectedCenter && setIsOpen(!isOpen)}
-        className={`flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 transition ${
-          !selectedCenter ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-black"
-        }`}
+        onClick={() => setIsOpen(!isOpen)}
+        className="flex items-center justify-between w-full border border-gray-300 rounded px-3 py-2 transition cursor-pointer hover:border-black"
       >
         <div className="flex items-center gap-2">
-          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
+          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-900"}`}>
             {selected || "Choose a Solution"}
           </span>
         </div>
@@ -250,7 +248,7 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
         )}
       </div>
 
-      {isOpen && selectedCenter && (
+      {isOpen && (
         <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
           {offerings.map((offering, idx) => (
             <div
@@ -381,7 +379,7 @@ const Hero = () => {
  
 
   return (
-    <div className="relative h-[97vh] w-full overflow-hidden z-49"
+    <div className="relative h-[97vh] w-full overflow-visible z-49"
       id="curve"
     >
       {/* Swiper Background */}
@@ -420,61 +418,65 @@ const Hero = () => {
       </button>
 
       {/* Foreground Content */}
-      <div className="absolute inset-0 z-10 flex items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-7xl w-full grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
-          {/* Left Side Text */}
-          <div className="text-white space-y-4">
-            <h1 className="text-4xl xl:text-5xl font-bold leading-tight">
+      <div className="absolute inset-0 z-10 flex flex-col justify-between px-4 sm:px-6 lg:px-8 py-10">
+        <div className="flex-1 flex flex-col justify-end">
+            <div className="w-full mx-auto text-white space-y-4 pb-4">
+              <h1 className="text-3xl xl:text-4xl font-bold leading-tight text-center filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
               Elevate Your Ambition.
-              <span className="block">
+              
                   Redefine Your 
                 <span className="text-orange-400 ml-2">Workspace.</span>
-              </span>
+              
             </h1>
           </div>
+        </div>
 
-          {/* Right Side Form */}
-          <div className="bg-white rounded-lg p-4 w-full max-w-[380px] ml-auto space-y-3">
-            <div className="space-y-4">
-              <CityDropdown
-                selected={selectedCity}
-                setSelected={setSelectedCity}
-                isOpen={cityDropdownOpen}
-                setIsOpen={setCityDropdownOpen}
-              />
-              <CenterDropdown
-                selected={selectedCenter}
-                setSelected={setSelectedCenter}
-                selectedCity={selectedCity}
-                isOpen={centerDropdownOpen}
-                setIsOpen={setCenterDropdownOpen}
-              />
-              <OfferingDropdown
-                selected={selectedOffering}
-                setSelected={setSelectedOffering}
-                setSelectedOfferingSlug={setSelectedOfferingSlug}
-                isOpen={offeringDropdownOpen}
-                setIsOpen={setOfferingDropdownOpen}
-                selectedCenter={selectedCenter}
-              />
+        {/* Bottom Row Form */}
+        <div className="w-full max-w-6xl mx-auto">
+          <div className="bg-white/95 backdrop-blur rounded p-4 md:p-6 shadow-2xl flex flex-col gap-4 md:flex-row md:items-center">
+            <div className="flex flex-col gap-4 w-full md:flex-row md:flex-1">
+              <div className="flex-1">
+                <CityDropdown
+                  selected={selectedCity}
+                  setSelected={setSelectedCity}
+                  isOpen={cityDropdownOpen}
+                  setIsOpen={setCityDropdownOpen}
+                />
+              </div>
+              <div className="flex-1">
+                <CenterDropdown
+                  selected={selectedCenter}
+                  setSelected={setSelectedCenter}
+                  selectedCity={selectedCity}
+                  isOpen={centerDropdownOpen}
+                  setIsOpen={setCenterDropdownOpen}
+                />
+              </div>
+              <div className="flex-1">
+                <OfferingDropdown
+                  selected={selectedOffering}
+                  setSelected={setSelectedOffering}
+                  setSelectedOfferingSlug={setSelectedOfferingSlug}
+                  isOpen={offeringDropdownOpen}
+                  setIsOpen={setOfferingDropdownOpen}
+                  selectedCenter={selectedCenter}
+                />
+              </div>
             </div>
-
 
             {/* Search Button */}
             <button
               disabled={!selectedCity || !selectedCenter || !selectedOffering || !selectedOfferingSlug}
-              className={`w-full py-2 rounded-lg flex items-center justify-center gap-2 
-                  ${(!selectedCity || !selectedCenter || !selectedOffering || !selectedOfferingSlug)
-                  ? "bg-black bg-opacity-10 text-gray-400 "
-                  : "bg-black text-white hover:bg-gray-800 cursor-pointer"}`}
-
+              className={`w-full md:w-auto px-8 py-3 rounded flex items-center justify-center gap-2 font-semibold transition
+                ${(!selectedCity || !selectedCenter || !selectedOffering || !selectedOfferingSlug)
+                ? "bg-black text-gray-400 cursor-not-allowed"
+                : "bg-black text-white hover:bg-gray-800 cursor-pointer"}`}
               onClick={()=>{
                 (selectedOfferingSlug == "day-pass") ? navigate("/day_pass") :navigate(`/explore/${selectedCity}/${selectedOfferingSlug}`)
               }}
             >
               <Search className="w-4 h-4" /> Search
             </button>
-
           </div>
         </div>
       </div>
