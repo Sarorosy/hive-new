@@ -11,6 +11,7 @@ import DiscountBanner from '../components/DiscountBanner'
 import NearestHive from '../components/NearestHive'
 import AmenitiesSection from './home/AmenitiesSection'
 import WorkspaceTypes from './home/WorkspaceTypes'
+import LatestBlogs from './home/LatestBlogs'
 
 function Home() {
   return (
@@ -21,6 +22,7 @@ function Home() {
         <SmallAbout />
         <HeroVideo />
         <AmenitiesSection/>
+        <LatestBlogs/>
         <Members />
         <DiscountBanner />
         <Faq />

@@ -139,7 +139,7 @@ const Header = ({ onBookTourClick }) => {
     `}
       >
         <div className="bg-black text-white text-[11px] sm:text-xs">
-          <div className="mx-auto flex max-w-6xl flex-col gap-2 px-4 py-2 md:flex-row md:items-center md:justify-between">
+          <div className="mx-auto flex px-5 flex-col gap-2 px-4 py-2 md:flex-row md:items-center md:justify-between">
             <div className="flex items-center gap-3 font-semibold tracking-wide">
               <RouterLink to="/about-us" className="hover:text-orange-400 transition-colors">
                 About Us
