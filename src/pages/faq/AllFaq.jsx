@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const FAQS = [
   { 
@@ -43,83 +44,77 @@ const FAQS = [
   },
 ];
 
-const QUICK_LINKS = [
-  {
-    title: "Join the Community",
-    desc: "Post in our vibrant forum for quick help, or share your workspace story!",
-  },
-  {
-    title: "Read Documentation & Guides",
-    desc: "Learn more about our amenities, membership plans, and policies.",
-  },
-  {
-    title: "Hire an Expert",
-    desc: "Need help setting up your office? Certified experts & agencies are ready.",
-  },
-];
-
 export default function AllFaq() {
   const [openIndex, setOpenIndex] = useState(null);
+  const [searchTerm, setSearchTerm] = useState("");
 
   const toggleFAQ = (index) => {
     setOpenIndex(openIndex === index ? null : index);
   };
 
+  const normalizedSearch = searchTerm.trim().toLowerCase();
+  const filteredFaqs = FAQS.map((faq, index) => ({ ...faq, index })).filter(({ q, a }) => {
+    if (!normalizedSearch) return true;
+    return (
+      q.toLowerCase().includes(normalizedSearch) ||
+      a.toLowerCase().includes(normalizedSearch)
+    );
+  });
+
   return (
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 mt-10">
       {/* Header */}
       <div className="bg-blue-50 py-16 px-6 text-center">
         <h1 className="text-4xl font-bold mb-6">Get Help</h1>
         <div className="max-w-2xl mx-auto">
+          <label className="sr-only" htmlFor="faq-search">
+            Search FAQs
+          </label>
           <input
+            id="faq-search"
             type="text"
             placeholder="Search FAQs, guides, and resources"
+            value={searchTerm}
+            onChange={(event) => setSearchTerm(event.target.value)}
             className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-blue-400"
           />
         </div>
       </div>
 
       {/* Content */}
-      <div className="max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="w-full max-w-6xl mx-auto px-6 py-12 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* FAQ Section */}
-        <div className="md:col-span-2">
+        <div className="md:col-span-2 mx-auto">
           <h2 className="text-xl font-semibold mb-6">General</h2>
           <div className="space-y-4">
-            {FAQS.map((faq, index) => (
-              <div
-                key={index}
-                className="border-b pb-4 cursor-pointer"
-                onClick={() => toggleFAQ(index)}
-              >
-                <h3 className="text-lg font-medium flex justify-between items-center">
-                  {faq.q}
-                  <span className="ml-2 text-gray-500">
-                    {openIndex === index ? "−" : "+"}
-                  </span>
-                </h3>
-                {openIndex === index && (
-                  <p className="mt-2 text-gray-600">{faq.a}</p>
-                )}
-              </div>
-            ))}
+            {filteredFaqs.length ? (
+              filteredFaqs.map(({ q, a, index }) => (
+                <button
+                  key={index}
+                  type="button"
+                  className="w-full text-left border-b pb-4 focus-visible:ring-2 focus-visible:ring-blue-400 rounded outline-none"
+                  onClick={() => toggleFAQ(index)}
+                >
+                  <h3 className="text-lg font-medium flex justify-between items-center">
+                    {q}
+                    <span className="ml-2 text-gray-500">
+                      {openIndex === index ? "−" : "+"}
+                    </span>
+                  </h3>
+                  {openIndex === index && (
+                    <p className="mt-2 text-gray-600">{a}</p>
+                  )}
+                </button>
+              ))
+            ) : (
+              <p className="text-gray-500">
+                No FAQs matched your search. Try different keywords.
+              </p>
+            )}
           </div>
         </div>
 
-        {/* Quick Links */}
-        <div>
-          <h2 className="text-xl font-semibold mb-6">Quick Links</h2>
-          <div className="space-y-4">
-            {QUICK_LINKS.map((link, idx) => (
-              <div
-                key={idx}
-                className="bg-white shadow-sm rounded-lg p-4 hover:shadow-md transition"
-              >
-                <h3 className="font-medium">{link.title}</h3>
-                <p className="text-gray-600 text-sm mt-1">{link.desc}</p>
-              </div>
-            ))}
-          </div>
-        </div>
+        
       </div>
     </div>
   );

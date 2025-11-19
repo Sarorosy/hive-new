@@ -17,7 +17,7 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col w-full cs" >
       <Header onBookTourClick={()=> setContactFormOpen(true)} />
-      <main className="flex-grow w-full pt-6" id="scroll-container">
+      <main className="flex-grow w-full pt-10" id="scroll-container">
         <div className="container m-0 max-w-[100%]">
           <Outlet context={{ setContactFormOpen }}  />
         </div>

@@ -135,7 +135,7 @@ const WorkspacePage = () => {
   };
 
   return (
-    <div className=" bg-white relative mt-10 ">
+    <div className=" bg-white relative mt-14 ">
       {/* Hero Section with Image */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] overflow-hidden ">
         <div
