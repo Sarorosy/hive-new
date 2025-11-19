@@ -154,8 +154,8 @@ const Header = ({ onBookTourClick }) => {
               </RouterLink>
               <span className="flex items-center gap-1">
                 <Phone className="h-3.5 w-3.5" />
-                <a href="tel:+917022274000" className="hover:text-orange-400 transition-colors">
-                  +91 70222 74000
+                <a href="tel:+918072075487" className="hover:text-orange-400 transition-colors">
+                  +91 80720 75487
                 </a>
               </span>
             </div>

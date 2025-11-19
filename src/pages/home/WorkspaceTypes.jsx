@@ -102,8 +102,8 @@ const WorkspaceTypes = () => {
                 onClick={() => setActiveTab(tab.id)}
                 className={`px-6 py-3 border transition-all text-sm font-medium ${
                   isActive
-                    ? "bg-[#0e1932] text-white border-[#0e1932] shadow-lg shadow-[#0e1932]/30"
-                    : "bg-white text-[#0e1932] border-slate-200 hover:border-[#0e1932]/50"
+                    ? "bg-black text-white border-black shadow-lg shadow-black/30"
+                    : "bg-white text-black border-slate-200 hover:border-black/50"
                 }`}
               >
                 {tab.label}
@@ -156,28 +156,6 @@ const WorkspaceTypes = () => {
           </div>
         </div>
 
-        <div className="grid md:grid-cols-2 gap-8 items-center bg-[#0e1932] text-white rounded-[28px] px-8 py-10 shadow-xl">
-          <div className="space-y-4">
-            <p className="text-sm uppercase tracking-[0.25em] text-white/70">
-              Tailored Workspaces
-            </p>
-            <h3 className="text-3xl font-semibold">
-              Custom Design An Office Space That Fits Your Business
-            </h3>
-            <p className="text-white/80 leading-relaxed">
-              A customised office solution for companies of all sizes. We'll take care of
-              location, branding, IT and more. All you'll have to do is move in.
-            </p>
-          </div>
-          <div className="space-y-4">
-            {customOfficeHighlights.map((item) => (
-              <div key={item} className="flex gap-3">
-                <CheckCircle2 className="w-5 h-5 text-[#f5c774] shrink-0" />
-                <p className="text-white/90">{item}</p>
-              </div>
-            ))}
-          </div>
-        </div>
       </div>
     </section>
   );

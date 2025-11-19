@@ -44,7 +44,7 @@ const Stats = () => {
       >
         <span className="text-sm opacity-90 flex items-center gap-1">
           <span className="bg-black text-white font-semibold px-4 py-2 rounded-tl-[15px] rounded-br-[15px] text-sm">
-            About Us
+            Know More
           </span>
           <ArrowUpRight className="w-4 h-4 text-black" />
         </span>
