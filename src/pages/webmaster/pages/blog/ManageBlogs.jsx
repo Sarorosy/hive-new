@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../../utils/idb";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { API_URL, formatTime } from "../../../../utils/constants";
+import { API_URL, FRONTEND_URL, formatTime } from "../../../../utils/constants";
 import { AnimatePresence } from "framer-motion";
 import AddBlog from "./AddBlog";
 import EditBlog from "./EditBlog";
@@ -280,7 +280,7 @@ const ManageBlogs = () => {
                                         <div className="flex items-center justify-start space-x-1">
                                             <img src={`${API_URL}/${b.thumbnail}`} alt="img" className="h-10" />
                                             
-                                            <a href={`https://kavin-hive-two.vercel.app/blog/${b.slug}`} target="blank"
+                                            <a href={`${FRONTEND_URL}/blog/${b.slug}`} target="blank"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content="View Post"
                                                 className="f-11 flex items-center rounded border px-2 py-1"

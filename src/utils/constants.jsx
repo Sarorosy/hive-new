@@ -4,6 +4,10 @@ export const SITE_KEY = "6LcvVOgrAAAAAPTVkJcjjhtrLt8Q2g3QJjoUc-RO";
 export const API_URL = "https://ryupunch.com/hiveback";
 
 
+// export const FRONTEND_URL = "http://localhost:5175";
+export const FRONTEND_URL = "https://kavin-hive-two.vercel.app";
+
+
 export function formatTime(dateString) {
   if (!dateString) return '';
 

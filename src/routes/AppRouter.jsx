@@ -50,6 +50,7 @@ import ManageProducts from "../pages/webmaster/pages/products/ManageProducts";
 import ManageOrders from "../pages/webmaster/pages/orders/ManageOrders";
 import Cart from '../pages/account/Cart';
 import { useAuth } from "../utils/idb";
+import AboutUs from "../pages/about/AboutUs";
 
 
 export default function AppRouter() {
@@ -125,6 +126,7 @@ export default function AppRouter() {
         <Route element={<PrivateRoute />}>
           <Route element={<Layout />}>
             <Route path="/" element={<Home />} />
+            <Route path="/about-us" element={<AboutUs />} />
             <Route path="/:city/:branch" element={<Center />} />
             <Route path="/:city" element={<Center />} />
 

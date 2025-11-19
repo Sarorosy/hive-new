@@ -31,6 +31,7 @@ import { useNavigate } from "react-router-dom";
 import hero1 from "../assets/raw/all/DSC07729-min.JPG";
 import hero2 from "../assets/raw/all/DSC07855-min.JPG";
 import hero3 from "../assets/raw/chn/YAV00102-min.JPG";
+import { citiesData } from "../data/centersData";
 
 // Background images
 const heroImages = [
@@ -78,18 +79,6 @@ const workspaceTypes = [
   { icon: <Camera className="w-5 h-5" />, label: "Virtual", sublabel: "Office" },
 ];
 
-// Data
-const cityBranches = {
-  Chennai: [
-    "The Hive at Anna Nagar, Chennai",
-    "The Hive at OMR, Chennai",
-    "The Hive at SKCL Guindy, Chennai"
-  ],
-  Bangalore: ["The Hive at Whitefield, Bangalore", "The Hive at PTP, Bengaluru"],
-  Hyderabad: ["The Hive at Gachibowli, Hyderabad"],
-  Pune: ["The Hive at Mills, Pune"]
-};
-
 const offerings = [
   // {
   //   icon: "/icons/additional.svg",
@@ -120,7 +109,7 @@ const offerings = [
 // Simple City Dropdown Component
 const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
   const ref = useRef();
-  const cities = Object.keys(cityBranches);
+  const cities = Object.keys(citiesData);
 
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -171,8 +160,64 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
   );
 };
 
+// Simple Center Dropdown Component
+const CenterDropdown = ({ selected, setSelected, selectedCity, isOpen, setIsOpen }) => {
+  const ref = useRef();
+  const centers = selectedCity && citiesData[selectedCity] ? citiesData[selectedCity].branches.map(branch => branch.name) : [];
+
+  useEffect(() => {
+    const handleClickOutside = (event) => {
+      if (ref.current && !ref.current.contains(event.target)) {
+        setIsOpen(false);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, [setIsOpen]);
+
+  return (
+    <div className="relative" ref={ref}>
+      <div
+        onClick={() => selectedCity && setIsOpen(!isOpen)}
+        className={`flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 transition ${
+          !selectedCity ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-black"
+        }`}
+      >
+        <div className="flex items-center gap-2">
+          <Building className="w-4 h-4 text-gray-400" />
+          <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
+            {selected || "Choose a Center"}
+          </span>
+        </div>
+        {isOpen ? (
+          <ChevronUp className="w-4 h-4 text-gray-400" />
+        ) : (
+          <ChevronDown className="w-4 h-4 text-gray-400" />
+        )}
+      </div>
+
+      {isOpen && selectedCity && centers.length > 0 && (
+        <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+          {centers.map((center, idx) => (
+            <div
+              key={idx}
+              onClick={() => {
+                setSelected(center);
+                setIsOpen(false);
+              }}
+              className="px-4 py-3 hover:bg-gray-50 cursor-pointer"
+            >
+              <div className="text-sm font-medium text-gray-900">{center}</div>
+            </div>
+          ))}
+        </div>
+      )}
+    </div>
+  );
+};
+
 // Simple Offering Dropdown Component
-const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOpen, setIsOpen }) => {
+const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOpen, setIsOpen, selectedCenter }) => {
   const ref = useRef();
 
   useEffect(() => {
@@ -188,8 +233,10 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
   return (
     <div className="relative" ref={ref}>
       <div
-        onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 cursor-pointer hover:border-black transition"
+        onClick={() => selectedCenter && setIsOpen(!isOpen)}
+        className={`flex items-center justify-between w-full border border-gray-200 rounded-lg px-3 py-2 transition ${
+          !selectedCenter ? "opacity-50 cursor-not-allowed" : "cursor-pointer hover:border-black"
+        }`}
       >
         <div className="flex items-center gap-2">
           <span className={`text-sm ${selected ? "text-gray-900" : "text-gray-400"}`}>
@@ -203,7 +250,7 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
         )}
       </div>
 
-      {isOpen && (
+      {isOpen && selectedCenter && (
         <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
           {offerings.map((offering, idx) => (
             <div
@@ -230,9 +277,11 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
 
 const Hero = () => {
   const [selectedCity, setSelectedCity] = useState("");
+  const [selectedCenter, setSelectedCenter] = useState("");
   const [selectedOffering, setSelectedOffering] = useState("");
   const [selectedOfferingSlug, setSelectedOfferingSlug] = useState("");
   const [cityDropdownOpen, setCityDropdownOpen] = useState(false);
+  const [centerDropdownOpen, setCenterDropdownOpen] = useState(false);
   const [offeringDropdownOpen, setOfferingDropdownOpen] = useState(false);
   const [isMarqueePaused, setIsMarqueePaused] = useState(false);
   const marqueeContainerRef = useRef(null);
@@ -244,9 +293,17 @@ const Hero = () => {
   const navigate = useNavigate();
 
   useEffect(() => {
-    // console.log("Selected City:", selectedCity);
-    // console.log("Selected Offering:", selectedOffering);
-  }, [selectedCity, selectedOffering,selectedOfferingSlug]);
+    // Reset center and offering when city changes
+    setSelectedCenter("");
+    setSelectedOffering("");
+    setSelectedOfferingSlug("");
+  }, [selectedCity]);
+
+  useEffect(() => {
+    // Reset offering when center changes
+    setSelectedOffering("");
+    setSelectedOfferingSlug("");
+  }, [selectedCenter]);
 
   // Cleanup timeout on unmount
   useEffect(() => {
@@ -320,77 +377,8 @@ const Hero = () => {
     };
   }, [isMarqueePaused]);
 
-  // Handle marquee pause/resume on interaction
-  const handleMarqueeInteraction = () => {
-    isUserScrollingRef.current = true;
-    setIsMarqueePaused(true);
-    // Clear any existing timeout
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-  };
 
-  const handleMarqueeInteractionEnd = () => {
-    // Clear any existing timeout
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-    // Resume after a short delay
-    scrollTimeoutRef.current = setTimeout(() => {
-      isUserScrollingRef.current = false;
-      setIsMarqueePaused(false);
-    }, 2000);
-  };
-
-  const handleMarqueeScroll = () => {
-    if (!marqueeContainerRef.current || !marqueeContentRef.current) return;
-    
-    const container = marqueeContainerRef.current;
-    const content = marqueeContentRef.current;
-    
-    // Calculate content width same way as animation
-    const getContentWidth = () => {
-      if (!content) return 0;
-      const firstChild = content.firstElementChild;
-      if (!firstChild) return 0;
-      return Array.from(content.children)
-        .slice(0, workspaceTypes.length)
-        .reduce((sum, child) => sum + child.offsetWidth + 4, 0);
-    };
-    
-    const contentWidth = getContentWidth();
-    if (contentWidth === 0) return;
-    
-    const currentScroll = container.scrollLeft;
-    
-    // Detect if user is scrolling (not auto-scroll)
-    const scrollDelta = Math.abs(currentScroll - lastScrollLeftRef.current);
-    if (scrollDelta > 3) {
-      isUserScrollingRef.current = true;
-      setIsMarqueePaused(true);
-    }
-    
-    lastScrollLeftRef.current = currentScroll;
-    
-    // Handle seamless loop during manual scroll (infinite scroll in both directions)
-    if (currentScroll >= contentWidth) {
-      container.scrollLeft = currentScroll - contentWidth;
-      lastScrollLeftRef.current = container.scrollLeft;
-    } else if (currentScroll <= 0) {
-      container.scrollLeft = contentWidth + currentScroll;
-      lastScrollLeftRef.current = container.scrollLeft;
-    }
-    
-    // Clear any existing timeout
-    if (scrollTimeoutRef.current) {
-      clearTimeout(scrollTimeoutRef.current);
-    }
-    // Resume after scrolling stops
-    scrollTimeoutRef.current = setTimeout(() => {
-      isUserScrollingRef.current = false;
-      setIsMarqueePaused(false);
-    }, 2000);
-  };
+ 
 
   return (
     <div className="relative h-[97vh] w-full overflow-hidden z-49"
@@ -424,11 +412,11 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <button className="custom-prev cursor-pointer  absolute left-4 sm:right-24 bottom-16 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
-        <MoveLeft />
+      <button className="custom-prev cursor-pointer  absolute left-4 sm:right-24 bottom-16 z-99 w-6 h-6 sm:w-8 sm:h-8 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+        <MoveLeft className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
-      <button className="custom-next cursor-pointer  absolute left-20 sm:right-6 bottom-16 z-99 w-8 h-8 sm:w-12 sm:h-12 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
-        <MoveRight />
+      <button className="custom-next cursor-pointer  absolute left-20 sm:right-6 bottom-16 z-99 w-6 h-6 sm:w-8 sm:h-8 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+        <MoveRight className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
 
       {/* Foreground Content */}
@@ -454,66 +442,29 @@ const Hero = () => {
                 isOpen={cityDropdownOpen}
                 setIsOpen={setCityDropdownOpen}
               />
+              <CenterDropdown
+                selected={selectedCenter}
+                setSelected={setSelectedCenter}
+                selectedCity={selectedCity}
+                isOpen={centerDropdownOpen}
+                setIsOpen={setCenterDropdownOpen}
+              />
               <OfferingDropdown
                 selected={selectedOffering}
                 setSelected={setSelectedOffering}
                 setSelectedOfferingSlug={setSelectedOfferingSlug}
                 isOpen={offeringDropdownOpen}
                 setIsOpen={setOfferingDropdownOpen}
+                selectedCenter={selectedCenter}
               />
             </div>
 
-            {/* Workspace Types - Marquee Scroll for Both Mobile and Desktop */}
-            <div 
-              className="overflow-x-auto scrollbar-hide -mx-4 px-4 touch-pan-x"
-              ref={marqueeContainerRef}
-              style={{ 
-                scrollbarWidth: 'none',
-                msOverflowStyle: 'none',
-                WebkitOverflowScrolling: 'touch'
-              }}
-              onTouchStart={handleMarqueeInteraction}
-              onTouchEnd={handleMarqueeInteractionEnd}
-              onTouchMove={handleMarqueeScroll}
-              onScroll={handleMarqueeScroll}
-              onMouseDown={handleMarqueeInteraction}
-              onMouseUp={handleMarqueeInteractionEnd}
-              onMouseLeave={handleMarqueeInteractionEnd}
-            >
-              <div 
-                ref={marqueeContentRef}
-                className="flex gap-1"
-                style={{ width: 'max-content' }}
-              >
-                {workspaceTypes.map((type, i) => (
-                  <div
-                    key={i}
-                    className="flex flex-col items-center p-1.5 rounded-xl hover:bg-gray-900 hover:text-white cursor-pointer group flex-shrink-0 min-w-[80px]"
-                  >
-                    <div className="p-3 bg-gray-100 rounded-lg mb-1 group-hover:text-black ">{type.icon}</div>
-                    <div className="text-xs font-medium">{type.label}</div>
-                    <div className="text-xs">{type.sublabel}</div>
-                  </div>
-                ))}
-                {/* Duplicate for seamless loop */}
-                {workspaceTypes.map((type, i) => (
-                  <div
-                    key={`duplicate-${i}`}
-                    className="flex flex-col items-center p-1.5 rounded-xl hover:bg-gray-900 hover:text-white cursor-pointer group flex-shrink-0 min-w-[80px]"
-                  >
-                    <div className="p-3 bg-gray-100 rounded-lg mb-1 group-hover:text-black ">{type.icon}</div>
-                    <div className="text-xs font-medium">{type.label}</div>
-                    <div className="text-xs">{type.sublabel}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
 
             {/* Search Button */}
             <button
-              disabled={!selectedCity || !selectedOffering || !selectedOfferingSlug}
+              disabled={!selectedCity || !selectedCenter || !selectedOffering || !selectedOfferingSlug}
               className={`w-full py-2 rounded-lg flex items-center justify-center gap-2 
-                  ${(!selectedCity || !selectedOffering || !selectedOfferingSlug)
+                  ${(!selectedCity || !selectedCenter || !selectedOffering || !selectedOfferingSlug)
                   ? "bg-black bg-opacity-10 text-gray-400 "
                   : "bg-black text-white hover:bg-gray-800 cursor-pointer"}`}
 

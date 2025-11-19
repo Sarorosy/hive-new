@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useAuth } from "../../../../utils/idb";
 import { useNavigate } from "react-router-dom";
 import toast from "react-hot-toast";
-import { API_URL, formatTime } from "../../../../utils/constants";
+import { API_URL, FRONTEND_URL, formatTime } from "../../../../utils/constants";
 import { AnimatePresence } from "framer-motion";
 import { Eye, Star } from "lucide-react";
 import AddJob from "./AddJob";
@@ -302,7 +302,7 @@ const ManageJobs = () => {
                                     </td>
                                     <td className="border px-4 py-2">
                                         <div className="flex gap-2">
-                                            <a href={`http://localhost:5175/jobs/${j.slug}`} target="blank"
+                                            <a href={`${FRONTEND_URL}/jobs/${j.slug}`} target="blank"
                                                 data-tooltip-id="my-tooltip"
                                                 data-tooltip-content="View Job"
                                                 className="f-11 flex items-center rounded border px-2 py-1"
