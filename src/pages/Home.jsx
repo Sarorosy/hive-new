@@ -11,20 +11,24 @@ import DiscountBanner from '../components/DiscountBanner'
 import NearestHive from '../components/NearestHive'
 import AmenitiesSection from './home/AmenitiesSection'
 import WorkspaceTypes from './home/WorkspaceTypes'
+import MeetingsEvents from './home/MeetingsEvents'
 import LatestBlogs from './home/LatestBlogs'
+import CommunityExperience from './home/CommunityExperience'
 
 function Home() {
   return (
     <div>
         <Hero />
         <WorkspaceTypes />
+        <MeetingsEvents />
         <Stats />
-        <SmallAbout />
+        {/* <SmallAbout /> */}
+        <CommunityExperience />
         <HeroVideo />
         <AmenitiesSection/>
         <LatestBlogs/>
         <Members />
-        <DiscountBanner />
+        {/* <DiscountBanner /> */}
         <Faq />
         {/* <FeaturedSpaces /> */}
         <Testimonials />

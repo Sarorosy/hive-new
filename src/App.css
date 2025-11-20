@@ -180,10 +180,12 @@ body::selection{
 }
 
 .members-image{
-  filter: grayscale(1);
+  /* filter: grayscale(1); */
 }
 .members-image:hover{
-  filter: grayscale(0);
+  /* filter: grayscale(0); */
+  transform: scale(1.05);
+  transition: transform 0.3s ease;
   cursor: pointer;
  
 }

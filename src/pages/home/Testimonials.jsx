@@ -59,8 +59,9 @@ export default function Testimonials() {
             </h2>
           </div>
           <p className="text-gray-500 max-w-md">
-            Integer tincidunt cras dapibus vivamus elementum semper nisi. Aenean
-            vulputate eleifend tellus.
+            Discover what makes The Hive special through the experiences of our members. 
+            From startups to enterprises, hear how our spaces, community, and service 
+            have transformed their way of working.
           </p>
         </div>
 
