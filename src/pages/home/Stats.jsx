@@ -1,30 +1,63 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useOutletContext, useNavigate } from "react-router-dom";
 import { ArrowUpRight } from "lucide-react";
 
-const Counter = ({ end, duration = 1000 }) => {
+const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
   const [count, setCount] = useState(0);
 
   useEffect(() => {
-    let start = 0;
-    const frameRate = 30; // updates per second
-    const totalFrames = Math.round((duration / 1000) * frameRate);
-    const increment = end / totalFrames;
+    if (!end || end <= 0) {
+      setCount(0);
+      return;
+    }
 
+    if (!shouldAnimate) {
+      setCount(0);
+      return;
+    }
+
+    const getStep = (value) => {
+      if (value >= 10000) return 500;
+      if (value >= 5000) return 250;
+      if (value >= 1000) return 100;
+      if (value >= 500) return 50;
+      if (value >= 100) return 10;
+      if (value >= 50) return 5;
+      return 1;
+    };
+
+    const getInterval = (value) => {
+      if (duration) return Math.max(10, duration);
+      if (value >= 10000) return 20;
+      if (value >= 1000) return 25;
+      if (value >= 500) return 30;
+      if (value >= 100) return 35;
+      return 50;
+    };
+
+    const step = getStep(end);
+    const interval = getInterval(end);
+
+    let current = 0;
     const timer = setInterval(() => {
-      start += increment;
-      if (start >= end) {
+      current += step;
+
+      if (current >= end) {
         setCount(end);
         clearInterval(timer);
       } else {
-        setCount(Math.ceil(start));
+        setCount((prev) => Math.min(end, prev + step));
       }
-    }, 1000 / frameRate);
+    }, interval);
 
     return () => clearInterval(timer);
-  }, [end, duration]);
+  }, [end, duration, shouldAnimate]);
 
-  return <span>{count} {end === 99 ? "%" : "+"}</span>;
+  return (
+    <span>
+      {count} {end === 99 ? "%" : "+"}
+    </span>
+  );
 };
 
 
@@ -33,9 +66,36 @@ const Stats = () => {
   const outletContext = useOutletContext?.() || {};
   const { setContactFormOpen } = outletContext;
   const navigate = useNavigate();
+  const statsRef = useRef(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (isVisible) return;
+
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setIsVisible(true);
+            observer.disconnect();
+          }
+        });
+      },
+      { threshold: 0.4 }
+    );
+
+    if (statsRef.current) {
+      observer.observe(statsRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, [isVisible]);
 
   return (
-    <div className="bg-black text-white py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto mt-4" >
+    <div
+      ref={statsRef}
+      className="bg-black text-white py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto mt-4"
+    >
       {/* Left CTA */}
       <button
         type="button"
@@ -54,25 +114,25 @@ const Stats = () => {
       <div className="flex flex-wrap justify-center gap-6 text-center text-sm md:text-base">
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={5} />{" "}
+            <Counter end={5} shouldAnimate={isVisible} />{" "}
           </p>
           <p className="opacity-80">Prime Locations</p>
         </div>
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={20000} duration={1} />{" "}
+            <Counter end={20000} duration={1} shouldAnimate={isVisible} />{" "}
           </p>
           <p className="opacity-80">Workstations</p>
         </div>
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={50} />{" "}
+            <Counter end={50} shouldAnimate={isVisible} />{" "}
           </p>
           <p className="opacity-80">Meeting Rooms</p>
         </div>
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={99} />{" "}
+            <Counter end={99} shouldAnimate={isVisible} />{" "}
           </p>
           <p className="opacity-80">Satisfied Customers</p>
         </div>
