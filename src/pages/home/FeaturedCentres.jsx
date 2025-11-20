@@ -57,7 +57,7 @@ export default function FeaturedCentres() {
 
   return (
     <section className="bg-white py-12 px-6 lg:px-20">
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-6xl mx-auto">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8">
           <div>

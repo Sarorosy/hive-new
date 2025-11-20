@@ -48,7 +48,7 @@ export default function Testimonials() {
   }, []);
 
   return (
-    <section className="bg-white py-12 px-6 lg:px-20 relative overflow-hidden">
+    <section className="bg-white py-12 px-4 max-w-6xl mx-auto relative overflow-hidden">
       <div className="mx-auto">
         {/* Heading */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 relative z-10">

@@ -35,7 +35,7 @@ const Stats = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="bg-black text-white py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-7xl mx-auto mt-4" >
+    <div className="bg-black text-white py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto mt-4" >
       {/* Left CTA */}
       <button
         type="button"

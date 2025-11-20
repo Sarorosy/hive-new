@@ -5,7 +5,7 @@ const meetingsEvents = [
   {
     id: "meeting-rooms",
     title: "Meeting Rooms",
-    description: "Private, well-equipped rooms for meetings—bookable by the hour.",
+    description: "Private, well-equipped rooms for meetings.",
     image: "/meeting-room.jpg",
     link: "/workspaces/meetings-and-event-spaces",
     linkLabel: "Explore meeting rooms"

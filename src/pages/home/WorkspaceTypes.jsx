@@ -74,7 +74,7 @@ const WorkspaceTypes = () => {
   );
 
   return (
-    <section className="bg-[#f8f8fb] py-8 px-4 md:px-8 xl:px-0">
+    <section className="bg-white py-8 px-4 md:px-8 xl:px-0">
       <div className="max-w-6xl mx-auto space-y-5">
         <div className=" space-y-3">
           
@@ -87,7 +87,7 @@ const WorkspaceTypes = () => {
           </p>
         </div>
 
-        <div className="flex flex-wrap justify-center gap-4 mt-8">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-8">
           {workspaceTabs.map((tab) => {
             const isActive = tab.id === activeTab;
             return (
@@ -95,7 +95,7 @@ const WorkspaceTypes = () => {
                 key={tab.id}
                 type="button"
                 onClick={() => setActiveTab(tab.id)}
-                className={`px-6 py-3 border transition-all text-sm font-medium ${
+                className={`w-full px-6 py-3 border transition-all text-sm font-medium ${
                   isActive
                     ? "bg-black text-white border-black shadow-lg shadow-black/30"
                     : "bg-white text-black border-slate-200 hover:border-black/50"

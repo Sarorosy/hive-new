@@ -19,7 +19,7 @@ export default function Faq() {
 
   return (
     <section className="bg-gray-100 py-8">
-      <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-12">
+      <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Left title */}
         <div>
           <p className="text-sm text-gray-500 mb-2">/ FAQ /</p>
