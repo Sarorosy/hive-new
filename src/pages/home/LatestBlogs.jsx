@@ -1,10 +1,40 @@
-import { useMemo } from "react";
+import { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { blogs } from "../../data/blogsData";
 import { ArrowRight } from "lucide-react";
+import { API_URL } from "../../utils/constants";
 
 const LatestBlogs = () => {
   const navigate = useNavigate();
+  const [blogs, setBlogs] = useState([]);
+  const [loading, setLoading] = useState(false);
+
+  const fetchBlogs = async () => {
+    try {
+      setLoading(true);
+      const res = await fetch(`${API_URL}/api/blogs`, {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+        },
+      });
+
+      const data = await res.json();
+
+      if (data.status) {
+        setBlogs(data.blogs || []);
+      } else {
+        console.error(data.message || "Failed to fetch blogs");
+      }
+    } catch (error) {
+      console.error("Failed to load blogs data", error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  useEffect(() => {
+    fetchBlogs();
+  }, []);
 
   const latestBlogs = useMemo(() => {
     try {
@@ -21,9 +51,9 @@ const LatestBlogs = () => {
       console.error("Failed to load blogs data", error);
       return [];
     }
-  }, []);
+  }, [blogs]);
 
-  if (latestBlogs.length === 0) {
+  if (loading && latestBlogs.length === 0) {
     return null;
   }
 
@@ -40,7 +70,7 @@ const LatestBlogs = () => {
         </div>
         <button
           type="button"
-          onClick={() => navigate("/blogs")}
+          onClick={() => navigate("/blog")}
           className="inline-flex items-center justify-center px-6 py-2 text-sm font-semibold text-black transition-all duration-200 hover:bg-black hover:text-white"
         >
           View all <ArrowRight size={16} className="ml-2" />
@@ -59,7 +89,7 @@ const LatestBlogs = () => {
               className="block h-48 overflow-hidden"
             >
               <img
-                src={blog.image}
+                src={`${API_URL}/${blog.thumbnail}`}
                 alt={blog.title}
                 loading="lazy"
                 className="h-full w-full object-cover transition-transform duration-500 hover:scale-105"

@@ -14,7 +14,7 @@ import WorkspaceTypes from './home/WorkspaceTypes'
 import MeetingsEvents from './home/MeetingsEvents'
 import LatestBlogs from './home/LatestBlogs'
 import CommunityExperience from './home/CommunityExperience'
-
+import FeaturedCentres from './home/FeaturedCentres'
 function Home() {
   return (
     <div>
@@ -23,6 +23,7 @@ function Home() {
         <MeetingsEvents />
         <Stats />
         {/* <SmallAbout /> */}
+        <FeaturedCentres />
         <CommunityExperience />
         <HeroVideo />
         <AmenitiesSection/>

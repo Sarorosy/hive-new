@@ -179,9 +179,7 @@ body::selection{
   display: none;
 }
 
-.members-image{
-  /* filter: grayscale(1); */
-}
+
 .members-image:hover{
   /* filter: grayscale(0); */
   transform: scale(1.05);
