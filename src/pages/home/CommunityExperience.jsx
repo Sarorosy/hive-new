@@ -45,7 +45,7 @@ const CommunityExperience = () => {
               <div className="pt-4">
                 <Link
                   to="/contact"
-                  className="inline-flex items-center gap-2 text-[#0f6ef1] font-medium hover:gap-3 transition-all group"
+                  className="inline-flex items-center gap-2 text-orange-500 font-medium hover:gap-3 transition-all group"
                 >
                   Experience the difference at The Hive today
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />

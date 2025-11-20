@@ -144,7 +144,7 @@ const WorkspaceTypes = () => {
               </div>
               <Link
                 to={activeWorkspace.link}
-                className="inline-flex items-center gap-2 text-[#0f6ef1] font-medium hover:gap-3 transition-all"
+                className="inline-flex items-center gap-2 text-orange-500 font-medium hover:gap-3 transition-all"
               >
                 {activeWorkspace.linkLabel}
                 <ArrowRight className="w-4 h-4" />
