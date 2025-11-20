@@ -32,7 +32,7 @@ function Home() {
         {/* <DiscountBanner /> */}
         <Faq />
         {/* <FeaturedSpaces /> */}
-        <Testimonials />
+        {/* <Testimonials /> */}
         <NearestHive />
     </div>
   )
