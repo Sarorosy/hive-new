@@ -147,7 +147,7 @@ export default function Footer() {
         <p>© 2025 The Hive. All rights reserved.</p>
         <p className="mt-1">
           Developed by{" "}
-          <span className="text-[#0d2847] font-semibold">
+          <span className="text-orange-500 font-semibold">
             The Hive Marketing Team
           </span>
         </p>
