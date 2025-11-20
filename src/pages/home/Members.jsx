@@ -69,26 +69,22 @@ export default function Members() {
   }, []);
 
   return (
-    <section className="py-16 bg-gray-50 overflow-hidden relative cstd">
-      {/* Background decorations */}
-      <div className="absolute inset-0 opacity-30">
-        <div className="absolute top-20 left-10 w-72 h-72 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full blur-3xl" />
-        <div className="absolute bottom-20 right-10 w-96 h-96 bg-gradient-to-r from-purple-400/10 to-pink-400/10 rounded-full blur-3xl" />
-      </div>
+    <section className="py-16 bg-white overflow-hidden relative max-w-6xl mx-auto">
+      
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      <div className="max-w-7xl mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: isVisible ? 1 : 0, y: isVisible ? 0 : 30 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-center mb-20"
+          className=" mb-10"
         >
 
-          <h2 className="text-5xl md:text-6xl font-bold text-gray-900 mb-4 font-serif">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
             Our Members
           </h2>
-          <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+          <p className="text-sm text-gray-600 max-w-2xl">
             We're proud to be supported by these amazing sponsors.
           </p>
         </motion.div>
@@ -119,7 +115,7 @@ export default function Members() {
             transform: translateX(0);
           }
           100% {
-            transform: translateX(calc(-100% / 3));
+            transform: translateX(calc(-100% / .2));
           }
         }
         .animate-marquee {

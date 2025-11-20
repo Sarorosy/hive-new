@@ -25,8 +25,8 @@ function Home() {
         {/* <SmallAbout /> */}
         <FeaturedCentres />
         <CommunityExperience />
-        <HeroVideo />
-        <AmenitiesSection/>
+        {/* <HeroVideo /> */}
+        {/* <AmenitiesSection/> */}
         <LatestBlogs/>
         <Members />
         {/* <DiscountBanner /> */}

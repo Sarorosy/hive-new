@@ -18,7 +18,7 @@ export default function Faq() {
   const navigate = useNavigate();
 
   return (
-    <section className="bg-gray-100 py-8">
+    <section className="bg-white py-8">
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Left title */}
         <div>
