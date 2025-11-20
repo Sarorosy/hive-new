@@ -49,7 +49,7 @@ const heroImages = [
   // '/imagecompressor/9.jpg',
   '/imagecompressor/10.jpg', //
   '/imagecompressor/11.jpg', //
-  '/imagecompressor/12.jpg',//
+  '/imagecompressor/12.jpg', //
   // '/imagecompressor/13.jpg',
   '/imagecompressor/6.jpg',//
   // '/imagecompressor/15.jpg',
