@@ -6,7 +6,7 @@ const meetingsEvents = [
     id: "meeting-rooms",
     title: "Meeting Rooms",
     description: "Private, well-equipped rooms for meetings—bookable by the hour.",
-    image: "/meeting-room.JPG",
+    image: "/meeting-room.jpg",
     link: "/workspaces/meetings-and-event-spaces",
     linkLabel: "Explore meeting rooms"
   },
