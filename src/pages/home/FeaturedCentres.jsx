@@ -134,17 +134,17 @@ export default function FeaturedCentres() {
           {/* Navigation Arrows */}
           <button
             ref={prevRef}
-            className="featured-prev absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-lg border border-gray-200 rounded-full shadow-xl flex items-center justify-center hover:bg-white hover:border-gray-300 transition-all duration-300 hover:scale-110"
+            className="featured-prev absolute -left-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black backdrop-blur-lg border border-gray-200 rounded-full shadow-xl flex items-center justify-center hover:bg-white hover:border-gray-300 transition-all duration-300 hover:scale-110"
             aria-label="Previous slide"
           >
-            <ChevronLeft className="w-6 h-6 text-gray-700" />
+            <ChevronLeft className="w-6 h-6 text-white" />
           </button>
           <button
             ref={nextRef}
-            className="featured-next absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-lg border border-gray-200 rounded-full shadow-xl flex items-center justify-center hover:bg-white hover:border-gray-300 transition-all duration-300 hover:scale-110"
+            className="featured-next absolute -right-5 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-black backdrop-blur-lg border border-gray-200 rounded-full shadow-xl flex items-center justify-center hover:bg-white hover:border-gray-300 transition-all duration-300 hover:scale-110"
             aria-label="Next slide"
           >
-            <ChevronRight className="w-6 h-6 text-gray-700" />
+            <ChevronRight className="w-6 h-6 text-white" />
           </button>
         </div>
       </div>

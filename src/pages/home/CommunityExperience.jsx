@@ -18,7 +18,7 @@ const CommunityExperience = () => {
           </div>
 
           {/* Text content on the right */}
-          <div className="p-8 lg:p-12 flex flex-col justify-center">
+          <div className="px-8 lg:px-12 flex flex-col justify-start items-start text-left">
             <div className="space-y-6">
               <h2 className="text-3xl md:text-4xl font-serif font-semibold text-[#0e1932] leading-tight">
                 More Than Just A Flexible Workspace
