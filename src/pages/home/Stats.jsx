@@ -17,13 +17,13 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
     }
 
     const getStep = (value) => {
-      if (value >= 10000) return 500;
-      if (value >= 5000) return 250;
-      if (value >= 1000) return 100;
+      if (value >= 10000) return 80;
+      if (value >= 5000) return 50;
+      if (value >= 1000) return 50;
       if (value >= 500) return 50;
       if (value >= 100) return 10;
-      if (value >= 50) return 5;
-      return 1;
+      if (value >= 50) return 3;
+      return 0.5;
     };
 
     const getInterval = (value) => {
