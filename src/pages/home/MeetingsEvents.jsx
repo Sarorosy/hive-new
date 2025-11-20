@@ -40,11 +40,11 @@ const MeetingsEvents = () => {
               key={item.id}
               className="bg-white rounded-sm shadow-xl border border-slate-100 overflow-hidden group hover:shadow-2xl transition-shadow"
             >
-              <div className="relative min-h-[300px] md:min-h-[400px]">
+              <div className="relative min-h-[300px] md:min-h-[400px] overflow-hidden">
                 <img
                   src={item.image}
                   alt={item.title}
-                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                  className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
