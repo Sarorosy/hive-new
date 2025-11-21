@@ -53,6 +53,7 @@ import { useAuth } from "../utils/idb";
 import AboutUs from "../pages/about/AboutUs";
 import Contact from "../pages/contact/Contact";
 import AllLocations from "../pages/AllLocations";
+import Sitemap from "../pages/Sitemap";
 
 
 export default function AppRouter() {
@@ -162,6 +163,8 @@ export default function AppRouter() {
             <Route path="/support/faq" element={<AllFaq />} />
             <Route path="/day_pass" element={<DayPass />} />
             <Route path="/ecosystem" element={<EcosystemPage />} />
+
+            <Route path="/sitemap" element={<Sitemap />} />
 
             <Route path="/cart" element={<Cart />} />
 
