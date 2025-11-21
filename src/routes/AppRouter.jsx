@@ -161,7 +161,7 @@ export default function AppRouter() {
 
             <Route path="/support/faq" element={<AllFaq />} />
             <Route path="/day_pass" element={<DayPass />} />
-            <Route path="/Ecosystem" element={<EcosystemPage />} />
+            <Route path="/ecosystem" element={<EcosystemPage />} />
 
             <Route path="/cart" element={<Cart />} />
 

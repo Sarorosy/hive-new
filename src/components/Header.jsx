@@ -148,7 +148,7 @@ const Header = ({ onBookTourClick }) => {
                 className="hidden h-3.5 w-0.5 bg-white/60 sm:inline-block"
                 aria-hidden="true"
               />
-              <RouterLink to="/Ecosystem" className="hover:text-orange-400 transition-colors">
+              <RouterLink to="/ecosystem" className="hover:text-orange-400 transition-colors">
                 Ecosystem
               </RouterLink>
             </div>

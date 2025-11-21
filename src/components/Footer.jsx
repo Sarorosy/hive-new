@@ -1,10 +1,14 @@
-import { Facebook, Instagram, Linkedin } from "lucide-react";
+import { Facebook, Instagram, Linkedin, ChevronDown, Globe } from "lucide-react";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { useNavigate } from "react-router-dom";
 import { citiesData } from "../data/centersData";
+import { useState } from "react";
 
 export default function Footer() {
   const navigate = useNavigate();
+  const [showLocationsDropdown, setShowLocationsDropdown] = useState(false);
+  const [selectedRegion, setSelectedRegion] = useState("India");
+
   const openCookieSettings = () => {
     if (typeof window !== "undefined") {
       window.dispatchEvent(new Event("open-cookie-consent"));
@@ -13,151 +17,165 @@ export default function Footer() {
 
   return (
     <footer className="bg-gray-100 text-[#1c2c44] py-16 px-6">
-      <div className="max-w-7xl mx-auto grid grid-cols-1 gap-12 md:grid-cols-4">
-        {/* Logo */}
-        <div>
-          <img
-            src="/logo-transparent.png"
-            alt="Logo"
-            width={160}
-            height={40}
-            className="rounded-md"
-            loading="lazy"
-          />
-          <p className="text-sm text-[#4b576a] mt-4">
-            Flexible Workspaces for Ambitious Professionals.
-          </p>
-        </div>
-
-        {/* Navigation Links */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-[#0d2847]">Navigate</h3>
-          <ul className="space-y-2 text-[#4b576a] text-sm">
-            {[
-              { title: "Home", slug: "/" },
-              { title: "Careers", slug: "/careers" },
-              { title: "Blogs", slug: "/blog" },
-              { title: "Landlord Relationships", slug: "/landlord-relationships" },
-              { title: "Terms & Conditions", slug: "/terms-and-conditions" },
-              { title: "Refund Policy", slug: "/refund-policy" },
-              { title: "Cookie Policy", slug: "/cookie-policy" },
-            ].map((item) => (
+      <div className="max-w-7xl mx-auto">
+        {/* Main Content Grid */}
+        <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
+          {/* About Section */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-[#0d2847]">About</h3>
+            <ul className="space-y-2 text-[#4b576a] text-sm">
               <li
-                key={item.title}
+                onClick={() => navigate("/")}
                 className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
               >
-                <button
-                  onClick={() => {
-                    navigate(item.slug);
-                  }}
-                >
-                  {item.title}
-                </button>
+                Home
               </li>
-            ))}
-          </ul>
-        </div>
+              <li
+                onClick={() => navigate("/careers")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                Careers
+              </li>
+              <li
+                onClick={() => navigate("/landlord-relationships")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                Landlord Relationships
+              </li>
+              <li
+                onClick={() => navigate("/locations")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                Locations
+              </li>
+              
+            </ul>
+          </div>
 
-        {/* Location Links */}
-        <div>
-          <h3 className="text-xl font-semibold mb-4 text-[#0d2847]">
-            Locations
-          </h3>
-          <ul className="space-y-2 text-[#4b576a] text-sm max-h-64 overflow-y-auto pr-2">
-            {Object.values(citiesData).flatMap((city) =>
-              city.branches.map((branch) => (
-                <li
-                  key={branch.route}
-                  onClick={() => navigate(branch.route)}
-                  className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
-                >
-                  {branch.name}
-                </li>
-              ))
-            )}
-          </ul>
-        </div>
+          {/* Community Section */}
+          <div>
+            <ul className="space-y-2 text-[#4b576a] text-sm mt-8 md:mt-0">
+              <li
+                onClick={() => navigate("/ecosystem")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                Ecosystem
+              </li>
+            </ul>
+          </div>
 
-        {/* Newsletter + Socials */}
-        <div className="md:col-span-1">
-          <h3 className="text-xl font-semibold mb-4 text-[#0d2847]">
-            Subscribe to Our Newsletter
-          </h3>
-          <form className="bg-white px-4 py-2 rounded-xl shadow-sm border border-[#e4e7ee] flex flex-col sm:flex-row items-center gap-3">
-            <input
-              type="email"
-              placeholder="Your Email"
-              className="flex-1 px-4 py-2 rounded-lg text-sm text-[#1c2c44] w-full focus:outline-none border border-[#e4e7ee] bg-transparent focus:border-[#0d2847]"
-            />
-            <button
-              type="button"
-              className="bg-black hover:bg-gray-900 transition text-white px-6 py-2 rounded-lg font-medium text-sm w-full sm:w-auto"
-            >
-              Subscribe
-            </button>
-          </form>
+          {/* News & Media Section */}
+          <div>
+            <h3 className="text-lg font-bold mb-4 text-[#0d2847]">News & Media</h3>
+            <ul className="space-y-2 text-[#4b576a] text-sm">
+              <li
+                onClick={() => navigate("/blog")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                Blog
+              </li>
+            </ul>
+          </div>
 
-          <div className="mt-6">
-            <h4 className="text-md font-semibold mb-3 text-[#0d2847]">
-              Follow us
-            </h4>
-            <div className="flex gap-4 text-black">
+          {/* Right Section - Region Selector & Social Media */}
+          <div className="md:col-span-2">
+            <div className="mb-6 flex items-center gap-2">
+              <Globe size={15} /> India
+            </div>
+
+            {/* Social Media Icons */}
+            <div className="flex gap-4">
               <a
                 href="https://www.facebook.com/hiveworkspaces/"
                 target="_blank"
                 rel="noreferrer"
-                className="transition "
+                className="text-[#0d2847] hover:text-[#1c2c44] transition"
               >
-                <Facebook className="stroke-[1.2]" />
+                <Facebook className="w-5 h-5" />
               </a>
-
-              <a
-                href="https://www.instagram.com/hiveworkspaces/"
-                target="_blank"
-                rel="noreferrer"
-                className="transition "
-              >
-                <Instagram className="stroke-[1.2]" />
-              </a>
-
               <a
                 href="https://www.linkedin.com/company/hiveworkspaces"
                 target="_blank"
                 rel="noreferrer"
-                className="transition "
+                className="text-[#0d2847] hover:text-[#1c2c44] transition"
               >
-                <Linkedin className="stroke-[1.2]" />
+                <Linkedin className="w-5 h-5" />
               </a>
-
+              <a
+                href="https://www.instagram.com/hiveworkspaces/"
+                target="_blank"
+                rel="noreferrer"
+                className="text-[#0d2847] hover:text-[#1c2c44] transition"
+              >
+                <Instagram className="w-5 h-5" />
+              </a>
               <a
                 href="https://twitter.com/hiveworkspaces?s=20"
                 target="_blank"
                 rel="noreferrer"
-                className="transition "
+                className="text-[#0d2847] hover:text-[#1c2c44] transition"
               >
-                <img src="/twitter.png" alt="Twitter" className="w-5 " />
+                <img src="/twitter.png" alt="Twitter" className="w-5 h-5" />
               </a>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Bottom Strip */}
-      <div className="mt-16 border-t border-[#e4e7ee] pt-6 text-sm text-center text-[#4b576a]">
-        <p>© 2025 The Hive. All rights reserved.</p>
-        <p className="mt-1">
-          Developed by{" "}
-          <span className="text-orange-500 font-semibold">
-            The Hive Marketing Team
-          </span>
-        </p>
-        <button
-          type="button"
-          onClick={openCookieSettings}
-          className="mt-4 inline-flex items-center justify-center rounded-full border border-[#d9dee7] px-5 py-2 text-sm font-semibold text-[#1c2c44] hover:text-[#0d2847] hover:border-[#0d2847] transition"
-        >
-          Cookie Settings
-        </button>
+        {/* Bottom Legal Section */}
+        <div className="mt-16 border-t border-[#e4e7ee] pt-6">
+          <div className="flex flex-col md:flex-row md:items-center gap-4">
+            {/* Logo */}
+            <div className="flex-shrink-0">
+              <img
+                src="/logo-transparent.png"
+                alt="Logo"
+                width={120}
+                height={30}
+                className="rounded-md"
+                loading="lazy"
+              />
+            </div>
+
+            {/* Legal Links */}
+            <div className="flex flex-wrap items-center gap-2 text-sm">
+              <button
+                onClick={() => navigate("/privacy-policy")}
+                className="text-orange-600 hover:underline"
+              >
+                Privacy Policy
+              </button>
+              <span className="text-[#4b576a]">|</span>
+              <button
+                onClick={() => navigate("/terms-and-conditions")}
+                className="text-orange-600 hover:underline"
+              >
+                Terms of Use
+              </button>
+              <span className="text-[#4b576a]">|</span>
+              <button
+                onClick={() => navigate("/cookie-policy")}
+                className="text-orange-600 hover:underline"
+              >
+                Cookie Policy
+              </button>
+              <span className="text-[#4b576a]">|</span>
+              <button
+                onClick={() => navigate("/sitemap")}
+                className="text-orange-600 hover:underline"
+              >
+                Sitemap
+              </button>
+            </div>
+          </div>
+
+          {/* Copyright and Address */}
+          <div className="mt-4 text-sm text-[#4b576a]">
+            <p>©Copyright 2011 - 2025 The Hive. All rights reserved</p>
+            <p className="mt-2">
+              THE HIVE INDIA LIMITED | Level 1, First International Financial Centre, Plot Nos. C-54 & C-55 G Block Road, Bandra Kurla Complex, Bandra(East), Mumbai, Mumbai- 400051, Maharashtra
+            </p>
+          </div>
+        </div>
       </div>
       <FloatingWhatsApp
         phoneNumber="918072075487"
