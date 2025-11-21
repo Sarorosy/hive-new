@@ -52,6 +52,7 @@ import Cart from '../pages/account/Cart';
 import { useAuth } from "../utils/idb";
 import AboutUs from "../pages/about/AboutUs";
 import Contact from "../pages/contact/Contact";
+import AllLocations from "../pages/AllLocations";
 
 
 export default function AppRouter() {
@@ -131,6 +132,7 @@ export default function AppRouter() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/:city/:branch" element={<Center />} />
             <Route path="/:city" element={<Center />} />
+            <Route path="/locations" element={<AllLocations />} />
 
             <Route
               path="/landlord-relationships"

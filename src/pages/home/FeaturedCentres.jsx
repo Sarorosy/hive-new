@@ -67,7 +67,7 @@ export default function FeaturedCentres() {
             </h2>
           </div>
           <button
-            onClick={() => navigate("/")}
+            onClick={() => navigate("/locations")}
             className="text-orange-500 font-medium flex items-center gap-2 transition-colors"
           >
             Explore all our locations
