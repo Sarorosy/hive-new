@@ -16,7 +16,7 @@ export default function Footer() {
   };
 
   return (
-    <footer className="bg-gray-100 text-[#1c2c44] py-16 px-6">
+    <footer className="relative z-50 bg-gray-100 text-[#1c2c44] py-16 px-6">
       <div className="max-w-7xl mx-auto">
         {/* Main Content Grid */}
         <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
@@ -31,10 +31,22 @@ export default function Footer() {
                 Home
               </li>
               <li
+                onClick={() => navigate("/about-us")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                About Us
+              </li>
+              <li
                 onClick={() => navigate("/careers")}
                 className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
               >
                 Careers
+              </li>
+              <li
+                onClick={() => navigate("/blog")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                Blogs
               </li>
               <li
                 onClick={() => navigate("/landlord-relationships")}
@@ -48,18 +60,29 @@ export default function Footer() {
               >
                 Locations
               </li>
-              
             </ul>
           </div>
 
-          {/* Community Section */}
+          {/* Community / Account Section */}
           <div>
             <ul className="space-y-2 text-[#4b576a] text-sm mt-8 md:mt-0">
+              <li
+                onClick={() => navigate("/account/profile")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                My Account
+              </li>
               <li
                 onClick={() => navigate("/ecosystem")}
                 className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
               >
                 Ecosystem
+              </li>
+              <li
+                onClick={() => navigate("/day_pass")}
+                className="hover:text-[#0d2847] transition duration-200 cursor-pointer"
+              >
+                Book a Tour
               </li>
             </ul>
           </div>
@@ -171,9 +194,72 @@ export default function Footer() {
           {/* Copyright and Address */}
           <div className="mt-4 text-sm text-[#4b576a]">
             <p>©Copyright 2011 - 2025 The Hive. All rights reserved</p>
-            <p className="mt-2">
-              THE HIVE INDIA LIMITED | Level 1, First International Financial Centre, Plot Nos. C-54 & C-55 G Block Road, Bandra Kurla Complex, Bandra(East), Mumbai, Mumbai- 400051, Maharashtra
-            </p>
+            
+
+            {/* Key Locations with tooltip on hover showing full address */}
+            <div className="mt-4">
+              <p className="font-semibold text-[#0d2847] mb-2 text-xs md:text-sm">
+                Key Locations
+              </p>
+              <div className="flex flex-wrap gap-2 text-[11px] md:text-xs">
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`The Hive\n35JW+6XM, Thirumangalam, Chennai, Tamil Nadu 600040`}
+                >
+                  The Hive, Thirumangalam
+                </span>
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`The Hive - Flexible Workspaces, OMR Chennai (Pre-toll)\nSRP Stratford, Rajiv Gandhi Salai, PTK nagar, Thiruvanmiyur, Chennai, Tamil Nadu 600041`}
+                >
+                  OMR Chennai (Pre-toll)
+                </span>
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`The Hive - Flexible Workspace, SKCL Guindy, Chennai\nSKCL Infinite Tower, Guindy Industrial Estate, SIDCO Industrial Estate, Guindy, Chennai, Tamil Nadu 600032`}
+                >
+                  SKCL Guindy, Chennai
+                </span>
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`One Paramount\n110, Mount Poonamallee Rd, Porur, Chennai, Tamil Nadu 600116`}
+                >
+                  One Paramount, Chennai
+                </span>
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`The Hive - Flexible Workspaces, VR Bengaluru\nVR Bengaluru, Level 5, ITPL Main Rd, Devasandra Industrial Estate, Bengaluru, Karnataka 560048`}
+                >
+                  VR Bengaluru
+                </span>
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`Prestige Tech Platina\nWMVW+G8G, Kadubeesanahalli Bridge, Kodbisanhalli, Panathur, Bengaluru, Karnataka 560103`}
+                >
+                  Prestige Tech Platina, Bengaluru
+                </span>
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`The Hive - Flexible Workspaces, Gachibowli Hyderabad\nCorporate Capital, next to Sheraton Hyderabad Hotel, Financial District, Nanakramguda, Telangana 500032`}
+                >
+                  Gachibowli, Hyderabad
+                </span>
+                <span
+                  className="px-2 py-1 bg-white border border-[#e4e7ee] rounded-full cursor-help hover:bg-[#f5f7fb]"
+                  data-tooltip-id="my-tooltip"
+                  data-tooltip-html={`The Hive - Flexible Workspaces, The Mills\nThe Mills at RBCC, Behind Sheraton Grand Hotel, Raja Bahadur Mill Rd, Sangamvadi, Pune, Maharashtra 411001`}
+                >
+                  The Mills, Pune
+                </span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
