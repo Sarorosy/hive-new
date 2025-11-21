@@ -254,11 +254,7 @@ const AllLocations = () => {
                         <p className="text-sm text-gray-600 leading-relaxed">
                           {branch.address}
                         </p>
-                        {branch.netSize && branch.grossSize && (
-                          <p className="text-sm text-gray-600">
-                            Net Size: {branch.netSize.toLocaleString()} sq ft. · Gross Size: {branch.grossSize.toLocaleString()} sq ft. · {branch.floors} floor(s)
-                          </p>
-                        )}
+                        
                       </div>
 
                       {branch.highlights && (

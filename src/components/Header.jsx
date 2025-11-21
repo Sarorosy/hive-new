@@ -6,7 +6,6 @@ import {
   Phone,
   Menu,
   X,
-  Briefcase,
   BriefcaseBusiness,
   ShoppingCart,
   Globe,
@@ -197,6 +196,12 @@ const Header = ({ onBookTourClick }) => {
             ${isScrolled ? "text-black" : "text-black"}
           `}
             >
+              <RouterLink
+                to="/locations"
+                className="hover:underline cursor-pointer transition-all duration-200"
+              >
+                Locations
+              </RouterLink>
               {/* WorkSpaces Dropdown */}
               <div
                 className="relative"
