@@ -410,10 +410,10 @@ const Hero = () => {
         ))}
       </Swiper>
 
-      <button className="custom-prev cursor-pointer  absolute left-4 sm:right-24 bottom-16 z-99 w-6 h-6 sm:w-8 sm:h-8 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+      <button className="custom-prev cursor-pointer hidden md:block absolute left-4 sm:right-24 bottom-16 z-99 w-6 h-6 sm:w-8 sm:h-8 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
         <MoveLeft className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
-      <button className="custom-next cursor-pointer  absolute left-20 sm:right-6 bottom-16 z-99 w-6 h-6 sm:w-8 sm:h-8 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
+      <button className="custom-next cursor-pointer hidden md:block absolute left-20 sm:right-6 bottom-16 z-99 w-6 h-6 sm:w-8 sm:h-8 text-white rounded-full shadow-2xl flex items-center justify-center hover:bg-white hover:text-black transition-all duration-300 hover:scale-110">
         <MoveRight className="w-4 h-4 sm:w-5 sm:h-5" />
       </button>
 
