@@ -1,4 +1,4 @@
-import { Facebook, Instagram, Linkedin, ChevronDown, Globe } from "lucide-react";
+import { Facebook, Instagram, Linkedin, ChevronDown, Globe, Youtube } from "lucide-react";
 import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { useNavigate } from "react-router-dom";
 import { citiesData } from "../data/centersData";
@@ -112,7 +112,7 @@ export default function Footer() {
                 href="https://www.facebook.com/hiveworkspaces/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#0d2847] hover:text-[#1c2c44] transition"
+                className="text-black  transition"
               >
                 <Facebook className="w-5 h-5" />
               </a>
@@ -120,7 +120,7 @@ export default function Footer() {
                 href="https://www.linkedin.com/company/hiveworkspaces"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#0d2847] hover:text-[#1c2c44] transition"
+                className="text-black  transition"
               >
                 <Linkedin className="w-5 h-5" />
               </a>
@@ -128,15 +128,23 @@ export default function Footer() {
                 href="https://www.instagram.com/hiveworkspaces/"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#0d2847] hover:text-[#1c2c44] transition"
+                className="text-black  transition"
               >
                 <Instagram className="w-5 h-5" />
+              </a>
+              <a
+                href="https://www.youtube.com/@thehivecollaborativeworksp8501"
+                target="_blank"
+                rel="noreferrer"
+                className="text-black  transition"
+              >
+                <Youtube className="w-5 h-5" />
               </a>
               <a
                 href="https://twitter.com/hiveworkspaces?s=20"
                 target="_blank"
                 rel="noreferrer"
-                className="text-[#0d2847] hover:text-[#1c2c44] transition"
+                className="text-black  transition"
               >
                 <img src="/twitter.png" alt="Twitter" className="w-5 h-5" />
               </a>

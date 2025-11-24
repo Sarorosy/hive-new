@@ -32,11 +32,11 @@ import omr5 from "../assets/raw/chn/omr/5.jpg";
 import omr6 from "../assets/raw/chn/omr/6.jpg";
 
 //images for chennai SKCL
-import skcl1 from "../assets/raw/chn/skcl/1.jpg";
-import skcl2 from "../assets/raw/chn/skcl/2.jpg";
-import skcl3 from "../assets/raw/chn/skcl/3.jpg";
-import skcl4 from "../assets/raw/chn/skcl/4.jpg";
-import skcl5 from "../assets/raw/chn/skcl/5.jpg";
+import skcl1 from "../assets/raw/chn/skcl/1.png";
+import skcl2 from "../assets/raw/chn/skcl/s1.jpg";
+import skcl3 from "../assets/raw/chn/skcl/s2.jpg";
+import skcl4 from "../assets/raw/chn/skcl/s3.jpg";
+import skcl5 from "../assets/raw/chn/skcl/s4.jpg";
 
 
 //images for chennai Porur
@@ -83,7 +83,7 @@ import blr17 from "../assets/raw/blr/IMG_20250318_123453359.jpg";
 import wh1 from '../assets/raw/blr/whitefield/Common-Areas_2.jpg';
 import wh2 from '../assets/raw/blr/whitefield/Hive-Blr_-Reception.jpg';
 import wh3 from '../assets/raw/blr/whitefield/HiveBlr_Cabin3.jpg';
-import wh4 from '../assets/raw/blr/whitefield/_SPL9460-min.JPG';
+import wh4 from '../assets/raw/blr/whitefield/21.png';
 import wh5 from '../assets/raw/blr/whitefield/_SPL9466-min.JPG';
 import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.JPG';
 import wh7 from '../assets/raw/blr/whitefield/_SPL9535-min.JPG';
@@ -169,7 +169,7 @@ export const centersData = {
         ],
         details: "Located near Guindy, this space offers excellent connectivity, collaborative environments, and top-notch facilities.",
         images: [
-          skcl1,skcl2,skcl3,skcl4,skcl5
+          skcl2,skcl1,skcl3,skcl4,skcl5
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.362000448057!2d80.20681027512359!3d13.012604287306493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267583ea87459%3A0xe203dc67d754aab6!2sThe%20Hive%20-%20Flexible%20Workspace%2CSKCL%20Guindy%2C%20Chennai!5e0!3m2!1sen!2sin!4v1755267876394!5m2!1sen!2sin",
         lat:"13.012813353724379",

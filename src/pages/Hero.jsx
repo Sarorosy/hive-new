@@ -379,7 +379,7 @@ const Hero = () => {
  
 
   return (
-    <div className="relative h-[97vh] w-full overflow-visible z-49"
+    <div className="group relative h-[97vh] w-full overflow-visible z-49"
       id="curve"
     >
       {/* Swiper Background */}
@@ -404,7 +404,9 @@ const Hero = () => {
           <SwiperSlide key={idx}>
             <div className="relative h-full w-full">
               <img src={img} alt={`Hero ${idx}`} className="w-full h-full object-cover" />
-              <div className="absolute inset-0 bg-black/40" />
+              <div className="absolute inset-0 pointer-events-none opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                <div className="absolute -bottom-24 -left-24 w-[80%] max-w-[900px] h-[70%] bg-[radial-gradient(circle_at_bottom_left,rgba(0,0,0,0.75),rgba(0,0,0,0.55)_35%,rgba(0,0,0,0.2)_65%,transparent_80%)] blur-2xl rounded-[999px]" />
+              </div>
             </div>
           </SwiperSlide>
         ))}

@@ -1,449 +1,433 @@
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Navigation, Pagination, Autoplay } from "swiper/modules";
-import { MapPin, Calendar, Users, Clock, ArrowRight, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState } from "react";
+import {
+  MapPin,
+  Calendar,
+  Users,
+  Clock,
+  ArrowRight,
+  Sparkles,
+  Palette,
+  Feather,
+  Mail,
+  Phone,
+  ChevronRight,
+} from "lucide-react";
 import Breadcrumb from "../components/BreadCrumb";
 import { useOutletContext } from "react-router-dom";
-import "swiper/css";
-import "swiper/css/navigation";
-import "swiper/css/pagination";
+
+const heroHighlights = [
+  { label: "Open Galleries", value: "08" },
+  { label: "Curated Artists", value: "120+" },
+  { label: "Masterpieces", value: "350+" },
+];
+
+const storyGallery = [
+  {
+    id: 1,
+    image: "/ecosystem/vr/THEHIVEVR35.jpg",
+    title: "Textured Memories",
+    location: "Hall Of Frame",
+  },
+  {
+    id: 2,
+    image: "/ecosystem/blr/HiveBlr_Meeting-Room_5.jpg",
+    title: "Quiet Reverie",
+    location: "Main Atrium",
+    featured: true,
+  },
+  {
+    id: 3,
+    image: "/ecosystem/pune/IMG_4385.jpg",
+    title: "Black & White Study",
+    location: "Studio B",
+  },
+  {
+    id: 4,
+    image: "/ecosystem/omr/THEHIVE91.jpg",
+    title: "Hall Of Frame",
+    location: "Gallery South",
+  },
+];
+
+const featuredExhibits = [
+  {
+    id: "abstract",
+    title: "Wing Abstract Art",
+    category: "Abstract Art",
+    description:
+      "Bold movements that capture the rhythm of modern life. A celebration of form and fearless color.",
+    image: "/ecosystem/vr/THEHIVEVR25.jpg",
+  },
+  {
+    id: "animal",
+    title: "Elephant Abstract Artwork",
+    category: "Animal Art",
+    description:
+      "Playful palettes give new energy to wildlife storytelling through immersive textures.",
+    image: "/ecosystem/pune/HivePune_Amphitheater.jpg",
+  },
+  {
+    id: "geometric",
+    title: "Mountain Abstract Artwork",
+    category: "Geometric Art",
+    description:
+      "Layered gradients and architectural lines craft dreamlike landscapes that bend reality.",
+    image: "/ecosystem/blr/HiveBlr_Meeting-Room_2.jpg",
+  },
+];
+
+const artistProfiles = [
+  {
+    id: "leslie",
+    name: "Leslie Alexander",
+    tag: "11 Years Old Painter | Based in Moscow",
+    bio: "Leslie’s work is a tribute to emotion and movement. Her canvases blend youthful wonder with museum-grade craftsmanship.",
+  },
+  {
+    id: "kristin",
+    name: "Kristin Watson",
+    tag: "Graffiti Artist | De Tiras",
+    bio: "Kristin rewrites urban walls with tactile gradients and immersive typography crafted on site.",
+  },
+  {
+    id: "floyd",
+    name: "Floyd Miles",
+    tag: "Russian Artist | Art Influencer",
+    bio: "Floyd’s avant-garde storytelling marries digital motion with classic oil techniques.",
+  },
+  {
+    id: "savannah",
+    name: "Savannah Nguyen",
+    tag: "International Contemporary Pop-Artist",
+    bio: "Savannah delivers vibrant portraits that nod to fashion photography and visual poetry.",
+  },
+  {
+    id: "ali",
+    name: "Ali Abdaal",
+    tag: "Samarkand Russian Artist",
+    bio: "Ali experiments with light and shadow to reimagine architectural interiors as living sculptures.",
+  },
+];
+
+const newsletterImages = [
+  "/ecosystem/vr/THEHIVEVR18.jpg",
+  "/ecosystem/blr/Common-Areas_3.jpg",
+  "/ecosystem/pune/HivePune_Cafe.jpg",
+  "/ecosystem/omr/Hive_Enterprise_OMR.jpg",
+];
 
 const EcosystemPage = () => {
   const { setContactFormOpen } = useOutletContext();
-  
-  // Center data with images from public/ecosystem
-  const centers = [
-    {
-      id: "blr",
-      name: "Bangalore",
-      fullName: "The Hive Bangalore",
-      location: "Whitefield & PTP",
-      description: "Premium coworking spaces in the heart of India's Silicon Valley, designed for innovation and collaboration.",
-      images: [
-        "/ecosystem/blr/Common-Areas_1.jpg",
-        "/ecosystem/blr/Common-Areas_2.jpg",
-        "/ecosystem/blr/Common-Areas_3.jpg",
-        "/ecosystem/blr/Hive-Blr_-Reception.jpg",
-        "/ecosystem/blr/HiveBlr_Cabin3.jpg",
-        "/ecosystem/blr/HiveBlr_Cabin4.jpg",
-        "/ecosystem/blr/HiveBlR_Collab-Space.jpg",
-        "/ecosystem/blr/HiveBlr_Meeting-Room_1.jpg",
-        "/ecosystem/blr/HiveBlr_Meeting-Room_2.jpg",
-        "/ecosystem/blr/HiveBlr_Meeting-Room_4.jpg",
-        "/ecosystem/blr/HiveBlr_Meeting-Room_5.jpg",
-        "/ecosystem/blr/HiveBlr_Meeting-Room-3.jpg",
-      ],
-      features: ["Modern Meeting Rooms", "Collaborative Spaces", "Private Cabins", "Reception Area"]
-    },
-    {
-      id: "vr",
-      name: "VR Chennai",
-      fullName: "The Hive VR Chennai",
-      location: "Anna Nagar",
-      description: "A state-of-the-art workspace featuring cutting-edge amenities and stunning architecture.",
-      images: [
-        "/ecosystem/vr/THEHIVEVR10.jpg",
-        "/ecosystem/vr/THEHIVEVR14.jpg",
-        "/ecosystem/vr/THEHIVEVR18.jpg",
-        "/ecosystem/vr/THEHIVEVR2.jpg",
-        "/ecosystem/vr/THEHIVEVR23.jpg",
-        "/ecosystem/vr/THEHIVEVR25.jpg",
-        "/ecosystem/vr/THEHIVEVR27.jpg",
-        "/ecosystem/vr/THEHIVEVR3.jpg",
-        "/ecosystem/vr/THEHIVEVR31.jpg",
-        "/ecosystem/vr/THEHIVEVR34.jpg",
-        "/ecosystem/vr/THEHIVEVR35.jpg",
-        "/ecosystem/vr/THEHIVEVR36.jpg",
-        "/ecosystem/vr/THEHIVEVR37.jpg",
-        "/ecosystem/vr/THEHIVEVR39.jpg",
-        "/ecosystem/vr/THEHIVEVR4.jpg",
-        "/ecosystem/vr/THEHIVEVR41-1.jpg",
-        "/ecosystem/vr/THEHIVEVR7.jpg",
-        "/ecosystem/vr/THEHIVEVR8.jpg",
-        "/ecosystem/vr/THEHIVEVR9.jpg",
-      ],
-      features: ["Premium Workspaces", "Modern Design", "Flexible Layouts", "Tech-Enabled"]
-    },
-    {
-      id: "hyadr",
-      name: "Hyderabad",
-      fullName: "The Hive Hyderabad",
-      location: "Gachibowli",
-      description: "Located in the IT hub of Hyderabad, offering premium workspaces for growing businesses.",
-      images: [
-        "/ecosystem/hyadr/HiveHyd_15-Seater-Cabin.jpg",
-        "/ecosystem/hyadr/HiveHyd_75-Seater-Cabin-2.jpg",
-        "/ecosystem/hyadr/HiveHyd_Amphitheater_11zon.jpg",
-        "/ecosystem/hyadr/HiveHyd_Enterprise-Pantry_11zon.jpg",
-        "/ecosystem/hyadr/HiveHyd_Pantry_11zon.jpg",
-        "/ecosystem/hyadr/HiveHyderabad_7-Seater-MR.jpg",
-        "/ecosystem/hyadr/HiveHyderabad_8-Seater-MR.jpg",
-      ],
-      features: ["Amphitheater", "Enterprise Cabins", "Meeting Rooms", "Premium Pantry"]
-    },
-    {
-      id: "omr",
-      name: "Chennai OMR",
-      fullName: "The Hive Chennai OMR",
-      location: "Old Mahabalipuram Road",
-      description: "A vibrant coworking space on Chennai's tech corridor, perfect for startups and enterprises.",
-      images: [
-        "/ecosystem/omr/149A8736.jpg",
-        "/ecosystem/omr/149A8772.jpg",
-        "/ecosystem/omr/20191204_091109.jpg",
-        "/ecosystem/omr/20200304_201547.jpg",
-        "/ecosystem/omr/20200304_202312.jpg",
-        "/ecosystem/omr/20200306_171011.jpg",
-        "/ecosystem/omr/Hive_Enterprise_OMR.jpg",
-        "/ecosystem/omr/Hive_OMR_10-Seater.jpg",
-        "/ecosystem/omr/Hot-Desk_OMR-1.jpg",
-        "/ecosystem/omr/THEHIVE86.jpg",
-        "/ecosystem/omr/THEHIVE91.jpg",
-      ],
-      features: ["Enterprise Solutions", "Hot Desks", "Meeting Rooms", "Modern Interiors"]
-    },
-    {
-      id: "pune",
-      name: "Pune",
-      fullName: "The Hive Pune",
-      location: "The Mills",
-      description: "Where heritage meets innovation. A unique workspace in Pune's cultural heart.",
-      images: [
-        "/ecosystem/pune/HivePune_18-Seater-MR.jpg",
-        "/ecosystem/pune/HivePune_Amphitheater.jpg",
-        "/ecosystem/pune/HivePune_Cafe.jpg",
-        "/ecosystem/pune/HivePune_Common-Areas-1.jpg",
-        "/ecosystem/pune/HivePune_CommonAr.jpg",
-        "/ecosystem/pune/HivePune_Pantry1_11zon.jpg",
-        "/ecosystem/pune/IMG_4235.jpg",
-        "/ecosystem/pune/IMG_4385.jpg",
-      ],
-      features: ["Amphitheater", "Cafe", "Meeting Rooms", "Common Areas"]
-    },
-  ];
+  const [activeArtist, setActiveArtist] = useState(artistProfiles[0].id);
 
-  // Events data
-  const events = [
-    {
-      id: 1,
-      title: "Networking Mixer",
-      date: "2024-03-15",
-      time: "6:00 PM - 8:00 PM",
-      location: "Bangalore - VR",
-      description: "Connect with fellow entrepreneurs, investors, and professionals over drinks and appetizers.",
-      attendees: 50,
-      type: "Networking"
-    },
-    {
-      id: 2,
-      title: "Startup Pitch Night",
-      date: "2024-03-22",
-      time: "7:00 PM - 9:00 PM",
-      location: "Hyderabad - Gachibowli",
-      description: "Watch innovative startups pitch their ideas to a panel of investors and industry experts.",
-      attendees: 100,
-      type: "Pitch Event"
-    },
-    {
-      id: 3,
-      title: "Wellness Workshop",
-      date: "2024-03-28",
-      time: "10:00 AM - 12:00 PM",
-      location: "Chennai - OMR",
-      description: "Join us for a morning of mindfulness, yoga, and wellness practices to boost productivity.",
-      attendees: 30,
-      type: "Wellness"
-    },
-    {
-      id: 4,
-      title: "Tech Talk Series",
-      date: "2024-04-05",
-      time: "5:00 PM - 7:00 PM",
-      location: "Pune - The Mills",
-      description: "Expert-led discussion on the latest trends in technology and innovation.",
-      attendees: 75,
-      type: "Tech Talk"
-    },
-    {
-      id: 5,
-      title: "Community Lunch",
-      date: "2024-04-12",
-      time: "12:30 PM - 2:00 PM",
-      location: "All Centers",
-      description: "Monthly community lunch bringing together members from all our locations.",
-      attendees: 200,
-      type: "Community"
-    },
-    {
-      id: 6,
-      title: "Workshop: Digital Marketing",
-      date: "2024-04-18",
-      time: "3:00 PM - 5:00 PM",
-      location: "Bangalore - PTP",
-      description: "Learn effective digital marketing strategies from industry experts.",
-      attendees: 40,
-      type: "Workshop"
-    },
-  ];
-
-  const formatDate = (dateString) => {
-    const date = new Date(dateString);
-    return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-  };
+  const activeBio = artistProfiles.find((artist) => artist.id === activeArtist);
 
   return (
-    <div className="min-h-screen bg-white">
-      {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-gray-900 via-gray-800 to-black text-white py-20 md:py-32 overflow-hidden">
-        <div className="absolute inset-0 opacity-10">
-          
-        </div>
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <Breadcrumb items={[
-            { label: "Home", path: "/" },
-            { label: "Ecosystem" }
-          ]} />
-          <div className="mt-8 max-w-4xl">
-            <div className="inline-flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <MapPin className="w-4 h-4 mr-2" />
-              Across 5 Cities
-            </div>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6 leading-tight">
-              The Hive Ecosystem
-            </h1>
-            <p className="text-xl md:text-2xl text-gray-300 mb-8 leading-relaxed">
-              Discover our vibrant coworking spaces across India. Each location is thoughtfully designed to foster creativity, collaboration, and community.
-            </p>
-            <div className="flex flex-wrap gap-4">
-              <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                <Users className="w-5 h-5 mr-2" />
-                <span className="font-medium">500+ Members</span>
+    <div className="min-h-screen bg-[#f5f4f2]">
+      <section className="border-b border-black/10 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <Breadcrumb
+            items={[
+              { label: "Home", path: "/" },
+              { label: "Ecosystem" },
+            ]}
+          />
+          <div className="mt-10 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] items-center">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-6">
+                Gallery Artisan
+              </p>
+              <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold tracking-tight text-gray-900 leading-tight mb-6">
+                Begin an exploration through a gallery showcasing artisan
+                creativity.
+              </h1>
+              <p className="text-lg text-gray-600 max-w-2xl mb-10">
+                Step into a realm of artistic expression, where our gallery
+                showcases the extraordinary works of talented artists from across
+                the world. Every corridor is curated to inspire.
+              </p>
+              <div className="flex flex-wrap gap-4 mb-10">
+                <button
+                  onClick={() => setContactFormOpen(true)}
+                  className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full text-sm font-semibold hover:translate-y-[-1px] transition-transform"
+                >
+                  Plan A Visit
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                <button className="inline-flex items-center gap-2 px-6 py-3 border border-black rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors">
+                  Discover Story
+                  <Sparkles className="w-4 h-4" />
+                </button>
               </div>
-              <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                <MapPin className="w-5 h-5 mr-2" />
-                <span className="font-medium">5 Locations</span>
-              </div>
-              <div className="flex items-center bg-white/10 backdrop-blur-sm px-4 py-2 rounded-lg">
-                <Calendar className="w-5 h-5 mr-2" />
-                <span className="font-medium">Monthly Events</span>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Centers Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-              Our Centers
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Explore our beautifully designed workspaces across India's major tech hubs
-            </p>
-          </div>
-
-          <div className="space-y-24">
-            {centers.map((center, index) => (
-              <div
-                key={center.id}
-                className={`grid md:grid-cols-2 gap-12 items-center ${
-                  index % 2 === 1 ? "md:flex-row-reverse" : ""
-                }`}
-              >
-                {/* Image Gallery */}
-                <div className={`${index % 2 === 1 ? "md:order-2" : ""}`}>
-                  <div className="relative rounded-2xl overflow-hidden shadow-2xl">
-                    <Swiper
-                      modules={[Navigation, Pagination, Autoplay]}
-                      spaceBetween={0}
-                      slidesPerView={1}
-                      navigation={{
-                        prevEl: `.prev-${center.id}`,
-                        nextEl: `.next-${center.id}`,
-                      }}
-                      pagination={{
-                        clickable: true,
-                        bulletClass: "swiper-pagination-bullet custom-bullet",
-                        bulletActiveClass: "custom-bullet-active",
-                      }}
-                      autoplay={{ delay: 4000, disableOnInteraction: false }}
-                      loop
-                      className="h-[400px] md:h-[500px] rounded-2xl"
-                    >
-                      {center.images.map((img, idx) => (
-                        <SwiperSlide key={idx}>
-                          <div className="relative h-full">
-                            <img
-                              src={img}
-                              alt={`${center.name} ${idx + 1}`}
-                              className="w-full h-full object-cover"
-                              onError={(e) => {
-                                e.target.src = "https://via.placeholder.com/800x500?text=Image+Not+Found";
-                              }}
-                            />
-                            <div className="absolute top-4 right-4 px-3 py-1 bg-black/50 backdrop-blur-lg rounded-full text-white text-sm font-medium">
-                              {idx + 1} / {center.images.length}
-                            </div>
-                          </div>
-                        </SwiperSlide>
-                      ))}
-                    </Swiper>
-                    <button
-                      className={`prev-${center.id} absolute left-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-lg rounded-full shadow-xl flex items-center justify-center hover:bg-white transition-all duration-300 hover:scale-110`}
-                    >
-                      <ChevronLeft className="w-6 h-6 text-black" />
-                    </button>
-                    <button
-                      className={`next-${center.id} absolute right-4 top-1/2 -translate-y-1/2 z-10 w-12 h-12 bg-white/90 backdrop-blur-lg rounded-full shadow-xl flex items-center justify-center hover:bg-white transition-all duration-300 hover:scale-110`}
-                    >
-                      <ChevronRight className="w-6 h-6 text-black" />
-                    </button>
-                  </div>
-                </div>
-
-                {/* Content */}
-                <div className={`${index % 2 === 1 ? "md:order-1" : ""}`}>
-                  <div className="inline-flex items-center bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-4">
-                    <MapPin className="w-4 h-4 mr-2" />
-                    {center.location}
-                  </div>
-                  <h3 className="text-3xl md:text-4xl font-bold text-black mb-4">
-                    {center.fullName}
-                  </h3>
-                  <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                    {center.description}
-                  </p>
-                  
-                  {/* Features */}
-                  <div className="grid grid-cols-2 gap-3 mb-6">
-                    {center.features.map((feature, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center text-gray-700"
-                      >
-                        <div className="w-2 h-2 bg-black rounded-full mr-2"></div>
-                        <span className="text-sm md:text-base">{feature}</span>
-                      </div>
-                    ))}
-                  </div>
-
-                  <button
-                    onClick={() => setContactFormOpen(true)}
-                    className="inline-flex items-center px-6 py-3 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg"
+              <div className="flex flex-wrap gap-6">
+                {heroHighlights.map((highlight) => (
+                  <div
+                    key={highlight.label}
+                    className="flex flex-col bg-gray-50 rounded-2xl px-6 py-4 min-w-[150px]"
                   >
-                    Schedule a Tour
-                    <ArrowRight className="w-5 h-5 ml-2" />
-                  </button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Events Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-black text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
-              <Calendar className="w-4 h-4 mr-2" />
-              Community Events
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold text-black mb-4">
-              Upcoming Events
-            </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Join our vibrant community for networking, learning, and collaboration opportunities
-            </p>
-          </div>
-
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {events.map((event) => (
-              <div
-                key={event.id}
-                className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden border border-gray-100 hover:border-black group"
-              >
-                <div className="p-6">
-                  <div className="flex items-center justify-between mb-4">
-                    <span className="px-3 py-1 bg-gray-100 text-gray-700 text-xs font-semibold rounded-full">
-                      {event.type}
+                    <span className="text-3xl font-semibold text-gray-900">
+                      {highlight.value}
                     </span>
-                    <div className="flex items-center text-gray-500 text-sm">
-                      <Users className="w-4 h-4 mr-1" />
-                      {event.attendees}
-                    </div>
+                    <span className="text-xs uppercase tracking-[0.25em] text-gray-500">
+                      {highlight.label}
+                    </span>
                   </div>
-                  
-                  <h3 className="text-xl font-bold text-black mb-3 group-hover:text-gray-700 transition-colors">
-                    {event.title}
-                  </h3>
-                  
-                  <p className="text-gray-600 mb-4 text-sm leading-relaxed">
-                    {event.description}
+                ))}
+              </div>
+            </div>
+            <div className="relative">
+              <div className="rounded-[32px] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.2)]">
+                <img
+                  src="/ecosystem/vr/THEHIVEVR23.jpg"
+                  alt="Gallery hall"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <div className="absolute -bottom-10 left-6 bg-white/90 backdrop-blur-md rounded-2xl px-6 py-4 shadow-xl border border-black/5">
+                <p className="text-sm uppercase tracking-[0.2em] text-gray-500 mb-1">
+                  Location
+                </p>
+                <p className="text-lg font-semibold text-gray-900">
+                  Dostoevsky St. 1, Moscow
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 border-b border-black/10 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+            <div>
+              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-3">
+                A Blend Of Talented Genius In Art
+              </p>
+              <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6">
+                Step into a realm of artistic expression
+              </h2>
+              <p className="text-gray-600 mb-8 leading-relaxed">
+                Welcome to Gallery Artisan, an avant-garde space dedicated to
+                pushing the boundaries of creative expression. Nestled in the
+                cultural heart of Moscow, our gallery is a testament to the
+                belief that art has no age limit.
+              </p>
+              <button className="inline-flex items-center gap-2 px-6 py-3 border border-black rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors">
+                More About Us
+                <ChevronRight className="w-4 h-4" />
+              </button>
+            </div>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {storyGallery.map((item) => (
+                <div
+                  key={item.id}
+                  className={`relative rounded-3xl overflow-hidden shadow-xl ${
+                    item.featured ? "sm:col-span-2" : ""
+                  }`}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.title}
+                    className="w-full h-[220px] sm:h-[260px] object-cover"
+                  />
+                  <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/80 via-black/20 to-transparent text-white">
+                    <p className="text-sm uppercase tracking-[0.25em] text-white/70 mb-1">
+                      {item.location}
+                    </p>
+                    <h3 className="text-xl font-semibold">{item.title}</h3>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="py-20 bg-gradient-to-br from-black via-[#2d1c30] to-[#6c1f6b] text-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center mb-16">
+            <p className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 text-xs uppercase tracking-[0.4em]">
+              New Artwork
+            </p>
+            <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">
+              Unveiling Our Exclusive Artwork
+            </h2>
+            <p className="mt-4 text-base sm:text-lg text-white/80 max-w-3xl mx-auto">
+              Explore the dynamic world of contemporary art through our current
+              exhibits. Each exhibition is a testament to the limitless
+              possibility of expression.
+            </p>
+          </div>
+          <div className="grid gap-8 md:grid-cols-3">
+            {featuredExhibits.map((exhibit) => (
+              <div
+                key={exhibit.id}
+                className="bg-white/5 rounded-[28px] border border-white/10 overflow-hidden hover:-translate-y-2 transition-transform"
+              >
+                <div className="h-60 overflow-hidden">
+                  <img
+                    src={exhibit.image}
+                    alt={exhibit.title}
+                    className="w-full h-full object-cover"
+                  />
+                </div>
+                <div className="p-8">
+                  <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-3">
+                    {exhibit.category}
                   </p>
-
-                  <div className="space-y-2 mb-4">
-                    <div className="flex items-center text-gray-700 text-sm">
-                      <Calendar className="w-4 h-4 mr-2 text-gray-500" />
-                      {formatDate(event.date)}
-                    </div>
-                    <div className="flex items-center text-gray-700 text-sm">
-                      <Clock className="w-4 h-4 mr-2 text-gray-500" />
-                      {event.time}
-                    </div>
-                    <div className="flex items-center text-gray-700 text-sm">
-                      <MapPin className="w-4 h-4 mr-2 text-gray-500" />
-                      {event.location}
-                    </div>
-                  </div>
-
-                  <button
-                    onClick={() => setContactFormOpen(true)}
-                    className="w-full mt-4 px-4 py-2 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 text-sm"
-                  >
-                    Register Now
+                  <h3 className="text-xl font-semibold mb-3">
+                    {exhibit.title}
+                  </h3>
+                  <p className="text-sm text-white/80 mb-6">
+                    {exhibit.description}
+                  </p>
+                  <button className="inline-flex items-center gap-2 text-sm font-semibold">
+                    Detail Artwork
+                    <ArrowRight className="w-4 h-4" />
                   </button>
                 </div>
               </div>
             ))}
           </div>
+        </div>
+      </section>
 
-          <div className="text-center mt-12">
-            <button
-              onClick={() => setContactFormOpen(true)}
-              className="inline-flex items-center px-8 py-4 bg-black text-white font-semibold rounded-lg hover:bg-gray-800 transition-all duration-300 hover:scale-105 shadow-lg"
-            >
-              View All Events
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </button>
+      <section className="py-20 bg-white border-b border-black/10">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-[0.95fr_1.05fr] items-center">
+          <div>
+            <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4">
+              Artist Profiles
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6">
+              Meet The Visionaries
+            </h2>
+            <p className="text-gray-600 mb-10">
+              Delve into the minds of our extraordinary artists. Each profile is
+              a glimpse into the passion and talent that defines their work.
+            </p>
+            <div className="space-y-3">
+              {artistProfiles.map((artist) => (
+                <button
+                  key={artist.id}
+                  onClick={() => setActiveArtist(artist.id)}
+                  className={`w-full text-left border rounded-2xl px-5 py-4 flex items-center justify-between transition-colors ${
+                    activeArtist === artist.id
+                      ? "border-black bg-black text-white"
+                      : "border-black/10 hover:border-black"
+                  }`}
+                >
+                  <div>
+                    <p className="font-semibold">{artist.name}</p>
+                    <p
+                      className={`text-sm ${
+                        activeArtist === artist.id
+                          ? "text-white/70"
+                          : "text-gray-500"
+                      }`}
+                    >
+                      {artist.tag}
+                    </p>
+                  </div>
+                  <ChevronRight className="w-5 h-5" />
+                </button>
+              ))}
+            </div>
+          </div>
+          <div className="relative">
+            <div className="rounded-[36px] overflow-hidden shadow-[0_30px_90px_rgba(15,15,15,0.25)]">
+              <img
+                src="/ecosystem/pune/HivePune_CommonAr.jpg"
+                alt="Artist at work"
+                className="w-full h-full object-cover"
+              />
+            </div>
+            <div className="absolute -bottom-10 left-10 right-10 bg-white rounded-3xl shadow-xl border border-black/5 p-6">
+              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-3">
+                Artist Insight
+              </p>
+              <p className="text-gray-700">{activeBio?.bio}</p>
+            </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
       <section className="py-20 bg-black text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
-            Ready to Join The Hive Ecosystem?
-          </h2>
-          <p className="text-xl text-gray-300 mb-8 max-w-3xl mx-auto">
-            Experience the perfect blend of productivity, community, and innovation at any of our premium locations.
-          </p>
-          <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <button
-              onClick={() => setContactFormOpen(true)}
-              className="px-8 py-4 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 transition-all duration-300 hover:scale-105 shadow-xl"
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] items-center">
+          <div>
+            <p className="text-sm uppercase tracking-[0.4em] text-white/70 mb-4">
+              Newsletter
+            </p>
+            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
+              Sign Up For Gallery Artisan&apos;s Newsletter
+            </h2>
+            <p className="text-white/70 mb-8">
+              Stay informed about Gallery Artisan&apos;s latest dates,
+              exhibitions, and most exciting projects. Become part of a vibrant
+              community that celebrates art, creativity, and inspiration.
+            </p>
+            <form
+              className="space-y-4"
+              onSubmit={(event) => event.preventDefault()}
             >
-              Schedule a Tour
-            </button>
-            <button
-              onClick={() => setContactFormOpen(true)}
-              className="px-8 py-4 border-2 border-white text-white font-semibold rounded-lg hover:bg-white hover:text-black transition-all duration-300"
-            >
-              Get in Touch
-            </button>
+              <div className="grid sm:grid-cols-2 gap-4">
+                <input
+                  type="text"
+                  placeholder="First Name"
+                  className="w-full rounded-full px-5 py-3 bg-white/10 border border-white/20 placeholder:text-white/60 focus:outline-none focus:border-white"
+                />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  className="w-full rounded-full px-5 py-3 bg-white/10 border border-white/20 placeholder:text-white/60 focus:outline-none focus:border-white"
+                />
+              </div>
+              <input
+                type="email"
+                placeholder="Enter your email"
+                className="w-full rounded-full px-5 py-3 bg-white/10 border border-white/20 placeholder:text-white/60 focus:outline-none focus:border-white"
+              />
+              <label className="flex items-center gap-3 text-sm text-white/70">
+                <input type="checkbox" className="rounded border-white/50" />
+                I confirm the privacy policy
+              </label>
+              <button
+                type="submit"
+                className="w-full sm:w-auto inline-flex items-center gap-2 px-8 py-3 bg-white text-black rounded-full font-semibold"
+              >
+                Submit
+                <ArrowRight className="w-4 h-4" />
+              </button>
+            </form>
+          </div>
+          <div className="bg-white/5 rounded-[36px] border border-white/10 p-6">
+            <div className="grid grid-cols-2 gap-4">
+              {newsletterImages.map((image, index) => (
+                <div
+                  key={`${image}-${index}`}
+                  className="rounded-3xl overflow-hidden"
+                >
+                  <img
+                    src={image}
+                    alt="Gallery collection"
+                    className="w-full h-40 object-cover"
+                  />
+                </div>
+              ))}
+            </div>
+            <div className="mt-6 flex flex-wrap gap-4 text-sm text-white/80">
+              <span className="inline-flex items-center gap-2">
+                <MapPin className="w-4 h-4" />
+                1901 Thameinitz Cir, Shiloh, Hawaii 8103
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Phone className="w-4 h-4" />
+                +1 (808) 555 0190
+              </span>
+              <span className="inline-flex items-center gap-2">
+                <Mail className="w-4 h-4" />
+                curator@thehive.art
+              </span>
+            </div>
           </div>
         </div>
       </section>
