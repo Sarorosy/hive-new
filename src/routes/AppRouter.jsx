@@ -9,6 +9,7 @@ import ScrollToTop from "../components/ScrollToTop";
 import Home from "../pages/Home";
 import LandlordRelationship from "../pages/landlord/LandlordRelationship";
 import Center from "../pages/center/Center";
+import CityBranches from "../pages/center/CityBranches";
 import NotFound from "../components/NotFound";
 import WorkspacePage from "../pages/workspace/WorkspacePage";
 import ProductPage from "../pages/product/ProductPage";
@@ -132,7 +133,7 @@ export default function AppRouter() {
             <Route path="/about-us" element={<AboutUs />} />
             <Route path="/contact" element={<Contact />} />
             <Route path="/:city/:branch" element={<Center />} />
-            <Route path="/:city" element={<Center />} />
+            <Route path="/:city" element={<CityBranches />} />
             <Route path="/locations" element={<AllLocations />} />
 
             <Route

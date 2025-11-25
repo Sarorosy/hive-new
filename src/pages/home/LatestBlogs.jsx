@@ -46,7 +46,7 @@ const LatestBlogs = () => {
         .sort(
           (a, b) => new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime()
         )
-        .slice(0, 4);
+        .slice(0, 3);
     } catch (error) {
       console.error("Failed to load blogs data", error);
       return [];
@@ -77,7 +77,7 @@ const LatestBlogs = () => {
         </button>
       </div>
 
-      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
         {latestBlogs.map((blog) => (
           <article
             key={blog.id}

@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   MapPin,
   Calendar,
@@ -14,6 +14,7 @@ import {
 } from "lucide-react";
 import Breadcrumb from "../components/BreadCrumb";
 import { useOutletContext } from "react-router-dom";
+import EcoHero from "./EcoHero";
 
 const heroHighlights = [
   { label: "Open Galleries", value: "08" },
@@ -47,6 +48,30 @@ const storyGallery = [
     title: "Hall Of Frame",
     location: "Gallery South",
   },
+  {
+    id: 5,
+    image: "/ecosystem/vr/THEHIVEVR25.jpg",
+    title: "Abstract Vision",
+    location: "Gallery North",
+  },
+  {
+    id: 6,
+    image: "/ecosystem/blr/Common-Areas_3.jpg",
+    title: "Modern Spaces",
+    location: "Main Hall",
+  },
+  {
+    id: 7,
+    image: "/ecosystem/pune/HivePune_Cafe.jpg",
+    title: "Cafe Culture",
+    location: "Lounge Area",
+  },
+  {
+    id: 8,
+    image: "/ecosystem/omr/Hive_Enterprise_OMR.jpg",
+    title: "Enterprise Hub",
+    location: "Business Center",
+  },
 ];
 
 const featuredExhibits = [
@@ -57,6 +82,7 @@ const featuredExhibits = [
     description:
       "Bold movements that capture the rhythm of modern life. A celebration of form and fearless color.",
     image: "/ecosystem/vr/THEHIVEVR25.jpg",
+    date: "March 15, 2024",
   },
   {
     id: "animal",
@@ -65,6 +91,7 @@ const featuredExhibits = [
     description:
       "Playful palettes give new energy to wildlife storytelling through immersive textures.",
     image: "/ecosystem/pune/HivePune_Amphitheater.jpg",
+    date: "April 22, 2024",
   },
   {
     id: "geometric",
@@ -73,6 +100,7 @@ const featuredExhibits = [
     description:
       "Layered gradients and architectural lines craft dreamlike landscapes that bend reality.",
     image: "/ecosystem/blr/HiveBlr_Meeting-Room_2.jpg",
+    date: "May 10, 2024",
   },
 ];
 
@@ -119,20 +147,80 @@ const newsletterImages = [
 const EcosystemPage = () => {
   const { setContactFormOpen } = useOutletContext();
   const [activeArtist, setActiveArtist] = useState(artistProfiles[0].id);
+  const carouselRef = useRef(null);
+  const animationRef = useRef(null);
 
   const activeBio = artistProfiles.find((artist) => artist.id === activeArtist);
 
+  // Generate columns with alternating pattern: double, full, double, full...
+  const generateColumns = (galleryArray, setIndex = 0) => {
+    const columns = [];
+    let imgIndex = 0;
+    let colIndex = 0;
+    let fullColumnIndex = 0; // Track full column index
+
+    while (imgIndex < galleryArray.length) {
+      if (colIndex % 2 === 0) {
+        // Double images column
+        if (imgIndex + 1 < galleryArray.length) {
+          const item1 = galleryArray[imgIndex];
+          const item2 = galleryArray[imgIndex + 1];
+          columns.push({ type: 'double', items: [item1, item2], key: `double-${setIndex}-${colIndex}` });
+          imgIndex += 2;
+        } else {
+          // If odd number of items left, show single
+          columns.push({ type: 'full', items: [galleryArray[imgIndex]], key: `full-${setIndex}-${colIndex}`, fullIndex: fullColumnIndex++ });
+          imgIndex += 1;
+        }
+      } else {
+        // Full height single image column
+        columns.push({ type: 'full', items: [galleryArray[imgIndex]], key: `full-${setIndex}-${colIndex}`, fullIndex: fullColumnIndex++ });
+        imgIndex += 1;
+      }
+      colIndex += 1;
+    }
+    return columns;
+  };
+
+  // Infinite scroll animation
+  useEffect(() => {
+    const carousel = carouselRef.current;
+    if (!carousel) return;
+
+    let scrollPosition = 0;
+    const scrollSpeed = 0.5; // pixels per frame
+
+    const animate = () => {
+      if (carousel) {
+        scrollPosition += scrollSpeed;
+        const maxScroll = carousel.scrollWidth / 2; // Since we duplicate content
+        
+        if (scrollPosition >= maxScroll) {
+          scrollPosition = 0;
+        }
+        
+        carousel.scrollLeft = scrollPosition;
+      }
+      animationRef.current = requestAnimationFrame(animate);
+    };
+
+    animationRef.current = requestAnimationFrame(animate);
+
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#f5f4f2]">
-      <section className="border-b border-black/10 bg-white">
+      <section className=" bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <Breadcrumb
-            items={[
-              { label: "Home", path: "/" },
-              { label: "Ecosystem" },
-            ]}
+            items={[{ label: "Home", path: "/" }, { label: "Ecosystem" }]}
           />
-          <div className="mt-10 grid gap-12 lg:grid-cols-[1.15fr_0.85fr] items-center">
+          <div className="mt-10 ">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-6">
                 Gallery Artisan
@@ -141,10 +229,21 @@ const EcosystemPage = () => {
                 Begin an exploration through a gallery showcasing artisan
                 creativity.
               </h1>
+            </div>
+          </div>
+        </div>
+      </section>
+      
+      <EcoHero />
+      
+      <section className="border-b border-black/10 bg-white">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+          <div className="mt-10">
+            <div>
               <p className="text-lg text-gray-600 max-w-2xl mb-10">
                 Step into a realm of artistic expression, where our gallery
-                showcases the extraordinary works of talented artists from across
-                the world. Every corridor is curated to inspire.
+                showcases the extraordinary works of talented artists from
+                across the world. Every corridor is curated to inspire.
               </p>
               <div className="flex flex-wrap gap-4 mb-10">
                 <button
@@ -154,42 +253,7 @@ const EcosystemPage = () => {
                   Plan A Visit
                   <ArrowRight className="w-4 h-4" />
                 </button>
-                <button className="inline-flex items-center gap-2 px-6 py-3 border border-black rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors">
-                  Discover Story
-                  <Sparkles className="w-4 h-4" />
-                </button>
-              </div>
-              <div className="flex flex-wrap gap-6">
-                {heroHighlights.map((highlight) => (
-                  <div
-                    key={highlight.label}
-                    className="flex flex-col bg-gray-50 rounded-2xl px-6 py-4 min-w-[150px]"
-                  >
-                    <span className="text-3xl font-semibold text-gray-900">
-                      {highlight.value}
-                    </span>
-                    <span className="text-xs uppercase tracking-[0.25em] text-gray-500">
-                      {highlight.label}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-            <div className="relative">
-              <div className="rounded-[32px] overflow-hidden shadow-[0_20px_80px_rgba(0,0,0,0.2)]">
-                <img
-                  src="/ecosystem/vr/THEHIVEVR23.jpg"
-                  alt="Gallery hall"
-                  className="w-full h-full object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-10 left-6 bg-white/90 backdrop-blur-md rounded-2xl px-6 py-4 shadow-xl border border-black/5">
-                <p className="text-sm uppercase tracking-[0.2em] text-gray-500 mb-1">
-                  Location
-                </p>
-                <p className="text-lg font-semibold text-gray-900">
-                  Dostoevsky St. 1, Moscow
-                </p>
+                
               </div>
             </div>
           </div>
@@ -198,7 +262,7 @@ const EcosystemPage = () => {
 
       <section className="py-20 border-b border-black/10 bg-white">
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid gap-10 lg:grid-cols-[0.85fr_1.15fr]">
+          <div className="">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-3">
                 A Blend Of Talented Genius In Art
@@ -217,73 +281,158 @@ const EcosystemPage = () => {
                 <ChevronRight className="w-4 h-4" />
               </button>
             </div>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {storyGallery.map((item) => (
-                <div
-                  key={item.id}
-                  className={`relative rounded-3xl overflow-hidden shadow-xl ${
-                    item.featured ? "sm:col-span-2" : ""
-                  }`}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-[220px] sm:h-[260px] object-cover"
-                  />
-                  <div className="absolute inset-x-0 bottom-0 p-5 bg-gradient-to-t from-black/80 via-black/20 to-transparent text-white">
-                    <p className="text-sm uppercase tracking-[0.25em] text-white/70 mb-1">
-                      {item.location}
-                    </p>
-                    <h3 className="text-xl font-semibold">{item.title}</h3>
-                  </div>
-                </div>
-              ))}
+            <div className="relative mt-12 overflow-hidden">
+              {/* Infinite Carousel with Alternating Column Pattern */}
+              <div
+                ref={carouselRef}
+                className="flex gap-4 sm:gap-6 overflow-x-hidden scrollbar-hide"
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                }}
+              >
+                {/* Duplicate content 3 times for seamless infinite scroll */}
+                {[0, 1, 2].map((setIndex) => {
+                  const columns = generateColumns(storyGallery, setIndex);
+                  return columns.map((column) => {
+                    if (column.type === 'double') {
+                      const [item1, item2] = column.items;
+                      return (
+                        <div
+                          key={column.key}
+                          className="flex flex-col gap-4 sm:gap-6 flex-shrink-0"
+                          style={{ width: '280px' }}
+                        >
+                          {/* Top image */}
+                          <div className="relative bg-white rounded overflow-hidden shadow-xl h-[300px] sm:h-[350px]">
+                            <div className="absolute inset-0 border-4 border-white rounded pointer-events-none z-10" />
+                            <img
+                              src={item1.image}
+                              alt={item1.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/20 to-transparent text-white">
+                              <p className="text-xs uppercase tracking-[0.25em] text-white/70 mb-1">
+                                {item1.location}
+                              </p>
+                              <h3 className="text-lg font-semibold">{item1.title}</h3>
+                            </div>
+                          </div>
+                          {/* Bottom image */}
+                          <div className="relative bg-white rounded overflow-hidden shadow-xl h-[300px] sm:h-[350px]">
+                            <div className="absolute inset-0 border-4 border-white rounded pointer-events-none z-10" />
+                            <img
+                              src={item2.image}
+                              alt={item2.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 p-4 bg-gradient-to-t from-black/80 via-black/20 to-transparent text-white">
+                              <p className="text-xs uppercase tracking-[0.25em] text-white/70 mb-1">
+                                {item2.location}
+                              </p>
+                              <h3 className="text-lg font-semibold">{item2.title}</h3>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    } else {
+                      const [item] = column.items;
+                      
+                      // Double column height: 300px + 350px + 16px gap = 666px (mobile)
+                      // Double column height: 350px + 350px + 24px gap = 724px (desktop)
+                      // All full columns are 2/3 height and vertically centered
+                      
+                      return (
+                        <div
+                          key={column.key}
+                          className="flex-shrink-0 flex items-center h-[666px] sm:h-[724px]"
+                          style={{ width: '280px' }}
+                        >
+                          <div className="relative bg-white rounded overflow-hidden shadow-xl h-[444px] sm:h-[483px] w-full">
+                            <div className="absolute inset-0 border-4 border-white rounded pointer-events-none z-10" />
+                            <img
+                              src={item.image}
+                              alt={item.title}
+                              className="w-full h-full object-cover"
+                            />
+                            <div className="absolute inset-x-0 bottom-0 p-6 sm:p-8 bg-gradient-to-t from-black/90 via-black/50 to-transparent text-white">
+                              <p className="text-xs sm:text-sm uppercase tracking-[0.3em] text-white/80 mb-2 font-medium">
+                                {item.location}
+                              </p>
+                              <h3 className="text-2xl sm:text-3xl font-bold mb-3">
+                                {item.title}
+                              </h3>
+                              <p className="text-sm sm:text-base text-white/90 max-w-md leading-relaxed">
+                                A place where you can see and feel true art with a warm feeling. Made by professional artists in their fields.
+                              </p>
+                            </div>
+                          </div>
+                        </div>
+                      );
+                    }
+                  });
+                })}
+              </div>
+              
+              {/* Hide scrollbar */}
+              <style>{`
+                .scrollbar-hide::-webkit-scrollbar {
+                  display: none;
+                }
+              `}</style>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="py-20 bg-gradient-to-br from-black via-[#2d1c30] to-[#6c1f6b] text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <p className="inline-flex items-center gap-2 px-6 py-2 rounded-full bg-white/10 text-xs uppercase tracking-[0.4em]">
-              New Artwork
-            </p>
-            <h2 className="mt-6 text-3xl sm:text-4xl font-semibold">
+      <section className="bg-white py-16 px-4 md:px-8 xl:px-0">
+        <div className="max-w-6xl mx-auto space-y-8">
+          <div className="space-y-3">
+            <h2 className="text-3xl md:text-4xl font-semibold text-[#0e1932]">
               Unveiling Our Exclusive Artwork
             </h2>
-            <p className="mt-4 text-base sm:text-lg text-white/80 max-w-3xl mx-auto">
+            <p className="text-slate-600">
               Explore the dynamic world of contemporary art through our current
               exhibits. Each exhibition is a testament to the limitless
               possibility of expression.
             </p>
           </div>
-          <div className="grid gap-8 md:grid-cols-3">
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             {featuredExhibits.map((exhibit) => (
               <div
                 key={exhibit.id}
-                className="bg-white/5 rounded-[28px] border border-white/10 overflow-hidden hover:-translate-y-2 transition-transform"
+                className="bg-white rounded-2xl overflow-hidden border border-gray-200 p-1 hover:shadow-xl transition-shadow"
               >
-                <div className="h-60 overflow-hidden">
-                  <img
-                    src={exhibit.image}
-                    alt={exhibit.title}
-                    className="w-full h-full object-cover"
-                  />
-                </div>
-                <div className="p-8">
-                  <p className="text-xs uppercase tracking-[0.3em] text-white/70 mb-3">
+                <img
+                  src={exhibit.image}
+                  alt={exhibit.title}
+                  className="w-full h-48 object-cover rounded-xl"
+                  loading="lazy"
+                />
+                <div className="p-5">
+                  <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">
                     {exhibit.category}
                   </p>
-                  <h3 className="text-xl font-semibold mb-3">
+                  <h3 className="text-lg font-semibold text-black mb-2 line-clamp-2">
                     {exhibit.title}
                   </h3>
-                  <p className="text-sm text-white/80 mb-6">
+                  <p className="text-gray-500 text-sm line-clamp-2 mb-4">
                     {exhibit.description}
                   </p>
-                  <button className="inline-flex items-center gap-2 text-sm font-semibold">
-                    Detail Artwork
-                    <ArrowRight className="w-4 h-4" />
+                  
+                  {/* Date */}
+                  <div className="flex items-center gap-2 text-gray-600 text-sm mb-5">
+                    <Calendar className="w-4 h-4" />
+                    <span>{exhibit.date}</span>
+                  </div>
+
+                  {/* View Details Button */}
+                  <button
+                    onClick={() => {}}
+                    className="w-full bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white transition-colors font-medium"
+                  >
+                    View Details
                   </button>
                 </div>
               </div>
@@ -292,148 +441,8 @@ const EcosystemPage = () => {
         </div>
       </section>
 
-      <section className="py-20 bg-white border-b border-black/10">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-[0.95fr_1.05fr] items-center">
-          <div>
-            <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-4">
-              Artist Profiles
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6">
-              Meet The Visionaries
-            </h2>
-            <p className="text-gray-600 mb-10">
-              Delve into the minds of our extraordinary artists. Each profile is
-              a glimpse into the passion and talent that defines their work.
-            </p>
-            <div className="space-y-3">
-              {artistProfiles.map((artist) => (
-                <button
-                  key={artist.id}
-                  onClick={() => setActiveArtist(artist.id)}
-                  className={`w-full text-left border rounded-2xl px-5 py-4 flex items-center justify-between transition-colors ${
-                    activeArtist === artist.id
-                      ? "border-black bg-black text-white"
-                      : "border-black/10 hover:border-black"
-                  }`}
-                >
-                  <div>
-                    <p className="font-semibold">{artist.name}</p>
-                    <p
-                      className={`text-sm ${
-                        activeArtist === artist.id
-                          ? "text-white/70"
-                          : "text-gray-500"
-                      }`}
-                    >
-                      {artist.tag}
-                    </p>
-                  </div>
-                  <ChevronRight className="w-5 h-5" />
-                </button>
-              ))}
-            </div>
-          </div>
-          <div className="relative">
-            <div className="rounded-[36px] overflow-hidden shadow-[0_30px_90px_rgba(15,15,15,0.25)]">
-              <img
-                src="/ecosystem/pune/HivePune_CommonAr.jpg"
-                alt="Artist at work"
-                className="w-full h-full object-cover"
-              />
-            </div>
-            <div className="absolute -bottom-10 left-10 right-10 bg-white rounded-3xl shadow-xl border border-black/5 p-6">
-              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-3">
-                Artist Insight
-              </p>
-              <p className="text-gray-700">{activeBio?.bio}</p>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <section className="py-20 bg-black text-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 grid gap-12 lg:grid-cols-[0.9fr_1.1fr] items-center">
-          <div>
-            <p className="text-sm uppercase tracking-[0.4em] text-white/70 mb-4">
-              Newsletter
-            </p>
-            <h2 className="text-3xl sm:text-4xl font-semibold mb-4">
-              Sign Up For Gallery Artisan&apos;s Newsletter
-            </h2>
-            <p className="text-white/70 mb-8">
-              Stay informed about Gallery Artisan&apos;s latest dates,
-              exhibitions, and most exciting projects. Become part of a vibrant
-              community that celebrates art, creativity, and inspiration.
-            </p>
-            <form
-              className="space-y-4"
-              onSubmit={(event) => event.preventDefault()}
-            >
-              <div className="grid sm:grid-cols-2 gap-4">
-                <input
-                  type="text"
-                  placeholder="First Name"
-                  className="w-full rounded-full px-5 py-3 bg-white/10 border border-white/20 placeholder:text-white/60 focus:outline-none focus:border-white"
-                />
-                <input
-                  type="text"
-                  placeholder="Last Name"
-                  className="w-full rounded-full px-5 py-3 bg-white/10 border border-white/20 placeholder:text-white/60 focus:outline-none focus:border-white"
-                />
-              </div>
-              <input
-                type="email"
-                placeholder="Enter your email"
-                className="w-full rounded-full px-5 py-3 bg-white/10 border border-white/20 placeholder:text-white/60 focus:outline-none focus:border-white"
-              />
-              <label className="flex items-center gap-3 text-sm text-white/70">
-                <input type="checkbox" className="rounded border-white/50" />
-                I confirm the privacy policy
-              </label>
-              <button
-                type="submit"
-                className="w-full sm:w-auto inline-flex items-center gap-2 px-8 py-3 bg-white text-black rounded-full font-semibold"
-              >
-                Submit
-                <ArrowRight className="w-4 h-4" />
-              </button>
-            </form>
-          </div>
-          <div className="bg-white/5 rounded-[36px] border border-white/10 p-6">
-            <div className="grid grid-cols-2 gap-4">
-              {newsletterImages.map((image, index) => (
-                <div
-                  key={`${image}-${index}`}
-                  className="rounded-3xl overflow-hidden"
-                >
-                  <img
-                    src={image}
-                    alt="Gallery collection"
-                    className="w-full h-40 object-cover"
-                  />
-                </div>
-              ))}
-            </div>
-            <div className="mt-6 flex flex-wrap gap-4 text-sm text-white/80">
-              <span className="inline-flex items-center gap-2">
-                <MapPin className="w-4 h-4" />
-                1901 Thameinitz Cir, Shiloh, Hawaii 8103
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Phone className="w-4 h-4" />
-                +1 (808) 555 0190
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <Mail className="w-4 h-4" />
-                curator@thehive.art
-              </span>
-            </div>
-          </div>
-        </div>
-      </section>
     </div>
   );
 };
 
 export default EcosystemPage;
-
