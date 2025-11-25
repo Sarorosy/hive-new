@@ -7,13 +7,13 @@ const workspaceTabs = [
     id: "private",
     label: "Private Offices",
     image: "/spacetypes/privatecabin.jpg",
-    title: "Your Workspace, Ready From Day One",
+    title: "Your Complete Workspace Ready From Day One",
     description:
-      "At The Hive, you get a complete, move-in-ready office designed for comfort, focus, and productivity. Every workspace is set up to match your team's style, size, and workflow-making it easy to settle in and start working right away.",
+      "At The Hive, you get a complete move-in-ready office designed for comfort, focus, and productivity. Every workspace matches your team's style, size, and workflow, making it easy to settle in and start working right away.",
     highlights: [
-      "Dedicated cabins for individuals or growing teams",
-      "Premium facilities in a top-tier business location",
-      "Round-the-clock access with exclusive member perks"
+      "Dedicated cabins designed for individuals or growing teams",
+      "Premium facilities available in a top-tier business location",
+      "Round-the-clock access with exclusive member perks and benefits"
     ],
     linkLabel: "Learn more about our Private Offices",
     link: "/workspaces/private-cabins"
@@ -22,14 +22,13 @@ const workspaceTabs = [
     id: "coworking",
     label: "Coworking Spaces",
     image: "/spacetypes/hotdesk.jpg",
-    title: "Work Comfortably From Any Hive Location",
+    title: "Work Comfortably From Any Hive Location Today",
     description:
-      "At The Hive, you can sit and get things done at any of our centres while enjoying all the facilities, support, and community advantages. Select the workspace style that suits your routine.",
+      "At The Hive, you can sit and get things done at any of our centres while enjoying all the facilities, support, and community advantages. ",
     highlights: [
-      "Open Seating: Choose any spot and begin your day at your convenience",
+      "Open Seating: Choose any spot and begin your day at convenience",
       "Personal Station: A permanent place that's always reserved for you",
-      "Short-Stay Room: A private cabin available for a few days or a monthly stretch",
-      "Community Connect: Join a network of members with special access and privileges"
+      "Short-Stay Room: A private cabin available for days or weeks"
     ],
     linkLabel: "Explore coworking options",
     link: "/workspaces/hot-desks"
@@ -38,13 +37,13 @@ const workspaceTabs = [
     id: "virtual",
     label: "Virtual Offices",
     image: four,
-    title: "A Strong Business Identity With A Trusted Address",
+    title: "A Strong Business Identity With Trusted Address",
     description:
-      "Create a solid presence for your brand using The Hive's virtual office solutions. Get a recognised address, organised call support, and managed mail services — perfect for individuals or companies wanting a professional image without a physical setup.",
+      "Create a solid presence for your brand using The Hive's virtual office solutions. Get a recognised address, organised call support, and managed mail services, perfect for individuals.",
     highlights: [
-      "Registered Location: Use our centre's address to present your company in a reputable spot",
-      "Phone Assistance: Receive a local number along with organised call responses",
-      "Dual Plan: Get both options together plus complimentary access to our workspace every month"
+      "Registered Location: Use our centre's address to present your company",
+      "Phone Assistance: Receive a local number with organised call responses",
+      "Dual Plan: Get both options together plus complimentary workspace access"
     ],
     linkLabel: "See virtual office plans",
     link: "/"
@@ -53,13 +52,12 @@ const workspaceTabs = [
     id: "enterprise",
     label: "Managed Enterprise Solutions",
     image: "/spacetypes/4.jpg",
-    title: "Custom Design An Office Space That Fits Your Business",
+    title: "Custom Design Office Space That Fits Your Business",
     description:
-      "A customised office solution for companies of all sizes. We'll take care of location, branding, IT and more. All you'll have to do is move in.",
+      "A customised office solution for companies of all sizes. We'll take care of location, branding, IT and more. All you'll have to do is move in and start working in your perfectly designed space right away.",
     highlights: [
-      "Build your custom office space without the upfront capital expenditures",
-      "Workspace designed for productivity and collaboration",
-      "TEC acts as single point of contact and office space delivery partner"
+      "Build your custom office space without upfront capital expenditures required",
+      "Workspace designed for productivity and collaboration with your team members",
     ],
     linkLabel: "Talk to our enterprise team",
     link: "/workspaces/enterprise-solutions"
