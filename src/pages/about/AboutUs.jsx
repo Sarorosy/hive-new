@@ -7,6 +7,7 @@ import { centersData } from "../../data/centersData";
 import heroImg from "../../assets/raw/all/DSC07729-min.JPG";
 import workspaceImg from "../../assets/raw/all/DSC07855-min.JPG";
 import communityImg from "../../assets/raw/chn/YAV00102-min.JPG";
+import Members from "../home/Members";
 
 export default function AboutUs() {
   // Extract YouTube video ID from URL
@@ -468,18 +469,7 @@ export default function AboutUs() {
                     <p className="text-gray-600 text-sm mb-3 font-medium">{loc.desc}</p>
                     <p className="text-gray-500 text-xs mb-3">{loc.address}</p>
                     <p className="text-gray-700 text-sm leading-relaxed">{loc.details}</p>
-                    {loc.clients && (
-                      <div className="mt-4 pt-4 border-t border-gray-200">
-                        <p className="text-xs font-semibold text-gray-600 mb-2">Notable Clients:</p>
-                        <div className="flex flex-wrap gap-2">
-                          {loc.clients.slice(0, 3).map((client, idx) => (
-                            <span key={idx} className="text-xs bg-gray-100 px-2 py-1 rounded text-gray-700">
-                              {client}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    )}
+                    
                   </div>
                 </motion.div>
               ))}
@@ -488,35 +478,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      {/* Notable Clients */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
-          >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Notable Clients and Members</h2>
-            <p className="text-gray-600 text-center mb-8 text-lg">
-              The Hive has built a prestigious client portfolio representing over 60+ companies across its centers
-            </p>
-            <div className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-2xl p-8 shadow-md">
-              <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-                {notableClients.map((client, idx) => (
-                  <div key={idx} className="bg-white p-4 rounded-lg shadow-sm text-center">
-                    <p className="text-gray-800 font-medium">{client}</p>
-                  </div>
-                ))}
-              </div>
-              <p className="text-center text-gray-600 mt-6 text-sm">
-                The member base exceeds 500 professionals at the Bangalore center alone, representing diverse
-                industries from technology and aerospace to food, publishing, and consulting.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+      <Members />
 
       {/* Company Philosophy */}
       <section className="bg-gray-50 py-20">
