@@ -469,13 +469,18 @@ const Hero = () => {
 
             {/* Search Button */}
             <button
-              disabled={!selectedCity || !selectedCenter || !selectedOffering || !selectedOfferingSlug}
+              disabled={!selectedCity || !selectedCenter}
               className={`w-full md:w-auto px-8 py-3 rounded flex items-center justify-center gap-2 font-semibold transition
-                ${(!selectedCity || !selectedCenter || !selectedOffering || !selectedOfferingSlug)
+                ${(!selectedCity || !selectedCenter)
                 ? "bg-black text-gray-400 cursor-not-allowed"
                 : "bg-black text-white hover:bg-gray-800 cursor-pointer"}`}
               onClick={()=>{
-                (selectedOfferingSlug == "day-pass") ? navigate("/day_pass") :navigate(`/explore/${selectedCity}/${selectedOfferingSlug}`)
+                if (selectedCity && selectedCenter) {
+                  const branch = citiesData[selectedCity]?.branches.find(b => b.name === selectedCenter);
+                  if (branch?.route) {
+                    navigate(branch.route);
+                  }
+                }
               }}
             >
               <Search className="w-4 h-4" /> Search
