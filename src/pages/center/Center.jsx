@@ -339,8 +339,8 @@ function Center() {
 
       {/* Tab Navigation */}
       <div
-        className="bg-black text-white sticky z-40 shadow-md w-full left-0 right-0"
-        style={{ top: layoutOffset.header ? `${layoutOffset.header}px` : 0 }}
+        className="bg-black text-white sticky z-40 shadow-md w-full left-0 right-0 top-0"
+        // style={{ top: layoutOffset.header ? `${layoutOffset.header}px` : 0 }}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8" ref={tabsWrapperRef}>
           <div className="flex overflow-x-auto scrollbar-hide">

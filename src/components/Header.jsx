@@ -8,7 +8,6 @@ import {
   X,
   BriefcaseBusiness,
   ShoppingCart,
-  Globe,
 } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
 import { citiesData } from "../data/centersData";
@@ -26,6 +25,8 @@ const Header = ({ onBookTourClick }) => {
   const [hoveredOffering, setHoveredOffering] = useState("");
   const [isScrolled, setIsScrolled] = useState(false);
   const [cartCount, setCartCount] = useState(0);
+  const [isHeaderVisible, setIsHeaderVisible] = useState(true);
+  const lastScrollY = useRef(0);
   const infoRef = useRef(null);
   const centresRef = useRef(null);
   const workspacesRef = useRef(null);
@@ -68,10 +69,30 @@ const Header = ({ onBookTourClick }) => {
   useEffect(() => {
     const handleScroll = () => {
       const scrollPosition = window.scrollY;
-      setIsScrolled(scrollPosition > 50);
+      const scrollThreshold = 50;
+      
+      setIsScrolled(scrollPosition > scrollThreshold);
+      
+      // Always show header when at the top
+      if (scrollPosition <= scrollThreshold) {
+        setIsHeaderVisible(true);
+        lastScrollY.current = scrollPosition;
+        return;
+      }
+      
+      // Determine scroll direction
+      if (scrollPosition > lastScrollY.current) {
+        // Scrolling down - hide header
+        setIsHeaderVisible(false);
+      } else if (scrollPosition < lastScrollY.current) {
+        // Scrolling up - show header
+        setIsHeaderVisible(true);
+      }
+      
+      lastScrollY.current = scrollPosition;
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -127,56 +148,20 @@ const Header = ({ onBookTourClick }) => {
           Book Tour
         </button>
       </div>
-      <header
-        className={`
-      fixed top-0 left-0 right-0 z-50 transition-all duration-300 ease-in-out
-      ${
-        !isScrolled
-          ? "bg-white text-[#092e46] shadow-md"
-          : "bg-white/10 backdrop-blur-md border-b border-white/20 text-[#092e46]"
-      }
-    `}
+      <header 
+        className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 ease-in-out ${
+          isHeaderVisible ? "translate-y-0 opacity-100" : "-translate-y-full opacity-0 pointer-events-none"
+        }`}
       >
-        <div className="bg-black text-white text-[11px] sm:text-xs">
-          <div className="mx-auto flex px-5 flex-col gap-2 px-4 py-2 md:flex-row md:items-center md:justify-between">
-            <div className="flex items-center gap-3 font-semibold tracking-wide">
-              <RouterLink to="/about-us" className="hover:text-orange-400 transition-colors">
-                About Us
-              </RouterLink>
-              <span
-                className="hidden h-3.5 w-0.5 bg-white/60 sm:inline-block"
-                aria-hidden="true"
-              />
-              <RouterLink to="/ecosystem" className="hover:text-orange-400 transition-colors">
-                Ecosystem
-              </RouterLink>
-            </div>
-            <div className="flex flex-wrap items-center gap-3 text-[11px] font-semibold tracking-wide">
-              <span className="flex items-center gap-1 opacity-80">
-                <Globe className="h-3.5 w-3.5" />
-                India
-              </span>
-              <span
-                className="hidden h-3.5 w-0.5 bg-white/60 sm:inline-block"
-                aria-hidden="true"
-              />
-              <RouterLink to="/contact" className="hover:text-orange-400 transition-colors">
-                Contact Us
-              </RouterLink>
-              <span
-                className="hidden h-3.5 w-0.5 bg-white/60 sm:inline-block"
-                aria-hidden="true"
-              />
-              <span className="flex items-center gap-1">
-                <Phone className="h-3.5 w-3.5" />
-                <a href="tel:+918072075487" className="hover:text-orange-400 transition-colors">
-                  +91 80720 75487
-                </a>
-              </span>
-            </div>
-          </div>
-        </div>
-        <div className="mx-auto flex items-center justify-between px-4 py-3">
+        <div
+          className={`
+          mx-auto max-w-7xl rounded-2xl transition-all duration-300 ease-in-out group
+          bg-white/10 backdrop-blur-md text-[#092e46] shadow-xl border border-white/20
+          hover:bg-white hover:border-white/50
+        `}
+        >
+          {/* Main Navigation */}
+          <div className="mx-auto flex items-center justify-between px-4 py-3">
           <div className="flex items-center justify-center space-x-2">
             {/* Left - Logo */}
             <button
@@ -202,6 +187,18 @@ const Header = ({ onBookTourClick }) => {
               >
                 Locations
               </RouterLink>
+              <RouterLink
+                to="/about-us"
+                className="hover:underline cursor-pointer transition-all duration-200"
+              >
+                About Us
+              </RouterLink>
+              <RouterLink
+                to="/ecosystem"
+                className="hover:underline cursor-pointer transition-all duration-200"
+              >
+                Ecosystem
+              </RouterLink>
               {/* WorkSpaces Dropdown */}
               <div
                 className="relative"
@@ -213,7 +210,7 @@ const Header = ({ onBookTourClick }) => {
                 ref={workspacesRef}
               >
                 <span className="hover:underline cursor-pointer transition-all duration-200">
-                  WorkSpaces
+                  Solutions
                 </span>
                 {workspacesOpen && (
                   <div className="absolute left-0 top-7 mt-2 w-xl bg-black text-white rounded-sm z-20 shadow-xl">
@@ -350,19 +347,26 @@ const Header = ({ onBookTourClick }) => {
                 )}
               </div>
 
-              <button
+              {/* <button
                 onClick={() => navigate("/workspaces/enterprise-solutions")}
                 className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
               >
                 Enterprise Solutions
-              </button>
+              </button> */}
 
-              <button
+              {/* <button
                 onClick={() => navigate("/landlord-relationships")}
                 className="hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
               >
                 Landlord Relationships
-              </button>
+              </button> */}
+
+              <RouterLink
+                to="/contact"
+                className="hover:underline cursor-pointer transition-all duration-200"
+              >
+                Contact Us
+              </RouterLink>
 
               {/* <button
               onClick={() => navigate("/day_pass")}
@@ -372,7 +376,7 @@ const Header = ({ onBookTourClick }) => {
             </button> */}
 
               {/* Info Dropdown */}
-              <div
+              {/* <div
                 className="relative"
                 onMouseEnter={() => setInfoOpen(true)}
                 onMouseLeave={() => setInfoOpen(false)}
@@ -403,7 +407,7 @@ const Header = ({ onBookTourClick }) => {
                     </div>
                   </div>
                 )}
-              </div>
+              </div> */}
             </nav>
           </div>
 
@@ -467,12 +471,9 @@ const Header = ({ onBookTourClick }) => {
         {mobileOpen && (
           <div
             className={`
-          md:hidden border-t px-4 py-4 space-y-4 transition-all duration-300
-          ${
-            isScrolled
-              ? "bg-white text-black border-gray-200"
-              : "bg-white/10 backdrop-blur-md text-black border-white/20"
-          }
+          md:hidden border-t px-4 py-4 space-y-4 transition-all duration-300 rounded-b-2xl
+          bg-white/10 backdrop-blur-md text-black border-white/20
+          hover:bg-white hover:border-white/50
         `}
           >
             {/* WorkSpaces in mobile - Click to toggle */}
@@ -484,7 +485,7 @@ const Header = ({ onBookTourClick }) => {
                 }}
                 className="block w-full text-left hover:underline transition-all duration-200"
               >
-                WorkSpaces
+                Solutions
               </button>
               {workspacesOpen && (
                 <div className="pl-4 space-y-2 text-sm">
@@ -570,12 +571,12 @@ const Header = ({ onBookTourClick }) => {
               )}
             </div>
 
-            <button
+            {/* <button
               onClick={() => navigate("/workspaces/enterprise-solutions")}
               className="block w-full text-left hover:underline transition-all duration-200"
             >
               Enterprise Solutions
-            </button>
+            </button> */}
 
             <button
               onClick={() => navigate("/landlord-relationships")}
@@ -591,9 +592,28 @@ const Header = ({ onBookTourClick }) => {
               Day Pass
             </button> */}
 
+            <button
+              onClick={() => {
+                navigate("/about-us");
+                setMobileOpen(false);
+              }}
+              className="block w-full text-left hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
+            >
+              About Us
+            </button>
+            <button
+              onClick={() => {
+                navigate("/ecosystem");
+                setMobileOpen(false);
+              }}
+              className="block w-full text-left hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer"
+            >
+              Ecosystem
+            </button>
+
             {/* Info Dropdown in mobile - Click to toggle */}
             <div className="space-y-2">
-              <button
+              {/* <button
                 onClick={() => {
                   setInfoOpen(!infoOpen);
                   setWorkspacesOpen(false);
@@ -602,7 +622,7 @@ const Header = ({ onBookTourClick }) => {
                 className="block w-full text-left hover:underline transition-all duration-200"
               >
                 Info
-              </button>
+              </button> */}
               {infoOpen && (
                 <div className="pl-4 space-y-1 text-sm">
                   <button
@@ -630,10 +650,13 @@ const Header = ({ onBookTourClick }) => {
             </div>
 
             <button
-              onClick={() => navigate("/contact")}
+              onClick={() => {
+                navigate("/contact");
+                setMobileOpen(false);
+              }}
               className="block hover:underline transition-all duration-200 bg-transparent border-none cursor-pointer w-full text-left"
             >
-              Contact
+              Contact Us
             </button>
             <button
               onClick={onBookTourClick}
@@ -669,6 +692,7 @@ const Header = ({ onBookTourClick }) => {
             </a>
           </div>
         )}
+        </div>
       </header>
     </>
   );

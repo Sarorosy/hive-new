@@ -1,4 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
+import { useNavigate } from "react-router-dom";
 import {
   MapPin,
   ArrowUpRight,
@@ -59,6 +60,7 @@ const branchAddresses = {
 };
 
 const AllLocations = () => {
+  const navigate = useNavigate();
   const branches = useMemo(() => {
     const list = [];
 
@@ -67,7 +69,7 @@ const AllLocations = () => {
         ([branchKey, branchData]) => {
           const branchId = `${cityKey}-${branchKey}`;
           const addressData = branchAddresses[branchId] || {};
-          
+
           const highlights = branchData.details || "";
 
           list.push({
@@ -181,7 +183,7 @@ const AllLocations = () => {
             </div>
             <div>
               <p className="text-sm text-gray-600">
-                Choose from over {branches.length} Executive Centres in{" "}
+                Choose from over {branches.length} Centres in{" "}
                 {Object.keys(centersData).length} cities.
               </p>
             </div>
@@ -205,14 +207,13 @@ const AllLocations = () => {
                 <article
                   key={branch.id}
                   onClick={() => setSelectedBranchId(branch.id)}
-                  className={`bg-white shadow-sm border transition-all duration-300 hover:-translate-y-1 cursor-pointer h-[280px] ${
-                    branch.id === selectedBranchId
-                      ? "border-gray-900"
-                      : "border-gray-200"
-                  }`}
+                  className={`bg-white shadow-sm border transition-all duration-300 hover:-translate-y-1 cursor-pointer h-[280px] ${branch.id === selectedBranchId
+                    ? "border-gray-900"
+                    : "border-gray-200"
+                    }`}
                 >
                   <div className="flex flex-row h-full gap-0">
-                    <div 
+                    <div
                       className="relative overflow-hidden w-[340px] shrink-0 h-full"
                       onClick={(e) => e.stopPropagation()}
                     >
@@ -234,11 +235,10 @@ const AllLocations = () => {
                                   [branch.id]: index,
                                 }));
                               }}
-                              className={`transition-all duration-200 ${
-                                index === currentImageIndex
-                                  ? "w-1.5 h-1.5 bg-white"
-                                  : "w-1.5 h-1.5 bg-white/50 hover:bg-white/75"
-                              } rounded-full cursor-pointer`}
+                              className={`transition-all duration-200 ${index === currentImageIndex
+                                ? "w-1.5 h-1.5 bg-white"
+                                : "w-1.5 h-1.5 bg-white/50 hover:bg-white/75"
+                                } rounded-full cursor-pointer`}
                               aria-label={`Go to image ${index + 1}`}
                             />
                           ))}
@@ -254,7 +254,7 @@ const AllLocations = () => {
                         <p className="text-sm text-gray-600 leading-relaxed">
                           {branch.address}
                         </p>
-                        
+
                       </div>
 
                       {branch.highlights && (
@@ -262,6 +262,16 @@ const AllLocations = () => {
                           {branch.highlights}
                         </p>
                       )}
+
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          navigate(`/${branch.cityKey}/${branch.branchKey}`);
+                        }}
+                        className="flex items-center gap-2 text-sm font-medium text-gray-900 hover:text-gray-700 transition-colors mt-auto pt-2"
+                      >
+                        Know More <ArrowUpRight className="w-4 h-4" />
+                      </button>
 
                     </div>
                   </div>
@@ -273,7 +283,7 @@ const AllLocations = () => {
 
         <aside className="lg:w-2/5">
           <div className="bg-white shadow-xl border border-gray-100 sticky top-20 flex flex-col h-[calc(100vh-5rem)]">
-            
+
             <div className="p-1 flex flex-col gap-6 flex-1 min-h-0">
               {selectedBranch?.map ? (
                 <iframe

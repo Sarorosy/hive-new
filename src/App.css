@@ -5,6 +5,7 @@
 #curve {
   border-bottom-left-radius: 100% 80px;
   border-bottom-right-radius: 100% 80px;
+  overflow: visible;
 }
 
 @font-face {
