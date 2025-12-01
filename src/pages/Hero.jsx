@@ -312,7 +312,7 @@ const Hero = () => {
           playsInline
           preload="auto"
         >
-          <source src={assetPath("HERO720.mp4")} type="video/mp4" />
+          <source src={`https://ryupunch.com/HERO720.mp4`} type="video/mp4" />
         </video>
         
         {/* Gradient overlay on hover */}
