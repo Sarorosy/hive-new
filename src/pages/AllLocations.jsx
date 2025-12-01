@@ -213,7 +213,7 @@ const AllLocations = () => {
                           e.stopPropagation();
                           navigate(`/${branch.cityKey}/${branch.branchKey}`);
                         }}
-                        className="flex items-center gap-2 text-sm font-medium text-gray-900 hover:text-gray-700 transition-colors mt-auto pt-2"
+                        className="flex items-center gap-2 text-sm font-medium text-orange-500 transition-colors mt-auto pt-2"
                       >
                         Know More <ArrowUpRight className="w-4 h-4" />
                       </button>

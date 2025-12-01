@@ -1,6 +1,6 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { MapPin, Building, Users, TrendingUp, Award, Target, Zap, Globe } from "lucide-react";
+import { MapPin, Building, Users, Award, Target, Zap, Globe, Rocket } from "lucide-react";
 import { centersData } from "../../data/centersData";
 import { branchAddresses } from "../../data/branchAddresses";
 
@@ -50,19 +50,6 @@ export default function AboutUs() {
     return list.sort((a, b) => a.city.localeCompare(b.city));
   }, []);
 
-  const notableClients = [
-    "Condé Nast India",
-    "iD Fresh Food",
-    "Shopmatic",
-    "Abengoa",
-    "Airbus",
-    "Hensoldt Pvt. Ltd.",
-    "Spinny (Autorev Pvt. Ltd.)",
-    "Appsflyer India",
-    "Xebia IT Architects India",
-    "Webonise Lab",
-    "Thoucentric Technology"
-  ];
 
   const services = [
     {
@@ -113,6 +100,45 @@ export default function AboutUs() {
     "Air conditioning, power backup, and ergonomic furniture"
   ];
 
+  const timelineMilestones = [
+    {
+      year: "2013-2016",
+      title: "Strategic Blueprint",
+      description: "Xander Group architects a fully-integrated workspace ecosystem that blends work, retail, and hospitality.",
+      position: 6,
+      altitude: 260
+    },
+    {
+      year: "2015",
+      title: "Launch Momentum",
+      description: "The Hive Collaborative Workspaces welcomes its first members and validates the Work-Play-Grow promise.",
+      position: 26,
+      altitude: 235
+    },
+    {
+      year: "2018-2020",
+      title: "Leadership Surge",
+      description: "CEO Ankit Samdariya scales the platform past 500,000 sq. ft., proving profitability with curated centers.",
+      position: 46,
+      altitude: 210
+    },
+    {
+      year: "October 2021",
+      title: "Formal Registration",
+      description: "Hive Workspaces LLP is officially registered in Hyderabad, cementing the long-term platform vision.",
+      position: 66,
+      altitude: 185
+    },
+    {
+      year: "Present",
+      title: "Flagship Expansion",
+      description: "Five flagship centers operate across four gateway cities, primed for the next orbit of growth.",
+      highlight: true,
+      position: 86,
+      altitude: 160
+    }
+  ];
+
   const lifestyleAccess = [
     "State-of-the-art retail outlets",
     "Multiple F&B options (restaurants, cafés, bars)",
@@ -134,10 +160,10 @@ export default function AboutUs() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight liber">
-              The Hive Workspaces
+            <h1 className="text-4xl md:text-5xl  mb-6 leading-tight liber">
+              <span className="font-bold">The Hive Workspaces</span>
               <br />
-              <span className="text-gray-500">Comprehensive Company Overview</span>
+              <span className="text-gray-500 text-3xl">Comprehensive Company Overview</span>
             </h1>
             <p className="text-lg text-gray-600 leading-relaxed mb-4">
               The Hive is a premium managed workspace platform operating across India, offering
@@ -157,7 +183,7 @@ export default function AboutUs() {
             className="relative"
           >
             <img
-              src={heroImg}
+              src="/CB_26495-min.jpg"
               alt="The Hive Workspace"
               className="rounded-2xl shadow-2xl w-full h-96 object-cover"
             />
@@ -174,8 +200,8 @@ export default function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8 liber">Who We Are</h2>
-            <div className="grid md:grid-cols-2 gap-8 items-center">
+            <h2 className="text-3xl md:text-3xl font-bold mb-8 liber">Who We Are</h2>
+            
               <div>
                 <p className="text-gray-700 leading-relaxed mb-4 text-lg">
                   The Hive integrates workspaces within lifestyle destinations, blending work,
@@ -193,14 +219,8 @@ export default function AboutUs() {
                   standalone office buildings.
                 </p>
               </div>
-              <div>
-                <img
-                  src={workspaceImg}
-                  alt="The Hive Workspace Interior"
-                  className="rounded-2xl shadow-lg w-full h-80 object-cover"
-                />
-              </div>
-            </div>
+              
+          
           </motion.div>
         </div>
       </section>
@@ -234,91 +254,83 @@ export default function AboutUs() {
       </section>
 
       {/* Company History and Timeline */}
-      <section className="bg-gray-50 py-20">
-        <div className="max-w-7xl mx-auto px-6">
+      <section className="relative py-24 overflow-hidden">
+        <div className="absolute inset-0">
+          <img
+            src="/OB2.png"
+            alt="Retrofuturism roadmap"
+            className="h-full w-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-r from-[#030614] via-[#0d0c1f]/90 to-[#ff7a18]/80" />
+        </div>
+        <div className="absolute inset-x-0 bottom-0 h-72 pointer-events-none">
+          <div className="relative h-full w-full">
+            <div className="absolute left-1/2 top-0 h-full w-[140%] -translate-x-1/2 rotate-[-8deg] bg-gradient-to-r from-[#f59e0b] via-[#fde047] to-white opacity-70 blur-sm" />
+            <div className="absolute left-1/2 bottom-0 h-6 w-[150%] -translate-x-1/2 bg-white/40 blur-xl" />
+          </div>
+        </div>
+        <div className="relative max-w-6xl mx-auto px-6 text-white">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-10 liber">Company History & Timeline</h2>
-            
-            <div className="grid md:grid-cols-2 gap-10 mb-10">
-              <div className="bg-white p-8 rounded-2xl shadow-sm">
-                <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                  <Building className="w-6 h-6 text-gray-700" />
-                  Foundation and Sponsorship
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  The Hive Workspaces was established as part of <span className="font-semibold">The Xander Group's</span> portfolio,
-                  a leading real estate private equity firm that pioneered foreign direct investment
-                  in Indian real estate in 2005.
-                </p>
-                <p className="text-gray-700 leading-relaxed">
-                  The company was co-founded and led by <span className="font-semibold">Ankit Samdariya</span>, who served as CEO
-                  from 2018 to 2020. The legal entity Hive Workspaces LLP was officially registered
-                  on October 22, 2021, in Hyderabad, though the operational centers had been
-                  established earlier as part of Xander's strategic initiatives.
-                </p>
-              </div>
+            <p className="uppercase tracking-[0.3em] text-sm text-amber-200 mb-4">Retrofuturism Roadmap</p>
+            <h2 className="text-3xl md:text-4xl font-bold liber mb-4">Company History & Timeline</h2>
+            <p className="text-white/80 max-w-3xl">
+              A cinematic view of The Hive’s journey— from bold ideation to a multi-city flagship network that
+              keeps accelerating toward the horizon.
+            </p>
 
-              <div className="bg-white p-8 rounded-2xl shadow-sm">
-                <h3 className="text-2xl font-semibold mb-4 flex items-center gap-2">
-                  <TrendingUp className="w-6 h-6 text-gray-700" />
-                  Leadership Evolution
-                </h3>
-                <p className="text-gray-700 leading-relaxed mb-4">
-                  <span className="font-semibold">Ankit Samdariya</span>, a Harvard MBA graduate and IIT Delhi alumnus, brought
-                  extensive real estate experience to The Hive. Before founding The Hive, he served
-                  as Vice President of Investments & Asset Management at Virtuous Retail South Asia.
-                </p>
-                <p className="text-gray-700 leading-relaxed">
-                  Under Samdariya's leadership, The Hive grew profitably to over 500,000 square feet
-                  of operational portfolio across India. After his tenure as CEO (2018-2020), he moved
-                  on to leadership roles at LOGOS Group.
-                </p>
-              </div>
-            </div>
-
-            <div className="bg-white p-8 rounded-2xl shadow-sm">
-              <h3 className="text-2xl font-semibold mb-6">Operational Timeline</h3>
-              <div className="space-y-4">
-                <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-3 h-3 rounded-full bg-gray-800 mt-2"></div>
-                  <div>
-                    <p className="font-semibold text-gray-900">2013-2016</p>
-                    <p className="text-gray-700">Xander Group begins strategic planning for integrated workspace platform</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-3 h-3 rounded-full bg-gray-800 mt-2"></div>
-                  <div>
-                    <p className="font-semibold text-gray-900">2015</p>
-                    <p className="text-gray-700">The Hive Collaborative Workspaces begins operations</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-3 h-3 rounded-full bg-gray-800 mt-2"></div>
-                  <div>
-                    <p className="font-semibold text-gray-900">2018-2020</p>
-                    <p className="text-gray-700">Ankit Samdariya serves as CEO, expanding portfolio profitably</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-3 h-3 rounded-full bg-gray-800 mt-2"></div>
-                  <div>
-                    <p className="font-semibold text-gray-900">October 2021</p>
-                    <p className="text-gray-700">Hive Workspaces LLP formally registered</p>
-                  </div>
-                </div>
-                <div className="flex gap-4 items-start">
-                  <div className="flex-shrink-0 w-3 h-3 rounded-full bg-gray-800 mt-2"></div>
-                  <div>
-                    <p className="font-semibold text-gray-900">Present</p>
-                    <p className="text-gray-700">Operating with 5 flagship centers across 4 gateway cities</p>
-                  </div>
-                </div>
+            <div className="relative mt-16 h-[460px]">
+                
+              
+              <div className="relative h-full">
+                {timelineMilestones.map((milestone, idx) => {
+                  const markerAltitude = milestone.altitude || 220;
+                  const connectorHeight = Math.max(markerAltitude - 90, 60);
+                  return (
+                    <div
+                      key={milestone.year}
+                      className="absolute flex flex-col items-center text-center max-w-[220px]"
+                      style={{
+                        left: `${milestone.position}%`,
+                        bottom: `${markerAltitude}px`,
+                        transform: "translateX(-50%)"
+                      }}
+                    >
+                      <div className="flex flex-col items-center gap-2 mb-2">
+                        <div
+                          className={`w-14 h-14 rounded-full border-2 flex items-center justify-center text-2xl font-semibold tracking-wide ${
+                            milestone.highlight ? "border-amber-300 bg-amber-300/20 text-white shadow-lg shadow-amber-400/40" : "border-white/40 text-white"
+                          }`}
+                        >
+                          {idx + 1}
+                        </div>
+                        <div className="text-center">
+                          <p className="text-[10px] uppercase tracking-[0.3em] text-amber-200">{milestone.year}</p>
+                          <h3 className="text-lg font-semibold text-white">{milestone.title}</h3>
+                        </div>
+                      </div>
+                      <p className="text-white/80 text-sm leading-relaxed">{milestone.description}</p>
+                      <div className="mt-6 flex flex-col items-center">
+                        <div
+                          className={`w-4 h-4 rounded-full border-2 flex items-center justify-center ${
+                            milestone.highlight ? "border-amber-300 bg-amber-200/70" : "border-white/50 bg-white/10"
+                          }`}
+                        >
+                          {milestone.highlight ? <Rocket className="w-3 h-3 text-white" /> : <span className="w-1.5 h-1.5 rounded-full bg-white" />}
+                        </div>
+                        <div
+                          className="w-px bg-gradient-to-b from-white via-amber-200 to-amber-500"
+                          style={{ height: `${connectorHeight}px` }}
+                        />
+                        <div className="w-2 h-8 bg-gradient-to-b from-amber-400 via-amber-500 to-amber-600 rounded-full shadow-[0_10px_30px_rgba(251,191,36,0.5)]" />
+                      </div>
+                    </div>
+                  );
+                })}
               </div>
             </div>
           </motion.div>
