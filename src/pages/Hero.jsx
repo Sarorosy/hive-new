@@ -18,9 +18,10 @@ import building from "../assets/buildings_2.png";
 import daypass from "../assets/day-pass.svg";
 import { useNavigate } from "react-router-dom";
 import { citiesData } from "../data/centersData";
+import { assetPath } from "../utils/assetPath";
 
 // Placeholder image while video loads
-const placeholderImage = '/imagecompressor/10.jpg';
+const placeholderImage = assetPath("imagecompressor/10.jpg");
 
 // Workspace types
 const workspaceTypes = [
@@ -311,7 +312,7 @@ const Hero = () => {
           playsInline
           preload="auto"
         >
-          <source src="/HERO720.mp4" type="video/mp4" />
+          <source src={assetPath("HERO720.mp4")} type="video/mp4" />
         </video>
         
         {/* Gradient overlay on hover */}

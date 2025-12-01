@@ -114,7 +114,7 @@ const AddWorkSpace = () => {
             case 0:
                 return (
                     <div>
-                        <h2 className="text-2xl font-serif font-bold mb-4">
+                        <h2 className="text-2xl liber font-bold mb-4">
                             Add Your Coworking Space
                         </h2>
                         <p className="text-gray-600 mb-6">
@@ -155,7 +155,7 @@ const AddWorkSpace = () => {
                                 onChange={handleChange}
                             />
                             <div>
-                                <label className="block font-serif mb-2">Locations</label>
+                                <label className="block liber mb-2">Locations</label>
                                 <div className="flex gap-6 text-sm">
                                     <label className="flex items-center gap-2">
                                         <input
@@ -184,12 +184,12 @@ const AddWorkSpace = () => {
             case 1:
                 return (
                     <div>
-                        <h2 className="text-2xl font-serif font-bold mb-4">
+                        <h2 className="text-2xl liber font-bold mb-4">
                             Business Details
                         </h2>
                         <div className="grid gap-4">
                             <div>
-                                <label className="block font-serif">Opening Days</label>
+                                <label className="block liber">Opening Days</label>
                                 <input
                                     name="openingDays"
                                     placeholder="e.g. Mon - Fri"
@@ -221,7 +221,7 @@ const AddWorkSpace = () => {
                             </label>
 
                             <div>
-                                <label className="block font-serif">Book Tour Days</label>
+                                <label className="block liber">Book Tour Days</label>
                                 <input
                                     name="tourDays"
                                     placeholder="e.g. Mon - Sat"
@@ -267,7 +267,7 @@ const AddWorkSpace = () => {
             case 2:
                 return (
                     <div>
-                        <h2 className="text-2xl font-serif font-bold mb-4">
+                        <h2 className="text-2xl liber font-bold mb-4">
                             Amenities & Facilities
                         </h2>
 
@@ -297,7 +297,7 @@ const AddWorkSpace = () => {
             case 3:
                 return (
                     <div>
-                        <h2 className="text-2xl font-serif font-bold mb-4">
+                        <h2 className="text-2xl liber font-bold mb-4">
                             Gallery & Social Media
                         </h2>
                         <div className="grid gap-4">
@@ -312,7 +312,7 @@ const AddWorkSpace = () => {
                                     />
                                 )
                             )}
-                            <label className="block font-serif">Photos & Videos</label>
+                            <label className="block liber">Photos & Videos</label>
                             <input
                                 type="file"
                                 multiple
@@ -326,7 +326,7 @@ const AddWorkSpace = () => {
             case 4:
                 return (
                     <div>
-                        <h2 className="text-2xl font-serif font-bold mb-4">
+                        <h2 className="text-2xl liber font-bold mb-4">
                             OTP Verification
                         </h2>
                         <input
@@ -360,7 +360,7 @@ const AddWorkSpace = () => {
                                 <Icon size={20} />
                             </div>
                             <p
-                                className={`mt-2 text-xs text-center font-serif ${index === step ? "text-black font-bold" : "text-gray-400"
+                                className={`mt-2 text-xs text-center liber ${index === step ? "text-black font-bold" : "text-gray-400"
                                     }`}
                             >
                                 {stepData.label}

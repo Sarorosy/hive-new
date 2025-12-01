@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
+import { assetPath } from "../../utils/assetPath";
 
 const CommunityExperience = () => {
   return (
@@ -9,7 +10,7 @@ const CommunityExperience = () => {
           {/* Image on the left */}
           <div className="relative min-h-[400px] md:min-h-[500px]">
             <img
-              src="/community.jpg"
+              src={assetPath("community.jpg")}
               alt="Modern office workspace"
               className="w-full h-full object-cover"
               loading="lazy"
@@ -20,7 +21,7 @@ const CommunityExperience = () => {
           {/* Text content on the right */}
           <div className="px-8 lg:px-12 flex flex-col justify-start items-start text-left">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl font-serif font-semibold text-[#0e1932] leading-tight">
+              <h2 className="text-3xl md:text-4xl liber font-semibold text-[#0e1932] leading-tight">
                 More Than Just A Flexible Workspace
               </h2>
               

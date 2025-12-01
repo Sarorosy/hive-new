@@ -62,7 +62,7 @@ export default function FeaturedCentres() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8">
           <div>
             <p className="text-gray-500 text-sm mb-2">/ Featured Centres /</p>
-            <h2 className="text-2xl md:text-3xl font-bold leading-snug mb-4 font-serif">
+            <h2 className="text-2xl md:text-3xl font-bold leading-snug mb-4 liber">
               Featured Centres
             </h2>
           </div>

@@ -1,63 +1,8 @@
 import React, { useEffect, useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import {
-  MapPin,
-  ArrowUpRight,
-  ChevronDown,
-} from "lucide-react";
+import { MapPin, ArrowUpRight, ChevronDown } from "lucide-react";
 import { centersData } from "../data/centersData";
-
-// Address and size data mapping (can be moved to data file later)
-const branchAddresses = {
-  "chennai-anna-nagar": {
-    address: "Level 3, VR Chennai, Jawaharlal Nehru Road, Anna Nagar, Chennai, Tamil Nadu, India",
-    netSize: 15500,
-    grossSize: 25800,
-    floors: 1,
-  },
-  "chennai-omr": {
-    address: "SRP Stratford, Old Mahabalipuram Road (OMR), Perungudi, Chennai, Tamil Nadu, India",
-    netSize: 95000,
-    grossSize: 158000,
-    floors: 1,
-  },
-  "chennai-skcl-guindy": {
-    address: "SKCL Guindy, Chennai, Tamil Nadu, India",
-    netSize: 25000,
-    grossSize: 42000,
-    floors: 1,
-  },
-  "chennai-porur": {
-    address: "Level 3, Keppal One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
-    netSize: 20000,
-    grossSize: 33000,
-    floors: 1,
-  },
-  "bangalore-whitefield": {
-    address: "ITPL Main Road, Whitefield, Bangalore, Karnataka, India",
-    netSize: 48000,
-    grossSize: 80000,
-    floors: 1,
-  },
-  "bangalore-ptp": {
-    address: "Prestige Tech Platina, Bangalore, Karnataka, India",
-    netSize: 30000,
-    grossSize: 50000,
-    floors: 1,
-  },
-  "hyderabad-gachibowli": {
-    address: "Corporate Capital, Financial District, next to Sheraton Hyderabad Hotel, Gachibowli, Hyderabad, Telangana, India",
-    netSize: 45000,
-    grossSize: 75000,
-    floors: 1,
-  },
-  "pune-mills": {
-    address: "The Mills at RBCC, Raja Bahadur Mill Road, behind Sheraton Grand Hotel, Sangamwadi, Pune, Maharashtra, India",
-    netSize: 35000,
-    grossSize: 58000,
-    floors: 1,
-  },
-};
+import { branchAddresses } from "../data/branchAddresses";
 
 const AllLocations = () => {
   const navigate = useNavigate();
@@ -248,7 +193,7 @@ const AllLocations = () => {
 
                     <div className="p-6 space-y-4  flex-1 ">
                       <div className="flex flex-col gap-2">
-                        <h2 className="text-2xl  text-gray-900">
+                        <h2 className="text-2xl  text-gray-900 liber">
                           {branch.name.replace("The Hive at ", "").replace(", " + branch.cityName, "")}
                         </h2>
                         <p className="text-sm text-gray-600 leading-relaxed">

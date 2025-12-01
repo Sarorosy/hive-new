@@ -2,6 +2,7 @@ import { ArrowRight } from "lucide-react";
 import four from "../../assets/offerings/privatecabins/3.jpg";
 import five from "../../assets/offerings/dedicateddesks/2.jpg";
 import Slide from "./Slide";
+import { assetPath } from "../../utils/assetPath";
 
 const SmallAbout = () => {
     return (
@@ -10,7 +11,7 @@ const SmallAbout = () => {
             <div className="max-w-7xl mx-auto">
                 <p className="text-sm text-gray-500 mb-2">/ About /</p>
                 <div className="flex items-center">
-                    <h2 className="text-4xl font-serif font-bold max-w-2xl mb-4">
+                    <h2 className="text-4xl liber font-bold max-w-2xl mb-4">
                         Redefining the Future of Workspaces.
                     </h2>
                     <p className="text-gray-500 max-w-md">
@@ -39,7 +40,7 @@ const SmallAbout = () => {
                         </div>
                         <div className="group flex-1 basis-1/2 overflow-hidden rounded-xl transition-[flex-basis] duration-500 hover:basis-[85%]">
                             <img
-                                src="/ecosystem/hyadr/HiveHyderabad_8-Seater-MR.jpg"
+                                src={assetPath("ecosystem/hyadr/HiveHyderabad_8-Seater-MR.jpg")}
                                 alt="Cafe workspace"
                                 className="w-full h-full object-cover"
                             />

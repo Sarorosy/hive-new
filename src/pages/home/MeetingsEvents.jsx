@@ -1,32 +1,13 @@
 import { Link } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
-
-const meetingsEvents = [
-  {
-    id: "meeting-rooms",
-    title: "Meeting Rooms",
-    description: "Private, well-equipped rooms for meetings.",
-    image: "/meeting-room.jpg",
-    link: "/workspaces/meetings-and-event-spaces",
-    linkLabel: "Explore meeting rooms"
-  },
-  {
-    id: "event-spaces",
-    title: "Event Spaces",
-    description: "Flexible indoor and outdoor venues for events of any size.",
-    image: "/eventspace.jpg",
-    link: "/workspaces/meetings-and-event-spaces",
-    linkLabel: "View event spaces"
-  }
-  
-];
+import { meetingsEventsData } from "../../data/workspacesData";
 
 const MeetingsEvents = () => {
   return (
     <section className="bg-white py-16 px-4 md:px-8 xl:px-0">
       <div className="max-w-6xl mx-auto space-y-8">
         <div className="space-y-3 ">
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0e1932]">
+          <h2 className="text-3xl md:text-4xl  text-[#0e1932] liber">
             Meetings & Events
           </h2>
           <p className="text-slate-600 ">
@@ -35,7 +16,7 @@ const MeetingsEvents = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-6">
-          {meetingsEvents.map((item) => (
+          {meetingsEventsData.map((item) => (
             <div
               key={item.id}
               className="bg-white rounded-sm shadow-xl border border-slate-100 overflow-hidden group hover:shadow-2xl transition-shadow"
@@ -49,7 +30,7 @@ const MeetingsEvents = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:px-8">
-                  <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3">
+                  <h3 className="text-2xl md:text-3xl font-semibold liber text-white mb-3">
                     {item.title}
                   </h3>
                   <p className="text-white/90 text-sm md:text-base leading-relaxed ">

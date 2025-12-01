@@ -65,7 +65,7 @@ const LandlordRelationship = () => {
     <section className="py-16 bg-white text-black mt-12">
       {/* Header Section */}
       <div className="max-w-6xl mx-auto px-4 text-center mb-12">
-        <h2 className="text-3xl font-bold font-serif mb-4">
+        <h2 className="text-3xl font-bold liber mb-4">
           Expand Your Network And Grow Your Presence
         </h2>
         <p className="text-lg text-gray-700 max-w-2xl mx-auto">
@@ -81,7 +81,7 @@ const LandlordRelationship = () => {
           className="w-full rounded-2xl border border-gray-200 p-1 object-cover"
         />
         <div>
-          <h3 className="text-2xl font-bold font-serif mb-6">
+          <h3 className="text-2xl font-bold liber mb-6">
             Why list your Coworking Business with us?
           </h3>
           <div className="space-y-6">
@@ -89,7 +89,7 @@ const LandlordRelationship = () => {
               <div key={i} className="flex items-start space-x-4">
                 {b.icon}
                 <div>
-                  <h4 className="text-lg font-bold font-serif">{b.title}</h4>
+                  <h4 className="text-lg font-bold liber">{b.title}</h4>
                   <p className="text-gray-700">{b.desc}</p>
                 </div>
               </div>
@@ -101,7 +101,7 @@ const LandlordRelationship = () => {
       {/* How It Works */}
       <div className="bg-white py-12 border-t border-gray-400 ">
         <div className="max-w-6xl mx-auto px-4">
-          <h3 className="text-2xl font-bold font-serif text-center mb-10">
+          <h3 className="text-2xl font-bold liber text-center mb-10">
             How it Works
           </h3>
           <div className="grid md:grid-cols-4 gap-8">
@@ -111,7 +111,7 @@ const LandlordRelationship = () => {
                 className="bg-white border border-black rounded-xl p-6 text-center "
               >
                 <div className="flex justify-center mb-4">{s.icon}</div>
-                <h4 className="text-lg font-bold font-serif">{s.title}</h4>
+                <h4 className="text-lg font-bold liber">{s.title}</h4>
                 <p className="mt-2 text-gray-700 group-hover:text-white">
                   {s.desc}
                 </p>

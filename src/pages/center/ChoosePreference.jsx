@@ -68,7 +68,7 @@ const ChoosePreference = ({ cityData, centersData }) => {
         <div className="w-full px-4 md:px-12 py-8">
             {/* Filters */}
             <div className="mb-6">
-                <h2 className="text-2xl md:text-3xl font-semibold mb-4 font-serif">
+                <h2 className="text-2xl md:text-3xl font-semibold mb-4 liber">
                     Choose your preferences
                 </h2>
                 <div className="flex flex-wrap gap-4 items-center">

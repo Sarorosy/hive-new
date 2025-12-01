@@ -109,7 +109,7 @@ function ExplorePage() {
           <div className="relative w-full md:w-[90%] mx-auto rounded overflow-hidden shadow-2xl bg-white p-2">
             {/* Floating Text Card */}
             <div className="mb-6 md:mb-10 lg:absolute lg:top-1/2 lg:left-8 lg:transform lg:-translate-y-1/2 lg:w-[40%] rounded-xl p-4 sm:p-6 z-20 bg-white text-[#092e46] shadow-md">
-              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-gray-900 via-black font-serif to-purple-900 bg-clip-text text-transparent leading-tight">
+              <h1 className="text-2xl sm:text-3xl md:text-4xl font-black mb-4 sm:mb-6 bg-gradient-to-r from-gray-900 via-black liber to-purple-900 bg-clip-text text-transparent leading-tight">
                 {offeringSlug?.title} in { cityData.name}
               </h1>
               <p className="text-base sm:text-lg text-gray-700 leading-relaxed font-light">

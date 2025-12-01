@@ -23,7 +23,7 @@ export default function Faq() {
         {/* Left title */}
         <div>
           <p className="text-sm text-gray-500 mb-2">/ FAQ /</p>
-          <h2 className="text-4xl md:text-5xl font-serif font-bold leading-tight">
+          <h2 className="text-4xl md:text-5xl liber font-bold leading-tight">
             Frequently Asked <br /> Questions.
           </h2>
         </div>

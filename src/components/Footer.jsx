@@ -3,6 +3,7 @@ import { FloatingWhatsApp } from "react-floating-whatsapp";
 import { useNavigate } from "react-router-dom";
 import { citiesData } from "../data/centersData";
 import { useState } from "react";
+import { assetPath } from "../utils/assetPath";
 
 export default function Footer() {
   const navigate = useNavigate();
@@ -146,7 +147,7 @@ export default function Footer() {
                 rel="noreferrer"
                 className="text-black  transition"
               >
-                <img src="/twitter.png" alt="Twitter" className="w-5 h-5" />
+              <img src={assetPath("twitter.png")} alt="Twitter" className="w-5 h-5" />
               </a>
             </div>
           </div>
@@ -158,7 +159,7 @@ export default function Footer() {
             {/* Logo */}
             <div className="flex-shrink-0">
               <img
-                src="/logo-transparent.png"
+                src={assetPath("logo-transparent.png")}
                 alt="Logo"
                 width={120}
                 height={30}

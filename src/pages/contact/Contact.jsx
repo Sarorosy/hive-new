@@ -10,7 +10,7 @@ export default function Contact() {
             <p className="text-xs font-semibold uppercase tracking-[0.4em] text-orange-500">
               Book a visit
             </p>
-            <h1 className="mt-3 text-3xl font-semibold font-serif">
+            <h1 className="mt-3 text-3xl font-semibold liber">
               Tell us about your workspace requirement
             </h1>
             <p className="mt-3 text-base text-gray-600">

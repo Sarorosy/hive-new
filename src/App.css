@@ -82,6 +82,9 @@ html, body {
   font-family: "Crimson Text", serif;
 }
 
+.liber {
+  font-family: "Libertinus Serif Display", system-ui;
+}
 .hei-98 {
   height: 98%;
 }

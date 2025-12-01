@@ -147,7 +147,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
 
         {/* Left Section */}
         <div>
-          <h2 className="text-3xl font-bold font-serif mb-4">Start a Conversation</h2>
+          <h2 className="text-3xl font-bold liber mb-4">Start a Conversation</h2>
           <p className="text-gray-600 mb-6">
             We'd love to show you around our collaborative workspaces.
           </p>
@@ -195,7 +195,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
           className="bg-white shadow-xl p-6 rounded-2xl"
           onSubmit={handleSubmit}
         >
-          <h3 className="text-2xl font-bold mb-4 font-serif">Book A Tour</h3>
+          <h3 className="text-2xl font-bold mb-4 liber">Book A Tour</h3>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
             <div className="flex items-center border rounded-lg px-3">

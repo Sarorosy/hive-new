@@ -5,7 +5,7 @@ const StartWithUs = () => {
   return (
     <div className="bg-gray-50  py-16 px-4">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl font-bold font-serif text-gray-900 mb-16 text-left">
+        <h1 className="text-4xl font-bold liber text-gray-900 mb-16 text-left">
           Start your journey with us
         </h1>
         

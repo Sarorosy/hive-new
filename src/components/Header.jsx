@@ -8,9 +8,11 @@ import {
   X,
   BriefcaseBusiness,
   ShoppingCart,
+  ArrowRight,
 } from "lucide-react";
 import logoTransparent from "../assets/logo-transparent.png";
 import { citiesData } from "../data/centersData";
+import { solutionOfferings } from "../data/workspacesData";
 import { useAuth } from "../utils/idb";
 import { API_URL } from "../utils/constants";
 
@@ -35,35 +37,7 @@ const Header = ({ onBookTourClick }) => {
   // console.log(cart)
 
   // Offerings data
-  const offerings = [
-    {
-      icon: "/icons/office.svg",
-      title: "Office Spaces",
-      subtitle: "Ready-to-move-in or customisable private offices",
-      items: [
-        { name: "Managed Offices", slug: "managed-offices" },
-        { name: "Enterprise Solutions", slug: "enterprise-solutions" },
-        { name: "Private Cabins", slug: "private-cabins" },
-      ],
-    },
-    {
-      icon: "/icons/coworking.svg",
-      title: "Coworking Spaces",
-      subtitle: "Coworking spaces for the hour, day, or month",
-      items: [
-        { name: "Dedicated Desks", slug: "dedicated-desks" },
-        { name: "Hot Desks", slug: "hot-desks" },
-      ],
-    },
-    {
-      icon: "/icons/additional.svg",
-      title: "Additional Solutions",
-      subtitle: "Solutions that go beyond workspaces",
-      items: [
-        { name: "Meetings & Event Spaces", slug: "meetings-and-event-spaces" },
-      ],
-    },
-  ];
+  const offerings = solutionOfferings;
 
   // Handle scroll effect
   useEffect(() => {
@@ -207,6 +181,7 @@ const Header = ({ onBookTourClick }) => {
                   setWorkspacesOpen(false);
                   setHoveredOffering("");
                 }}
+                onClick={()=> navigate("/solutions")}
                 ref={workspacesRef}
               >
                 <span className="hover:underline cursor-pointer transition-all duration-200">
@@ -270,6 +245,15 @@ const Header = ({ onBookTourClick }) => {
                           </div>
                         )}
                       </div>
+                    </div>
+                    <div className="border-t border-gray-700 px-4 py-3 text-sm">
+                      <RouterLink
+                        to="/solutions"
+                        className="inline-flex items-center gap-2 hover:underline"
+                      >
+                        View all solutions
+                        <ArrowRight className="w-4 h-4" />
+                      </RouterLink>
                     </div>
                   </div>
                 )}
@@ -523,6 +507,17 @@ const Header = ({ onBookTourClick }) => {
                       ))}
                     </div>
                   ))}
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setWorkspacesOpen(false);
+                      setMobileOpen(false);
+                      navigate("/solutions");
+                    }}
+                    className="block w-full text-left pl-2 underline font-medium"
+                  >
+                    View all solutions
+                  </button>
                 </div>
               )}
             </div>

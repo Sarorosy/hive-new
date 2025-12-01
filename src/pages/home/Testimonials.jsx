@@ -54,7 +54,7 @@ export default function Testimonials() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-12 relative z-10">
           <div>
             <p className="text-gray-500 text-sm mb-2 ">/ Testimonials /</p>
-            <h2 className="text-4xl font-bold leading-snug mb-4 font-serif">
+            <h2 className="text-4xl font-bold leading-snug mb-4 liber">
               Voices of Our Community
             </h2>
           </div>

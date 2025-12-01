@@ -1,68 +1,7 @@
 import { useMemo, useState } from "react";
 import { Link } from "react-router-dom";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
-import four from "../../assets/offerings/privatecabins/3.jpg";
-const workspaceTabs = [
-  {
-    id: "private",
-    label: "Private Offices",
-    image: "/spacetypes/privatecabin.jpg",
-    title: "Your Complete Workspace Ready From Day One",
-    description:
-      "At The Hive, you get a complete move-in-ready office designed for comfort, focus, and productivity. Every workspace matches your team's style, size, and workflow, making it easy to settle in and start working right away.",
-    highlights: [
-      "Dedicated cabins designed for individuals or growing teams",
-      "Premium facilities available in a top-tier business location",
-      "Round-the-clock access with exclusive member perks and benefits"
-    ],
-    linkLabel: "Learn more about our Private Offices",
-    link: "/workspaces/private-cabins"
-  },
-  {
-    id: "coworking",
-    label: "Coworking Spaces",
-    image: "/spacetypes/hotdesk.jpg",
-    title: "Work Comfortably From Any Hive Location Today",
-    description:
-      "At The Hive, you can sit and get things done at any of our centres while enjoying all the facilities, support, and community advantages. ",
-    highlights: [
-      "Open Seating: Choose any spot and begin your day at convenience",
-      "Personal Station: A permanent place that's always reserved for you",
-      "Short-Stay Room: A private cabin available for days or weeks"
-    ],
-    linkLabel: "Explore coworking options",
-    link: "/workspaces/hot-desks"
-  },
-  {
-    id: "virtual",
-    label: "Virtual Offices",
-    image: four,
-    title: "A Strong Business Identity With Trusted Address",
-    description:
-      "Create a solid presence for your brand using The Hive's virtual office solutions. Get a recognised address, organised call support, and managed mail services, perfect for individuals.",
-    highlights: [
-      "Registered Location: Use our centre's address to present your company",
-      "Phone Assistance: Receive a local number with organised call responses",
-      "Dual Plan: Get both options together plus complimentary workspace access"
-    ],
-    linkLabel: "See virtual office plans",
-    link: "/"
-  },
-  {
-    id: "enterprise",
-    label: "Managed Enterprise Solutions",
-    image: "/spacetypes/4.jpg",
-    title: "Custom Design Office Space That Fits Your Business",
-    description:
-      "A customised office solution for companies of all sizes. We'll take care of location, branding, IT and more. All you'll have to do is move in and start working in your perfectly designed space right away.",
-    highlights: [
-      "Build your custom office space without upfront capital expenditures required",
-      "Workspace designed for productivity and collaboration with your team members",
-    ],
-    linkLabel: "Talk to our enterprise team",
-    link: "/workspaces/enterprise-solutions"
-  }
-];
+import { workspaceTabs } from "../../data/workspacesData";
 
 const WorkspaceTypes = () => {
   const [activeTab, setActiveTab] = useState(workspaceTabs[0].id);
@@ -76,7 +15,7 @@ const WorkspaceTypes = () => {
       <div className="max-w-6xl mx-auto space-y-5">
         <div className=" space-y-3">
           
-          <h2 className="text-3xl md:text-4xl font-semibold text-[#0e1932]">
+          <h2 className="text-3xl md:text-4xl  text-[#0e1932] liber">
             Workspaces for Every Type of Professional
           </h2>
           <p className="text-slate-600 max-w-3xl ">
@@ -122,7 +61,7 @@ const WorkspaceTypes = () => {
                   <p className="text-sm uppercase tracking-[0.25em] text-slate-500">
                     {activeWorkspace.label}
                   </p>
-                  <h3 className="text-2xl font-semibold text-[#0e1932]">
+                  <h3 className="text-2xl font-semibold liber text-[#0e1932]">
                     {activeWorkspace.title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed">

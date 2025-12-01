@@ -32,26 +32,26 @@ export default function DiscountBanner() {
                             <Quote className="w-8 h-8 text-gray-300 mb-4" fill="currentColor" />
 
                             {/* Main Headline */}
-                            <h1 className="text-5xl font-serif font-bold text-black mb-4 leading-tight tracking-tight">
+                            <h1 className="text-5xl liber font-bold text-black mb-4 leading-tight tracking-tight">
                                 Exclusive Offer
                             </h1>
 
                             {/* Discount Text */}
                             <div className="flex items-baseline gap-4 mb-6">
-                                <span className="text-8xl font-serif font-black text-black leading-none">25</span>
+                                <span className="text-8xl liber font-black text-black leading-none">25</span>
                                 <div className="flex flex-col">
-                                    <span className="text-2xl font-serif font-bold text-black">% OFF</span>
+                                    <span className="text-2xl liber font-bold text-black">% OFF</span>
                                     <div className="h-1 w-16 bg-black mt-1"></div>
                                 </div>
                             </div>
 
                             {/* Description */}
-                            <p className="text-xl font-serif text-gray-700 mb-2 leading-relaxed">
+                            <p className="text-xl liber text-gray-700 mb-2 leading-relaxed">
                                 on our premium private space solutions
                             </p>
 
                             {/* Terms */}
-                            <p className="text-gray-400 text-sm mb-12 font-serif uppercase tracking-wide">
+                            <p className="text-gray-400 text-sm mb-12 liber uppercase tracking-wide">
                                 Terms & Conditions Apply*
                             </p>
 
@@ -59,7 +59,7 @@ export default function DiscountBanner() {
                             <div className="flex items-center gap-4">
                                 <button
                                     onClick={() => { setContactFormOpen(true) }}
-                                    className="group bg-black text-white px-8 py-3 cursor-pointer font-serif font-semibold text-base tracking-wide uppercase transition-all duration-300 hover:bg-gray-800 hover:tracking-widest relative overflow-hidden">
+                                    className="group bg-black text-white px-8 py-3 cursor-pointer liber font-semibold text-base tracking-wide uppercase transition-all duration-300 hover:bg-gray-800 hover:tracking-widest relative overflow-hidden">
                                     <span className="relative z-10 flex items-center gap-2">
                                         Get in Touch
                                         <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-2" />
@@ -70,13 +70,13 @@ export default function DiscountBanner() {
                                 {/* Additional accent */}
                                 <div className="flex items-center gap-2 text-gray-400">
                                     <div className="w-8 h-px bg-gray-300"></div>
-                                    <span className="text-xs font-serif italic">Limited time</span>
+                                    <span className="text-xs liber italic">Limited time</span>
                                 </div>
                             </div>
                         </div>
 
                         {/* Large background number */}
-                        <div className="absolute -top-4 -right-8 text-gray-50 text-[200px] font-serif font-black select-none leading-none -z-10">
+                        <div className="absolute -top-4 -right-8 text-gray-50 text-[200px] liber font-black select-none leading-none -z-10">
                             25
                         </div>
 

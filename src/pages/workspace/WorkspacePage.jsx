@@ -293,7 +293,7 @@ const WorkspacePage = () => {
             <div className="inline-flex items-center bg-black text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
               Everything Included
             </div>
-            <h2 className="text-5xl font-bold text-black mb-6 font-serif">
+            <h2 className="text-5xl font-bold text-black mb-6 liber">
               Premium Features
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -332,7 +332,7 @@ const WorkspacePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-serif font-bold text-black mb-6">
+            <h2 className="text-5xl liber font-bold text-black mb-6">
               Why Choose {workspace?.name || "Our Workspaces"}?
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">
@@ -393,7 +393,7 @@ const WorkspacePage = () => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2 className="text-5xl font-serif font-bold mb-6">
+            <h2 className="text-5xl liber font-bold mb-6">
               World-Class Amenities
             </h2>
             <p className="text-xl text-gray-600 max-w-3xl mx-auto">

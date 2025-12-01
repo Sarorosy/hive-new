@@ -67,7 +67,7 @@ const FeaturedSpaces = () => {
       <div className="max-w-6xl mx-auto px-4">
         <p className="text-sm text-gray-500">/ Featured Workspaces /</p>
         <div className="flex flex-col md:flex-row md:items-center md:justify-between mt-2">
-          <h2 className="text-4xl font-bold max-w-xl font-serif">
+          <h2 className="text-4xl font-bold max-w-xl liber">
             Tailored Solutions for Your Unique Work Needs.
           </h2>
           <p className="text-gray-500 max-w-sm mt-4 md:mt-0">

@@ -55,6 +55,7 @@ import AboutUs from "../pages/about/AboutUs";
 import Contact from "../pages/contact/Contact";
 import AllLocations from "../pages/AllLocations";
 import Sitemap from "../pages/Sitemap";
+import AllWorkspaces from "../pages/AllWorkspaces";
 
 
 export default function AppRouter() {
@@ -124,7 +125,7 @@ export default function AppRouter() {
   const { user } = useAuth();
 
   return (
-    <Router>
+    <Router >
       <ScrollToTop />
       <Routes>
         <Route element={<PrivateRoute />}>
@@ -135,6 +136,7 @@ export default function AppRouter() {
             <Route path="/:city/:branch" element={<Center />} />
             <Route path="/:city" element={<CityBranches />} />
             <Route path="/locations" element={<AllLocations />} />
+            <Route path="/solutions" element={<AllWorkspaces />} />
 
             <Route
               path="/landlord-relationships"

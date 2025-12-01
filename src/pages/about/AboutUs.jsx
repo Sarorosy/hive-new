@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { MapPin, Building, Users, TrendingUp, Award, Target, Zap, Globe } from "lucide-react";
 import { centersData } from "../../data/centersData";
+import { branchAddresses } from "../../data/branchAddresses";
 
 // Import images
 import heroImg from "../../assets/raw/all/DSC07729-min.JPG";
@@ -14,45 +15,40 @@ export default function AboutUs() {
   const youtubeUrl = "https://youtu.be/IftKbB5Nfks";
   const videoId = youtubeUrl.split("/").pop().split("?")[0];
 
-  // Prepare locations data from centersData
-  const locations = [
-    {
-      city: "Bangalore (Whitefield)",
-      desc: "900 seats • 48,000 sq. ft. • Integrated into VR Bengaluru",
-      address: "ITPL Main Road, Whitefield",
-      image: centersData.bangalore.centerImages?.[0] || centersData.bangalore.image,
-      clients: ["Hensoldt", "Spinny", "Appsflyer", "Xebia", "Webonise Lab", "Thoucentric Technology"],
-      details: "Located on ITPL Main Road in Whitefield, Bangalore's premier IT hub. Strategic location with upcoming metro connectivity and ample parking."
-    },
-    {
-      city: "Chennai – Anna Nagar",
-      desc: "350 seats • 15,500 sq. ft. • Inside VR Chennai",
-      address: "Level 3, VR Chennai, Jawaharlal Nehru Road, Anna Nagar",
-      image: centersData.chennai.centerImages?.[0] || centersData.chennai.image,
-      details: "Integrated into VR Chennai, a 2 million sq. ft. lifestyle center with 10-screen multiplex, boutique hotel, and extensive retail/F&B. Central business district location with metro and bus connectivity."
-    },
-    {
-      city: "Chennai – OMR",
-      desc: "1,500 seats • 95,000 sq. ft. • SRP Stratford",
-      address: "SRP Stratford, Old Mahabalipuram Road (OMR), Perungudi",
-      image: centersData.chennai.branches?.omr?.images?.[0] || centersData.chennai.image,
-      details: "Chennai's IT corridor location with onsite café, crèche, and adjacent Holiday Inn hotel. Easy access via bus, train, and upcoming metro."
-    },
-    {
-      city: "Hyderabad (Gachibowli)",
-      desc: "750–900 seats • 45,000 sq. ft. • Financial District",
-      address: "Corporate Capital, Financial District, next to Sheraton Hyderabad Hotel",
-      image: centersData.hyderabad.centerImages?.[0] || centersData.hyderabad.image,
-      details: "Serves Hyderabad's major office catchments: HITEC City and Financial District. Integrated with 5-star hotel, serviced apartments, restaurants, and office complex. Excellent airport connectivity and public transport access."
-    },
-    {
-      city: "Pune (Koregaon Park)",
-      desc: "1,000 seats • Mixed-use lifestyle destination",
-      address: "The Mills at RBCC, Raja Bahadur Mill Road, behind Sheraton Grand Hotel, Sangamwadi",
-      image: centersData.pune.centerImages?.[0] || centersData.pune.image,
-      details: "Part of a revamped 6-acre mixed-use development with restaurants, bars, open courtyards, event spaces, and 5-star hotel. Centrally located with connectivity to Kalyani Nagar, Koregaon Park, Boat Club Road, and Viman Nagar."
-    },
-  ];
+  const formatStats = (info = {}) => {
+    const stats = [];
+    if (info.netSize) stats.push(`${info.netSize.toLocaleString()} sq. ft. net`);
+    if (info.grossSize) stats.push(`${info.grossSize.toLocaleString()} sq. ft. gross`);
+    if (info.floors) stats.push(`${info.floors} floor${info.floors > 1 ? "s" : ""}`);
+    return stats.join(" • ");
+  };
+
+  const locations = React.useMemo(() => {
+    const list = [];
+
+    Object.entries(centersData).forEach(([cityKey, cityData]) => {
+      Object.entries(cityData.branches || {}).forEach(([branchKey, branchData]) => {
+        const branchId = `${cityKey}-${branchKey}`;
+        const addressInfo = branchAddresses[branchId] || {};
+        const stats = formatStats(addressInfo);
+        const branchName = branchData.name || cityData.name;
+        const displayName = branchName
+          ? branchName.replace("The Hive at ", "").replace(`, ${cityData.name}`, "")
+          : cityData.name;
+
+        list.push({
+          id: branchId,
+          city: displayName,
+          desc: stats || branchData.details || cityData.description,
+          address: addressInfo.address || `${branchName}, ${cityData.name}, India`,
+          image: branchData.images?.[0] || cityData.centerImages?.[0] || cityData.image,
+          details: branchData.details || cityData.description,
+        });
+      });
+    });
+
+    return list.sort((a, b) => a.city.localeCompare(b.city));
+  }, []);
 
   const notableClients = [
     "Condé Nast India",
@@ -138,7 +134,7 @@ export default function AboutUs() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.7 }}
           >
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 leading-tight liber">
               The Hive Workspaces
               <br />
               <span className="text-gray-500">Comprehensive Company Overview</span>
@@ -178,7 +174,7 @@ export default function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-8">Who We Are</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-8 liber">Who We Are</h2>
             <div className="grid md:grid-cols-2 gap-8 items-center">
               <div>
                 <p className="text-gray-700 leading-relaxed mb-4 text-lg">
@@ -218,7 +214,7 @@ export default function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Take a Virtual Tour</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center liber  ">Take a Virtual Tour</h2>
             <p className="text-gray-600 text-center mb-8 text-lg">
               Experience The Hive workspaces from anywhere in the world
             </p>
@@ -246,7 +242,7 @@ export default function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-10">Company History & Timeline</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-10 liber">Company History & Timeline</h2>
             
             <div className="grid md:grid-cols-2 gap-10 mb-10">
               <div className="bg-white p-8 rounded-2xl shadow-sm">
@@ -338,7 +334,7 @@ export default function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">What We Do</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center liber">What We Do</h2>
             <p className="text-gray-600 text-center mb-12 text-lg">
               Comprehensive flexible workspace solutions across multiple formats
             </p>
@@ -378,7 +374,7 @@ export default function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Premium Amenities</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center liber">Premium Amenities</h2>
             <p className="text-gray-600 text-center mb-8 text-lg">
               All workspace options include comprehensive amenities
             </p>
@@ -405,7 +401,7 @@ export default function AboutUs() {
           >
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold mb-6">Integrated Lifestyle Access</h2>
+                <h2 className="text-3xl md:text-4xl font-bold mb-6 liber">Integrated Lifestyle Access</h2>
                 <p className="text-gray-700 leading-relaxed mb-6 text-lg">
                   Members enjoy seamless access to the broader lifestyle ecosystems in which
                   The Hive centers are embedded:
@@ -440,7 +436,7 @@ export default function AboutUs() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
           >
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center">Current Locations</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center liber">Current Locations</h2>
             <p className="text-gray-600 text-center mb-12 text-lg">
               Five flagship centers across four gateway cities in India
             </p>
@@ -466,7 +462,7 @@ export default function AboutUs() {
                       <MapPin className="w-5 h-5 text-gray-600 flex-shrink-0 mt-1" />
                       <h3 className="text-xl font-semibold">{loc.city}</h3>
                     </div>
-                    <p className="text-gray-600 text-sm mb-3 font-medium">{loc.desc}</p>
+                    {/* <p className="text-gray-600 text-sm mb-3 font-medium">{loc.desc}</p> */}
                     <p className="text-gray-500 text-xs mb-3">{loc.address}</p>
                     <p className="text-gray-700 text-sm leading-relaxed">{loc.details}</p>
                     

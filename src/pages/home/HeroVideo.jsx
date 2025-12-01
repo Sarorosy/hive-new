@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Play, Maximize2, X } from "lucide-react";
 import thumbnail from "../../assets/spinner/one.jpg";
+import { assetPath } from "../../utils/assetPath";
 
 function HeroVideo() {
   const [isPlaying, setIsPlaying] = useState(false);
@@ -81,7 +82,7 @@ function HeroVideo() {
         <div className={`relative w-full h-full ${isFullscreen ? 'hidden' : ''}`}>
           <video
             ref={videoRef}
-            src="/THE_HIVE_BRAND_VIDEO.mp4"
+            src={assetPath("THE_HIVE_BRAND_VIDEO.mp4")}
             autoPlay
             controls
             muted={isFullscreen}
@@ -130,7 +131,7 @@ function HeroVideo() {
               {/* Fullscreen Video */}
               <video
                 ref={fullscreenVideoRef}
-                src="/THE_HIVE_BRAND_VIDEO.mp4"
+                src={assetPath("THE_HIVE_BRAND_VIDEO.mp4")}
                 controls
                 className="w-full h-full object-contain rounded-lg"
                 autoPlay

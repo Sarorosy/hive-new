@@ -81,7 +81,7 @@ export default function Members() {
           className=" mb-10"
         >
 
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 font-serif">
+          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4 liber">
             Our Members
           </h2>
           <p className="text-sm text-gray-600 max-w-2xl">
