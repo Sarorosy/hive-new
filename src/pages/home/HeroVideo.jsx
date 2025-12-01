@@ -82,7 +82,7 @@ function HeroVideo() {
         <div className={`relative w-full h-full ${isFullscreen ? 'hidden' : ''}`}>
           <video
             ref={videoRef}
-            src={assetPath("THE_HIVE_BRAND_VIDEO.mp4")}
+            src={`https://ryupunch.com/THE_HIVE_BRAND_VIDEO.mp4`}
             autoPlay
             controls
             muted={isFullscreen}
@@ -131,7 +131,7 @@ function HeroVideo() {
               {/* Fullscreen Video */}
               <video
                 ref={fullscreenVideoRef}
-                src={assetPath("THE_HIVE_BRAND_VIDEO.mp4")}
+                src={`https://ryupunch.com/THE_HIVE_BRAND_VIDEO.mp4`}
                 controls
                 className="w-full h-full object-contain rounded-lg"
                 autoPlay
