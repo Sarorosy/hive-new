@@ -45,14 +45,14 @@
   .eco-swiper .swiper-slide img,
   .eco-swiper .eco-img {
     width: 100%;
-    height: 200px;
+  height: 280px;
     object-fit: cover;
   }
   
   @media screen and (max-width: 1200px) {
     .eco-swiper .swiper-slide img,
     .eco-swiper .eco-img {
-      height: 220px;
+      height: 240px;
     }
   }
   

@@ -5,9 +5,9 @@ import { meetingsEventsData } from "../../data/workspacesData";
 const MeetingsEvents = () => {
   return (
     <section className="bg-white py-16 px-4 md:px-8 xl:px-0">
-      <div className="max-w-6xl mx-auto space-y-8">
+      <div className="max-w-[90%] mx-auto space-y-8">
         <div className="space-y-3 ">
-          <h2 className="text-3xl md:text-4xl  text-[#0e1932] liber">
+          <h2 className="text-3xl md:text-4xl text-black liber">
             Meetings & Events
           </h2>
           <p className="text-slate-600 ">
@@ -30,7 +30,7 @@ const MeetingsEvents = () => {
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:px-8">
-                  <h3 className="text-2xl md:text-3xl font-semibold liber text-white mb-3">
+                  <h3 className="text-2xl md:text-3xl font-semibold liber text-white/90 mb-3">
                     {item.title}
                   </h3>
                   <p className="text-white/90 text-sm md:text-base leading-relaxed ">

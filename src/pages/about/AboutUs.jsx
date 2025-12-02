@@ -511,7 +511,7 @@ export default function AboutUs() {
               </div>
               <div>
                 <img
-                  src={communityImg}
+                  src="/spacetypes/4.jpg"
                   alt="Lifestyle Access"
                   className="rounded-2xl shadow-xl w-full h-96 object-cover"
                 />

@@ -1,5 +1,5 @@
 import React from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useOutletContext } from "react-router-dom";
 import { centersData } from "../../data/centersData";
 import Breadcrumb from "../../components/BreadCrumb";
 import one from '../../assets/featured/1.jpg';
@@ -16,6 +16,7 @@ import ContactForm from "../../components/ContactForm";
 import Faq from "../home/Faq";
 function ExplorePage() {
   const { location, offering } = useParams(); // e.g. /Chennai/coworking-spaces
+  const { theme } = useOutletContext?.() || { theme: "light" };
 
   const cityBranches = {
     Chennai: [
@@ -102,7 +103,7 @@ function ExplorePage() {
         <div className="relative pt-16 pb-8 px-4 md:px-8 mx-auto max-w-[1600px]">
           {/* Breadcrumb */}
           <div className="mb-6 md:mb-8 relative z-20">
-            <Breadcrumb items={cityData.breadcrumb} />
+            <Breadcrumb items={cityData.breadcrumb} theme={theme} />
           </div>
 
           {/* Slider */}

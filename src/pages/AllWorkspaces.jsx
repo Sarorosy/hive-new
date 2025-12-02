@@ -13,10 +13,10 @@ const AllWorkspaces = () => {
         <div className=" mx-auto grid md:grid-cols-2 items-center ">
           {/* LEFT CONTENT */}
           <div className="space-y-3 z-10 pl-5">
-            <h1 className="text-4xl md:text-5xl font-medium text-[#0e1932] leading-tight liber">
+            <h1 className="text-4xl md:text-5xl font-medium text-black leading-tight liber">
               Flexible workspace solutions
             </h1>
-            <p className="text-lg text-[#0e1932]/70 max-w-lg">
+            <p className="text-lg text-black/70 max-w-lg">
               Industrious offers dedicated and shared workspaces for individuals
               and teams.
             </p>
@@ -44,7 +44,7 @@ const AllWorkspaces = () => {
             <p className="text-sm uppercase tracking-[0.3em] text-slate-500">
               Workspace catalog
             </p>
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#0e1932]">
+            <h2 className="text-3xl md:text-4xl font-semibold text-black">
               Pick the format that fits your team best
             </h2>
             <p className="text-slate-600 max-w-3xl">
@@ -73,7 +73,7 @@ const AllWorkspaces = () => {
                     <p className="text-xs uppercase tracking-[0.3em] text-slate-500">
                       {offering.subtitle}
                     </p>
-                    <h3 className="text-2xl font-semibold text-[#0e1932]">
+                    <h3 className="text-2xl font-semibold text-black">
                       {offering.title}
                     </h3>
                   </div>
@@ -141,7 +141,7 @@ const AllWorkspaces = () => {
             </button>
             <button
               onClick={() => navigate("/contact")}
-              className="rounded-full bg-white text-[#0e1932] px-6 py-3 text-sm font-semibold hover:translate-y-0.5 transition-all"
+              className="rounded-full bg-white text-black px-6 py-3 text-sm font-semibold hover:translate-y-0.5 transition-all"
             >
               Start a conversation
             </button>

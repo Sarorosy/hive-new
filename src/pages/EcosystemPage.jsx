@@ -145,7 +145,7 @@ const newsletterImages = [
 ];
 
 const EcosystemPage = () => {
-  const { setContactFormOpen } = useOutletContext();
+  const { setContactFormOpen, theme } = useOutletContext();
   const [activeArtist, setActiveArtist] = useState(artistProfiles[0].id);
   const carouselRef = useRef(null);
   const animationRef = useRef(null);
@@ -214,11 +214,12 @@ const EcosystemPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-[#f5f4f2]">
+    <div className="min-h-screen mt-12 bg-[#f5f4f2]">
       <section className=" bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <Breadcrumb
             items={[{ label: "Home", path: "/" }, { label: "Ecosystem" }]}
+            theme={theme}
           />
           <div className="mt-10 ">
             <div>
@@ -237,7 +238,7 @@ const EcosystemPage = () => {
       <EcoHero />
       
       <section className="border-b border-black/10 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="max-w-[90%] mx-auto px-4 sm:px-4 lg:px-4 py-12 md:py-16">
           <div className="mt-10">
             <div>
               <p className="text-lg text-gray-600 max-w-2xl mb-10">
@@ -261,7 +262,7 @@ const EcosystemPage = () => {
       </section>
 
       <section className="py-20 border-b border-black/10 bg-white">
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-4">
           <div className="">
             <div>
               <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-3">
@@ -386,9 +387,9 @@ const EcosystemPage = () => {
       </section>
 
       <section className="bg-white py-16 px-4 md:px-8 xl:px-0">
-        <div className="max-w-6xl mx-auto space-y-8">
+        <div className="max-w-[90%] mx-auto space-y-8">
           <div className="space-y-3">
-            <h2 className="text-3xl md:text-4xl font-semibold text-[#0e1932]">
+            <h2 className="text-3xl md:text-4xl font-semibold text-black">
               Unveiling Our Exclusive Artwork
             </h2>
             <p className="text-slate-600">

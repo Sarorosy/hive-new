@@ -2,7 +2,7 @@ import React, { useRef, useEffect, useState, useMemo } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Autoplay } from "swiper/modules";
 import { ChevronRight, ChevronLeft } from "lucide-react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import { centersData } from "../../data/centersData";
 
 // Import Swiper styles
@@ -14,7 +14,7 @@ export default function FeaturedCentres() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
   const [swiper, setSwiper] = useState(null);
-
+  const { theme } = useOutletContext();
   // Extract all centers from centersData dynamically
   const featuredCentres = useMemo(() => {
     const centres = [];
@@ -56,13 +56,21 @@ export default function FeaturedCentres() {
   }, [swiper]);
 
   return (
-    <section className="bg-white py-12 px-6 lg:px-20">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-white py-12 ">
+      <div className="max-w-[90%] mx-auto">
         {/* Header */}
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8">
           <div>
-            <p className="text-gray-500 text-sm mb-2">/ Featured Centres /</p>
-            <h2 className="text-2xl md:text-3xl font-bold leading-snug mb-4 liber">
+            <p
+              className={`${theme === "dark" ? "text-gray-300" : "text-gray-500"} text-sm mb-2`}
+            >
+              / Featured Centres /
+            </p>
+            <h2
+              className={`text-2xl md:text-3xl font-bold leading-snug mb-4 liber ${
+                theme === "dark" ? "text-white" : "text-black"
+              }`}
+            >
               Featured Centres
             </h2>
           </div>

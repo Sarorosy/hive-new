@@ -11,11 +11,11 @@ const WorkspaceTypes = () => {
   );
 
   return (
-    <section className="bg-white py-8 px-4 md:px-8 xl:px-0">
-      <div className="max-w-6xl mx-auto space-y-5">
+    <section className="bg-white py-8 px-4  xl:px-0">
+      <div className="max-w-[90%] mx-auto space-y-5">
         <div className=" space-y-3">
           
-          <h2 className="text-3xl md:text-4xl  text-[#0e1932] liber">
+          <h2 className="text-3xl md:text-4xl  text-black liber">
             Workspaces for Every Type of Professional
           </h2>
           <p className="text-slate-600 max-w-3xl ">
@@ -61,7 +61,7 @@ const WorkspaceTypes = () => {
                   <p className="text-sm uppercase tracking-[0.25em] text-slate-500">
                     {activeWorkspace.label}
                   </p>
-                  <h3 className="text-2xl font-semibold liber text-[#0e1932]">
+                  <h3 className="text-2xl font-semibold liber text-black">
                     {activeWorkspace.title}
                   </h3>
                   <p className="text-slate-600 leading-relaxed">

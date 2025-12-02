@@ -4,8 +4,8 @@ import { assetPath } from "../../utils/assetPath";
 
 const CommunityExperience = () => {
   return (
-    <section className="bg-white py-16 px-4 md:px-8 xl:px-0">
-      <div className="max-w-6xl mx-auto">
+    <section className="bg-white py-16 px-4 md:px-4 xl:px-0">
+      <div className="max-w-[90%] mx-auto">
         <div className="grid md:grid-cols-2 gap-0 bg-white  overflow-hidden">
           {/* Image on the left */}
           <div className="relative min-h-[400px] md:min-h-[500px]">
@@ -21,7 +21,7 @@ const CommunityExperience = () => {
           {/* Text content on the right */}
           <div className="px-8 lg:px-12 flex flex-col justify-start items-start text-left">
             <div className="space-y-6">
-              <h2 className="text-3xl md:text-4xl liber font-semibold text-[#0e1932] leading-tight">
+              <h2 className="text-3xl md:text-4xl liber font-semibold text-black leading-tight">
                 More Than Just A Flexible Workspace
               </h2>
               

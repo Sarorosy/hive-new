@@ -1,6 +1,6 @@
 // src/pages/Center.jsx
 import React, { useEffect, useRef, useState } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { centersData } from "../../data/centersData";
@@ -172,6 +172,7 @@ function Center() {
   const navigate = useNavigate();
   const [activeTab, setActiveTab] = useState("overview");
   const [layoutOffset, setLayoutOffset] = useState({ header: 0, tab: 0 });
+  const { theme } = useOutletContext?.() || { theme: "light" };
   const sectionRefs = useRef({
     overview: null,
     services: null,
@@ -316,7 +317,10 @@ function Center() {
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-white">
                   <div className="max-w-7xl mx-auto">
                     <div className="text-white [&_a]:text-white [&_span]:text-white/80">
-                      <Breadcrumb items={branchData ? branchData.breadcrumb : cityData.breadcrumb} />
+                      <Breadcrumb
+                        items={branchData ? branchData.breadcrumb : cityData.breadcrumb}
+                        theme={theme}
+                      />
                     </div>
                     <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mt-4 mb-2">
                       {displayName}

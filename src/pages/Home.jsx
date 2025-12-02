@@ -24,11 +24,11 @@ function Home() {
         <Stats />
         {/* <SmallAbout /> */}
         <FeaturedCentres />
+        <Members />
         <CommunityExperience />
         {/* <HeroVideo /> */}
         {/* <AmenitiesSection/> */}
         <LatestBlogs/>
-        <Members />
         {/* <DiscountBanner /> */}
         <Faq />
         {/* <FeaturedSpaces /> */}

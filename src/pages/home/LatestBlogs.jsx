@@ -58,7 +58,7 @@ const LatestBlogs = () => {
   }
 
   return (
-    <section className="max-w-6xl mx-auto px-4py-12">
+    <section className="max-w-[90%] mx-auto px-4 py-12">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-10">
         <div>
           <h2 className="text-3xl sm:text-4xl font-bold liber text-black">

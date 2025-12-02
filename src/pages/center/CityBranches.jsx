@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
+import { useParams, useNavigate, useOutletContext } from "react-router-dom";
 import { MapPin, ArrowRight } from "lucide-react";
 import { centersData } from "../../data/centersData";
 import Breadcrumb from "../../components/BreadCrumb";
@@ -52,6 +52,7 @@ function CityBranches() {
   const { city } = useParams();
   const navigate = useNavigate();
   const [selectedBranchKey, setSelectedBranchKey] = useState(null);
+  const { theme } = useOutletContext?.() || { theme: "light" };
 
   const cityData = centersData[city];
 
@@ -92,7 +93,7 @@ function CityBranches() {
         <div className="absolute bottom-0 left-0 right-0 p-6 md:p-12 text-white">
           <div className="max-w-7xl mx-auto">
             <div className="text-white [&_a]:text-white [&_span]:text-white/80">
-              <Breadcrumb items={cityData.breadcrumb} />
+              <Breadcrumb items={cityData.breadcrumb} theme={theme} />
             </div>
             <h1 className="text-3xl md:text-5xl lg:text-6xl font-bold mt-4 mb-2">
               Coworking Spaces in {cityData.name}

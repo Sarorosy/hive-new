@@ -69,10 +69,10 @@ export default function Members() {
   }, []);
 
   return (
-    <section className="py-16 bg-white overflow-hidden relative max-w-6xl mx-auto">
+    <section className="py-16 bg-white overflow-hidden relative  mx-auto">
       
 
-      <div className="max-w-7xl mx-auto px-4 relative z-10">
+      <div className="max-w-[90%] mx-auto px-4 relative z-10">
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}

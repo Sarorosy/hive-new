@@ -1,11 +1,14 @@
-// tailwind.config.js
 module.exports = {
+  darkMode: "class",
   theme: {
     extend: {
       colors: {
-        black: "#434343",
-        white: "#bebebe",
-        gold: "#f6d8a0",
+        skin: {
+          bg: "var(--bg)",
+          text: "var(--text)",
+          card: "var(--card)",
+          border: "var(--border)",
+        },
       },
     },
   },

@@ -7,25 +7,60 @@ import { useEffect, useState } from "react";
 
 export default function Layout() {
   const navigate = useNavigate();
-  const[contactFormOpen, setContactFormOpen] = useState(false);
+  const [contactFormOpen, setContactFormOpen] = useState(false);
 
-  useEffect(()=>{
-    setTimeout(()=>{
+  // Theme state (light / dark) persisted in localStorage
+  const [theme, setTheme] = useState(() => {
+    if (typeof window === "undefined") return "light";
+    const stored = window.localStorage.getItem("theme");
+    return stored === "dark" ? "dark" : "light";
+  });
+
+  useEffect(() => {
+    const root = document.documentElement;
+
+    if (theme === "dark") {
+      root.classList.add("dark");
+    } else {
+      root.classList.remove("dark");
+    }
+
+    window.localStorage.setItem("theme", theme);
+  }, [theme]);
+
+  const toggleTheme = () => {
+    setTheme((prev) => (prev === "light" ? "dark" : "light"));
+  };
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
       setContactFormOpen(true);
-    },8000)
-  },[])
+    }, 8000);
+
+    return () => clearTimeout(timer);
+  }, []);
+
   return (
-    <div className="min-h-screen flex flex-col w-full cs" >
-      <Header onBookTourClick={()=> setContactFormOpen(true)} />
+    <div className="min-h-screen flex flex-col w-full cs">
+      <Header
+        onBookTourClick={() => setContactFormOpen(true)}
+        theme={theme}
+        onToggleTheme={toggleTheme}
+      />
       <main className="flex-grow w-full" id="scroll-container">
         <div className="container m-0 max-w-[100%]">
-          <Outlet context={{ setContactFormOpen }}  />
+          <Outlet context={{ setContactFormOpen, theme }} />
         </div>
       </main>
       <Footer />
 
       {contactFormOpen && (
-        <ContactForm type="modal" onClose={()=>{setContactFormOpen(false)}} />
+        <ContactForm
+          type="modal"
+          onClose={() => {
+            setContactFormOpen(false);
+          }}
+        />
       )}
       <CookieConsent isContactFormOpen={contactFormOpen} />
     </div>
