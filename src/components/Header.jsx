@@ -181,14 +181,19 @@ const Header = ({ onBookTourClick }) => {
                   setWorkspacesOpen(false);
                   setHoveredOffering("");
                 }}
-                onClick={()=> navigate("/solutions")}
                 ref={workspacesRef}
               >
-                <span className="hover:underline cursor-pointer transition-all duration-200">
+                <span 
+                  className="hover:underline cursor-pointer transition-all duration-200"
+                  onClick={() => navigate("/solutions")}
+                >
                   Solutions
                 </span>
                 {workspacesOpen && (
-                  <div className="absolute left-0 top-7 mt-2 w-xl bg-black text-white rounded-sm z-20 shadow-xl">
+                  <div 
+                    className="absolute left-0 top-7 mt-2 w-xl bg-black text-white rounded-sm z-20 shadow-xl"
+                    onClick={(e) => e.stopPropagation()}
+                  >
                     <div className="absolute top-0 left-1 -translate-y-full w-0 h-0 border-l-[10px] border-r-[10px] border-b-[20px] border-l-transparent border-r-transparent border-b-black"></div>
                     <div className="absolute top-0 left-5 -translate-y-full w-full h-0  border-b-[20px] opacity-0 bg-transparent z-19"></div>
                     <div className="flex">
@@ -230,9 +235,11 @@ const Header = ({ onBookTourClick }) => {
                               ?.items.map((item, index) => (
                                 <button
                                   key={index}
-                                  onClick={() =>
-                                    navigate(`/workspaces/${item.slug}`)
-                                  }
+                                  onClick={(e) => {
+                                    e.stopPropagation();
+                                    navigate(`/workspaces/${item.slug}`);
+                                    setWorkspacesOpen(false);
+                                  }}
                                   className="block w-full text-left py-1 px-2 hover:bg-gray-800 rounded text-sm transition-colors bg-transparent border-none cursor-pointer text-white"
                                 >
                                   {item.name}
