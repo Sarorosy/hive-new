@@ -339,14 +339,14 @@ export default function AboutUs() {
               horizon.
             </p>
 
-            <div className="relative mt-16 h-screen">
+            <div className="relative mt-16 h-[560px]">
               <div className="relative h-full">
                 {timelineMilestones.map((milestone, idx) => {
                   // First milestone at bottom, each subsequent one progressively higher
                   const baseAltitude = 280;
                   const stepHeight = 70; // Space between each milestone
                   const markerAltitude = baseAltitude + (idx * stepHeight) - 200;
-                  const connectorHeight = Math.max(markerAltitude - 90, 60);
+                  const connectorHeight = 80;
                   return (
                     <div
                       key={milestone.year}
