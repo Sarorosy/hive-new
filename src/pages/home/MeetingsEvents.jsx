@@ -1,16 +1,32 @@
-import { Link } from "react-router-dom";
+import { Link, useOutletContext } from "react-router-dom";
 import { ArrowRight } from "lucide-react";
 import { meetingsEventsData } from "../../data/workspacesData";
 
 const MeetingsEvents = () => {
+  const { theme } = useOutletContext();
   return (
-    <section className="bg-white py-16 px-4 md:px-8 xl:px-0">
+    <section
+      className={`
+        py-16 px-4 md:px-8 xl:px-0
+        ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}
+      `}
+    >
       <div className="max-w-[90%] mx-auto space-y-8">
-        <div className="space-y-3 ">
-          <h2 className="text-3xl md:text-4xl text-black liber">
+        <div className="space-y-3">
+          <h2
+            className={`
+              text-3xl md:text-4xl liber
+              ${theme === "dark" ? "text-white" : "text-black"}
+            `}
+          >
             Meetings & Events
           </h2>
-          <p className="text-slate-600 ">
+
+          <p
+            className={`
+              ${theme === "dark" ? "text-slate-300" : "text-slate-600"}
+            `}
+          >
             Professional spaces designed for collaboration, presentations, and memorable gatherings.
           </p>
         </div>
@@ -19,7 +35,14 @@ const MeetingsEvents = () => {
           {meetingsEventsData.map((item) => (
             <div
               key={item.id}
-              className="bg-white rounded-sm shadow-xl border border-slate-100 overflow-hidden group hover:shadow-2xl transition-shadow"
+              className={`
+                rounded-sm shadow-xl border overflow-hidden group transition-shadow
+                ${
+                  theme === "dark"
+                    ? "bg-black border-slate-800 hover:shadow-white/20"
+                    : "bg-white border-slate-100 hover:shadow-2xl"
+                }
+              `}
             >
               <div className="relative min-h-[300px] md:min-h-[400px] overflow-hidden">
                 <img
@@ -28,21 +51,29 @@ const MeetingsEvents = () => {
                   className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                   loading="lazy"
                 />
+
+                {/* gradient always dark for readability */}
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+
                 <div className="absolute bottom-0 left-0 right-0 p-6 md:px-8">
                   <h3 className="text-2xl md:text-3xl font-semibold liber text-white/90 mb-3">
                     {item.title}
                   </h3>
-                  <p className="text-white/90 text-sm md:text-base leading-relaxed ">
+
+                  <p className="text-white/90 text-sm md:text-base leading-relaxed">
                     {item.description}
                   </p>
-                  {/* <Link
+
+                  {/* If you want link later, theme is already handled */}
+                  {/* 
+                  <Link
                     to={item.link}
                     className="inline-flex items-center gap-2 text-white font-medium hover:gap-3 transition-all group/link"
                   >
                     {item.linkLabel}
                     <ArrowRight className="w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
-                  </Link> */}
+                  </Link>
+                  */}
                 </div>
               </div>
             </div>
@@ -54,4 +85,3 @@ const MeetingsEvents = () => {
 };
 
 export default MeetingsEvents;
-

@@ -1,8 +1,8 @@
 import React from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Autoplay } from "swiper/modules";
+import { useOutletContext } from "react-router-dom";
 
-// Swiper styles
 import "swiper/css";
 import "swiper/css/autoplay";
 
@@ -20,9 +20,18 @@ const ecoImages = [
 ];
 
 export default function EcoHero() {
+
+  const { theme } = useOutletContext();
+
   return (
-    <div className="eco-hero">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+    <div
+      className={`
+        eco-hero w-full 
+        ${theme === "dark" ? "bg-black" : "bg-white"}
+      `}
+    >
+      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 ${theme == "dark" ? "bg-black" : "bg-white"}`}>
+
         <Swiper
           spaceBetween={10}
           slidesPerView={4}
@@ -31,16 +40,20 @@ export default function EcoHero() {
           loop={true}
           className="eco-swiper"
         >
-        {ecoImages.map((image, index) => (
-          <SwiperSlide key={index}>
-            <img
-              src={image}
-              alt={`eco slide ${index + 1}`}
-              className="eco-img"
-            />
-          </SwiperSlide>
-        ))}
+          {ecoImages.map((image, index) => (
+            <SwiperSlide key={index}>
+              <img
+                src={image}
+                alt={`eco slide ${index + 1}`}
+                className={`
+                  eco-img
+                  ${theme === "dark" ? "brightness-75" : "brightness-100"}
+                `}
+              />
+            </SwiperSlide>
+          ))}
         </Swiper>
+
       </div>
     </div>
   );

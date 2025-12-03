@@ -20,21 +20,18 @@ import {
   Minus,
 } from "lucide-react";
 
-import {
-  workspaces,
-  amenities,
-  benefits,
-} from "../../data/workspaceData";
+import { workspaces, amenities, benefits } from "../../data/workspaceData";
+
 import StartWithUs from "./StartWithUs";
 import LearnMoreForm from "../../components/LearnMoreForm";
 
+// IMAGES
 import ManagedOffices from "../../assets/raw/all/DSC07782-min.JPG";
 import ManagedOffices2 from "../../assets/raw/chn/PUR08687-min.jpg";
 
 import EnterPriseSol from "../../assets/raw/chn/YAV00102-min.JPG";
 import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.jpg";
 
-import privateCabins from "../../assets/raw/chn/skcl/privatecabins.jpg";
 import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
 import privateCabins3 from "../../assets/offerings/privatecabins/1.jpg";
 
@@ -44,38 +41,31 @@ import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
 import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
 import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
 
-import meetings from "../../assets/raw/chn/HVE04223-min.jpg";
 import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";
 import meetings3 from "../../assets/raw/blr/THEHIVEVR16.jpg";
 
-
 import whyChooseUs from "../../assets/raw/chn/skcl/IMG_7932.JPG";
-
-
 
 const WorkspacePage = () => {
   const { slug } = useParams();
   const navigate = useNavigate();
   const [openIndex, setOpenIndex] = useState(null);
-  const { setContactFormOpen } = useOutletContext();
 
-  // Find the workspace by slug
+  const { theme, setContactFormOpen } = useOutletContext();
+
+  // workspace data
   const workspace = workspaces.find((w) => w.slug === slug);
-
-  if (!workspace) {
-    navigate("/404");
-  }
+  if (!workspace) navigate("/404");
 
   const formatPrice = (price) => {
     if (price >= 1000) {
       let val = (price / 1000).toFixed(1);
       val = val.endsWith(".0") ? val.slice(0, -2) : val;
-  
       return `₹${val}K`;
     }
     return `₹${price}`;
   };
-  
+
   const amenityIcons = {
     "High-Speed Internet": Wifi,
     "Coffee & Tea": Coffee,
@@ -87,140 +77,130 @@ const WorkspacePage = () => {
     "Lounge Music": Music,
   };
 
-  // Get appropriate image based on workspace type
   const getWorkspaceImage = (slug) => {
-    
-
-    const imageMap = {
-      "managed-offices":
-        ManagedOffices,
-      "enterprise-solutions":
-        EnterPriseSol,
-      "private-cabins":
-      privateCabins3,
-      "dedicated-desks":
-        dedicatedDesks,
-      "hot-desks":
-        hotdesks,
-      "meetings-and-event-spaces":
-        meetings3,
+    const map = {
+      "managed-offices": ManagedOffices,
+      "enterprise-solutions": EnterPriseSol,
+      "private-cabins": privateCabins3,
+      "dedicated-desks": dedicatedDesks,
+      "hot-desks": hotdesks,
+      "meetings-and-event-spaces": meetings3,
     };
-    return imageMap[slug] || imageMap["managed-offices"];
+    return map[slug] || ManagedOffices;
   };
 
   const getSecondaryImage = (slug) => {
-   
-
-    const imageMap = {
-      "managed-offices":
-        ManagedOffices2,
-      "enterprise-solutions":
-        EnterPriseSol2,
-      "private-cabins":
-        privateCabins2,
-      "dedicated-desks":
-        dedicatedDesks2,
-      "hot-desks":
-        hotdesks2,
-      "meetings-and-event-spaces":
-        meetings2,
+    const map = {
+      "managed-offices": ManagedOffices2,
+      "enterprise-solutions": EnterPriseSol2,
+      "private-cabins": privateCabins2,
+      "dedicated-desks": dedicatedDesks2,
+      "hot-desks": hotdesks2,
+      "meetings-and-event-spaces": meetings2,
     };
-    return imageMap[slug] || imageMap["managed-offices"];
+    return map[slug] || ManagedOffices2;
   };
 
-  const getFeatureIcon = (index) => {
+  const getFeatureIcon = (i) => {
     const icons = [Shield, Wifi, Coffee, Calendar, Users, Star, Clock, MapPin];
-    const IconComponent = icons[index % icons.length];
-    return IconComponent;
+    return icons[i % icons.length];
   };
+
+  // DARK MODE classes
+  const textPrimary = theme === "dark" ? "text-white" : "text-black";
+  const textSecondary = theme === "dark" ? "text-gray-300" : "text-gray-600";
+  const bgPrimary = theme === "dark" ? "bg-gray-900" : "bg-white";
+  const bgCard =
+    theme === "dark"
+      ? "bg-gray-800 border-gray-700"
+      : "bg-white border-gray-100";
 
   return (
-    <div className=" bg-white relative mt-14 ">
-      {/* Hero Section with Image */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] overflow-hidden ">
+    <div className={`${bgPrimary} relative mt-14`}>
+      {/* HERO */}
+      <section className="relative min-h-[60vh] sm:min-h-[70vh] overflow-hidden">
         <div
-          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          className={`absolute inset-0 bg-cover bg-center bg-no-repeat `}
           style={{
             backgroundImage: `url(${getWorkspaceImage(workspace.slug)})`,
           }}
         ></div>
+
         <div className="absolute inset-0 bg-black/60"></div>
 
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center mt-4">
           <div className="text-white max-w-4xl">
-            {/* Badge */}
-            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm px-3 py-1.5 sm:px-4 sm:py-2 rounded-full text-xs sm:text-sm font-medium mb-4">
+            <div className="inline-flex items-center bg-white/20 backdrop-blur-sm px-4 py-2 rounded-full text-sm font-semibold mb-4">
               <Star className="w-4 h-4 mr-2 text-yellow-400" />
               Premium Workspace Solution
             </div>
 
-            {/* Title */}
-            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6 leading-tight">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
               {workspace.title}
             </h1>
 
-            {/* Description */}
-            <p className="text-base sm:text-lg md:text-xl text-gray-200 mb-6 sm:mb-8 leading-relaxed max-w-2xl">
+            <p className="text-lg text-gray-200 max-w-2xl mb-8">
               {workspace.description}
             </p>
 
-            {/* Features */}
-            <div className="flex flex-wrap items-center gap-4 sm:gap-6 md:gap-8 text-sm mb-6 sm:mb-8">
-              <div className="flex items-center bg-white/10 backdrop-blur-sm px-3 py-2 sm:px-4 sm:py-2 rounded-lg">
-                <Users className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="font-medium">{workspace.capacity}</span>
+            <div className="flex flex-wrap gap-6 text-sm">
+              <div className="flex items-center bg-white/10 px-4 py-2 rounded-lg">
+                <Users className="w-5 h-5 mr-2" />
+                {workspace.capacity}
               </div>
-              <div className="flex items-center bg-white/10 backdrop-blur-sm px-3 py-2 sm:px-4 sm:py-2 rounded-lg">
-                <MapPin className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="font-medium">7 centres across 4 cities</span>
+
+              <div className="flex items-center bg-white/10 px-4 py-2 rounded-lg">
+                <MapPin className="w-5 h-5 mr-2" />7 centres across 4 cities
               </div>
-              <div className="flex items-center bg-white/10 backdrop-blur-sm px-3 py-2 sm:px-4 sm:py-2 rounded-lg">
-                <Clock className="w-4 h-4 sm:w-5 sm:h-5 mr-2" />
-                <span className="font-medium">24/7 Access</span>
+
+              <div className="flex items-center bg-white/10 px-4 py-2 rounded-lg">
+                <Clock className="w-5 h-5 mr-2" />
+                24/7 Access
               </div>
             </div>
 
-            {/* CTA Buttons */}
-            <div className="flex flex-col sm:flex-row gap-3 sm:gap-4">
-              <button 
-              onClick={()=>{setContactFormOpen(true)}}
-              className="cursor-pointer  px-4 sm:px-6 py-2 sm:py-3 bg-white text-black font-semibold rounded-lg hover:bg-gray-100 hover:scale-105 transition-all duration-300 shadow-xl text-sm sm:text-base">
-                Schedule Tour Today
-              </button>
-            </div>
+            <button
+              onClick={() => setContactFormOpen(true)}
+              className="mt-6 px-6 py-3 bg-white text-black rounded-lg font-semibold shadow hover:scale-105 transition"
+            >
+              Schedule Tour Today
+            </button>
           </div>
         </div>
       </section>
 
-      {/* Floating Pricing Card */}
-      <section className="-mt-16 sm:-mt-20 relative z-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="bg-white rounded-2xl shadow-2xl p-6 sm:p-8 max-w-sm sm:max-w-md mx-auto border border-gray-100">
+      {/* PRICE CARD */}
+      <section className="-mt-20 relative z-20">
+        <div className="max-w-7xl mx-auto px-4">
+          <div
+            className={`rounded-2xl shadow-2xl p-8 max-w-md mx-auto border ${bgCard}`}
+          >
             <div className="text-center">
-              {/* Price */}
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold text-black mb-1 sm:mb-2">
+              <div className={`text-3xl font-bold ${textPrimary}`}>
                 {formatPrice(workspace.pricing.from)}
-                <span className="text-sm sm:text-base md:text-lg font-normal text-gray-600">
+                <span className={`text-base ${textSecondary}`}>
                   /{workspace.pricing.period}
                 </span>
               </div>
-              <p className="text-gray-600 mb-4 sm:mb-6 text-sm sm:text-base">
+
+              <p className={`${textSecondary} mt-2`}>
                 Starting from • All inclusive
               </p>
 
-              {/* CTA */}
-              <a href="#Form" className="w-full bg-gradient-to-r from-black to-gray-800 text-white py-3 sm:py-4 px-4 sm:px-6 rounded-lg hover:from-gray-800 hover:to-black transition-all duration-300 font-semibold transform hover:scale-105 shadow-lg text-sm sm:text-base">
+              <a
+                href="#Form"
+                className="w-full mt-6 block bg-gradient-to-r from-black to-gray-800 text-white py-4 rounded-lg hover:scale-105 transition"
+              >
                 Get Started Now
               </a>
 
-              {/* Benefits */}
-              <div className="flex flex-col sm:flex-row items-center justify-center mt-3 sm:mt-4 text-xs sm:text-sm text-gray-500 gap-2 sm:gap-4">
+              <div className="flex justify-center gap-4 mt-4 text-sm text-gray-400">
                 <div className="flex items-center">
-                  <Check className="w-4 h-4 mr-1 text-green-500" />
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
                   No setup fees
                 </div>
                 <div className="flex items-center">
-                  <Check className="w-4 h-4 mr-1 text-green-500" />
+                  <Check className="w-4 h-4 mr-2 text-green-500" />
                   Flexible terms
                 </div>
               </div>
@@ -229,56 +209,56 @@ const WorkspacePage = () => {
         </div>
       </section>
 
-      {/* Content Section with Image */}
+      {/* CONTENT */}
       <section className="py-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <div className="inline-flex items-center bg-gray-100 px-4 py-2 rounded-full text-sm font-medium text-gray-700 mb-6">
-                <Camera className="w-4 h-4 mr-2" />
-                Real workspace photos
+        <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
+          <div>
+            <div className="inline-flex items-center bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm mb-6">
+              <Camera className="w-4 h-4 mr-2" />
+              Real workspace photos
+            </div>
+
+            <h2 className={`text-4xl font-bold mb-6 ${textPrimary}`}>
+              Experience the Perfect Work Environment
+            </h2>
+
+            <p className={`text-xl leading-relaxed mb-8 ${textSecondary}`}>
+              Step into a world where productivity meets comfort.
+            </p>
+
+            <div className="grid grid-cols-2 gap-6">
+              <div className={`text-center p-4 rounded-xl ${bgCard}`}>
+                <div className={`text-3xl font-bold ${textPrimary}`}>500+</div>
+                <div className={textSecondary}>Happy Members</div>
               </div>
-              <h2 className="text-4xl font-bold text-black mb-6 leading-tight">
-                Experience the Perfect Work Environment
-              </h2>
-              <p className="text-xl text-gray-600 mb-8 leading-relaxed">
-                Step into a world where productivity meets comfort. Our
-                thoughtfully designed spaces are crafted to inspire creativity
-                and foster meaningful connections within our vibrant
-                professional community.
-              </p>
-              <div className="grid grid-cols-2 gap-6">
-                <div className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-3xl font-bold text-black mb-1">500+</div>
-                  <div className="text-gray-600">Happy Members</div>
-                </div>
-                <div className="text-center p-4 bg-gray-50 rounded-xl">
-                  <div className="text-3xl font-bold text-black mb-1">98%</div>
-                  <div className="text-gray-600">Satisfaction Rate</div>
-                </div>
+
+              <div className={`text-center p-4 rounded-xl ${bgCard}`}>
+                <div className={`text-3xl font-bold ${textPrimary}`}>98%</div>
+                <div className={textSecondary}>Satisfaction Rate</div>
               </div>
             </div>
-            <div className="relative">
-              <div className="rounded-2xl overflow-hidden shadow-2xl transform hover:scale-105 transition-transform duration-500">
-                <img
-                  src={getSecondaryImage(workspace.slug)}
-                  alt={`${workspace.name} interior`}
-                  className="w-full h-96 object-cover"
-                />
-              </div>
-              <div className="absolute -bottom-6 -left-6 bg-white p-4 rounded-xl shadow-lg border border-gray-100">
-                <div className="flex items-center space-x-3">
-                  <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
-                    <Star className="w-6 h-6 text-white" />
+          </div>
+
+          {/* Workspace Image */}
+          <div className="relative">
+            <div className="rounded-2xl overflow-hidden shadow-2xl">
+              <img
+                src={getSecondaryImage(workspace.slug)}
+                className={`w-full h-96 object-cover transition `}
+                alt=""
+              />
+            </div>
+
+            <div className="absolute -bottom-6 -left-6 bg-white dark:bg-gray-800 rounded-xl p-4 shadow border dark:border-gray-700">
+              <div className="flex items-center gap-3">
+                <div className="w-12 h-12 bg-black rounded-lg flex items-center justify-center">
+                  <Star className="w-6 h-6 text-white" />
+                </div>
+                <div>
+                  <div className={`font-semibold ${textPrimary}`}>
+                    Premium Quality
                   </div>
-                  <div>
-                    <div className="font-semibold text-black">
-                      Premium Quality
-                    </div>
-                    <div className="text-sm text-gray-600">
-                      Certified workspace
-                    </div>
-                  </div>
+                  <div className={textSecondary}>Certified workspace</div>
                 </div>
               </div>
             </div>
@@ -286,40 +266,69 @@ const WorkspacePage = () => {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section className="py-20 bg-gradient-to-br from-gray-50 to-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* FEATURES */}
+      <section
+        className={`py-20 transition-colors 
+    ${
+      theme === "dark"
+        ? "bg-gradient-to-br from-gray-900 to-gray-800"
+        : "bg-gradient-to-br from-gray-50 to-white"
+    }`}
+      >
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Heading */}
           <div className="text-center mb-16">
-            <div className="inline-flex items-center bg-black text-white px-4 py-2 rounded-full text-sm font-medium mb-6">
+            <span
+              className={`px-4 py-2 rounded-full text-sm transition 
+          ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}`}
+            >
               Everything Included
-            </div>
-            <h2 className="text-5xl font-bold text-black mb-6 liber">
+            </span>
+
+            <h2 className={`text-5xl font-bold mt-6 ${textPrimary}`}>
               Premium Features
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Every detail matters. From ergonomic furniture to cutting-edge
-              technology, we've thought of everything to make your work
-              experience exceptional.
+
+            <p className={`text-xl mt-4 ${textSecondary}`}>
+              Every detail matters.
             </p>
           </div>
 
+          {/* Features Grid */}
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {workspace.features.map((feature, index) => {
-              const IconComponent = getFeatureIcon(index);
+            {workspace.features.map((f, i) => {
+              const Icon = getFeatureIcon(i);
               return (
                 <div
-                  key={index}
-                  className="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 hover:border-gray-600  transition-all duration-500 group"
+                  key={i}
+                  className={`p-8 rounded-2xl border shadow-sm transition 
+              ${
+                theme === "dark"
+                  ? "bg-gray-800 border-gray-700 hover:border-gray-400"
+                  : "bg-white border-gray-200 hover:border-gray-600"
+              }`}
                 >
-                  <div className="w-12 h-12 bg-gradient-to-br from-black to-gray-700 rounded-xl flex items-center justify-center mb-6 transition-transform duration-300">
-                    <IconComponent className="w-6 h-6 text-white" />
+                  {/* Icon Box */}
+                  <div
+                    className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition
+                ${
+                  theme === "dark"
+                    ? "bg-gradient-to-br from-gray-200 to-gray-400"
+                    : "bg-gradient-to-br from-black to-gray-700"
+                }`}
+                  >
+                    <Icon
+                      className={`w-6 h-6 ${
+                        theme === "dark" ? "text-black" : "text-white"
+                      }`}
+                    />
                   </div>
-                  <h3 className="text-xl font-bold text-black mb-4">
-                    {feature.title}
+
+                  <h3 className={`text-xl font-bold mb-4 ${textPrimary}`}>
+                    {f.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
-                    {feature.description}
-                  </p>
+
+                  <p className={textSecondary}>{f.description}</p>
                 </div>
               );
             })}
@@ -327,57 +336,47 @@ const WorkspacePage = () => {
         </div>
       </section>
 
-      {/* Benefits Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Heading */}
+      {/* BENEFITS */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className="text-5xl liber font-bold text-black mb-6">
-              Why Choose {workspace?.name || "Our Workspaces"}?
+            <h2 className={`text-5xl font-bold ${textPrimary}`}>
+              Why Choose {workspace?.name}?
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Discover the advantages that set us apart and drive your business
-              forward every single day.
+            <p className={`text-xl mt-4 ${textSecondary}`}>
+              Benefits that help your business grow.
             </p>
           </div>
 
-          {/* Layout */}
-          <div className="grid md:grid-cols-2 gap-12 items-center max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 gap-12 max-w-6xl mx-auto">
             {/* Left Image */}
             <div className="relative">
               <img
                 src={whyChooseUs}
-                alt="Workspace Benefits"
-                className="rounded-2xl shadow-lg object-cover"
+                className={`rounded-2xl shadow-lg object-cover `}
+                alt=""
               />
-              <div className="absolute inset-0 rounded-2xl ring-1 ring-black/10" />
             </div>
 
-            {/* Right Accordion */}
+            {/* Accordion */}
             <div className="space-y-3">
-              {benefits.map((benefit, index) => (
+              {benefits.map((b, i) => (
                 <div
-                  key={index}
-                  className="border border-gray-200 rounded-xl shadow-sm overflow-hidden"
+                  key={i}
+                  className={`rounded-xl border shadow-sm ${bgCard}`}
                 >
                   <button
-                    onClick={() =>
-                      setOpenIndex(openIndex === index ? null : index)
-                    }
-                    className="w-full flex items-center justify-between px-4 py-3 text-left text-lg font-medium text-gray-900 hover:bg-gray-50 transition"
+                    onClick={() => setOpenIndex(openIndex === i ? null : i)}
+                    className={`w-full flex justify-between px-4 py-3 text-lg font-medium ${textPrimary}`}
                   >
-                    <span>{benefit.title}</span>
-                    {openIndex === index ? (
-                      <Minus className="w-5 h-5 text-gray-500" />
-                    ) : (
-                      <Plus className="w-5 h-5 text-gray-500" />
-                    )}
+                    {b.title}
+                    {openIndex === i ? <Minus /> : <Plus />}
                   </button>
 
-                  {openIndex === index && (
-                    <div className="px-4 pb-4 text-gray-600 text-base leading-relaxed animate-fadeIn">
-                      {benefit.description}
-                    </div>
+                  {openIndex === i && (
+                    <p className={`px-4 pb-4 ${textSecondary}`}>
+                      {b.description}
+                    </p>
                   )}
                 </div>
               ))}
@@ -386,36 +385,59 @@ const WorkspacePage = () => {
         </div>
       </section>
 
-      <StartWithUs />
+      <StartWithUs theme={theme} />
 
-      {/* Amenities Showcase */}
-      <section className="py-20 bg-white text-black">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      {/* AMENITIES */}
+      <section
+        className={`py-20 transition-colors ${
+          theme === "dark"
+            ? "bg-gradient-to-br from-gray-900 to-gray-800"
+            : "bg-gradient-to-br from-white to-gray-50"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-4">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2 className="text-5xl liber font-bold mb-6">
+            <h2 className={`text-5xl font-bold ${textPrimary}`}>
               World-Class Amenities
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-              Access premium facilities designed to enhance your productivity
-              and well-being throughout your workday.
+
+            <p className={`text-xl mt-4 ${textSecondary}`}>
+              Boost your productivity & well-being.
             </p>
           </div>
 
-          {/* Amenities Grid */}
+          {/* Amenity Items */}
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-            {amenities.slice(0, 8).map((amenity, index) => {
-              const Icon = amenityIcons[amenity.name] || Users; // fallback icon
+            {amenities.slice(0, 8).map((a, i) => {
+              const Icon = amenityIcons[a.name] || Users;
+
               return (
                 <div
-                  key={index}
-                  className="text-center p-6 rounded-xl bg-gray-50 hover:bg-gray-100 border border-transparent hover:border-black transition-colors duration-300"
+                  key={i}
+                  className={`text-center p-6 rounded-xl transition border 
+              ${
+                theme === "dark"
+                  ? "bg-gray-800 border-gray-700 hover:border-gray-400"
+                  : "bg-gray-50 border-gray-200 hover:border-black"
+              }`}
                 >
-                  <div className="w-16 h-16 bg-black/10 rounded-xl mx-auto mb-4 flex items-center justify-center">
-                    <Icon className="w-8 h-8 text-black" />
+                  <div
+                    className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 transition
+                ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`}
+                  >
+                    <Icon
+                      className={`w-8 h-8 transition ${
+                        theme === "dark" ? "text-white" : "text-black"
+                      }`}
+                    />
                   </div>
-                  <h3 className="font-semibold mb-2">{amenity.name}</h3>
-                  <p className="text-sm text-gray-600">{amenity.description}</p>
+
+                  <h3 className={`font-semibold ${textPrimary}`}>{a.name}</h3>
+
+                  <p className={`text-sm mt-1 ${textSecondary}`}>
+                    {a.description}
+                  </p>
                 </div>
               );
             })}
@@ -423,49 +445,52 @@ const WorkspacePage = () => {
         </div>
       </section>
 
-      
-      {/* CTA Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-5xl font-bold text-black mb-6">
+      {/* CTA */}
+      <section className="py-20">
+        <div className="max-w-7xl mx-auto px-4 text-center">
+          <h2 className={`text-5xl font-bold ${textPrimary}`}>
             Ready to Transform Your Workspace?
           </h2>
-          <p className="text-xl text-gray-600 mb-12 max-w-3xl mx-auto">
-            Join thousands of successful professionals and companies who have
-            made The Hive their productive home. Your journey to exceptional
-            workspace experiences starts here.
+
+          <p className={`text-xl mt-4 mb-12 ${textSecondary}`}>
+            Join thousands of thriving professionals.
           </p>
 
           <div className="flex flex-col sm:flex-row gap-6 justify-center mb-8">
-            <button 
-            onClick={()=>{setContactFormOpen(true)}}
-            
-            className=" cursor-pointer px-4 sm:px-6 py-2 sm:py-3 bg-gradient-to-r from-black to-gray-800 text-white font-bold rounded-xl hover:from-gray-800 hover:to-black hover:scale-105 transition-all duration-300 shadow-2xl text-lg">
+            <button
+              onClick={() => setContactFormOpen(true)}
+              className="px-6 py-3 bg-gradient-to-r from-black to-gray-800 text-white rounded-xl hover:scale-105 transition"
+            >
               Schedule Your Free Tour
             </button>
-            <a href="#Form" className="px-10 py-5 border-2 border-black text-black font-bold rounded-xl hover:bg-black hover:text-white transition-all duration-300 text-lg">
+
+            <a
+              href="#Form"
+              className={`px-10 py-5 border-2 rounded-xl font-bold transition ${
+                theme === "dark"
+                  ? "border-white text-white hover:bg-white hover:text-black"
+                  : "border-black text-black hover:bg-black hover:text-white"
+              }`}
+            >
               Get Custom Quote
             </a>
           </div>
 
-          <div className="flex items-center justify-center space-x-8 text-sm text-gray-500">
+          <div className={`flex justify-center gap-8 text-sm ${textSecondary}`}>
             <div className="flex items-center">
-              <Check className="w-4 h-4 mr-2 text-green-500" />
-              Free consultation
+              <Check className="w-4 h-4 mr-2 text-green-500" /> Free
+              consultation
             </div>
             <div className="flex items-center">
-              <Check className="w-4 h-4 mr-2 text-green-500" />
-              No obligation
+              <Check className="w-4 h-4 mr-2 text-green-500" /> No obligation
             </div>
             <div className="flex items-center">
-              <Check className="w-4 h-4 mr-2 text-green-500" />
-              Instant response
+              <Check className="w-4 h-4 mr-2 text-green-500" /> Instant response
             </div>
           </div>
         </div>
       </section>
 
-      
       <LearnMoreForm />
     </div>
   );

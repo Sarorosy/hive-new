@@ -7,7 +7,14 @@ import { API_URL, SITE_KEY } from "../utils/constants";
 
 import ContactFormImg from "../assets/raw/all/RAJA8221-min.JPG";
 
-export default function LearnMoreForm() {
+export default function LearnMoreForm({ theme }) {
+  // Dynamic theme classes
+  const textPrimary = theme === "dark" ? "text-white" : "text-gray-900";
+  const textSecondary = theme === "dark" ? "text-gray-300" : "text-gray-600";
+  const bgCard = theme === "dark" ? "bg-gray-800" : "bg-white";
+  const bgInput = theme === "dark" ? "bg-gray-700 border-gray-600" : "bg-white border-gray-300";
+  const bgMain = theme === "dark" ? "bg-gray-900" : "bg-white";
+
   const [formData, setFormData] = useState({
     fullName: "",
     companyName: "",
@@ -17,13 +24,14 @@ export default function LearnMoreForm() {
     area: "",
     tourOption: "learnMore",
   });
+
   const [submitting, setSubmitting] = useState(false);
   const [captchaValue, setCaptchaValue] = useState(null);
   const recaptchaRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
-    // Reset area if city changes
+
     if (name === "city") {
       setFormData({ ...formData, city: value, area: "" });
     } else {
@@ -36,45 +44,21 @@ export default function LearnMoreForm() {
     : [];
 
   const validateForm = () => {
-    if (!formData.fullName.trim()) {
-      toast.error("Please enter your full name.");
-      return false;
-    }
-    if (!formData.companyName.trim()) {
-      toast.error("Please enter your company name.");
-      return false;
-    }
-    if (!formData.companyEmail.trim()) {
-      toast.error("Please enter your company email.");
-      return false;
-    }
+    if (!formData.fullName.trim()) return toast.error("Please enter your full name.");
+    if (!formData.companyName.trim()) return toast.error("Please enter your company name.");
+    if (!formData.companyEmail.trim()) return toast.error("Please enter your company email.");
 
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.companyEmail)) {
-      toast.error("Please enter a valid email address.");
-      return false;
-    }
+    if (!emailRegex.test(formData.companyEmail))
+      return toast.error("Please enter a valid email address.");
 
     const digitsOnly = formData.phone.replace(/\D/g, "");
-    if (!digitsOnly || digitsOnly.length < 10) {
-      toast.error("Please enter a valid phone number (min 10 digits).");
-      return false;
-    }
+    if (!digitsOnly || digitsOnly.length < 10)
+      return toast.error("Please enter a valid phone number (min 10 digits).");
 
-    if (!formData.city) {
-      toast.error("Please select a city.");
-      return false;
-    }
-
-    if (!formData.area) {
-      toast.error("Please select an area.");
-      return false;
-    }
-
-    if (!captchaValue) {
-      toast.error("Please complete the reCAPTCHA verification.");
-      return false;
-    }
+    if (!formData.city) return toast.error("Please select a city.");
+    if (!formData.area) return toast.error("Please select an area.");
+    if (!captchaValue) return toast.error("Please complete the reCAPTCHA verification.");
 
     return true;
   };
@@ -85,8 +69,8 @@ export default function LearnMoreForm() {
 
     const cityName = centersData[formData.city]?.name || formData.city;
     const areaName =
-      centersData[formData.city]?.branches?.[formData.area]?.name ||
-      formData.area;
+      centersData[formData.city]?.branches?.[formData.area]?.name || formData.area;
+
     const locationLabel = [cityName, areaName].filter(Boolean).join(" - ");
 
     const additionalMessage = [
@@ -100,6 +84,7 @@ export default function LearnMoreForm() {
 
     try {
       setSubmitting(true);
+
       const response = await axios.post(`${API_URL}/api/contact`, {
         name: formData.fullName,
         email: formData.companyEmail,
@@ -113,6 +98,7 @@ export default function LearnMoreForm() {
 
       if (response.data?.status) {
         toast.success("We will get back to you shortly!");
+
         setFormData({
           fullName: "",
           companyName: "",
@@ -122,12 +108,12 @@ export default function LearnMoreForm() {
           area: "",
           tourOption: "learnMore",
         });
+
         setCaptchaValue(null);
         recaptchaRef.current?.reset();
       } else {
-        toast.error(
-          response.data?.message || "Failed to submit form. Please try again."
-        );
+        toast.error(response.data?.message || "Failed to submit form.");
+
         if (response.data?.message?.includes("Captcha")) {
           setCaptchaValue(null);
           recaptchaRef.current?.reset();
@@ -136,6 +122,7 @@ export default function LearnMoreForm() {
     } catch (error) {
       console.error("Learn more form error:", error);
       toast.error("Something went wrong. Please try again later.");
+
       if (error.response?.data?.message?.includes("Captcha")) {
         setCaptchaValue(null);
         recaptchaRef.current?.reset();
@@ -146,8 +133,9 @@ export default function LearnMoreForm() {
   };
 
   return (
-    <div className="flex flex-col md:flex-row bg-white shadow-lg rounded-lg overflow-hidden max-w-6xl mx-auto my-8"
-    id="Form"
+    <div
+      id="Form"
+      className={`flex flex-col md:flex-row shadow-lg rounded-lg overflow-hidden max-w-6xl mx-auto mt-8 transition ${bgMain}`}
     >
       {/* Left Side Image */}
       <div className="md:w-1/2">
@@ -158,66 +146,45 @@ export default function LearnMoreForm() {
         />
       </div>
 
-      {/* Right Side Form */}
-      <div className="md:w-1/2 p-8">
-        <h2 className="text-2xl font-bold mb-6">Learn More</h2>
-        <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4">
-          <div>
-            <label className="block mb-1 font-semibold">Full Name*</label>
-            <input
-              type="text"
-              name="fullName"
-              value={formData.fullName}
-              onChange={handleChange}
-              required
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+      {/* Right Form */}
+      <div className={`md:w-1/2 p-8 ${bgCard}`}>
+        <h2 className={`text-2xl font-bold mb-6 ${textPrimary}`}>Learn More</h2>
 
-          <div>
-            <label className="block mb-1 font-semibold">Company Name*</label>
-            <input
-              type="text"
-              name="companyName"
-              value={formData.companyName}
-              onChange={handleChange}
-              required
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
+        <form
+          onSubmit={handleSubmit}
+          className="grid grid-cols-1 md:grid-cols-2 gap-4"
+        >
+          {/* Input */}
+          {[
+            { label: "Full Name*", name: "fullName" },
+            { label: "Company Name*", name: "companyName" },
+            { label: "Company Email Address*", name: "companyEmail", type: "email" },
+            { label: "Phone Number*", name: "phone", type: "tel" },
+          ].map((field, idx) => (
+            <div key={idx}>
+              <label className={`block mb-1 font-semibold ${textPrimary}`}>
+                {field.label}
+              </label>
+              <input
+                type={field.type || "text"}
+                name={field.name}
+                value={formData[field.name]}
+                onChange={handleChange}
+                required
+                className={`w-full rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 transition ${bgInput} ${textPrimary}`}
+              />
+            </div>
+          ))}
 
+          {/* CITY */}
           <div>
-            <label className="block mb-1 font-semibold">Company Email Address*</label>
-            <input
-              type="email"
-              name="companyEmail"
-              value={formData.companyEmail}
-              onChange={handleChange}
-              required
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">Phone Number*</label>
-            <input
-              type="tel"
-              name="phone"
-              value={formData.phone}
-              onChange={handleChange}
-              required
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
-            />
-          </div>
-
-          <div>
-            <label className="block mb-1 font-semibold">City*</label>
+            <label className={`block mb-1 font-semibold ${textPrimary}`}>City*</label>
             <select
               name="city"
               value={formData.city}
               onChange={handleChange}
               required
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500"
+              className={`w-full rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 transition ${bgInput} ${textPrimary}`}
             >
               <option value="">Select City</option>
               {Object.keys(centersData).map((cityKey) => (
@@ -228,16 +195,16 @@ export default function LearnMoreForm() {
             </select>
           </div>
 
-          {/* Area Dropdown */}
+          {/* AREA */}
           <div>
-            <label className="block mb-1 font-semibold">Area*</label>
+            <label className={`block mb-1 font-semibold ${textPrimary}`}>Area*</label>
             <select
               name="area"
               value={formData.area}
               onChange={handleChange}
               required
               disabled={!formData.city}
-              className="w-full border rounded px-3 py-2 focus:outline-none focus:ring-2 focus:ring-blue-500 disabled:bg-gray-100"
+              className={`w-full rounded px-3 py-2 focus:ring-2 focus:ring-blue-500 disabled:bg-gray-200 dark:disabled:bg-gray-700 transition ${bgInput} ${textPrimary}`}
             >
               <option value="">Select Area</option>
               {branchOptions.map((branchKey) => (
@@ -248,36 +215,33 @@ export default function LearnMoreForm() {
             </select>
           </div>
 
-          {/* Radio Buttons full width */}
+          {/*Radio*/}
           <div className="md:col-span-2">
-            <label className="block mb-2 font-semibold">Would you like to book a tour?*</label>
+            <label className={`block mb-2 font-semibold ${textPrimary}`}>
+              Would you like to book a tour?*
+            </label>
+
             <div className="flex flex-col gap-2">
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="tourOption"
-                  value="learnMore"
-                  checked={formData.tourOption === "learnMore"}
-                  onChange={handleChange}
-                  className="form-radio"
-                />
-                No, I would like to learn more
-              </label>
-              <label className="flex items-center gap-2">
-                <input
-                  type="radio"
-                  name="tourOption"
-                  value="scheduleTour"
-                  checked={formData.tourOption === "scheduleTour"}
-                  onChange={handleChange}
-                  className="form-radio"
-                />
-                Yes, schedule my tour
-              </label>
+              {[
+                { value: "learnMore", label: "No, I would like to learn more" },
+                { value: "scheduleTour", label: "Yes, schedule my tour" },
+              ].map((opt) => (
+                <label key={opt.value} className={`flex items-center gap-2 ${textSecondary}`}>
+                  <input
+                    type="radio"
+                    name="tourOption"
+                    value={opt.value}
+                    checked={formData.tourOption === opt.value}
+                    onChange={handleChange}
+                    className="form-radio accent-orange-500"
+                  />
+                  {opt.label}
+                </label>
+              ))}
             </div>
           </div>
 
-          {/* reCAPTCHA */}
+          {/* CAPTCHA */}
           <div className="md:col-span-2 flex justify-center">
             <ReCAPTCHA
               ref={recaptchaRef}
@@ -286,12 +250,16 @@ export default function LearnMoreForm() {
             />
           </div>
 
-          {/* Submit button full width */}
+          {/* SUBMIT */}
           <div className="md:col-span-2">
             <button
               type="submit"
               disabled={submitting}
-              className="w-full cursor-pointer bg-black text-white font-semibold py-2 rounded transition disabled:opacity-50 disabled:cursor-not-allowed"
+              className={`w-full cursor-pointer py-2 rounded font-semibold transition disabled:opacity-50 ${
+                theme === "dark"
+                  ? "bg-white text-black hover:bg-gray-200"
+                  : "bg-black text-white hover:bg-gray-900"
+              }`}
             >
               {submitting
                 ? "Submitting..."

@@ -15,7 +15,8 @@ import ReCAPTCHA from "react-google-recaptcha";
 import { SITE_KEY, API_URL } from "../utils/constants";
 import axios from "axios";
 
-const ContactForm = ({ type = "regular", onClose }) => {
+const ContactForm = ({ type = "regular", onClose, theme }) => {
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -24,11 +25,12 @@ const ContactForm = ({ type = "regular", onClose }) => {
     message: "",
     location: "",
   });
+
   const [captchaValue, setCaptchaValue] = useState(null);
   const [submitting, setSubmitting] = useState(false);
   const recaptchaRef = useRef(null);
 
-  // Flatten all locations from centersData
+  // Flatten locations
   const allLocations = Object.values(centersData)
     .map((city) => Object.values(city.branches).map((branch) => branch.name))
     .flat();
@@ -36,44 +38,20 @@ const ContactForm = ({ type = "regular", onClose }) => {
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
-
-  const handleCaptchaChange = (value) => {
-    setCaptchaValue(value);
-  };
+  const handleCaptchaChange = (value) => setCaptchaValue(value);
 
   const validateForm = () => {
-    if (!formData.name.trim()) {
-      toast.error("Please enter your name.");
-      return false;
-    }
-    if (!formData.email.trim()) {
-      toast.error("Please enter your email.");
-      return false;
-    }
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(formData.email)) {
-      toast.error("Please enter a valid email address.");
-      return false;
-    }
-    if (!formData.phone.trim()) {
-      toast.error("Please enter your phone number.");
-      return false;
-    }
-    // Basic phone validation (at least 10 digits)
-    const phoneRegex = /^[0-9]{10,}$/;
+    if (!formData.name.trim()) return toast.error("Please enter your name.");
+    if (!formData.email.trim()) return toast.error("Please enter your email.");
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
+      return toast.error("Please enter a valid email.");
+    if (!formData.phone.trim()) return toast.error("Enter your phone number.");
     const cleanPhone = formData.phone.replace(/\D/g, "");
-    if (!phoneRegex.test(cleanPhone)) {
-      toast.error("Please enter a valid phone number (at least 10 digits).");
-      return false;
-    }
-    if (!formData.location) {
-      toast.error("Please select a location.");
-      return false;
-    }
-    if (!captchaValue) {
-      toast.error("Please complete the reCAPTCHA verification.");
-      return false;
-    }
+    if (!/^[0-9]{10,}$/.test(cleanPhone))
+      return toast.error("Enter a valid phone number.");
+    if (!formData.location) return toast.error("Please select a location.");
+    if (!captchaValue)
+      return toast.error("Please complete the reCAPTCHA verification.");
     return true;
   };
 
@@ -84,19 +62,14 @@ const ContactForm = ({ type = "regular", onClose }) => {
     try {
       setSubmitting(true);
       const response = await axios.post(`${API_URL}/api/contact`, {
-        name: formData.name,
-        email: formData.email,
-        phone: formData.phone,
+        ...formData,
         seats: formData.seats || null,
         message: formData.message || null,
-        location: formData.location,
         captcha: captchaValue,
       });
 
-      const data = response.data;
-      if (data.status) {
+      if (response.data.status) {
         toast.success("We will get back to you shortly!");
-        // Reset form
         setFormData({
           name: "",
           email: "",
@@ -105,50 +78,63 @@ const ContactForm = ({ type = "regular", onClose }) => {
           message: "",
           location: "",
         });
-        setCaptchaValue(null);
         recaptchaRef.current?.reset();
-        // Close modal if it's a modal type
+        setCaptchaValue(null);
+
         if (type === "modal" && onClose) {
-          setTimeout(() => {
-            onClose();
-          }, 1000);
+          setTimeout(() => onClose(), 1000);
         }
       } else {
-        toast.error(data.message || "Failed to submit form. Please try again.");
-        if (data.message && data.message.includes("Captcha")) {
-          recaptchaRef.current?.reset();
-          setCaptchaValue(null);
-        }
+        toast.error(response.data.message || "Submission failed.");
       }
-    } catch (error) {
-      console.error("Contact form error:", error);
-      toast.error("Something went wrong. Please try again later.");
-      if (error.response?.data?.message?.includes("Captcha")) {
-        recaptchaRef.current?.reset();
-        setCaptchaValue(null);
-      }
+    } catch (err) {
+      toast.error("Something went wrong.");
     } finally {
       setSubmitting(false);
     }
   };
 
+  const formClasses =
+    theme === "dark"
+      ? "bg-[#111] text-white border border-gray-700"
+      : "bg-white text-gray-900";
+
+  const inputClasses =
+    theme === "dark"
+      ? "bg-[#0d0d0d] text-white placeholder-gray-400 border-gray-700"
+      : "bg-white text-black placeholder-gray-500 border-gray-300";
+
+  const leftText = theme === "dark" ? "text-gray-300" : "text-gray-600";
+
   const content = (
-    <div className="bg-gray-100 mt-2" id="Form">
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-2xl max-w-7xl mx-auto relative">
-        {/* X button for modal */}
+    <div
+      className={theme === "dark" ? "bg-[#0b0b0b] mt-2" : "bg-gray-100 mt-2"}
+      id="Form"
+    >
+      <div
+        className={`
+          grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-2xl max-w-7xl mx-auto relative
+          ${theme === "dark" ? "text-white" : "text-gray-900"}
+        `}
+      >
+        {/* Modal Close */}
         {type === "modal" && (
           <button
             onClick={onClose}
-            className="absolute top-4 right-4 p-2 rounded-full bg-gray-200 hover:bg-gray-300 cursor-pointer"
+            className={`
+              absolute top-4 right-4 p-2 rounded-full cursor-pointer
+              ${theme === "dark" ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-200 hover:bg-gray-300"}
+            `}
           >
             <X className="w-5 h-5" />
           </button>
         )}
 
-        {/* Left Section */}
+        {/* LEFT SECTION */}
         <div>
           <h2 className="text-3xl font-bold liber mb-4">Start a Conversation</h2>
-          <p className="text-gray-600 mb-6">
+
+          <p className={`mb-6 ${leftText}`}>
             We'd love to show you around our collaborative workspaces.
           </p>
 
@@ -177,7 +163,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
           </div>
 
           <h3 className="font-bold mb-2">We Offer:</h3>
-          <ul className="list-disc list-inside text-gray-600 space-y-1">
+          <ul className={`list-disc list-inside space-y-1 ${leftText}`}>
             <li>Hot Desks</li>
             <li>Flexi Passes</li>
             <li>Private Cabins</li>
@@ -190,15 +176,19 @@ const ContactForm = ({ type = "regular", onClose }) => {
           </ul>
         </div>
 
-        {/* Right Section (Form) */}
+        {/* RIGHT FORM */}
         <form
-          className="bg-white shadow-xl p-6 rounded-2xl"
           onSubmit={handleSubmit}
+          className={`shadow-xl p-6 rounded-2xl ${formClasses}`}
         >
           <h3 className="text-2xl font-bold mb-4 liber">Book A Tour</h3>
 
+          {/* Name + Email */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="flex items-center border rounded-lg px-3">
+
+            <div
+              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+            >
               <User className="text-gray-400 mr-2" />
               <input
                 type="text"
@@ -206,11 +196,13 @@ const ContactForm = ({ type = "regular", onClose }) => {
                 placeholder="Name"
                 value={formData.name}
                 onChange={handleChange}
-                className="w-full py-2 outline-none"
-                
+                className={`w-full py-2 outline-none ${inputClasses}`}
               />
             </div>
-            <div className="flex items-center border rounded-lg px-3">
+
+            <div
+              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+            >
               <Mail className="text-gray-400 mr-2" />
               <input
                 type="email"
@@ -218,14 +210,18 @@ const ContactForm = ({ type = "regular", onClose }) => {
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className="w-full py-2 outline-none"
-                
+                className={`w-full py-2 outline-none ${inputClasses}`}
               />
             </div>
+
           </div>
 
+          {/* Phone + Seats */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
-            <div className="flex items-center border rounded-lg px-3">
+
+            <div
+              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+            >
               <Phone className="text-gray-400 mr-2" />
               <input
                 type="text"
@@ -233,11 +229,13 @@ const ContactForm = ({ type = "regular", onClose }) => {
                 placeholder="Phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className="w-full py-2 outline-none"
-                
+                className={`w-full py-2 outline-none ${inputClasses}`}
               />
             </div>
-            <div className="flex items-center border rounded-lg px-3">
+
+            <div
+              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+            >
               <Users className="text-gray-400 mr-2" />
               <input
                 type="number"
@@ -245,54 +243,71 @@ const ContactForm = ({ type = "regular", onClose }) => {
                 placeholder="Seats"
                 value={formData.seats}
                 onChange={handleChange}
-                className="w-full py-2 outline-none"
+                className={`w-full py-2 outline-none ${inputClasses}`}
               />
             </div>
+
           </div>
 
-          <div className="flex items-center border rounded-lg px-3 mb-4">
+          {/* Message */}
+          <div
+            className={`flex items-center border rounded-lg px-3 mb-4 ${inputClasses}`}
+          >
             <MessageSquareText className="text-gray-400 mr-2" />
             <textarea
               name="message"
               placeholder="Message"
               value={formData.message}
               onChange={handleChange}
-              className="w-full py-2 outline-none"
               rows="3"
+              className={`w-full py-2 outline-none ${inputClasses}`}
             />
           </div>
 
-          <div className="flex items-center border rounded-lg px-3 mb-4">
+          {/* Location */}
+          <div
+            className={`flex items-center border rounded-lg px-3 mb-4 ${inputClasses}`}
+          >
             <MapPin className="text-gray-400 mr-2" />
             <select
               name="location"
               value={formData.location}
               onChange={handleChange}
-              className="w-full py-2 outline-none"
-              
+              className={`w-full py-2 outline-none ${inputClasses}`}
             >
               <option value="">Select Location</option>
               {allLocations.map((loc, idx) => (
-                <option key={idx} value={loc}>
+                <option
+                  key={idx}
+                  className={theme === "dark" ? "bg-black text-white" : ""}
+                  value={loc}
+                >
                   {loc}
                 </option>
               ))}
             </select>
           </div>
 
-          {/* reCAPTCHA */}
+          {/* CAPTCHA */}
           <div className="flex justify-center mb-4">
             <ReCAPTCHA
               ref={recaptchaRef}
               sitekey={SITE_KEY}
               onChange={handleCaptchaChange}
+              theme={theme === "dark" ? "dark" : "light"}
             />
           </div>
 
           <button
             type="submit"
             disabled={submitting}
-            className="w-full cursor-pointer py-3 bg-black text-white font-medium rounded-lg shadow-lg hover:opacity-90 transition disabled:opacity-50 disabled:cursor-not-allowed"
+            className={`
+              w-full cursor-pointer py-3 font-medium rounded-lg shadow-lg transition
+              ${submitting ? "opacity-50" : ""}
+              ${theme === "dark"
+                ? "bg-white text-black hover:opacity-90"
+                : "bg-black text-white hover:opacity-90"}
+            `}
           >
             {submitting ? "Submitting..." : "SUBMIT"}
           </button>
@@ -301,6 +316,7 @@ const ContactForm = ({ type = "regular", onClose }) => {
     </div>
   );
 
+  // MODAL MODE -------------------------------------------------------
   if (type === "modal") {
     return (
       <motion.div
@@ -314,7 +330,10 @@ const ContactForm = ({ type = "regular", onClose }) => {
           animate={{ scale: 1 }}
           exit={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
-          className="bg-gray-100 overflow-y-scroll overflow-x-hidden rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh]"
+          className={`
+            overflow-y-scroll overflow-x-hidden rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh]
+            ${theme === "dark" ? "bg-[#0d0d0d]" : "bg-gray-100"}
+          `}
         >
           {content}
         </motion.div>

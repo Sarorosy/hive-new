@@ -173,6 +173,7 @@ function Center() {
   const [activeTab, setActiveTab] = useState("overview");
   const [layoutOffset, setLayoutOffset] = useState({ header: 0, tab: 0 });
   const { theme } = useOutletContext?.() || { theme: "light" };
+  const isDark = theme === "dark";
   const sectionRefs = useRef({
     overview: null,
     services: null,
@@ -285,7 +286,11 @@ function Center() {
   ];
 
   return (
-    <div className="min-h-screen bg-white">
+    <div
+      className={`min-h-screen ${
+        isDark ? "bg-gray-950 text-gray-100" : "bg-white text-gray-900"
+      }`}
+    >
       {/* Hero Section */}
       <div className="relative w-full">
         <Swiper
@@ -343,7 +348,9 @@ function Center() {
 
       {/* Tab Navigation */}
       <div
-        className="bg-black text-white sticky z-40 shadow-md w-full left-0 right-0 top-0"
+        className={`sticky z-40 shadow-md w-full left-0 right-0 top-0 ${
+          isDark ? "bg-gray-900 text-gray-100" : "bg-black text-white"
+        }`}
         // style={{ top: layoutOffset.header ? `${layoutOffset.header}px` : 0 }}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8" ref={tabsWrapperRef}>
@@ -379,10 +386,18 @@ function Center() {
               style={{ scrollMarginTop: sectionScrollMargin }}
             >
               <div>
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                <h2
+                  className={`text-3xl md:text-4xl font-bold mb-4 ${
+                    isDark ? "text-white" : "text-gray-900"
+                  }`}
+                >
                   {displayName}
                 </h2>
-                <p className="text-lg text-gray-700 leading-relaxed mb-6">
+                <p
+                  className={`text-lg leading-relaxed mb-6 ${
+                    isDark ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
                   {displayDescription}
                 </p>
               </div>
@@ -391,29 +406,45 @@ function Center() {
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
                     <MapPin className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{addressData.address}</p>
+                    <p className={isDark ? "text-gray-300" : "text-gray-700"}>
+                      {addressData.address}
+                    </p>
                   </div>
                   <div className="flex items-start gap-3">
                     <Mail className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
-                    <a href={`mailto:${addressData.email}`} className="text-gray-700 hover:text-[#1a3a5c]">
+                    <a
+                      href={`mailto:${addressData.email}`}
+                      className={`hover:text-[#1a3a5c] ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
                       {addressData.email}
                     </a>
                   </div>
                   <div className="flex items-start gap-3">
                     <Phone className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
-                    <a href={`tel:${addressData.phone}`} className="text-gray-700 hover:text-[#1a3a5c]">
+                    <a
+                      href={`tel:${addressData.phone}`}
+                      className={`hover:text-[#1a3a5c] ${
+                        isDark ? "text-gray-300" : "text-gray-700"
+                      }`}
+                    >
                       {addressData.phone}
                     </a>
                   </div>
                   {addressData.metro && (
                     <div className="flex items-start gap-3">
                       <MapPin className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
-                      <p className="text-gray-700">{addressData.metro}</p>
+                      <p className={isDark ? "text-gray-300" : "text-gray-700"}>
+                        {addressData.metro}
+                      </p>
                     </div>
                   )}
                   <div className="flex items-start gap-3">
                     <Clock className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
-                    <p className="text-gray-700">{addressData.hours}</p>
+                    <p className={isDark ? "text-gray-300" : "text-gray-700"}>
+                      {addressData.hours}
+                    </p>
                   </div>
                 </div>
               )}
@@ -428,10 +459,18 @@ function Center() {
                 className="space-y-6 py-10 border-b border-gray-200"
                 style={{ scrollMarginTop: sectionScrollMargin }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-3">
+                <h2
+                  className={`text-3xl md:text-4xl font-bold mb-3 ${
+                    isDark ? "text-white" : "text-gray-900"
+                  }`}
+                >
                   Our Services
                 </h2>
-                <p className="text-gray-700 mb-6">
+                <p
+                  className={`mb-6 ${
+                    isDark ? "text-gray-300" : "text-gray-700"
+                  }`}
+                >
                   {showCoworkingServices && showEnterpriseSolutions
                     ? "This centre offers flexible coworking products and fully managed enterprise solutions."
                     : showCoworkingServices
@@ -464,36 +503,100 @@ function Center() {
               className="space-y-6 py-10 border-b border-gray-200"
               style={{ scrollMarginTop: sectionScrollMargin }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
-                Centre Features
-              </h2>
+                <h2
+                  className={`text-3xl md:text-4xl font-bold mb-6 ${
+                    isDark ? "text-white" : "text-gray-900"
+                  }`}
+                >
+                  Centre Features
+                </h2>
               <div className="space-y-4">
-                <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                <div
+                  className={`flex items-start gap-4 p-4 rounded-lg ${
+                    isDark ? "bg-gray-900" : "bg-gray-50"
+                  }`}
+                >
                   <Building className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Modern Infrastructure</h3>
-                    <p className="text-gray-700">State-of-the-art facilities designed for productivity and comfort.</p>
+                    <h3
+                      className={`font-semibold mb-1 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Modern Infrastructure
+                    </h3>
+                    <p
+                      className={isDark ? "text-gray-300" : "text-gray-700"}
+                    >
+                      State-of-the-art facilities designed for productivity and
+                      comfort.
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                <div
+                  className={`flex items-start gap-4 p-4 rounded-lg ${
+                    isDark ? "bg-gray-900" : "bg-gray-50"
+                  }`}
+                >
                   <Users className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Collaborative Spaces</h3>
-                    <p className="text-gray-700">Open areas designed to foster collaboration and networking.</p>
+                    <h3
+                      className={`font-semibold mb-1 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Collaborative Spaces
+                    </h3>
+                    <p
+                      className={isDark ? "text-gray-300" : "text-gray-700"}
+                    >
+                      Open areas designed to foster collaboration and
+                      networking.
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                <div
+                  className={`flex items-start gap-4 p-4 rounded-lg ${
+                    isDark ? "bg-gray-900" : "bg-gray-50"
+                  }`}
+                >
                   <Wifi className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">High-Speed Connectivity</h3>
-                    <p className="text-gray-700">Reliable internet and IT infrastructure for seamless operations.</p>
+                    <h3
+                      className={`font-semibold mb-1 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      High-Speed Connectivity
+                    </h3>
+                    <p
+                      className={isDark ? "text-gray-300" : "text-gray-700"}
+                    >
+                      Reliable internet and IT infrastructure for seamless
+                      operations.
+                    </p>
                   </div>
                 </div>
-                <div className="flex items-start gap-4 p-4 bg-gray-50 rounded-lg">
+                <div
+                  className={`flex items-start gap-4 p-4 rounded-lg ${
+                    isDark ? "bg-gray-900" : "bg-gray-50"
+                  }`}
+                >
                   <Coffee className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
                   <div>
-                    <h3 className="font-semibold text-gray-900 mb-1">Premium Pantry</h3>
-                    <p className="text-gray-700">Fully equipped pantry with complimentary beverages and snacks.</p>
+                    <h3
+                      className={`font-semibold mb-1 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
+                      Premium Pantry
+                    </h3>
+                    <p
+                      className={isDark ? "text-gray-300" : "text-gray-700"}
+                    >
+                      Fully equipped pantry with complimentary beverages and
+                      snacks.
+                    </p>
                   </div>
                 </div>
               </div>
@@ -507,16 +610,33 @@ function Center() {
               className="space-y-6 py-10 border-b border-gray-200"
               style={{ scrollMarginTop: sectionScrollMargin }}
             >
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+              <h2
+                className={`text-3xl md:text-4xl font-bold mb-6 ${
+                  isDark ? "text-white" : "text-gray-900"
+                }`}
+              >
                 Amenities
               </h2>
               <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
                 {amenities.map((amenity, idx) => {
                   const Icon = amenity.icon;
                   return (
-                    <div key={idx} className="p-6 bg-gray-50 rounded-lg text-center hover:bg-gray-100 transition-colors">
+                    <div
+                      key={idx}
+                      className={`p-6 rounded-lg text-center transition-colors ${
+                        isDark
+                          ? "bg-gray-900 hover:bg-gray-800"
+                          : "bg-gray-50 hover:bg-gray-100"
+                      }`}
+                    >
                       <Icon className="w-8 h-8 text-[#1a3a5c] mx-auto mb-3" />
-                      <h3 className="font-semibold text-gray-900 text-sm">{amenity.name}</h3>
+                      <h3
+                        className={`font-semibold text-sm ${
+                          isDark ? "text-white" : "text-gray-900"
+                        }`}
+                      >
+                        {amenity.name}
+                      </h3>
                     </div>
                   );
                 })}
@@ -536,20 +656,42 @@ function Center() {
                   Centre Location
                 </h2>
                 <div className="space-y-4">
-                  <div className="p-6 bg-gray-50 rounded-lg">
-                    <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                  <div
+                    className={`p-6 rounded-lg ${
+                      isDark ? "bg-gray-900" : "bg-gray-50"
+                    }`}
+                  >
+                    <h3
+                      className={`font-semibold mb-3 flex items-center gap-2 ${
+                        isDark ? "text-white" : "text-gray-900"
+                      }`}
+                    >
                       <MapPin className="w-5 h-5 text-[#1a3a5c]" />
                       Address
                     </h3>
-                    <p className="text-gray-700">{addressData.address}</p>
+                    <p className={isDark ? "text-gray-300" : "text-gray-700"}>
+                      {addressData.address}
+                    </p>
                   </div>
                   {addressData.metro && (
-                    <div className="p-6 bg-gray-50 rounded-lg">
-                      <h3 className="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+                    <div
+                      className={`p-6 rounded-lg ${
+                        isDark ? "bg-gray-900" : "bg-gray-50"
+                      }`}
+                    >
+                      <h3
+                        className={`font-semibold mb-3 flex items-center gap-2 ${
+                          isDark ? "text-white" : "text-gray-900"
+                        }`}
+                      >
                         <MapPin className="w-5 h-5 text-[#1a3a5c]" />
                         Public Transport
                       </h3>
-                      <p className="text-gray-700">{addressData.metro}</p>
+                      <p
+                        className={isDark ? "text-gray-300" : "text-gray-700"}
+                      >
+                        {addressData.metro}
+                      </p>
                     </div>
                   )}
                   {branchData?.map && (
@@ -575,7 +717,7 @@ function Center() {
         </div>
       </div>
 
-      <ContactForm type="regular" />
+      <ContactForm type="regular" theme={theme}/>
       <Faq />
     </div>
   );

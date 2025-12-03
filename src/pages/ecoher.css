@@ -1,10 +1,18 @@
+/* Theme-aware background for eco hero */
+:root {
+  --eco-hero-bg: #ffffff;
+}
+
+html.dark {
+  --eco-hero-bg: #000000;
+}
+
 /* Container */
 .eco-hero {
-    width: 100%;
-    overflow: hidden;
-    background: white;
-    border: none;
-  }
+  width: 100%;
+  overflow: hidden;
+  border: none;
+}
   
   /* Swiper container with top/bottom curved white edges */
   .eco-swiper {
@@ -23,7 +31,7 @@
     height: var(--curve-height);
     left: 0;
     right: 0;
-    background: white;
+    background: var(--eco-hero-bg);
     border-radius: 45%;
     z-index: 20;
   }

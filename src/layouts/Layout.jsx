@@ -52,7 +52,7 @@ export default function Layout() {
           <Outlet context={{ setContactFormOpen, theme }} />
         </div>
       </main>
-      <Footer />
+      <Footer theme={theme} />
 
       {contactFormOpen && (
         <ContactForm
@@ -60,6 +60,7 @@ export default function Layout() {
           onClose={() => {
             setContactFormOpen(false);
           }}
+          theme={theme}
         />
       )}
       <CookieConsent isContactFormOpen={contactFormOpen} />

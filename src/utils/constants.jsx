@@ -18,9 +18,9 @@ export function formatTime(dateString) {
     year: 'numeric',
     month: 'long',   // short month name (Jan, Feb, Mar...)
     day: 'numeric',
-    hour: 'numeric',
-    minute: 'numeric',
-    hour12: true      // 12-hour format with AM/PM
+    // hour: 'numeric',
+    // minute: 'numeric',
+    // hour12: true      // 12-hour format with AM/PM
   };
 
   return date.toLocaleString('en-US', options);

@@ -4,6 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 
 const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
   const [count, setCount] = useState(0);
+  const { theme } = useOutletContext();
 
   useEffect(() => {
     if (!end || end <= 0) {
@@ -54,17 +55,16 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
   }, [end, duration, shouldAnimate]);
 
   return (
-    <span>
+    <span className={theme === "dark" ? "text-white" : "text-black"}>
       {count} {end === 99 ? "%" : "+"}
     </span>
   );
 };
 
-
-
 const Stats = () => {
   const outletContext = useOutletContext?.() || {};
-  const { setContactFormOpen } = outletContext;
+  const { setContactFormOpen, theme } = outletContext;
+
   const navigate = useNavigate();
   const statsRef = useRef(null);
   const [isVisible, setIsVisible] = useState(false);
@@ -84,9 +84,7 @@ const Stats = () => {
       { threshold: 0.4 }
     );
 
-    if (statsRef.current) {
-      observer.observe(statsRef.current);
-    }
+    if (statsRef.current) observer.observe(statsRef.current);
 
     return () => observer.disconnect();
   }, [isVisible]);
@@ -94,47 +92,84 @@ const Stats = () => {
   return (
     <div
       ref={statsRef}
-      className="bg-black text-white py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto mt-4"
+      className={`
+        py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 
+        rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto my-2
+        ${
+          theme === "dark"
+            ? "bg-black text-white border border-slate-800"
+            : "bg-white text-black border border-slate-200"
+        }
+      `}
     >
-      {/* Left CTA */}
+      {/* LEFT CTA */}
       <button
         type="button"
         onClick={() => navigate("/about-us")}
-        className="bg-gradient-to-br from-goldt via-gold to-goldt border border-white/20 rounded-tl-[25px] rounded-br-[25px] px-6 py-3 flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer"
+        className={`
+          bg-gradient-to-br from-goldt via-gold to-goldt border rounded-tl-[25px] rounded-br-[25px] 
+          px-6 py-3 flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer
+          ${theme === "dark" ? "border-white/20" : "border-black/20"}
+        `}
       >
         <span className="text-sm opacity-90 flex items-center gap-1">
-          <span className="bg-black text-white font-semibold px-4 py-2 rounded-tl-[15px] rounded-br-[15px] text-sm">
+          <span
+            className={`
+              font-semibold px-4 py-2 rounded-tl-[15px] rounded-br-[15px] text-sm
+              ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}
+            `}
+          >
             Know More
           </span>
-          <ArrowUpRight className="w-4 h-4 text-black" />
+          <ArrowUpRight
+            className={`w-4 h-4 ${
+              theme === "dark" ? "text-white" : "text-black"
+            }`}
+          />
         </span>
       </button>
 
-      {/* Right Stats */}
-      <div className="flex flex-wrap justify-center gap-6 text-center text-sm md:text-base">
+      {/* RIGHT STATS */}
+      <div
+        className={`
+          flex flex-wrap justify-center gap-6 text-center text-sm md:text-base
+          ${theme === "dark" ? "text-white" : "text-black"}
+        `}
+      >
         <div>
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={5} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className="opacity-80">Prime Locations</p>
+          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+            Prime Locations
+          </p>
         </div>
+
         <div>
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={20000} duration={1} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className="opacity-80">Workstations</p>
+          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+            Workstations
+          </p>
         </div>
+
         <div>
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={50} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className="opacity-80">Meeting Rooms</p>
+          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+            Meeting Rooms
+          </p>
         </div>
+
         <div>
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={99} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className="opacity-80">Satisfied Customers</p>
+          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+            Satisfied Customers
+          </p>
         </div>
       </div>
     </div>

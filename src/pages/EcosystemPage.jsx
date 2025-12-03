@@ -214,8 +214,13 @@ const EcosystemPage = () => {
   }, []);
 
   return (
-    <div className="min-h-screen mt-12 bg-[#f5f4f2]">
-      <section className=" bg-white">
+    <div
+      className={`
+        min-h-screen mt-12
+        ${theme === "dark" ? "bg-black text-white" : "bg-[#f5f4f2] text-black"}
+      `}
+    >
+      <section className={theme === "dark" ? "bg-black" : "bg-white"}>
         <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
           <Breadcrumb
             items={[{ label: "Home", path: "/" }, { label: "Ecosystem" }]}
@@ -223,10 +228,19 @@ const EcosystemPage = () => {
           />
           <div className="mt-10 ">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-6">
+              <p
+                className={`text-sm uppercase tracking-[0.3em] mb-6 ${
+                  theme === "dark" ? "text-slate-400" : "text-gray-500"
+                }`}
+              >
                 Gallery Artisan
               </p>
-              <h1 className="text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold tracking-tight text-gray-900 leading-tight mb-6">
+              <h1
+                className={`
+                  text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold tracking-tight leading-tight mb-6
+                  ${theme === "dark" ? "text-white" : "text-gray-900"}
+                `}
+              >
                 Begin an exploration through a gallery showcasing artisan
                 creativity.
               </h1>
@@ -237,11 +251,21 @@ const EcosystemPage = () => {
       
       <EcoHero />
       
-      <section className="border-b border-black/10 bg-white">
+      <section
+        className={`
+          border-b
+          ${theme === "dark" ? "border-white/10 bg-black" : "border-black/10 bg-white"}
+        `}
+      >
         <div className="max-w-[90%] mx-auto px-4 sm:px-4 lg:px-4 py-12 md:py-16">
           <div className="mt-10">
             <div>
-              <p className="text-lg text-gray-600 max-w-2xl mb-10">
+              <p
+                className={`
+                  text-lg max-w-2xl mb-10
+                  ${theme === "dark" ? "text-slate-300" : "text-gray-600"}
+                `}
+              >
                 Step into a realm of artistic expression, where our gallery
                 showcases the extraordinary works of talented artists from
                 across the world. Every corridor is curated to inspire.
@@ -249,7 +273,14 @@ const EcosystemPage = () => {
               <div className="flex flex-wrap gap-4 mb-10">
                 <button
                   onClick={() => setContactFormOpen(true)}
-                  className="inline-flex items-center gap-2 px-6 py-3 bg-black text-white rounded-full text-sm font-semibold hover:translate-y-[-1px] transition-transform"
+                  className={`
+                    inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold hover:translate-y-[-1px] transition-transform
+                    ${
+                      theme === "dark"
+                        ? "bg-white text-black hover:bg-slate-200"
+                        : "bg-black text-white hover:bg-black"
+                    }
+                  `}
                 >
                   Plan A Visit
                   <ArrowRight className="w-4 h-4" />
@@ -261,17 +292,37 @@ const EcosystemPage = () => {
         </div>
       </section>
 
-      <section className="py-20 border-b border-black/10 bg-white">
+      <section
+        className={`
+          py-20 border-b
+          ${theme === "dark" ? "border-white/10 bg-black" : "border-black/10 bg-white"}
+        `}
+      >
         <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-4">
           <div className="">
             <div>
-              <p className="text-sm uppercase tracking-[0.3em] text-gray-500 mb-3">
+              <p
+                className={`
+                  text-sm uppercase tracking-[0.3em] mb-3
+                  ${theme === "dark" ? "text-slate-400" : "text-gray-500"}
+                `}
+              >
                 A Blend Of Talented Genius In Art
               </p>
-              <h2 className="text-3xl sm:text-4xl font-semibold text-gray-900 mb-6">
+              <h2
+                className={`
+                  text-3xl sm:text-4xl font-semibold mb-6
+                  ${theme === "dark" ? "text-white" : "text-gray-900"}
+                `}
+              >
                 Step into a realm of artistic expression
               </h2>
-              <p className="text-gray-600 mb-8 leading-relaxed">
+              <p
+                className={`
+                  mb-8 leading-relaxed
+                  ${theme === "dark" ? "text-slate-300" : "text-gray-600"}
+                `}
+              >
                 Welcome to Gallery Artisan, an avant-garde space dedicated to
                 pushing the boundaries of creative expression. Nestled in the
                 cultural heart of Moscow, our gallery is a testament to the
@@ -386,13 +437,27 @@ const EcosystemPage = () => {
         </div>
       </section>
 
-      <section className="bg-white py-16 px-4 md:px-8 xl:px-0">
+      <section
+        className={`
+          py-16 px-4 md:px-8 xl:px-0
+          ${theme === "dark" ? "bg-black" : "bg-white"}
+        `}
+      >
         <div className="max-w-[90%] mx-auto space-y-8">
           <div className="space-y-3">
-            <h2 className="text-3xl md:text-4xl font-semibold text-black">
+            <h2
+              className={`
+                text-3xl md:text-4xl font-semibold
+                ${theme === "dark" ? "text-white" : "text-black"}
+              `}
+            >
               Unveiling Our Exclusive Artwork
             </h2>
-            <p className="text-slate-600">
+            <p
+              className={`
+                ${theme === "dark" ? "text-slate-300" : "text-slate-600"}
+              `}
+            >
               Explore the dynamic world of contemporary art through our current
               exhibits. Each exhibition is a testament to the limitless
               possibility of expression.
@@ -403,7 +468,14 @@ const EcosystemPage = () => {
             {featuredExhibits.map((exhibit) => (
               <div
                 key={exhibit.id}
-                className="bg-white rounded-2xl overflow-hidden border border-gray-200 p-1 hover:shadow-xl transition-shadow"
+                className={`
+                  rounded-2xl overflow-hidden border p-1 hover:shadow-xl transition-shadow
+                  ${
+                    theme === "dark"
+                      ? "bg-black border-slate-800 shadow-black/40"
+                      : "bg-white border-gray-200"
+                  }
+                `}
               >
                 <img
                   src={exhibit.image}
@@ -412,18 +484,38 @@ const EcosystemPage = () => {
                   loading="lazy"
                 />
                 <div className="p-5">
-                  <p className="text-xs uppercase tracking-[0.2em] text-gray-500 mb-2">
+                  <p
+                    className={`
+                      text-xs uppercase tracking-[0.2em] mb-2
+                      ${theme === "dark" ? "text-slate-400" : "text-gray-500"}
+                    `}
+                  >
                     {exhibit.category}
                   </p>
-                  <h3 className="text-lg font-semibold text-black mb-2 line-clamp-2">
+                  <h3
+                    className={`
+                      text-lg font-semibold mb-2 line-clamp-2
+                      ${theme === "dark" ? "text-white" : "text-black"}
+                    `}
+                  >
                     {exhibit.title}
                   </h3>
-                  <p className="text-gray-500 text-sm line-clamp-2 mb-4">
+                  <p
+                    className={`
+                      text-sm line-clamp-2 mb-4
+                      ${theme === "dark" ? "text-slate-300" : "text-gray-500"}
+                    `}
+                  >
                     {exhibit.description}
                   </p>
                   
                   {/* Date */}
-                  <div className="flex items-center gap-2 text-gray-600 text-sm mb-5">
+                  <div
+                    className={`
+                      flex items-center gap-2 text-sm mb-5
+                      ${theme === "dark" ? "text-slate-300" : "text-gray-600"}
+                    `}
+                  >
                     <Calendar className="w-4 h-4" />
                     <span>{exhibit.date}</span>
                   </div>
@@ -431,7 +523,14 @@ const EcosystemPage = () => {
                   {/* View Details Button */}
                   <button
                     onClick={() => {}}
-                    className="w-full bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white transition-colors font-medium"
+                    className={`
+                      w-full border px-4 py-2 rounded-lg transition-colors font-medium
+                      ${
+                        theme === "dark"
+                          ? "bg-black text-white border-white hover:bg-white hover:text-black"
+                          : "bg-white text-black border-black hover:bg-black hover:text-white"
+                      }
+                    `}
                   >
                     View Details
                   </button>

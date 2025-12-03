@@ -25,24 +25,21 @@
   becomes a dark version automatically.
 */
 /* ----- light mode (normal tailwind behavior) ----- */
-:root {
+/* :root {
   --c-bg-white: #ffffff;
   --c-bg-black: #000000;
   --c-text-white: #ffffff;
   --c-text-black: #000000;
 }
 
-/* ----- dark mode overrides ----- */
 html.dark {
-  --c-bg-white: #111111;  /* replaces bg-white */
-  --c-bg-black: #eeeeee;  /* replaces bg-black */
-  --c-text-black: #eaeaea; /* replaces text-white */
-  --c-text-white: #1a1a1a; /* replaces text-black */
+  --c-bg-white: #111111;  
+  --c-bg-black: #eeeeee;  
+  --c-text-black: #eaeaea; 
+  --c-text-white: #1a1a1a; 
 }
-
-/* ----- Override Tailwind classes globally ----- */
 .bg-white { background-color: var(--c-bg-white) !important; }
 .bg-black { background-color: var(--c-bg-black) !important; }
 .text-white { color: var(--c-text-white) !important; }
 .text-black { color: var(--c-text-black) !important; }
-
+ */
