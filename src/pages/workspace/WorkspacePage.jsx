@@ -116,7 +116,7 @@ const WorkspacePage = () => {
       : "bg-white border-gray-100";
 
   return (
-    <div className={`${bgPrimary} relative mt-14`}>
+    <div className={`${bgPrimary} relative pt-18`}>
       {/* HERO */}
       <section className="relative min-h-[60vh] sm:min-h-[70vh] overflow-hidden">
         <div
