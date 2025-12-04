@@ -30,7 +30,7 @@ export default function Footer({ theme = "light" }) {
         relative z-50 py-16 px-6
         ${
           theme === "dark"
-            ? "bg-gray-900 text-white"
+            ? "bg-gray-100 text-[#1c2c44]"
             : "bg-gray-100 text-[#1c2c44]"
         }
       `}
@@ -42,14 +42,14 @@ export default function Footer({ theme = "light" }) {
           <div>
             <h3
               className={`text-lg font-bold mb-4 ${
-                theme === "dark" ? "text-white" : "text-[#0d2847]"
+                theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
               }`}
             >
               About
             </h3>
             <ul
               className={`space-y-2 text-sm ${
-                theme === "dark" ? "text-gray-300" : "text-[#4b576a]"
+                theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
               }`}
             >
               <li
@@ -95,7 +95,7 @@ export default function Footer({ theme = "light" }) {
           <div>
             <ul
               className={`space-y-2 text-sm mt-8 md:mt-0 ${
-                theme === "dark" ? "text-gray-300" : "text-[#4b576a]"
+                theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
               }`}
             >
               <li
@@ -118,14 +118,14 @@ export default function Footer({ theme = "light" }) {
           <div>
             <h3
               className={`text-lg font-bold mb-4 ${
-                theme === "dark" ? "text-white" : "text-[#0d2847]"
+                theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
               }`}
             >
               News & Media
             </h3>
             <ul
               className={`space-y-2 text-sm ${
-                theme === "dark" ? "text-gray-300" : "text-[#4b576a]"
+                theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
               }`}
             >
               <li
@@ -141,7 +141,7 @@ export default function Footer({ theme = "light" }) {
           <div className="md:col-span-2">
             <div
               className={`mb-6 flex items-center gap-2 ${
-                theme === "dark" ? "text-gray-300" : "text-black"
+                theme === "dark" ? "text-black" : "text-black"
               }`}
             >
               <Globe size={15} /> India
@@ -171,7 +171,7 @@ export default function Footer({ theme = "light" }) {
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className={theme === "dark" ? "text-white" : "text-black"}
+                  className={theme === "dark" ? "text-black" : "text-black"}
                 >
                   {item.icon}
                 </a>
@@ -206,7 +206,7 @@ export default function Footer({ theme = "light" }) {
               width={120}
               className="rounded-md transition-all duration-300"
               style={{
-                filter: theme === "dark" ? "invert(1) brightness(1.3)" : "none",
+                filter: theme === "darkk" ? "invert(1) brightness(1.3)" : "none",
               }}
             />
 
@@ -225,7 +225,7 @@ export default function Footer({ theme = "light" }) {
                   <button
                     onClick={() => navigate(url)}
                     className={`hover:underline ${
-                      theme === "dark" ? "text-orange-300" : "text-orange-600"
+                      theme === "dark" ? "text-orange-600" : "text-orange-600"
                     }`}
                   >
                     {label}
@@ -246,7 +246,7 @@ export default function Footer({ theme = "light" }) {
             <div className="mt-4">
               <p
                 className={`font-semibold mb-2 text-xs md:text-sm ${
-                  theme === "dark" ? "text-white" : "text-[#0d2847]"
+                  theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
               >
                 Key Locations
@@ -267,7 +267,7 @@ export default function Footer({ theme = "light" }) {
                     key={i}
                     className={`px-2 py-1 rounded-full cursor-help border ${
                       theme === "dark"
-                        ? "bg-black border-white/20 hover:bg-white/10"
+                        ? "bg-black border-white/20 "
                         : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb]"
                     }`}
                   >

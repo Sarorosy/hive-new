@@ -12,6 +12,8 @@ import {
 } from "lucide-react";
 import { centersData } from "../../data/centersData";
 import { branchAddresses } from "../../data/branchAddresses";
+import { Wifi, Video, Bell, Mail, Printer, Coffee, Gamepad2, Phone, ShieldCheck, Brush, Smartphone, Gift, Wind } from "lucide-react";
+
 
 // Import images
 import heroImg from "../../assets/raw/all/DSC07729-min.JPG";
@@ -26,20 +28,21 @@ export default function AboutUs() {
   const { theme } = useOutletContext();
 
   const amenities = [
-    "High-speed internet and advanced connectivity",
-    "Meeting and conference rooms with video/audio conferencing",
-    "Reception and concierge services",
-    "Mail handling and packaging services",
-    "Printing, scanning, and photocopying",
-    "Fully equipped pantry with complimentary coffee, tea, and drinking water",
-    "Game lounge and recreational areas",
-    "Phone booths for private calls",
-    "24/7 access and two-level security",
-    "Housekeeping and maintenance",
-    "Community app for seamless service access",
-    "Partner discounts and exclusive events",
-    "Air conditioning, power backup, and ergonomic furniture",
+    { label: "High-speed internet and advanced connectivity", icon: Wifi },
+    { label: "Meeting & conference rooms with video/audio conferencing", icon: Video },
+    { label: "Reception and concierge services", icon: Bell },
+    { label: "Mail handling and packaging services", icon: Mail },
+    { label: "Printing, scanning, and photocopying", icon: Printer },
+    { label: "Equipped pantry with complimentary coffee / tea", icon: Coffee },
+    { label: "Game lounge and recreational areas", icon: Gamepad2 },
+    { label: "Phone booths for private calls", icon: Phone },
+    { label: "24/7 access and two-level security", icon: ShieldCheck },
+    { label: "Housekeeping and maintenance", icon: Brush },
+    { label: "Community app for seamless service access", icon: Smartphone },
+    { label: "Partner discounts and exclusive events", icon: Gift },
+    { label: "Air conditioning, power backup, ergonomic furniture", icon: Wind },
   ];
+  
 
   return (
     <div
@@ -191,23 +194,31 @@ export default function AboutUs() {
             </p>
 
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-4">
-              {amenities.map((amenity, idx) => (
-                <div
-                  key={idx}
-                  className={`
-                    flex items-start gap-3 p-4 rounded-lg shadow-sm
-                    ${theme === "dark" ? "bg-white/5 text-gray-300" : "bg-white text-gray-700"}
-                  `}
-                >
-                  <div
-                    className={`w-2 h-2 rounded-full mt-2 ${
-                      theme === "dark" ? "bg-white" : "bg-gray-800"
-                    }`}
-                  ></div>
-                  <p>{amenity}</p>
-                </div>
-              ))}
-            </div>
+  {amenities.map((a, idx) => {
+    const Icon = a.icon;
+    return (
+      <div
+        key={idx}
+        className={`
+          flex items-start gap-3 p-4 rounded-lg shadow-sm
+          ${theme === "dark"
+            ? "bg-white/5 text-gray-300"
+            : "bg-white text-gray-700"}
+        `}
+      >
+        <Icon
+          className={`
+            w-6 h-6 flex-shrink-0
+            ${theme === "dark" ? "text-white" : "text-gray-800"}
+          `}
+        />
+
+        <p className="leading-relaxed">{a.label}</p>
+      </div>
+    );
+  })}
+</div>
+
           </motion.div>
         </div>
       </section>
