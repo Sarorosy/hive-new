@@ -43,3 +43,7 @@ html.dark {
 .text-white { color: var(--c-text-white) !important; }
 .text-black { color: var(--c-text-black) !important; }
  */
+
+ html.dark {
+  background-color: black;
+}
