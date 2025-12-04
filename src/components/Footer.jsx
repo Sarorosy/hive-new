@@ -110,12 +110,7 @@ export default function Footer({ theme = "light" }) {
               >
                 Ecosystem
               </li>
-              <li
-                onClick={() => navigate("/day_pass")}
-                className="hover:text-orange-500 cursor-pointer duration-200"
-              >
-                Book a Tour
-              </li>
+              
             </ul>
           </div>
 
