@@ -8,26 +8,47 @@ import {
   Users,
   MapPin,
   Sparkles,
-  Zap
+  Zap,
+  ChevronRight,
+  Circle,
+  Hexagon,
+  Diamond,
+  Infinity,
+  Rocket,
+  Globe,
+  Cpu,
+  Shield,
+  Award,
+  Target as TargetIcon
 } from 'lucide-react';
 import { useOutletContext } from "react-router-dom";
 
 export default function HiveWorkspaces() {
-
   const { theme } = useOutletContext();
+  const isDark = theme === "dark";
 
-  const fadeInUp = {
-    initial: { opacity: 0, y: 30 },
-    whileInView: { opacity: 1, y: 0 },
-    viewport: { once: true },
-    transition: { duration: 0.7, ease: "easeOut" }
-  };
-
-  const staggerContainer = {
-    initial: {},
-    whileInView: { transition: { staggerChildren: 0.1 } },
-    viewport: { once: true }
-  };
+  // Floating geometric shapes for background
+  const FloatingShape = ({ icon: Icon, x, y, delay, size = 20 }) => (
+    <motion.div
+      className="absolute pointer-events-none"
+      style={{ left: `${x}%`, top: `${y}%` }}
+      animate={{
+        y: [0, -15, 0],
+        rotate: [0, 180, 360],
+      }}
+      transition={{
+        duration: 8,
+        delay,
+        repeat: Infinity,
+        ease: "linear"
+      }}
+    >
+      <Icon
+        className={`w-${size} h-${size} ${isDark ? "text-slate-800/50" : "text-gray-200"}`}
+        strokeWidth={0.5}
+      />
+    </motion.div>
+  );
 
   const PHASE_LIST = [
     {
@@ -39,7 +60,8 @@ export default function HiveWorkspaces() {
         "Upgraded premium amenities and service standards",
         "Advanced digital infrastructure for workplace management",
         "Stronger community and networking initiatives"
-      ]
+      ],
+      icon: <Circle className="w-4 h-4" />
     },
     {
       phase: "Phase 2",
@@ -50,7 +72,8 @@ export default function HiveWorkspaces() {
         "Enhanced enterprise workspace offerings",
         "Green-building certifications and sustainability programs",
         "Collaboration with strategic brand partners"
-      ]
+      ],
+      icon: <Hexagon className="w-4 h-4" />
     },
     {
       phase: "Phase 3",
@@ -61,337 +84,578 @@ export default function HiveWorkspaces() {
         "Integrated mixed-use developments combining work and lifestyle",
         "Nationwide member network with unified benefits",
         "Establishing The Hive as India's most premium flexible workspace brand"
-      ]
+      ],
+      icon: <Diamond className="w-4 h-4" />
     }
   ];
 
   return (
-    <div className={`${theme === "dark" ? "bg-black text-white" : "bg-white text-gray-900"} min-h-screen`}>
+    <div
+      className={`min-h-screen relative overflow-hidden ${
+        isDark ? "bg-black text-white" : "bg-white text-gray-900"
+      }`}
+    >
+      {/* Animated geometric background */}
+      <div className="fixed inset-0 -z-10 pointer-events-none">
+        {Array.from({ length: 15 }).map((_, i) => (
+          <FloatingShape
+            key={i}
+            icon={[Circle, Hexagon, Diamond][i % 3]}
+            x={Math.random() * 100}
+            y={Math.random() * 100}
+            delay={Math.random() * 2}
+            size={Math.random() * 20 + 10}
+          />
+        ))}
+        <div
+          className={`absolute inset-0 bg-gradient-to-br ${
+            isDark ? "from-black via-slate-900 to-black" : "from-white via-gray-50 to-white"
+          }`}
+        ></div>
+        <div
+          className={`absolute inset-0 ${
+            isDark
+              ? "bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.05)_0%,transparent_50%)]"
+              : "bg-[radial-gradient(circle_at_30%_20%,rgba(0,0,0,0.03)_0%,transparent_50%)]"
+          }`}
+        ></div>
+      </div>
 
-      {/* Our Identity */}
-      <section className={`py-24 ${theme === "dark" ? "bg-black" : "bg-gradient-to-b from-gray-50 to-white"}`}>
+      {/* Hero Identity Section */}
+      <section className="py-24 relative">
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div {...fadeInUp}>
-            <div className="text-center mb-16">
-
-              <motion.div
-                initial={{ scale: 0.9, opacity: 0 }}
-                whileInView={{ scale: 1, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5 }}
-                className="inline-block mb-4"
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            {/* Subtle header */}
+            <div className="flex items-center justify-center gap-3 mb-8">
+              <div className={`w-16 h-px ${isDark ? "bg-slate-600" : "bg-gray-300"}`}></div>
+              <span
+                className={`text-sm font-medium tracking-widest uppercase ${
+                  isDark ? "text-slate-300" : "text-gray-500"
+                }`}
               >
-                <div className={`w-16 h-1 mx-auto rounded-full ${theme === "dark" ? "bg-white/80" : "bg-gray-800"}`}></div>
-              </motion.div>
-
-              <h2 className={`text-4xl md:text-5xl font-light mb-6 tracking-tight ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
                 Our Identity
-              </h2>
+              </span>
+              <div className={`w-16 h-px ${isDark ? "bg-slate-600" : "bg-gray-300"}`}></div>
             </div>
 
-            <div className={`
-              p-12 rounded-3xl shadow-lg max-w-5xl mx-auto mb-16 relative overflow-hidden
-              ${theme === "dark" ? "bg-white/5 border-white/10" : "bg-white border border-gray-100"}
-            `}>
-              <div className={`absolute top-0 right-0 w-64 h-64 rounded-full -mr-32 -mt-32 opacity-30 
-                ${theme === "dark" ? "bg-white/10" : "bg-gray-50"}
-              `}></div>
+            {/* Main headline */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 0.2 }}
+              className="text-center mb-12"
+            >
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+                <span className={`block ${isDark ? "text-white" : "text-gray-900"}`}>
+                  Future-Ready
+                </span>
+                <span className={`block ${isDark ? "text-slate-400" : "text-gray-400"}`}>
+                  Commercial Ecosystem
+                </span>
+              </h1>
+            </motion.div>
 
-              <div className="relative z-10">
-                <h3 className={`text-3xl font-light mb-6 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                  A Future-Ready Commercial Real Estate Ecosystem
+            {/* Main statement card */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.4 }}
+              className="relative mb-16"
+            >
+              <div
+                className={`absolute -inset-0.5 rounded-3xl blur opacity-20 bg-gradient-to-r ${
+                  isDark ? "from-white/60 to-slate-500/60" : "from-black to-gray-800"
+                }`}
+              ></div>
+              <div
+                className={`relative rounded-3xl p-12 border ${
+                  isDark ? "bg-black/70 border-slate-800" : "bg-white border-gray-100"
+                }`}
+              >
+                <div className="max-w-3xl mx-auto text-center">
+                  <div
+                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
+                      isDark ? "bg-white text-black" : "bg-black text-white"
+                    }`}
+                  >
+                    <Rocket className="w-4 h-4" />
+                    <span className="text-sm font-medium">BEYOND OFFICE SPACES</span>
+                  </div>
+                  <p
+                    className={`text-2xl md:text-3xl leading-relaxed ${
+                      isDark ? "text-slate-200" : "text-gray-700"
+                    }`}
+                  >
+                    The Hive is more than a shared office... it's a{" "}
+                    <span className={`font-bold ${isDark ? "text-white" : "text-black"}`}>
+                      future-ready commercial real estate ecosystem
+                    </span>{" "}
+                    designed to empower businesses in the new era of work.
+                  </p>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Core pillars grid */}
+            <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+              {[
+                { 
+                  icon: Building2, 
+                  title: "Managed Solutions",
+                  description: "Grade-A managed office solutions",
+                  color: isDark ? "bg-white/10" : "bg-blue-50"
+                },
+                { 
+                  icon: TrendingUp, 
+                  title: "Flexible Models",
+                  description: "Flexible leasing and enterprise workspace models",
+                  color: isDark ? "bg-white/10" : "bg-green-50"
+                },
+                { 
+                  icon: Zap, 
+                  title: "Smart Management",
+                  description: "Smart, tech-integrated workplace management",
+                  color: isDark ? "bg-white/10" : "bg-purple-50"
+                },
+                { 
+                  icon: Users, 
+                  title: "Community Driven",
+                  description: "Community-focused environments that drive innovation",
+                  color: isDark ? "bg-white/10" : "bg-orange-50"
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.2 + index * 0.1 }}
+                  whileHover={{ y: -8, transition: { duration: 0.2 } }}
+                  className="group relative"
+                >
+                  <div
+                    className={`absolute inset-0 rounded-2xl border transition-all duration-300 bg-gradient-to-br ${
+                      isDark
+                        ? "from-black/60 to-slate-900/60 border-slate-800 group-hover:border-white/40"
+                        : "from-white to-gray-50 border-gray-100 group-hover:border-gray-300"
+                    }`}
+                  ></div>
+                  <div className="relative p-8">
+                    <div className={`w-14 h-14 rounded-xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                      <item.icon className={`w-6 h-6 ${isDark ? "text-white" : "text-gray-800"}`} />
+                    </div>
+                    <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>{item.title}</h3>
+                    <p className={`${isDark ? "text-slate-300" : "text-gray-600"} leading-relaxed`}>{item.description}</p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+            {/* Purpose statement */}
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="text-center max-w-3xl mx-auto"
+            >
+              <div
+                className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 ${
+                  isDark ? "bg-white/10" : "bg-gray-50"
+                }`}
+              >
+                <TargetIcon className={`w-4 h-4 ${isDark ? "text-white" : "text-gray-600"}`} />
+                <span className={`text-sm font-medium ${isDark ? "text-white" : "text-gray-700"}`}>
+                  Our Purpose
+                </span>
+              </div>
+              <p
+                className={`text-xl leading-relaxed ${
+                  isDark ? "text-slate-300" : "text-gray-600"
+                }`}
+              >
+                Our purpose is simple: to help businesses grow better by providing them with spaces that are not just functional, but transformational.
+              </p>
+            </motion.div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Mission & Why Choose Section */}
+      <section
+        className={`py-24 bg-gradient-to-b ${
+          isDark ? "from-black via-slate-900 to-black" : "from-white to-gray-50"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
+            {/* Mission */}
+            <motion.div
+              initial={{ opacity: 0, x: -40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="sticky top-24">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
+                  <span
+                    className={`text-sm font-medium tracking-widest uppercase ${
+                      isDark ? "text-slate-300" : "text-gray-500"
+                    }`}
+                  >
+                    Our Mission
+                  </span>
+                </div>
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+                  Driving Business<br />
+                  <span className={isDark ? "text-slate-400" : "text-gray-400"}>
+                    Excellence Forward
+                  </span>
+                </h2>
+                
+                <div className="relative mb-12">
+                  <div
+                    className={`absolute -inset-4 rounded-2xl blur-xl ${
+                      isDark
+                        ? "bg-gradient-to-r from-white/5 to-transparent"
+                        : "bg-gradient-to-r from-black/5 to-transparent"
+                    }`}
+                  ></div>
+                  <div
+                    className={`relative p-10 rounded-2xl bg-gradient-to-br ${
+                      isDark ? "from-white/10 to-slate-800" : "from-black to-gray-800"
+                    } text-white`}
+                  >
+                    <div className="text-5xl font-bold mb-2">"</div>
+                    <p className="text-xl leading-relaxed mb-6">
+                      To provide premium, flexible workspace solutions that empower businesses to scale, innovate, and thrive in a dynamic market environment.
+                    </p>
+                    <div className="flex items-center gap-3">
+                      <div className="w-8 h-0.5 bg-white/50"></div>
+                      <span className="text-sm font-medium">The Hive Promise</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Why Choose Us */}
+            <motion.div
+              initial={{ opacity: 0, x: 40 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="space-y-8">
+                <div className="flex items-center gap-3 mb-8">
+                  <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
+                  <span
+                    className={`text-sm font-medium tracking-widest uppercase ${
+                      isDark ? "text-slate-300" : "text-gray-500"
+                    }`}
+                  >
+                    Why Choose Us
+                  </span>
+                </div>
+                
+                <h3 className="text-3xl font-bold mb-10">
+                  The Hive<br />
+                  <span className={isDark ? "text-slate-400" : "text-gray-400"}>Advantage</span>
                 </h3>
 
-                <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"} leading-relaxed text-lg`}>
-                  The Hive is more than a shared office...
-                </p>
+                {[
+                  {
+                    icon: Sparkles,
+                    title: "Customised Workspace Solutions",
+                    description: "Whether you need a private office, dedicated suite, managed corporate floor, or a fully custom build-to-suit workspace — The Hive delivers."
+                  },
+                  {
+                    icon: MapPin,
+                    title: "Prime Strategic Locations",
+                    description: "Centres placed across high-demand commercial hubs ensure maximum accessibility and business visibility."
+                  },
+                  {
+                    icon: Building2,
+                    title: "Hospitality-Led Experience",
+                    description: "Seamless facilities management, concierge-level support, and frictionless day-to-day experience."
+                  },
+                  {
+                    icon: Users,
+                    title: "Thriving Business Community",
+                    description: "Curated network of founders, innovators, and professionals with events and workshops."
+                  },
+                  {
+                    icon: Leaf,
+                    title: "Sustainable & Smart",
+                    description: "Energy-efficient, eco-friendly, and technology-integrated environment."
+                  }
+                ].map((item, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="group relative"
+                  >
+                    <div
+                      className={`flex gap-6 p-6 rounded-2xl transition-all duration-300 ${
+                        isDark
+                          ? "hover:bg-white/10 hover:shadow-lg"
+                          : "hover:bg-white hover:shadow-lg"
+                      }`}
+                    >
+                      <div className="flex-shrink-0">
+                        <div
+                          className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${
+                            isDark
+                              ? "bg-white/10 group-hover:bg-white/20 group-hover:text-white"
+                              : "bg-gray-100 group-hover:bg-black group-hover:text-white"
+                          }`}
+                        >
+                          <item.icon className={`w-5 h-5 ${isDark ? "text-white" : ""}`} />
+                        </div>
+                      </div>
+                      <div>
+                        <h4 className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
+                          {item.title}
+                        </h4>
+                        <p className={`${isDark ? "text-slate-300" : "text-gray-600"} leading-relaxed`}>
+                          {item.description}
+                        </p>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </div>
-
-            <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="whileInView"
-            >
-              {[
-                { icon: Building2, text: "Grade-A managed office solutions" },
-                { icon: TrendingUp, text: "Flexible leasing and enterprise workspace models" },
-                { icon: Zap, text: "Smart, tech-integrated workplace management" },
-                { icon: Users, text: "Community-focused environments that drive innovation" }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className={`
-                    p-8 rounded-2xl shadow-sm border transition-all duration-300 group
-                    ${theme === "dark"
-                      ? "bg-white/5 border-white/10 hover:shadow-xl"
-                      : "bg-white border-gray-100 hover:shadow-md"}
-                  `}
-                >
-                  <item.icon className={`w-8 h-8 mb-4 transition-transform duration-300 group-hover:scale-110 
-                    ${theme === "dark" ? "text-gray-300" : "text-gray-700"}
-                  `} />
-
-                  <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-700"} leading-relaxed`}>
-                    {item.text}
-                  </p>
-                </motion.div>
-              ))}
             </motion.div>
-
-            <motion.p
-              {...fadeInUp}
-              className={`${theme === "dark" ? "text-gray-400" : "text-gray-600"} leading-relaxed text-center mt-16 max-w-3xl mx-auto text-lg`}
-            >
-              Our purpose is simple...
-            </motion.p>
-          </motion.div>
+          </div>
         </div>
       </section>
 
-      {/* Our Mission */}
-      <section className={`${theme === "dark" ? "bg-black" : "bg-white"} py-24 relative`}>
-        <div className={`absolute inset-0 ${theme === "dark" ? "bg-white/0" : "bg-gradient-to-b from-transparent via-gray-50/30 to-transparent"}`}></div>
-
-        <div className="max-w-7xl mx-auto px-6 relative z-10">
-          <motion.div {...fadeInUp}>
-            <div className="text-center mb-16">
-              <div className={`w-16 h-1 mx-auto rounded-full mb-4 ${theme === "dark" ? "bg-white/80" : "bg-gray-800"}`}></div>
-              <h2 className={`text-4xl md:text-5xl font-light mb-6 tracking-tight 
-                ${theme === "dark" ? "text-white" : "text-gray-900"}
-              `}>
-                Our Mission
-              </h2>
-            </div>
-
-            {/* Mission Card */}
-            <div className={`
-              p-12 rounded-3xl shadow-xl max-w-5xl mx-auto mb-24 relative overflow-hidden
-              ${theme === "dark" ? "bg-white/10" : "bg-gradient-to-br from-gray-900 to-gray-800"}
-            `}>
-              <div className="absolute top-0 left-0 w-96 h-96 bg-white/5 rounded-full -ml-48 -mt-48"></div>
-
-              <div className="relative z-10">
-                <p className="text-white text-center text-lg font-light leading-relaxed">
-                  To provide premium, flexible workspace solutions...
-                </p>
-              </div>
-            </div>
-
-            {/* Why Choose Hive */}
-            <div className="text-center mb-16">
-              <h2 className={`text-4xl md:text-5xl font-light tracking-tight 
-                ${theme === "dark" ? "text-white" : "text-gray-900"}
-              `}>
-                Why Choose The Hive Workspaces
-              </h2>
-            </div>
-
-            <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-3 gap-8"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="whileInView"
-            >
-              {[
-                { icon: Sparkles, title: "Customised Workspace Solutions", text: "Whether you need a private office, dedicated suite, managed corporate floor, or a fully custom build-to-suit workspace — The Hive delivers." },
-                { icon: MapPin, title: "Prime and Strategic Locations", text: "Centres placed across high-demand commercial hubs ensure maximum accessibility and business visibility." },
-                { icon: Building2, title: "Hospitality-Led Workplace Experience", text: "Seamless facilities management, concierge-level support, and frictionless day-to-day experience." },
-                { icon: Users, title: "Thriving Business Community", text: "Curated network of founders, innovators, and professionals with events and workshops." },
-                { icon: Leaf, title: "Sustainable & Smart Workspaces", text: "Energy-efficient, eco-friendly, and technology-integrated environment.", span: true }
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className={`
-                    p-10 rounded-3xl shadow-sm border transition-all duration-300 group
-                    ${item.span ? 'md:col-span-2 lg:col-span-1' : ''}
-                    ${theme === "dark"
-                      ? "bg-white/5 border-white/10 hover:shadow-xl"
-                      : "bg-white border-gray-100 hover:shadow-lg"}
-                  `}
-                >
-                  <div className={`w-12 h-12 rounded-2xl flex items-center justify-center mb-6 transition-colors duration-300
-                    ${theme === "dark" ? "bg-white/5" : "bg-gray-100"}
-                  `}>
-                    <item.icon className={`w-6 h-6 transition-colors duration-300 
-                      ${theme === "dark" ? "text-gray-300" : "text-gray-700"}
-                    `} />
-                  </div>
-
-                  <h3 className={`text-xl font-medium mb-4 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                    {item.title}
-                  </h3>
-
-                  <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"} leading-relaxed`}>
-                    {item.text}
-                  </p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Future Ready */}
-      <section className={`py-24 ${theme === "dark" ? "bg-black" : "bg-gradient-to-b from-white to-gray-50"}`}>
+      {/* Future Ready Platform */}
+      <section className={`py-24 ${isDark ? "bg-black" : "bg-white"}`}>
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div {...fadeInUp}>
-            <div className="text-center mb-16">
-              <div className={`w-16 h-1 mx-auto rounded-full mb-4 ${theme === "dark" ? "bg-white/80" : "bg-gray-800"}`}></div>
-              <h2 className={`text-4xl md:text-5xl font-light mb-6 tracking-tight 
-                ${theme === "dark" ? "text-white" : "text-gray-900"}
-              `}>
-                A Future-Ready Workspace Platform
-              </h2>
-            </div>
-
-            <div className={`
-              p-12 rounded-3xl shadow-lg max-w-5xl mx-auto mb-16
-              ${theme === "dark" ? "bg-white/5 border-white/10" : "bg-white border border-gray-100"}
-            `}>
-              <p className={`${theme === "dark" ? "text-gray-300" : "text-gray-600"} leading-relaxed text-center text-lg`}>
-                The future of work is dynamic, digital, and hybrid — and The Hive is built for it.
-              </p>
-            </div>
-
-            <motion.div
-              className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="whileInView"
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div
+              className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 ${
+                isDark ? "bg-white text-black" : "bg-black text-white"
+              }`}
             >
-              {[
-                "IoT-enabled operations",
-                "Smart access and automated systems",
-                "High-performance collaboration zones",
-                "Flexible expansion options for scaling teams"
-              ].map((item, index) => (
-                <motion.div
-                  key={index}
-                  variants={fadeInUp}
-                  className={`
-                    p-8 rounded-2xl shadow-sm relative overflow-hidden transition-all duration-300 group
-                    ${theme === "dark"
-                      ? "bg-white/5 border-white/10 text-gray-300 hover:shadow-xl"
-                      : "bg-white border border-gray-100 text-gray-700 hover:shadow-md"}
-                  `}
+              <Cpu className="w-4 h-4" />
+              <span className="text-sm font-medium">TECHNOLOGY INTEGRATION</span>
+            </div>
+            <h2 className="text-3xl md:text-4xl mb-6">
+              Future-Ready<br />
+              <span className={isDark ? "text-slate-400" : "text-gray-400"}>Platform</span>
+            </h2>
+            <p className={`text-xl max-w-3xl mx-auto ${isDark ? "text-slate-300" : "text-gray-600"}`}>
+              The future of work is dynamic, digital, and hybrid — and The Hive is built for it.
+            </p>
+          </motion.div>
+
+          {/* Tech Features */}
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {[
+              { icon: Shield, title: "IoT Operations", desc: "IoT-enabled operations" },
+              { icon: Zap, title: "Smart Access", desc: "Smart access and automated systems" },
+              { icon: Users, title: "Collaboration Zones", desc: "High-performance collaboration zones" },
+              { icon: TrendingUp, title: "Flexible Scaling", desc: "Flexible expansion options for scaling teams" }
+            ].map((item, index) => (
+              <motion.div
+                key={index}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                whileHover={{ scale: 1.05 }}
+                className="text-center p-8"
+              >
+                <div
+                  className={`w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-6 shadow-sm bg-gradient-to-br ${
+                    isDark ? "from-white/10 to-slate-800/50" : "from-gray-100 to-white"
+                  }`}
                 >
-                  <div className={`absolute top-0 right-0 w-20 h-20 rounded-full -mr-10 -mt-10 transition-transform duration-500 group-hover:scale-150
-                    ${theme === "dark" ? "bg-white/10" : "bg-gray-50"}
-                  `}></div>
+                  <item.icon className={`w-7 h-7 ${isDark ? "text-white" : "text-gray-800"}`} />
+                </div>
+                <h3 className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
+                  {item.title}
+                </h3>
+                <p className={isDark ? "text-slate-300" : "text-gray-600"}>{item.desc}</p>
+              </motion.div>
+            ))}
+          </div>
 
-                  <p className="relative z-10 leading-relaxed">{item}</p>
-                </motion.div>
-              ))}
-            </motion.div>
-
-            <motion.p
-              {...fadeInUp}
-              className={`${theme === "dark" ? "text-gray-400" : "text-gray-600"} leading-relaxed text-center max-w-3xl mx-auto text-lg`}
-            >
-              This ensures your workspace remains relevant, efficient, and competitive.
-            </motion.p>
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center max-w-3xl mx-auto"
+          >
+            <p className={`text-xl leading-relaxed ${isDark ? "text-slate-300" : "text-gray-600"}`}>
+              This ensures your workspace remains relevant, efficient, and competitive in an ever-evolving business landscape.
+            </p>
           </motion.div>
         </div>
       </section>
 
       {/* Growth Roadmap */}
-      <section className={`${theme === "dark" ? "bg-black" : "bg-white"} py-24`}>
+      <section
+        className={`py-24 bg-gradient-to-b ${
+          isDark ? "from-black via-slate-900 to-black" : "from-white to-gray-50"
+        }`}
+      >
         <div className="max-w-7xl mx-auto px-6">
-          <motion.div {...fadeInUp}>
-
-            <div className="text-center mb-20">
-              <div className={`w-16 h-1 mx-auto rounded-full mb-4 ${theme === "dark" ? "bg-white/80" : "bg-gray-800"}`}></div>
-              <h2 className={`text-4xl md:text-5xl font-light tracking-tight 
-                ${theme === "dark" ? "text-white" : "text-gray-900"}
-              `}>
-                Growth Roadmap of The Hive Workspaces
-              </h2>
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            className="text-center mb-16"
+          >
+            <div className="flex items-center justify-center gap-3 mb-6">
+              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
+              <span
+                className={`text-sm font-medium tracking-widest uppercase ${
+                  isDark ? "text-slate-300" : "text-gray-500"
+                }`}
+              >
+                Growth Journey
+              </span>
+              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
             </div>
+            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+              Strategic<br />
+              <span className={isDark ? "text-slate-400" : "text-gray-400"}>Roadmap</span>
+            </h2>
+          </motion.div>
 
-            <motion.div
-              className="grid md:grid-cols-3 gap-8 mb-20"
-              variants={staggerContainer}
-              initial="initial"
-              whileInView="whileInView"
-            >
+          {/* Timeline */}
+          <div className="relative">
+            {/* Timeline line */}
+            <div
+              className={`absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b ${
+                isDark ? "from-transparent via-slate-700 to-transparent" : "from-transparent via-gray-300 to-transparent"
+              }`}
+            ></div>
+            
+            {/* Phase cards */}
+            <div className="space-y-12">
               {PHASE_LIST.map((phase, index) => (
                 <motion.div
                   key={index}
-                  variants={fadeInUp}
-                  className={`
-                    p-10 rounded-3xl shadow-sm relative overflow-hidden transition-all duration-300 group
-                    ${theme === "dark"
-                      ? "bg-white/5 border-white/10 hover:shadow-xl"
-                      : "bg-gradient-to-br from-white to-gray-50 border border-gray-100 hover:shadow-lg"}
-                  `}
+                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
+                  whileInView={{ opacity: 1, x: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.2 }}
+                  className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
                 >
-                  <div className={`absolute top-0 left-0 w-2 h-full transition-all duration-300
-                    ${theme === "dark" ? "bg-white/50 group-hover:bg-white" : "bg-gray-900 group-hover:w-3"}
-                  `}></div>
-
-                  <div className="pl-4">
-                    <div className={`${theme === "dark" ? "text-gray-400" : "text-gray-500"} text-sm font-medium mb-2`}>
-                      {phase.phase}
+                  {/* Timeline dot */}
+                  <div
+                    className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 shadow-lg z-10 ${
+                      isDark ? "bg-white border-black" : "bg-black border-white"
+                    }`}
+                  ></div>
+                  
+                  {/* Content card */}
+                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-16' : 'pl-16'}`}>
+                    <div
+                      className={`rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border ${
+                        isDark ? "bg-black/60 border-slate-800" : "bg-white border-gray-100"
+                      }`}
+                    >
+                      <div className="flex items-center gap-3 mb-4">
+                        <div
+                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
+                            isDark ? "bg-white/10" : "bg-gray-100"
+                          }`}
+                        >
+                          {phase.icon}
+                        </div>
+                        <div>
+                          <div className={`text-sm font-medium ${isDark ? "text-slate-300" : "text-gray-500"}`}>
+                            {phase.phase}
+                          </div>
+                          <div className={`text-xs ${isDark ? "text-slate-400" : "text-gray-400"}`}>
+                            {phase.period}
+                          </div>
+                        </div>
+                      </div>
+                      <h3 className={`text-xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
+                        {phase.title}
+                      </h3>
+                      <ul className="space-y-3">
+                        {phase.items.map((item, idx) => (
+                          <li key={idx} className="flex items-start gap-3">
+                            <ChevronRight
+                              className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isDark ? "text-slate-400" : "text-gray-400"}`}
+                            />
+                            <span className={isDark ? "text-slate-300" : "text-gray-600"}>{item}</span>
+                          </li>
+                        ))}
+                      </ul>
                     </div>
-
-                    <h3 className={`text-2xl font-light mb-2 ${theme === "dark" ? "text-white" : "text-gray-900"}`}>
-                      {phase.title}
-                    </h3>
-
-                    <div className={`${theme === "dark" ? "text-gray-400" : "text-gray-500"} text-sm mb-6`}>
-                      {phase.period}
-                    </div>
-
-                    <ul className="space-y-4">
-                      {phase.items.map((item, idx) => (
-                        <li key={idx} className={`flex items-start gap-3 leading-relaxed 
-                          ${theme === "dark" ? "text-gray-300" : "text-gray-600"}
-                        `}>
-                          <span className={`w-1.5 h-1.5 rounded-full mt-2 flex-shrink-0
-                            ${theme === "dark" ? "bg-white/70" : "bg-gray-400"}
-                          `}></span>
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
                   </div>
-
                 </motion.div>
               ))}
-            </motion.div>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            {/* Conclusion */}
-            <motion.div
-              {...fadeInUp}
-              className={`
-                max-w-5xl mx-auto p-12 rounded-3xl shadow-xl relative overflow-hidden
-                ${theme === "dark" ? "bg-white/10" : "bg-gradient-to-br from-gray-900 to-gray-800"}
-              `}
-            >
-              <div className="absolute bottom-0 right-0 w-96 h-96 bg-white/5 rounded-full -mr-48 -mb-48"></div>
-
-              <div className="relative z-10">
-                <h3 className="text-3xl font-light mb-6 text-white">Conclusion</h3>
-
-                <p className="text-gray-300 leading-relaxed text-lg mb-6">
-                  The Hive Workspaces stands at the intersection of modern commercial real estate...
-                </p>
-
-                <p className="text-gray-300 leading-relaxed text-lg">
-                  With premium amenities and strategic locations, The Hive is shaping the next chapter of work in India.
-                </p>
-              </div>
-            </motion.div>
-
+      {/* Conclusion */}
+      <section className="py-24 bg-gradient-to-br from-black to-gray-900 text-white">
+        <div className="max-w-5xl mx-auto px-6">
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8">
+              <Award className="w-4 h-4" />
+              <span className="text-sm font-medium">CONCLUSION</span>
+            </div>
+            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+              Shaping the Future<br />
+              <span className="text-gray-300">of Work in India</span>
+            </h2>
+            <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
+              <p>
+                The Hive Workspaces stands at the intersection of modern commercial real estate and flexible, hospitality-driven workplace experiences.
+              </p>
+              <p>
+                By combining premium Grade-A infrastructure with scalable, technology-enabled solutions, The Hive delivers value that goes beyond traditional office spaces.
+              </p>
+              <p className="font-medium text-white">
+                With premium amenities, strategic locations, and a forward-thinking roadmap, The Hive is actively shaping the next chapter of work in India.
+              </p>
+            </div>
           </motion.div>
         </div>
       </section>
 
+      {/* Floating CTA */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ delay: 1 }}
+        className="fixed bottom-8 right-8 z-50"
+      >
+        <button
+          className={`px-6 py-3 font-medium rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 ${
+            isDark ? "bg-white text-black" : "bg-black text-white"
+          }`}
+        >
+          <span>Join The Hive</span>
+          <ChevronRight className="w-4 h-4" />
+        </button>
+      </motion.div>
     </div>
   );
 }
