@@ -640,22 +640,8 @@ export default function HiveWorkspaces() {
         </div>
       </section>
 
-      {/* Floating CTA */}
-      <motion.div
-        initial={{ opacity: 0, y: 20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ delay: 1 }}
-        className="fixed bottom-8 right-8 z-50"
-      >
-        <button
-          className={`px-6 py-3 font-medium rounded-full shadow-2xl hover:shadow-3xl transition-all duration-300 hover:-translate-y-1 flex items-center gap-2 ${
-            isDark ? "bg-white text-black" : "bg-black text-white"
-          }`}
-        >
-          <span>Join The Hive</span>
-          <ChevronRight className="w-4 h-4" />
-        </button>
-      </motion.div>
+      
+      
     </div>
   );
 }

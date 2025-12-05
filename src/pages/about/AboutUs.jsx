@@ -24,10 +24,11 @@ import {
 import Members from "../home/Members";
 import HiveWorkspaces from "./HiveWorkspaces";
 import RetrofuturismRoadmap from "./RetrofuturismRoadmap";
-import { useOutletContext } from "react-router-dom";
+import { useOutletContext, useNavigate } from "react-router-dom";
 
 export default function AboutUs() {
   const { theme } = useOutletContext();
+  const navigate = useNavigate();
 
   const amenities = [
     { label: "High-speed internet and advanced connectivity", icon: Wifi },
@@ -358,12 +359,13 @@ export default function AboutUs() {
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="fixed bottom-6 right-6 z-50"
+        className="fixed bottom-6 left-6 z-50"
       >
         <button
           className={`px-5 py-3 font-medium rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 text-sm ${
             isDark ? "bg-white text-black" : "bg-black text-white"
           }`}
+          onClick={()=>{navigate("/solutions")}}
         >
           <span>Explore Workspaces</span>
           <ChevronRight className="w-4 h-4" />
