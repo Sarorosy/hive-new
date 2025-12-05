@@ -71,7 +71,7 @@ export default function AboutUs() {
             <div>
               <div className="inline-block mb-6">
                 <span
-                  className={`text-xs font-medium tracking-widest uppercase ${
+                  className={`text-xs font-medium  uppercase ${
                     isDark ? "text-slate-300" : "text-gray-500"
                   }`}
                 >
@@ -80,7 +80,7 @@ export default function AboutUs() {
               </div>
 
               <div className="mb-8">
-                <h1 className="text-5xl md:text-6xl font-medium mb-4">
+                <h1 className="text-5xl md:text-6xl font-medium mb-4 liber">
                   The Hive
                   <span
                     className={`block ${
@@ -207,7 +207,7 @@ export default function AboutUs() {
                 <div
                   className={`w-10 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}
                 ></div>
-                <h2 className="text-3xl md:text-4xl font-semibold tracking-tight">
+                <h2 className="text-3xl md:text-4xl font-semibold liber">
                   Who We Are
                 </h2>
               </div>
@@ -267,14 +267,14 @@ export default function AboutUs() {
           >
             <div className="text-center mb-10">
               <div
-                className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs uppercase tracking-[0.08em] ${
+                className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs uppercase  ${
                   isDark ? "bg-white text-black" : "bg-black text-white"
                 }`}
               >
                 <Sparkles className="w-4 h-4" />
                 <span className="font-medium">Inclusive Amenities</span>
               </div>
-              <h2 className="text-3xl md:text-4xl font-semibold mt-4 mb-2">
+              <h2 className="text-3xl md:text-4xl font-semibold mt-4 mb-2 liber">
                 Premium Amenities
               </h2>
               <p

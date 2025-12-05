@@ -133,7 +133,7 @@ export default function HiveWorkspaces() {
             <div className="flex items-center justify-center gap-3 mb-8">
               <div className={`w-16 h-px ${isDark ? "bg-slate-600" : "bg-gray-300"}`}></div>
               <span
-                className={`text-sm font-medium tracking-widest uppercase ${
+                className={`text-sm font-medium  uppercase ${
                   isDark ? "text-slate-300" : "text-gray-500"
                 }`}
               >
@@ -149,7 +149,7 @@ export default function HiveWorkspaces() {
               transition={{ delay: 0.2 }}
               className="text-center mb-12"
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 tracking-tight">
+              <h1 className="text-5xl md:text-7xl font-bold mb-6 liber ">
                 <span className={`block ${isDark ? "text-white" : "text-gray-900"}`}>
                   Future-Ready
                 </span>
@@ -301,14 +301,14 @@ export default function HiveWorkspaces() {
                 <div className="flex items-center gap-3 mb-8">
                   <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
                   <span
-                    className={`text-sm font-medium tracking-widest uppercase ${
+                    className={`text-sm font-medium  uppercase ${
                       isDark ? "text-slate-300" : "text-gray-500"
                     }`}
                   >
                     Our Mission
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-8 tracking-tight">
+                <h2 className="text-4xl md:text-5xl font-bold mb-8 liber">
                   Driving Business<br />
                   <span className={isDark ? "text-slate-400" : "text-gray-400"}>
                     Excellence Forward
@@ -359,7 +359,7 @@ export default function HiveWorkspaces() {
                   </span>
                 </div>
                 
-                <h3 className="text-3xl font-bold mb-10">
+                <h3 className="text-3xl font-bold mb-10 liber">
                   The Hive<br />
                   <span className={isDark ? "text-slate-400" : "text-gray-400"}>Advantage</span>
                 </h3>
@@ -451,7 +451,7 @@ export default function HiveWorkspaces() {
               <Cpu className="w-4 h-4" />
               <span className="text-sm font-medium">TECHNOLOGY INTEGRATION</span>
             </div>
-            <h2 className="text-3xl md:text-4xl mb-6">
+            <h2 className="text-3xl md:text-4xl mb-6 liber">
               Future-Ready<br />
               <span className={isDark ? "text-slate-400" : "text-gray-400"}>Platform</span>
             </h2>
@@ -521,7 +521,7 @@ export default function HiveWorkspaces() {
             <div className="flex items-center justify-center gap-3 mb-6">
               <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
               <span
-                className={`text-sm font-medium tracking-widest uppercase ${
+                className={`text-sm font-medium  uppercase ${
                   isDark ? "text-slate-300" : "text-gray-500"
                 }`}
               >
@@ -529,7 +529,7 @@ export default function HiveWorkspaces() {
               </span>
               <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
             </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6">
+            <h2 className="text-5xl md:text-6xl font-bold mb-6 liber">
               Strategic<br />
               <span className={isDark ? "text-slate-400" : "text-gray-400"}>Roadmap</span>
             </h2>
@@ -621,7 +621,7 @@ export default function HiveWorkspaces() {
               <Award className="w-4 h-4" />
               <span className="text-sm font-medium">CONCLUSION</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8">
+            <h2 className="text-4xl md:text-5xl font-bold mb-8 liber ">
               Shaping the Future<br />
               <span className="text-gray-300">of Work in India</span>
             </h2>

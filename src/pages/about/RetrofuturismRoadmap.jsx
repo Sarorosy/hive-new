@@ -74,7 +74,7 @@ export default function RetrofuturismRoadmap() {
             <div className="inline-flex items-center gap-2">
               <div className={`w-4 h-px ${isDark ? "bg-slate-600" : "bg-gray-300"}`}></div>
               <span
-                className={`text-xs font-medium tracking-wider uppercase ${
+                className={`text-xs font-medium  uppercase ${
                   isDark ? "text-slate-300" : "text-gray-500"
                 }`}
               >
@@ -86,7 +86,7 @@ export default function RetrofuturismRoadmap() {
 
           {/* Main Title */}
           <div className="text-center mb-10">
-            <h1 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl font-light mb-4 liber">
               Timeline of{" "}
               <span className={`font-normal ${isDark ? "text-white" : ""}`}>Innovation</span>
             </h1>
