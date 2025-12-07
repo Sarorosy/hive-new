@@ -6,7 +6,8 @@ import {
   Phone,
   Menu,
   X,
-  BriefcaseBusiness,
+  ChevronDown,
+  ChevronRight,
   ShoppingCart,
   ArrowRight,
   Moon,
@@ -22,7 +23,6 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [infoOpen, setInfoOpen] = useState(false);
   const [centresOpen, setCentresOpen] = useState(false);
   const [workspacesOpen, setWorkspacesOpen] = useState(false);
   const [hoveredCity, setHoveredCity] = useState("");
@@ -39,6 +39,12 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
   const { user, cart, logout } = useAuth();
 
   const offerings = solutionOfferings;
+
+  // mobile dropdown states
+  const [mobileSolutionsOpen, setMobileSolutionsOpen] = useState(false);
+  const [mobileCentresOpen, setMobileCentresOpen] = useState(false);
+  const [mobileSelectedOffering, setMobileSelectedOffering] = useState("");
+  const [mobileSelectedCity, setMobileSelectedCity] = useState("");
 
   useEffect(() => {
     const handleScroll = () => {
@@ -506,16 +512,221 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
           {mobileOpen && (
             <div
               className={`
-                md:hidden border-t px-4 py-4 space-y-4 transition-all duration-300 rounded-b-2xl
-                ${
-                  theme === "dark"
-                    ? "bg-black/70 text-white border-white/20"
-                    : "bg-white/70 text-black border-black/20"
-                }
-              `}
+              md:hidden border-t px-4 py-4 space-y-4 rounded-b-2xl transition-all
+              ${
+                theme === "dark"
+                  ? "bg-black/70 text-white border-white/20"
+                  : "bg-white/70 text-black border-black/20"
+              }
+            `}
             >
-              {/* Mobile sections unchanged, only theme classes updated */}
-              {/* ... */}
+              {/* ---- ABOUT US ---- */}
+              <RouterLink
+                to="/about-us"
+                className="block py-2 text-lg"
+                onClick={() => setMobileOpen(false)}
+              >
+                About Us
+              </RouterLink>
+
+              {/* ---- ECOSYSTEM ---- */}
+              <RouterLink
+                to="/ecosystem"
+                className="block py-2 text-lg"
+                onClick={() => setMobileOpen(false)}
+              >
+                Ecosystem
+              </RouterLink>
+
+              {/* ---- SOLUTIONS (COLLAPSIBLE) ---- */}
+              <div>
+                <button
+                  onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
+                  className="w-full flex justify-between items-center py-2 text-lg"
+                >
+                  Solutions
+                  <ChevronDown
+                    className={`transition-transform ${
+                      mobileSolutionsOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {mobileSolutionsOpen && (
+                  <div className="pl-4 space-y-2">
+                    {offerings.map((off) => (
+                      <div key={off.title}>
+                        <button
+                          onClick={() =>
+                            setMobileSelectedOffering(
+                              mobileSelectedOffering === off.title
+                                ? ""
+                                : off.title
+                            )
+                          }
+                          className="w-full flex justify-between py-2"
+                        >
+                          {off.title}
+                          <ChevronRight
+                            className={`transition-transform ${
+                              mobileSelectedOffering === off.title
+                                ? "rotate-90"
+                                : ""
+                            }`}
+                          />
+                        </button>
+
+                        {/* offering options */}
+                        {mobileSelectedOffering === off.title && (
+                          <div className="pl-4 space-y-1 text-sm">
+                            {off.items.map((item) => (
+                              <button
+                                key={item.slug}
+                                className="block py-1"
+                                onClick={() => {
+                                  navigate(`/workspaces/${item.slug}`);
+                                  setMobileOpen(false);
+                                }}
+                              >
+                                {item.name}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+
+                    {/* view all */}
+                    <RouterLink
+                      to="/solutions"
+                      className="block py-2 underline text-sm"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      View All Solutions
+                    </RouterLink>
+                  </div>
+                )}
+              </div>
+
+              {/* ---- CENTRES (COLLAPSIBLE) ---- */}
+              <div>
+                <button
+                  onClick={() => setMobileCentresOpen(!mobileCentresOpen)}
+                  className="w-full flex justify-between items-center py-2 text-lg"
+                >
+                  Centres
+                  <ChevronDown
+                    className={`transition-transform ${
+                      mobileCentresOpen ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+
+                {mobileCentresOpen && (
+                  <div className="pl-4 space-y-2">
+                    {Object.keys(citiesData).map((city) => (
+                      <div key={city}>
+                        <button
+                          onClick={() =>
+                            setMobileSelectedCity(
+                              mobileSelectedCity === city ? "" : city
+                            )
+                          }
+                          className="flex justify-between w-full py-2"
+                        >
+                          {city}
+                          <ChevronRight
+                            className={`transition-transform ${
+                              mobileSelectedCity === city ? "rotate-90" : ""
+                            }`}
+                          />
+                        </button>
+
+                        {mobileSelectedCity === city && (
+                          <div className="pl-4 space-y-1 text-sm">
+                            {citiesData[city].branches.map((branch) => (
+                              <button
+                                key={branch.name}
+                                className="block py-1"
+                                onClick={() => {
+                                  navigate(branch.route);
+                                  setMobileOpen(false);
+                                }}
+                              >
+                                {branch.name}
+                              </button>
+                            ))}
+                          </div>
+                        )}
+                      </div>
+                    ))}
+
+                    <RouterLink
+                      to="/locations"
+                      className="block py-2 underline text-sm"
+                      onClick={() => setMobileOpen(false)}
+                    >
+                      View All Centres
+                    </RouterLink>
+                  </div>
+                )}
+              </div>
+
+              {/* ---- CONTACT ---- */}
+              <RouterLink
+                to="/contact"
+                className="block py-2 text-lg"
+                onClick={() => setMobileOpen(false)}
+              >
+                Contact Us
+              </RouterLink>
+
+              {/* ---- CART ---- */}
+              {cartCount > 0 && (
+                <button
+                  className="flex items-center gap-2 py-2 text-lg"
+                  onClick={() => {
+                    navigate("/cart");
+                    setMobileOpen(false);
+                  }}
+                >
+                  <ShoppingCart className="w-5 h-5" /> Cart ({cartCount})
+                </button>
+              )}
+
+              {/* ---- ACCOUNT ---- */}
+              <button
+                className="flex items-center gap-2 py-2 text-lg"
+                onClick={() => {
+                  user
+                    ? navigate("/account/profile")
+                    : navigate("/account/login");
+                  setMobileOpen(false);
+                }}
+              >
+                <User className="w-5 h-5" />
+                {user ? user.name : "My Account"}
+              </button>
+
+              {/* ---- CALL ---- */}
+              <a
+                href="tel:+917022274000"
+                className="flex items-center gap-2 py-2 text-lg"
+              >
+                <Phone className="w-5 h-5" /> Call Us
+              </a>
+
+              {/* ---- THEME TOGGLE ---- */}
+              <button
+                onClick={onToggleTheme}
+                className={`flex items-center justify-center w-10 h-10 rounded-full border ${
+                  theme === "dark"
+                    ? "border-white text-white bg-black"
+                    : "border-black text-black bg-white"
+                }`}
+              >
+                {theme === "dark" ? <Sun /> : <Moon />}
+              </button>
             </div>
           )}
         </div>
