@@ -64,17 +64,19 @@ export default function Footer({ theme = "light" }) {
               >
                 About Us
               </li>
-              <li
-                onClick={() => navigate("/careers")}
-                className="hover:text-orange-500 cursor-pointer duration-200"
-              >
-                Careers
-              </li>
+              
               <li
                 onClick={() => navigate("/blog")}
                 className="hover:text-orange-500 cursor-pointer duration-200"
               >
                 Blogs
+              </li>
+              
+              <li
+                onClick={() => navigate("/locations")}
+                className="hover:text-orange-500 cursor-pointer duration-200"
+              >
+                Locations
               </li>
               <li
                 onClick={() => navigate("/landlord-relationships")}
@@ -83,16 +85,23 @@ export default function Footer({ theme = "light" }) {
                 Landlord Relationships
               </li>
               <li
-                onClick={() => navigate("/locations")}
+                onClick={() => navigate("/ecosystem")}
                 className="hover:text-orange-500 cursor-pointer duration-200"
               >
-                Locations
+                Ecosystem
               </li>
             </ul>
           </div>
 
           {/* Second Column */}
           <div>
+            <h3
+              className={`text-lg font-bold mb-4 ${
+                theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+              }`}
+            >
+              Connect
+            </h3>
             <ul
               className={`space-y-2 text-sm mt-8 md:mt-0 ${
                 theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
@@ -104,38 +113,41 @@ export default function Footer({ theme = "light" }) {
               >
                 My Account
               </li>
+              
               <li
-                onClick={() => navigate("/ecosystem")}
+                
                 className="hover:text-orange-500 cursor-pointer duration-200"
               >
-                Ecosystem
+                <a
+                href="tel:+917022274000"
+                className="flex items-center gap-1"
+              >
+                Call us
+              </a>
+              </li>
+              <li
+                onClick={() => navigate("/careers")}
+                className="hover:text-orange-500 cursor-pointer duration-200"
+              >
+                Careers
+              </li>
+              <li
+                onClick={() => navigate("/faq")}
+                className="hover:text-orange-500 cursor-pointer duration-200"
+              >
+                FAQ
+              </li>
+              <li
+                onClick={() => navigate("/sitemap")}
+                className="hover:text-orange-500 cursor-pointer duration-200"
+              >
+                Sitemap
               </li>
               
             </ul>
           </div>
 
-          {/* News & Media */}
-          <div>
-            <h3
-              className={`text-lg font-bold mb-4 ${
-                theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
-              }`}
-            >
-              News & Media
-            </h3>
-            <ul
-              className={`space-y-2 text-sm ${
-                theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
-              }`}
-            >
-              <li
-                onClick={() => navigate("/blog")}
-                className="hover:text-orange-500 cursor-pointer duration-200"
-              >
-                Blog
-              </li>
-            </ul>
-          </div>
+          
 
           {/* Social Column */}
           <div className="md:col-span-2">
@@ -219,7 +231,6 @@ export default function Footer({ theme = "light" }) {
                 ["Privacy Policy", "/privacy-policy"],
                 ["Terms of Use", "/terms-and-conditions"],
                 ["Cookie Policy", "/cookie-policy"],
-                ["Sitemap", "/sitemap"],
               ].map(([label, url], i) => (
                 <React.Fragment key={i}>
                   <button
