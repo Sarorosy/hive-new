@@ -191,7 +191,6 @@ const AllWorkspaces = () => {
                     </button>
                   ))}
                 </div>
-
               </article>
             ))}
           </div>
