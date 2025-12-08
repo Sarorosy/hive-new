@@ -1,18 +1,20 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { 
-  Rocket, 
-  Target, 
-  Zap, 
-  Globe, 
-  Sparkles, 
+import {
+  Rocket,
+  Target,
+  Zap,
+  Globe,
+  Sparkles,
   ChevronRight,
   Calendar,
   MapPin,
   Building,
   TrendingUp,
   ArrowUpRight,
-  Infinity
+  Infinity,
+  MapIcon,
+  Presentation
 } from 'lucide-react';
 import { useOutletContext } from "react-router-dom";
 
@@ -57,9 +59,8 @@ export default function RetrofuturismRoadmap() {
 
   return (
     <div
-      className={`min-h-screen py-16 md:py-20 ${
-        isDark ? "bg-black text-white" : "bg-white text-gray-900"
-      }`}
+      className={`min-h-screen py-16 md:py-20 ${isDark ? "bg-black text-white" : "bg-white text-gray-900"
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Header Section */}
@@ -74,9 +75,8 @@ export default function RetrofuturismRoadmap() {
             <div className="inline-flex items-center gap-2">
               <div className={`w-4 h-px ${isDark ? "bg-slate-600" : "bg-gray-300"}`}></div>
               <span
-                className={`text-xs font-medium  uppercase ${
-                  isDark ? "text-slate-300" : "text-gray-500"
-                }`}
+                className={`text-xs font-medium  uppercase ${isDark ? "text-slate-300" : "text-gray-500"
+                  }`}
               >
                 Our Journey
               </span>
@@ -91,9 +91,8 @@ export default function RetrofuturismRoadmap() {
               <span className={`font-normal ${isDark ? "text-white" : ""}`}>Innovation</span>
             </h1>
             <p
-              className={`max-w-2xl mx-auto text-base leading-relaxed ${
-                isDark ? "text-slate-300" : "text-gray-600"
-              }`}
+              className={`max-w-2xl mx-auto text-base leading-relaxed ${isDark ? "text-slate-300" : "text-gray-600"
+                }`}
             >
               A cinematic view of The Hive's journey— from bold ideation to a multi-city flagship network that keeps accelerating toward the horizon.
             </p>
@@ -102,26 +101,33 @@ export default function RetrofuturismRoadmap() {
           {/* Stats Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
             {[
-              { value: "10+", label: "Years of Excellence", icon: Calendar },
-              { value: "25+", label: "Flagship Locations", icon: MapPin },
-              { value: "5000+", label: "Businesses Served", icon: Building },
-              { value: "50+", label: "Cities Presence", icon: TrendingUp }
-            ].map((stat, index) => (
-              <motion.div
-                key={index}
-                initial={{ opacity: 0, y: 10 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.1 + index * 0.05 }}
-                className="text-center"
-              >
-                <div className={`text-2xl font-light mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
-                  {stat.value}
-                </div>
-                <div className={`text-xs ${isDark ? "text-slate-400" : "text-gray-500"}`}>
-                  {stat.label}
-                </div>
-              </motion.div>
-            ))}
+              { value: "5+", label: "Prime Locations", icon: MapPin },
+              { value: "100 %", label: "Satisfied Customers", icon: MapPin },
+              { value: "20000+", label: "Workstations", icon: Building },
+              { value: "50+", label: "Meeting Rooms", icon: Presentation }
+            ].map((stat, index) => {
+              const Icon = stat.icon;
+
+              return (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.1 + index * 0.05 }}
+                  className="text-center"
+                >
+                  <div className={`text-2xl font-light mb-1 ${isDark ? "text-white" : "text-gray-900"}`}>
+                    {stat.value}
+                  </div>
+                  <div className={`text-xs flex items-center justify-center ${isDark ? "text-slate-400" : "text-gray-500"}`}>
+                    <Icon
+                      className={`w-5 mr-1 h-5 ${isDark ? "text-white" : "text-black"
+                        }`}
+                    /> {stat.label}
+                  </div>
+                </motion.div>
+              )
+            })}
           </div>
         </motion.div>
 
@@ -129,9 +135,8 @@ export default function RetrofuturismRoadmap() {
         <div className="relative">
           {/* Vertical Line */}
           <div
-            className={`absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-px ${
-              isDark ? "bg-slate-800" : "bg-gray-200"
-            }`}
+            className={`absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 top-0 bottom-0 w-px ${isDark ? "bg-slate-800" : "bg-gray-200"
+              }`}
           ></div>
 
           {/* Timeline Items */}
@@ -147,9 +152,8 @@ export default function RetrofuturismRoadmap() {
               >
                 {/* Timeline Dot */}
                 <div
-                  className={`absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 w-3 h-3 rounded-full z-10 border ${
-                    isDark ? "bg-black border-slate-700" : "bg-white border-gray-300"
-                  }`}
+                  className={`absolute left-0 md:left-1/2 md:transform md:-translate-x-1/2 w-3 h-3 rounded-full z-10 border ${isDark ? "bg-black border-slate-700" : "bg-white border-gray-300"
+                    }`}
                 ></div>
 
                 {/* Content */}
@@ -159,34 +163,31 @@ export default function RetrofuturismRoadmap() {
                     {/* Year */}
                     <div className="mb-2">
                       <span
-                        className={`text-xs font-medium tracking-wider ${
-                          isDark ? "text-slate-400" : "text-gray-500"
-                        }`}
+                        className={`text-xs font-medium tracking-wider ${isDark ? "text-slate-400" : "text-gray-500"
+                          }`}
                       >
                         {item.year}
                       </span>
                     </div>
-                    
+
                     {/* Title */}
                     <h3 className={`text-xl font-normal mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>
                       {item.title}
                     </h3>
-                    
+
                     {/* Description */}
                     <p
-                      className={`text-sm leading-relaxed mb-4 ${
-                        isDark ? "text-slate-300" : "text-gray-600"
-                      }`}
+                      className={`text-sm leading-relaxed mb-4 ${isDark ? "text-slate-300" : "text-gray-600"
+                        }`}
                     >
                       {item.description}
                     </p>
-                    
+
                     {/* Icon */}
                     <div className="inline-flex items-center gap-2">
                       <div
-                        className={`w-6 h-6 rounded-full flex items-center justify-center border ${item.color} border-current ${
-                          isDark ? "bg-white/5" : ""
-                        }`}
+                        className={`w-6 h-6 rounded-full flex items-center justify-center border ${item.color} border-current ${isDark ? "bg-white/5" : ""
+                          }`}
                       >
                         {React.cloneElement(item.icon, { className: "w-3 h-3" })}
                       </div>
@@ -203,9 +204,8 @@ export default function RetrofuturismRoadmap() {
                 {/* Number */}
                 <div className="absolute top-0 left-0 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1">
                   <div
-                    className={`w-6 h-6 rounded-full flex items-center justify-center ${
-                      isDark ? "bg-white/10" : "bg-gray-100"
-                    }`}
+                    className={`w-6 h-6 rounded-full flex items-center justify-center ${isDark ? "bg-white/10" : "bg-gray-100"
+                      }`}
                   >
                     <span className={`text-xs font-medium ${isDark ? "text-slate-300" : "text-gray-600"}`}>
                       {item.number}
@@ -237,42 +237,20 @@ export default function RetrofuturismRoadmap() {
               <h2 className={`text-2xl font-light mb-6 ${isDark ? "text-white" : "text-gray-900"}`}>
                 Continuous Evolution
               </h2>
-              
+
               <p
-                className={`mb-8 leading-relaxed text-base ${
-                  isDark ? "text-slate-300" : "text-gray-600"
-                }`}
+                className={`mb-8 leading-relaxed text-base ${isDark ? "text-slate-300" : "text-gray-600"
+                  }`}
               >
                 As we move forward, The Hive continues to innovate, integrating cutting-edge technology and community-driven experiences that redefine the future of collaborative work.
               </p>
 
-              {/* Buttons */}
-              <div className="flex flex-col sm:flex-row gap-3 justify-center">
-                <button
-                  className={`px-6 py-3 text-sm font-medium rounded transition-colors duration-200 flex items-center justify-center gap-2 ${
-                    isDark
-                      ? "bg-white text-black hover:bg-white/90"
-                      : "bg-gray-900 text-white hover:bg-gray-800"
-                  }`}
-                >
-                  <span>Explore What's Next</span>
-                  <ArrowUpRight className="w-4 h-4" />
-                </button>
-                <button
-                  className={`px-6 py-3 text-sm font-medium rounded transition-colors duration-200 ${
-                    isDark
-                      ? "border border-slate-700 text-slate-200 hover:border-slate-500"
-                      : "border border-gray-300 text-gray-700 hover:border-gray-400"
-                  }`}
-                >
-                  View Case Studies
-                </button>
-              </div>
+              
             </div>
           </div>
         </motion.div>
 
-        
+
       </div>
     </div>
   );

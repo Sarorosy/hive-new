@@ -19,6 +19,7 @@ import {
   Building,
   Users,
   Target,
+  Circle,
 } from "lucide-react";
 
 import Members from "../home/Members";
@@ -207,7 +208,7 @@ export default function AboutUs() {
                 <div
                   className={`w-10 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}
                 ></div>
-                <h2 className="text-3xl md:text-4xl font-semibold liber">
+                <h2 className="text-3xl md:text-4xl  liber">
                   Who We Are
                 </h2>
               </div>
@@ -215,37 +216,37 @@ export default function AboutUs() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <p
-                    className={`leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    The Hive Workspaces was established as part of The Xander
-                    Group's portfolio...
+                   <Circle size={10} className="mr-2" /> The Hive Workspaces was established as part of The Xander
+                    Group's portfolio.
                   </p>
                   <p
-                    className={`leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    The legal entity Hive Workspaces LLP was officially
-                    registered on October 22, 2021...
+                   <Circle size={10} className="mr-2" /> The legal entity Hive Workspaces LLP was officially
+                    registered on October 22, 2021.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <p
-                    className={`leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    Before founding The Hive, he served as Vice President of
-                    Investments...
+                    <Circle size={10} className="mr-2" /> Before founding The Hive, he served as Vice President of
+                    Investments.
                   </p>
                   <p
-                    className={`leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    After his tenure as CEO (2018–2020), he moved on to
+                    <Circle size={10} className="mr-2" /> After his tenure as CEO (2018–2020), he moved on to
                     leadership roles at LOGOS Group.
                   </p>
                 </div>
@@ -266,15 +267,8 @@ export default function AboutUs() {
             viewport={{ once: true }}
           >
             <div className="text-center mb-10">
-              <div
-                className={`inline-flex items-center gap-2 px-5 py-2 rounded-full text-xs uppercase  ${
-                  isDark ? "bg-white text-black" : "bg-black text-white"
-                }`}
-              >
-                <Sparkles className="w-4 h-4" />
-                <span className="font-medium">Inclusive Amenities</span>
-              </div>
-              <h2 className="text-3xl md:text-4xl font-semibold mt-4 mb-2 liber">
+              
+              <h2 className="text-3xl md:text-4xl  mt-4 mb-2 liber">
                 Premium Amenities
               </h2>
               <p

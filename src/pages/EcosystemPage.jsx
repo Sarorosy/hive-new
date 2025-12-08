@@ -237,7 +237,7 @@ const EcosystemPage = () => {
               </p>
               <h1
                 className={`
-                  text-4xl sm:text-5xl lg:text-[3.75rem] font-semibold tracking-tight leading-tight mb-6
+                  text-4xl liber sm:text-5xl lg:text-[3.75rem]  tracking-tight leading-tight mb-6
                   ${theme === "dark" ? "text-white" : "text-gray-900"}
                 `}
               >
@@ -274,7 +274,7 @@ const EcosystemPage = () => {
                 <button
                   onClick={() => setContactFormOpen(true)}
                   className={`
-                    inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm font-semibold hover:translate-y-[-1px] transition-transform
+                    inline-flex items-center gap-2 px-6 py-3 rounded-full text-sm  hover:translate-y-[-1px] transition-transform
                     ${
                       theme === "dark"
                         ? "bg-white text-black hover:bg-slate-200"
@@ -311,7 +311,7 @@ const EcosystemPage = () => {
               </p>
               <h2
                 className={`
-                  text-3xl sm:text-4xl font-semibold mb-6
+                  text-3xl liber sm:text-4xl  mb-6
                   ${theme === "dark" ? "text-white" : "text-gray-900"}
                 `}
               >
@@ -328,7 +328,7 @@ const EcosystemPage = () => {
                 cultural heart of Moscow, our gallery is a testament to the
                 belief that art has no age limit.
               </p>
-              <button className="inline-flex items-center gap-2 px-6 py-3 border border-black rounded-full text-sm font-semibold hover:bg-black hover:text-white transition-colors">
+              <button className="inline-flex items-center gap-2 px-6 py-3 border border-black rounded-full text-sm  hover:bg-black hover:text-white transition-colors">
                 More About Us
                 <ChevronRight className="w-4 h-4" />
               </button>
@@ -367,7 +367,7 @@ const EcosystemPage = () => {
                               <p className="text-xs uppercase tracking-[0.25em] text-white/70 mb-1">
                                 {item1.location}
                               </p>
-                              <h3 className="text-lg font-semibold">{item1.title}</h3>
+                              <h3 className="text-lg ">{item1.title}</h3>
                             </div>
                           </div>
                           {/* Bottom image */}
@@ -382,7 +382,7 @@ const EcosystemPage = () => {
                               <p className="text-xs uppercase tracking-[0.25em] text-white/70 mb-1">
                                 {item2.location}
                               </p>
-                              <h3 className="text-lg font-semibold">{item2.title}</h3>
+                              <h3 className="text-lg ">{item2.title}</h3>
                             </div>
                           </div>
                         </div>
@@ -447,7 +447,7 @@ const EcosystemPage = () => {
           <div className="space-y-3">
             <h2
               className={`
-                text-3xl md:text-4xl font-semibold
+                text-3xl md:text-4xl 
                 ${theme === "dark" ? "text-white" : "text-black"}
               `}
             >
@@ -494,7 +494,7 @@ const EcosystemPage = () => {
                   </p>
                   <h3
                     className={`
-                      text-lg font-semibold mb-2 line-clamp-2
+                      text-lg  mb-2 line-clamp-2
                       ${theme === "dark" ? "text-white" : "text-black"}
                     `}
                   >

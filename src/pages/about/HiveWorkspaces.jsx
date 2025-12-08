@@ -149,7 +149,7 @@ export default function HiveWorkspaces() {
               transition={{ delay: 0.2 }}
               className="text-center mb-12"
             >
-              <h1 className="text-5xl md:text-7xl font-bold mb-6 liber ">
+              <h1 className="text-5xl md:text-7xl  mb-6 liber ">
                 <span className={`block ${isDark ? "text-white" : "text-gray-900"}`}>
                   Future-Ready
                 </span>
@@ -177,21 +177,14 @@ export default function HiveWorkspaces() {
                 }`}
               >
                 <div className="max-w-3xl mx-auto text-center">
-                  <div
-                    className={`inline-flex items-center gap-2 px-4 py-2 rounded-full mb-6 ${
-                      isDark ? "bg-white text-black" : "bg-black text-white"
-                    }`}
-                  >
-                    <Rocket className="w-4 h-4" />
-                    <span className="text-sm font-medium">BEYOND OFFICE SPACES</span>
-                  </div>
+
                   <p
                     className={`text-2xl md:text-3xl leading-relaxed ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
                     The Hive is more than a shared office... it's a{" "}
-                    <span className={`font-bold ${isDark ? "text-white" : "text-black"}`}>
+                    <span className={` ${isDark ? "text-white" : "text-black"}`}>
                       future-ready commercial real estate ecosystem
                     </span>{" "}
                     designed to empower businesses in the new era of work.
@@ -247,7 +240,7 @@ export default function HiveWorkspaces() {
                     <div className={`w-14 h-14 rounded-xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
                       <item.icon className={`w-6 h-6 ${isDark ? "text-white" : "text-gray-800"}`} />
                     </div>
-                    <h3 className={`text-xl font-bold mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>{item.title}</h3>
+                    <h3 className={`text-xl  mb-3 ${isDark ? "text-white" : "text-gray-900"}`}>{item.title}</h3>
                     <p className={`${isDark ? "text-slate-300" : "text-gray-600"} leading-relaxed`}>{item.description}</p>
                   </div>
                 </motion.div>
@@ -308,7 +301,7 @@ export default function HiveWorkspaces() {
                     Our Mission
                   </span>
                 </div>
-                <h2 className="text-4xl md:text-5xl font-bold mb-8 liber">
+                <h2 className="text-4xl md:text-5xl  mb-8 liber">
                   Driving Business<br />
                   <span className={isDark ? "text-slate-400" : "text-gray-400"}>
                     Excellence Forward
@@ -328,7 +321,7 @@ export default function HiveWorkspaces() {
                       isDark ? "from-white/10 to-slate-800" : "from-black to-gray-800"
                     } text-white`}
                   >
-                    <div className="text-5xl font-bold mb-2">"</div>
+                    <div className="text-5xl  mb-2">"</div>
                     <p className="text-xl leading-relaxed mb-6">
                       To provide premium, flexible workspace solutions that empower businesses to scale, innovate, and thrive in a dynamic market environment.
                     </p>
@@ -359,7 +352,7 @@ export default function HiveWorkspaces() {
                   </span>
                 </div>
                 
-                <h3 className="text-3xl font-bold mb-10 liber">
+                <h3 className="text-3xl  mb-10 liber">
                   The Hive<br />
                   <span className={isDark ? "text-slate-400" : "text-gray-400"}>Advantage</span>
                 </h3>
@@ -418,7 +411,7 @@ export default function HiveWorkspaces() {
                         </div>
                       </div>
                       <div>
-                        <h4 className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
+                        <h4 className={`text-lg  mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
                           {item.title}
                         </h4>
                         <p className={`${isDark ? "text-slate-300" : "text-gray-600"} leading-relaxed`}>
@@ -443,14 +436,7 @@ export default function HiveWorkspaces() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <div
-              className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 ${
-                isDark ? "bg-white text-black" : "bg-black text-white"
-              }`}
-            >
-              <Cpu className="w-4 h-4" />
-              <span className="text-sm font-medium">TECHNOLOGY INTEGRATION</span>
-            </div>
+            
             <h2 className="text-3xl md:text-4xl mb-6 liber">
               Future-Ready<br />
               <span className={isDark ? "text-slate-400" : "text-gray-400"}>Platform</span>
@@ -484,7 +470,7 @@ export default function HiveWorkspaces() {
                 >
                   <item.icon className={`w-7 h-7 ${isDark ? "text-white" : "text-gray-800"}`} />
                 </div>
-                <h3 className={`text-lg font-bold mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
+                <h3 className={`text-lg  mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
                   {item.title}
                 </h3>
                 <p className={isDark ? "text-slate-300" : "text-gray-600"}>{item.desc}</p>
@@ -505,111 +491,9 @@ export default function HiveWorkspaces() {
         </div>
       </section>
 
-      {/* Growth Roadmap */}
-      <section
-        className={`py-24 bg-gradient-to-b ${
-          isDark ? "from-black via-slate-900 to-black" : "from-white to-gray-50"
-        }`}
-      >
-        <div className="max-w-7xl mx-auto px-6">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="text-center mb-16"
-          >
-            <div className="flex items-center justify-center gap-3 mb-6">
-              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
-              <span
-                className={`text-sm font-medium  uppercase ${
-                  isDark ? "text-slate-300" : "text-gray-500"
-                }`}
-              >
-                Growth Journey
-              </span>
-              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
-            </div>
-            <h2 className="text-5xl md:text-6xl font-bold mb-6 liber">
-              Strategic<br />
-              <span className={isDark ? "text-slate-400" : "text-gray-400"}>Roadmap</span>
-            </h2>
-          </motion.div>
-
-          {/* Timeline */}
-          <div className="relative">
-            {/* Timeline line */}
-            <div
-              className={`absolute left-1/2 transform -translate-x-1/2 h-full w-px bg-gradient-to-b ${
-                isDark ? "from-transparent via-slate-700 to-transparent" : "from-transparent via-gray-300 to-transparent"
-              }`}
-            ></div>
-            
-            {/* Phase cards */}
-            <div className="space-y-12">
-              {PHASE_LIST.map((phase, index) => (
-                <motion.div
-                  key={index}
-                  initial={{ opacity: 0, x: index % 2 === 0 ? -40 : 40 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.2 }}
-                  className={`relative flex items-center ${index % 2 === 0 ? 'justify-start' : 'justify-end'}`}
-                >
-                  {/* Timeline dot */}
-                  <div
-                    className={`absolute left-1/2 transform -translate-x-1/2 w-4 h-4 rounded-full border-4 shadow-lg z-10 ${
-                      isDark ? "bg-white border-black" : "bg-black border-white"
-                    }`}
-                  ></div>
-                  
-                  {/* Content card */}
-                  <div className={`w-5/12 ${index % 2 === 0 ? 'pr-16' : 'pl-16'}`}>
-                    <div
-                      className={`rounded-2xl p-8 shadow-sm hover:shadow-lg transition-shadow duration-300 border ${
-                        isDark ? "bg-black/60 border-slate-800" : "bg-white border-gray-100"
-                      }`}
-                    >
-                      <div className="flex items-center gap-3 mb-4">
-                        <div
-                          className={`w-10 h-10 rounded-lg flex items-center justify-center ${
-                            isDark ? "bg-white/10" : "bg-gray-100"
-                          }`}
-                        >
-                          {phase.icon}
-                        </div>
-                        <div>
-                          <div className={`text-sm font-medium ${isDark ? "text-slate-300" : "text-gray-500"}`}>
-                            {phase.phase}
-                          </div>
-                          <div className={`text-xs ${isDark ? "text-slate-400" : "text-gray-400"}`}>
-                            {phase.period}
-                          </div>
-                        </div>
-                      </div>
-                      <h3 className={`text-xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"}`}>
-                        {phase.title}
-                      </h3>
-                      <ul className="space-y-3">
-                        {phase.items.map((item, idx) => (
-                          <li key={idx} className="flex items-start gap-3">
-                            <ChevronRight
-                              className={`w-4 h-4 mt-0.5 flex-shrink-0 ${isDark ? "text-slate-400" : "text-gray-400"}`}
-                            />
-                            <span className={isDark ? "text-slate-300" : "text-gray-600"}>{item}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </div>
-      </section>
 
       {/* Conclusion */}
-      <section className="py-24 bg-gradient-to-br from-black to-gray-900 text-white">
+      <section className="pyt-2 pb-10 bg-gradient-to-br from-black to-gray-900 text-white">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -621,20 +505,17 @@ export default function HiveWorkspaces() {
               <Award className="w-4 h-4" />
               <span className="text-sm font-medium">CONCLUSION</span>
             </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-8 liber ">
+            <h2 className="text-4xl md:text-5xl  mb-8 liber ">
               Shaping the Future<br />
               <span className="text-gray-300">of Work in India</span>
             </h2>
             <div className="space-y-6 text-lg text-gray-300 leading-relaxed">
               <p>
                 The Hive Workspaces stands at the intersection of modern commercial real estate and flexible, hospitality-driven workplace experiences.
-              </p>
-              <p>
                 By combining premium Grade-A infrastructure with scalable, technology-enabled solutions, The Hive delivers value that goes beyond traditional office spaces.
-              </p>
-              <p className="font-medium text-white">
                 With premium amenities, strategic locations, and a forward-thinking roadmap, The Hive is actively shaping the next chapter of work in India.
               </p>
+              
             </div>
           </motion.div>
         </div>

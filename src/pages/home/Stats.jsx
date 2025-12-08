@@ -56,7 +56,7 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
 
   return (
     <span className={theme === "dark" ? "text-white" : "text-black"}>
-      {count} {end === 99 ? "%" : "+"}
+      {count} {end === 100  ? "%" : "+"}
     </span>
   );
 };
@@ -165,7 +165,7 @@ const Stats = () => {
 
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={99} shouldAnimate={isVisible} />{" "}
+            <Counter end={100} shouldAnimate={isVisible} />{" "}
           </p>
           <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
             Satisfied Customers
