@@ -208,11 +208,11 @@ const AllWorkspaces = () => {
 
       {/* CTA SECTION */}
       <section
-        className={`
-          py-16 px-4 md:px-8 xl:px-0
-          ${theme === "dark" ? "bg-[#0e1932]/90" : "bg-[#0e1932]"}
-          text-white
-        `}
+        // className={`
+        //   py-16 px-4 md:px-8 xl:px-0
+          
+        //   text-white
+        // `}
       >
         <div className="max-w-6xl mx-auto flex flex-col gap-6 md:flex-row md:items-center md:justify-between">
 

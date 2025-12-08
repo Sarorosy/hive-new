@@ -13,7 +13,7 @@ import {
   ChevronRight,
 } from "lucide-react";
 import Breadcrumb from "../components/BreadCrumb";
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import EcoHero from "./EcoHero";
 
 const heroHighlights = [
@@ -149,6 +149,7 @@ const EcosystemPage = () => {
   const [activeArtist, setActiveArtist] = useState(artistProfiles[0].id);
   const carouselRef = useRef(null);
   const animationRef = useRef(null);
+  const navigate = useNavigate();
 
   const activeBio = artistProfiles.find((artist) => artist.id === activeArtist);
 
@@ -221,7 +222,7 @@ const EcosystemPage = () => {
       `}
     >
       <section className={theme === "dark" ? "bg-black" : "bg-white"}>
-        <div className="max-w-[90%] mx-auto px-4 sm:px-6 lg:px-8 py-12 md:py-16">
+        <div className="max-w-[90%] mx-auto px-4 pt-8 py-4 md:py-10">
           <Breadcrumb
             items={[{ label: "Home", path: "/" }, { label: "Ecosystem" }]}
             theme={theme}
@@ -229,7 +230,7 @@ const EcosystemPage = () => {
           <div className="mt-10 ">
             <div>
               <p
-                className={`text-sm uppercase tracking-[0.3em] mb-6 ${
+                className={`text-sm uppercase tracking-[0.3em] mb-3 ${
                   theme === "dark" ? "text-slate-400" : "text-gray-500"
                 }`}
               >
@@ -328,7 +329,9 @@ const EcosystemPage = () => {
                 cultural heart of Moscow, our gallery is a testament to the
                 belief that art has no age limit.
               </p>
-              <button className="inline-flex items-center gap-2 px-6 py-3 border border-black rounded-full text-sm  hover:bg-black hover:text-white transition-colors">
+              <button 
+              onClick={()=>{navigate('/about-us')}}
+              className="inline-flex items-center gap-2 px-6 py-3 border border-black rounded-full text-sm  hover:bg-black hover:text-white transition-colors">
                 More About Us
                 <ChevronRight className="w-4 h-4" />
               </button>

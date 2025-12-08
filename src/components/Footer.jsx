@@ -241,7 +241,7 @@ export default function Footer({ theme = "light" }) {
                   >
                     {label}
                   </button>
-                  {i < 3 && <span>|</span>}
+                  {i < 2 && <span>|</span>}
                 </React.Fragment>
               ))}
             </div>
@@ -276,7 +276,7 @@ export default function Footer({ theme = "light" }) {
                 ].map((loc, i) => (
                   <span
                     key={i}
-                    className={`px-2 py-1 rounded-full cursor-help border ${
+                    className={`px-2 py-1 rounded-full border ${
                       theme === "dark"
                         ? "bg-black border-white/20 "
                         : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb]"
