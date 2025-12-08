@@ -237,7 +237,7 @@ const EcosystemPage = () => {
               </p>
               <h1
                 className={`
-                  text-4xl liber sm:text-5xl lg:text-[3.75rem]  tracking-tight leading-tight mb-6
+                   liber text-3xl md:text-4xl  tracking-tight leading-tight mb-6
                   ${theme === "dark" ? "text-white" : "text-gray-900"}
                 `}
               >
@@ -447,7 +447,7 @@ const EcosystemPage = () => {
           <div className="space-y-3">
             <h2
               className={`
-                text-3xl md:text-4xl 
+                text-3xl liber md:text-4xl 
                 ${theme === "dark" ? "text-white" : "text-black"}
               `}
             >

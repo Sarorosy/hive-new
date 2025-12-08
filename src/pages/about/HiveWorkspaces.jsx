@@ -122,7 +122,7 @@ export default function HiveWorkspaces() {
       </div>
 
       {/* Hero Identity Section */}
-      <section className="py-24 relative">
+      <section className="py-8 relative">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -149,7 +149,7 @@ export default function HiveWorkspaces() {
               transition={{ delay: 0.2 }}
               className="text-center mb-12"
             >
-              <h1 className="text-5xl md:text-7xl  mb-6 liber ">
+              <h1 className="text-3xl md:text-5xl  mb-6 liber ">
                 <span className={`block ${isDark ? "text-white" : "text-gray-900"}`}>
                   Future-Ready
                 </span>
@@ -179,15 +179,13 @@ export default function HiveWorkspaces() {
                 <div className="max-w-3xl mx-auto text-center">
 
                   <p
-                    className={`text-2xl md:text-3xl leading-relaxed ${
+                    className={`text-xl md:text-2xl leading-relaxed ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
                     The Hive is more than a shared office... it's a{" "}
                     <span className={` ${isDark ? "text-white" : "text-black"}`}>
-                      future-ready commercial real estate ecosystem
-                    </span>{" "}
-                    designed to empower businesses in the new era of work.
+                      future-ready commercial real estate ecosystem designed to empower businesses in the new era of work.</span>{" "}
                   </p>
                 </div>
               </div>
@@ -441,8 +439,8 @@ export default function HiveWorkspaces() {
               Future-Ready<br />
               <span className={isDark ? "text-slate-400" : "text-gray-400"}>Platform</span>
             </h2>
-            <p className={`text-xl max-w-3xl mx-auto ${isDark ? "text-slate-300" : "text-gray-600"}`}>
-              The future of work is dynamic, digital, and hybrid — and The Hive is built for it.
+            <p className={`text-xl max-w-4xl mx-auto ${isDark ? "text-slate-300" : "text-gray-600"}`}>
+              The future of work is dynamic, digital and hybrid.<br/>&<br/> The Hive is built for it.
             </p>
           </motion.div>
 

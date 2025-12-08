@@ -82,7 +82,7 @@ const AllWorkspaces = () => {
 
             <h2
               className={`
-                text-3xl md:text-4xl font-semibold
+                text-3xl md:text-4xl liber 
                 ${theme === "dark" ? "text-white" : "text-black"}
               `}
             >
@@ -140,7 +140,7 @@ const AllWorkspaces = () => {
 
                     <h3
                       className={`
-                        text-2xl font-semibold
+                        text-2xl liber
                         ${theme === "dark" ? "text-white" : "text-black"}
                       `}
                     >
@@ -180,7 +180,7 @@ const AllWorkspaces = () => {
                       key={item.slug}
                       onClick={() => navigate(`/workspaces/${item.slug}`)}
                       className={`
-                        inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs font-semibold uppercase tracking-wider transition-colors
+                        inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs  uppercase tracking-wider transition-colors
                         ${theme === "dark"
                           ? "bg-white/20 text-white hover:bg-white/30"
                           : "bg-[#0e1932] text-white hover:bg-black"}
@@ -221,7 +221,7 @@ const AllWorkspaces = () => {
               Let&apos;s plan your workspace
             </p>
 
-            <h3 className="text-3xl font-semibold">
+            <h3 className="text-3xl liber">
               Need help shortlisting the right solution?
             </h3>
 
@@ -235,14 +235,14 @@ const AllWorkspaces = () => {
           <div className="flex flex-wrap gap-3">
             <button
               onClick={() => navigate("/landlord-relationships")}
-              className="rounded-full border border-white/30 px-6 py-3 text-sm font-semibold hover:bg-white/10 transition-all"
+              className="rounded-full border border-white/30 px-6 py-3 text-sm  hover:bg-white/10 transition-all"
             >
               Partner with The Hive
             </button>
 
             <button
               onClick={() => navigate("/contact")}
-              className="rounded-full bg-white text-black px-6 py-3 text-sm font-semibold hover:translate-y-0.5 transition-all"
+              className="rounded-full bg-white text-black px-6 py-3 text-sm  hover:translate-y-0.5 transition-all"
             >
               Start a conversation
             </button>

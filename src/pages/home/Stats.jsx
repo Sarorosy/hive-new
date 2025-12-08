@@ -55,8 +55,8 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
   }, [end, duration, shouldAnimate]);
 
   return (
-    <span className={theme === "dark" ? "text-white" : "text-black"}>
-      {count} {end === 100  ? "%" : "+"}
+    <span className={theme != "dark" ? "text-white" : "text-black"}>
+      {count} {end != 100  ? "%" : "+"}
     </span>
   );
 };
@@ -96,7 +96,7 @@ const Stats = () => {
         py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 
         rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto my-2
         ${
-          theme === "dark"
+          theme != "dark"
             ? "bg-black text-white border border-slate-800"
             : "bg-white text-black border border-slate-200"
         }
@@ -109,21 +109,21 @@ const Stats = () => {
         className={`
           bg-gradient-to-br from-goldt via-gold to-goldt border rounded-tl-[25px] rounded-br-[25px] 
           px-6 py-3 flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer
-          ${theme === "dark" ? "border-white/20" : "border-black/20"}
+          ${theme != "dark" ? "border-white/20" : "border-black/20"}
         `}
       >
         <span className="text-sm opacity-90 flex items-center gap-1">
           <span
             className={`
               font-semibold px-4 py-2 rounded-tl-[15px] rounded-br-[15px] text-sm
-              ${theme === "dark" ? "bg-white text-black" : "bg-black text-white"}
+              ${theme != "dark" ? "bg-white text-black" : "bg-black text-white"}
             `}
           >
             Know More
           </span>
           <ArrowUpRight
             className={`w-4 h-4 ${
-              theme === "dark" ? "text-white" : "text-black"
+              theme != "dark" ? "text-white" : "text-black"
             }`}
           />
         </span>
@@ -133,14 +133,14 @@ const Stats = () => {
       <div
         className={`
           flex flex-wrap justify-center gap-6 text-center text-sm md:text-base
-          ${theme === "dark" ? "text-white" : "text-black"}
+          ${theme != "dark" ? "text-white" : "text-black"}
         `}
       >
         <div>
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={5} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+          <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
             Prime Locations
           </p>
         </div>
@@ -149,7 +149,7 @@ const Stats = () => {
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={20000} duration={1} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+          <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
             Workstations
           </p>
         </div>
@@ -158,7 +158,7 @@ const Stats = () => {
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={50} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+          <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
             Meeting Rooms
           </p>
         </div>
@@ -167,7 +167,7 @@ const Stats = () => {
           <p className="text-xl md:text-2xl font-bold">
             <Counter end={100} shouldAnimate={isVisible} />{" "}
           </p>
-          <p className={`${theme === "dark" ? "opacity-70" : "opacity-80"}`}>
+          <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
             Satisfied Customers
           </p>
         </div>

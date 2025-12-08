@@ -216,37 +216,37 @@ export default function AboutUs() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <p
-                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                   <Circle size={10} className="mr-2" /> The Hive Workspaces was established as part of The Xander
+                   <Circle size={16} className="mr-2 pt-2" /> The Hive Workspaces was established as part of The Xander
                     Group's portfolio.
                   </p>
                   <p
-                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                   <Circle size={10} className="mr-2" /> The legal entity Hive Workspaces LLP was officially
+                   <Circle size={16} className="mr-2 pt-2" /> The legal entity Hive Workspaces LLP was officially
                     registered on October 22, 2021.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <p
-                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    <Circle size={10} className="mr-2" /> Before founding The Hive, he served as Vice President of
+                    <Circle size={16} className="mr-2 pt-2" /> Before founding The Hive, he served as Vice President of
                     Investments.
                   </p>
                   <p
-                    className={`flex  items-center leading-relaxed text-sm md:text-base ${
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    <Circle size={10} className="mr-2" /> After his tenure as CEO (2018–2020), he moved on to
+                    <Circle size={16} className="mr-2 pt-2" /> After his tenure as CEO (2018–2020), he moved on to
                     leadership roles at LOGOS Group.
                   </p>
                 </div>
@@ -259,7 +259,7 @@ export default function AboutUs() {
       <RetrofuturismRoadmap />
 
       {/* Premium Amenities - Grid Layout */}
-      <section className="py-14">
+      <section className="pb-14 pt-2">
         <div className="max-w-7xl mx-auto px-5">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

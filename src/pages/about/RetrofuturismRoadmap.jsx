@@ -59,7 +59,7 @@ export default function RetrofuturismRoadmap() {
 
   return (
     <div
-      className={`min-h-screen py-16 md:py-20 ${isDark ? "bg-black text-white" : "bg-white text-gray-900"
+      className={`min-h-screen py-4 md:py-8 ${isDark ? "bg-black text-white" : "bg-white text-gray-900"
         }`}
     >
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -202,7 +202,7 @@ export default function RetrofuturismRoadmap() {
                 </div>
 
                 {/* Number */}
-                <div className="absolute top-0 left-0 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1">
+                {/* <div className="absolute top-0 left-0 md:left-1/2 md:transform md:-translate-x-1/2 md:-translate-y-1">
                   <div
                     className={`w-6 h-6 rounded-full flex items-center justify-center ${isDark ? "bg-white/10" : "bg-gray-100"
                       }`}
@@ -211,7 +211,7 @@ export default function RetrofuturismRoadmap() {
                       {item.number}
                     </span>
                   </div>
-                </div>
+                </div> */}
               </motion.div>
             ))}
           </div>
