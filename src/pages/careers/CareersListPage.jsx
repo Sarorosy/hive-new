@@ -76,7 +76,7 @@ function CareersListPage({ jobs, jobLoading }) {
 
                 {/* Title */}
                 <h2
-                  className={`text-lg sm:text-xl font-bold transition-colors ${
+                  className={`text-lg sm:text-xl font-medium transition-colors ${
                     theme === "dark"
                       ? "text-white group-hover:text-orange-500"
                       : "text-black group-hover:text-orange-500"
@@ -100,11 +100,11 @@ function CareersListPage({ jobs, jobLoading }) {
               <div className="p-6 pt-0 flex items-center justify-end">
                 <button
                   onClick={() => navigate(`/job/${job.slug}`)}
-                  className={`cursor-pointer rounded-full px-4 py-2 text-sm font-semibold transition-all
+                  className={`cursor-pointer rounded-full px-4 py-2 border-orange-500 border text-sm font-semibold transition-all
                   ${
                     theme === "dark"
-                      ? "border-white text-white hover:bg-orange-500 hover:border-orange-500"
-                      : "border-black text-black hover:bg-orange-500 hover:text-white hover:border-orange-500"
+                      ? " text-white hover:bg-orange-500 "
+                      : "border-black text-black hover:bg-orange-500 hover:text-white "
                   }`}
                 >
                   View Details

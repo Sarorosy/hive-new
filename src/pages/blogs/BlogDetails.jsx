@@ -162,7 +162,7 @@ function BlogDetails({ blogs, blogLoading }) {
         <aside className="lg:col-span-1">
           <div className="sticky top-24">
             <h3
-              className={`text-xl font-bold mb-6 ${
+              className={`text-xl liber mb-6 ${
                 theme === "dark" ? "text-white" : "text-black"
               }`}
             >
