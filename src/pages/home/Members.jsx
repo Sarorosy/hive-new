@@ -87,7 +87,7 @@ export default function Members() {
           100% { transform: translateX(calc(-100% / .2)); }
         }
         .animate-marquee {
-          animation: marquee 40s linear infinite;
+          animation: marquee 60s linear infinite;
           will-change: transform;
         }
       `}</style>
