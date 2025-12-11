@@ -148,7 +148,7 @@ export default function LearnMoreForm({ theme }) {
 
       {/* Right Form */}
       <div className={`md:w-1/2 p-8 ${bgCard}`}>
-        <h2 className={`text-2xl font-bold mb-6 ${textPrimary}`}>Learn More</h2>
+        <h2 className={`text-2xl liber mb-6 ${textPrimary}`}>Learn More</h2>
 
         <form
           onSubmit={handleSubmit}

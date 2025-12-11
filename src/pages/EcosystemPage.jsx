@@ -222,7 +222,7 @@ const EcosystemPage = () => {
       `}
     >
       <section className={theme === "dark" ? "bg-black" : "bg-white"}>
-        <div className="max-w-[90%] mx-auto px-4 pt-8 py-4 md:py-10">
+        <div className="max-w-[90%] mx-auto px-4 pt-8 py-4 md:py-3">
           <Breadcrumb
             items={[{ label: "Home", path: "/" }, { label: "Ecosystem" }]}
             theme={theme}
@@ -258,8 +258,8 @@ const EcosystemPage = () => {
           ${theme === "dark" ? "border-white/10 bg-black" : "border-black/10 bg-white"}
         `}
       >
-        <div className="max-w-[90%] mx-auto px-4 sm:px-4 lg:px-4 py-12 md:py-16">
-          <div className="mt-10">
+        <div className="max-w-[90%] mx-auto px-4 sm:px-4 lg:px-4 py-8 md:py-8">
+          <div className="">
             <div>
               <p
                 className={`
@@ -295,7 +295,7 @@ const EcosystemPage = () => {
 
       <section
         className={`
-          py-20 border-b
+          py-4 border-b
           ${theme === "dark" ? "border-white/10 bg-black" : "border-black/10 bg-white"}
         `}
       >

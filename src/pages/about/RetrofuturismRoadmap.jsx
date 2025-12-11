@@ -101,10 +101,10 @@ export default function RetrofuturismRoadmap() {
           {/* Stats Grid */}
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-3 max-w-3xl mx-auto">
             {[
-              { value: "5+", label: "Prime Locations", icon: MapPin },
-              { value: "100 %", label: "Satisfied Customers", icon: MapPin },
-              { value: "20000+", label: "Workstations", icon: Building },
-              { value: "50+", label: "Meeting Rooms", icon: Presentation }
+              { value: "6+", label: "Cities", icon: MapPin },
+              { value: "14 +", label: "Centers", icon: MapPin },
+              { value: "10000 +", label: "Seats", icon: Building },
+              { value: "0.7 million", label: "Sq.ft Area", icon: Presentation }
             ].map((stat, index) => {
               const Icon = stat.icon;
 

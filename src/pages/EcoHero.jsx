@@ -30,7 +30,7 @@ export default function EcoHero() {
         ${theme === "dark" ? "bg-black" : "bg-white"}
       `}
     >
-      <div className={`max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 ${theme == "dark" ? "bg-black" : "bg-white"}`}>
+      <div className={` mx-auto px-4 sm:px-6 lg:px-8 py-3 ${theme == "dark" ? "bg-black" : "bg-white"}`}>
 
         <Swiper
           spaceBetween={10}

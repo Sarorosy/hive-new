@@ -33,7 +33,7 @@ const DayPass = () => {
       <div className="max-w-7xl mx-auto flex flex-col md:flex-row w-full gap-6">
         {/* Left Side - Filters */}
         <div className="w-full md:w-1/3 bg-white/80 backdrop-blur-xl p-4 rounded shadow-xl border border-gray-100 md:sticky top-0">
-          <h2 className="text-2xl md:text-3xl font-extrabold liber text-gray-900 mb-4">
+          <h2 className="text-2xl md:text-3xl liber liber text-gray-900 mb-4">
             Book a <span className="text-orange-600">Day Pass</span>
           </h2>
           <p className="text-gray-600 mb-6 text-sm md:text-base leading-relaxed">

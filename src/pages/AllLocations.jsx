@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState } from "react";
-import { useNavigate, useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext, useParams, useSearchParams } from "react-router-dom";
 import { MapPin, ArrowUpRight, ChevronDown } from "lucide-react";
 import { centersData } from "../data/centersData";
 import { branchAddresses } from "../data/branchAddresses";
@@ -7,6 +7,10 @@ import { branchAddresses } from "../data/branchAddresses";
 const AllLocations = () => {
   const navigate = useNavigate();
   const { theme } = useOutletContext();
+  const [searchParams] = useSearchParams();
+  const cityParam = searchParams.get("city")?.toLowerCase() || "all";
+
+
 
   const branches = useMemo(() => {
     const list = [];
@@ -58,7 +62,8 @@ const AllLocations = () => {
     );
   }, []);
 
-  const [cityFilter, setCityFilter] = useState("all");
+  const [cityFilter, setCityFilter] = useState(cityParam);
+
   const [selectedBranchId, setSelectedBranchId] = useState(
     branches[0]?.id || null
   );

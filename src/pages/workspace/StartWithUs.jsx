@@ -14,7 +14,7 @@ const StartWithUs = ({ theme }) => {
       <div className="max-w-7xl mx-auto">
 
         {/* Heading */}
-        <h1 className={`text-4xl font-bold liber mb-16 ${textPrimary}`}>
+        <h1 className={`text-4xl liber mb-16 ${textPrimary}`}>
           Start your journey with us
         </h1>
 

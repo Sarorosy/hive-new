@@ -2,13 +2,11 @@ import { useState, useRef, useEffect } from "react";
 import { useNavigate, useLocation, Link as RouterLink } from "react-router-dom";
 import {
   Calendar,
-  User,
   Phone,
   Menu,
   X,
   ChevronDown,
   ChevronRight,
-  ShoppingCart,
   ArrowRight,
   Moon,
   Sun,
@@ -19,7 +17,7 @@ import { solutionOfferings } from "../data/workspacesData";
 import { useAuth } from "../utils/idb";
 import { API_URL } from "../utils/constants";
 
-const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
+const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
   const navigate = useNavigate();
   const location = useLocation();
   const [mobileOpen, setMobileOpen] = useState(false);
@@ -47,29 +45,28 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
   const [mobileSelectedCity, setMobileSelectedCity] = useState("");
 
   useEffect(() => {
+    if (location.pathname !== "/") {
+      setIsHeaderVisible(false);
+      return;
+    }
+
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const scrollThreshold = 50;
-      setIsScrolled(scrollPosition > scrollThreshold);
+      const scrollY = window.scrollY;
+      const threshold = 50;
 
-      if (scrollPosition <= scrollThreshold) {
+      // Show only when user is within top 50px
+      if (scrollY <= threshold) {
         setIsHeaderVisible(true);
-        lastScrollY.current = scrollPosition;
-        return;
-      }
-
-      if (scrollPosition > lastScrollY.current) {
+      } else {
         setIsHeaderVisible(false);
-      } else if (scrollPosition < lastScrollY.current) {
-        setIsHeaderVisible(true);
       }
 
-      lastScrollY.current = scrollPosition;
+      lastScrollY.current = scrollY;
     };
 
     window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
+  }, [location.pathname]);
 
   const fetchCartItems = async () => {
     try {
@@ -127,19 +124,21 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
       </div>
 
       <header
-        className={`fixed top-4 left-4 right-4 z-50 transition-all duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 right-0  z-50 transition-all duration-500 ease-in-out ${
           isHeaderVisible
-            ? "translate-y-0 opacity-100"
-            : "-translate-y-full opacity-0 pointer-events-none"
+            ? ""
+            : `${
+                theme === "dark" ? " bg-black" : " bg-white border-white/50"
+              }`
         }`}
       >
         <div
           className={`
-          mx-auto max-w-7xl rounded-2xl transition-all duration-300 ease-in-out group shadow-xl border
+          w-full mx-0  transition-all duration-300 ease-in-out 
           ${
             theme === "dark"
-              ? "bg-black/40 backdrop-blur-md text-white border-white/20 hover:bg-black/70"
-              : "bg-white/10 backdrop-blur-md text-[#092e46] border-white/20 hover:bg-white hover:border-white/50"
+              ? " hover:bg-black/70"
+              : " hover:bg-white hover:border-white/50"
           }
         `}
         >
@@ -172,9 +171,9 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                   About Us
                 </RouterLink>
 
-                <RouterLink className="hover:underline" to="/ecosystem">
+                {/* <RouterLink className="hover:underline" to="/ecosystem">
                   Ecosystem
-                </RouterLink>
+                </RouterLink> */}
 
                 {/* Solutions Dropdown */}
                 <div
@@ -202,15 +201,15 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                     }}
                     className="hover:underline cursor-pointer"
                   >
-                    Solutions
+                    Workspaces
                   </span>
 
                   {workspacesOpen && (
                     <div
-                      className={`absolute left-0 top-7 mt-2 w-xl z-20 shadow-xl rounded-sm
+                      className={`absolute left-0 top-7 mt-2 w-3xl z-20 shadow-xl rounded-sm
                         ${
                           theme === "dark"
-                            ? "bg-black text-white"
+                            ? "bg-gray-900 text-white"
                             : "bg-white text-black"
                         }`}
                     >
@@ -241,7 +240,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                           {offerings.map((offering) => (
                             <div
                               key={offering.title}
-                              className={`py-2 px-2 cursor-pointer rounded transition-colors ${
+                              className={`py-3 px-2 cursor-pointer rounded transition-colors ${
                                 hoveredOffering === offering.title
                                   ? theme === "dark"
                                     ? "bg-gray-800"
@@ -274,10 +273,15 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                                 <button
                                   key={index}
                                   onClick={() => {
+                                    if(item.slug === "virtual-office") {
+                                    navigate("/virtual-office");
+                                    setWorkspacesOpen(false);
+                                    return;
+                                  }
                                     navigate(`/workspaces/${item.slug}`);
                                     setWorkspacesOpen(false);
                                   }}
-                                  className={`block w-full text-left py-1 px-2 rounded text-sm transition-colors
+                                  className={`block w-full text-left py-3 px-2 rounded text-sm transition-colors
                                     ${
                                       theme === "dark"
                                         ? "hover:bg-gray-800"
@@ -307,7 +311,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                           to="/solutions"
                           className="inline-flex items-center gap-2 hover:underline"
                         >
-                          View all solutions <ArrowRight className="w-4 h-4" />
+                          View all workspaces <ArrowRight className="w-4 h-4" />
                         </RouterLink>
                       </div>
                     </div>
@@ -345,10 +349,10 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
 
                   {centresOpen && (
                     <div
-                      className={`absolute left-0 top-7 mt-2 w-lg rounded-sm z-20 shadow-xl
+                      className={`absolute left-0 top-7 mt-2 w-xl rounded-sm z-20 shadow-xl
                       ${
                         theme === "dark"
-                          ? "bg-black text-white"
+                          ? "bg-gray-900 text-white"
                           : "bg-white text-black"
                       }`}
                     >
@@ -409,7 +413,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                                 <button
                                   key={index}
                                   onClick={() => navigate(branch.route)}
-                                  className={`block w-full text-left py-2 px-2 rounded text-sm transition-colors
+                                  className={`block w-full text-left py-4 px-2 rounded text-sm transition-colors
                                   ${
                                     theme === "dark"
                                       ? "hover:bg-gray-800"
@@ -463,7 +467,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                 Book a Tour
               </button>
 
-              <button
+              {/* <button
                 onClick={() =>
                   user
                     ? navigate("/account/profile")
@@ -482,7 +486,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                 >
                   <ShoppingCart className="w-4 h-4" /> Cart ({cartCount})
                 </button>
-              )}
+              )} */}
 
               <a
                 href="tel:+917022274000"
@@ -530,13 +534,13 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
               </RouterLink>
 
               {/* ---- ECOSYSTEM ---- */}
-              <RouterLink
+              {/* <RouterLink
                 to="/ecosystem"
                 className="block py-2 text-lg"
                 onClick={() => setMobileOpen(false)}
               >
                 Ecosystem
-              </RouterLink>
+              </RouterLink> */}
 
               {/* ---- SOLUTIONS (COLLAPSIBLE) ---- */}
               <div>
@@ -544,7 +548,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                   onClick={() => setMobileSolutionsOpen(!mobileSolutionsOpen)}
                   className="w-full flex justify-between items-center py-2 text-lg"
                 >
-                  Solutions
+                  Workspaces
                   <ChevronDown
                     className={`transition-transform ${
                       mobileSolutionsOpen ? "rotate-180" : ""
@@ -584,6 +588,11 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                                 key={item.slug}
                                 className="block py-1"
                                 onClick={() => {
+                                  if(item.slug === "virtual-office") {
+                                    navigate("/virtual-office");
+                                    setMobileOpen(false);
+                                    return;
+                                  }
                                   navigate(`/workspaces/${item.slug}`);
                                   setMobileOpen(false);
                                 }}
@@ -602,7 +611,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                       className="block py-2 underline text-sm"
                       onClick={() => setMobileOpen(false)}
                     >
-                      View All Solutions
+                      View All Workspaces
                     </RouterLink>
                   </div>
                 )}
@@ -682,7 +691,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
               </RouterLink>
 
               {/* ---- CART ---- */}
-              {cartCount > 0 && (
+              {/* {cartCount > 0 && (
                 <button
                   className="flex items-center gap-2 py-2 text-lg"
                   onClick={() => {
@@ -692,10 +701,10 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
                 >
                   <ShoppingCart className="w-5 h-5" /> Cart ({cartCount})
                 </button>
-              )}
+              )} */}
 
               {/* ---- ACCOUNT ---- */}
-              <button
+              {/* <button
                 className="flex items-center gap-2 py-2 text-lg"
                 onClick={() => {
                   user
@@ -706,7 +715,7 @@ const Header = ({ onBookTourClick, theme = "light", onToggleTheme }) => {
               >
                 <User className="w-5 h-5" />
                 {user ? user.name : "My Account"}
-              </button>
+              </button> */}
 
               {/* ---- CALL ---- */}
               <a

@@ -2,65 +2,96 @@ import virtualOfficeImage from "../assets/offerings/privatecabins/3.jpg";
 
 export const workspaceTabs = [
   {
-    id: "private",
-    label: "Private Offices",
-    image: "/spacetypes/privatecabin.jpg",
-    title: "Your Complete Workspace Ready From Day One",
+    id: "office-spaces",
+    label: "Office Spaces",
+    image: "/spacetypes/privatecabin-2.jpg",
+    title: "Ready-to-Move-In or Customisable Private Offices",
     description:
-      "At The Hive, you get a complete move-in-ready office designed for comfort, focus, and productivity. Every workspace matches your team's style, size, and workflow, making it easy to settle in and start working right away.",
+      "Create a branded headquarters with private floors, executive cabins, and enterprise-grade infrastructure managed entirely by us.",
     highlights: [
-      "Dedicated cabins designed for individuals or growing teams",
-      "Premium facilities available in a top-tier business location",
-      "Round-the-clock access with exclusive member perks and benefits",
+      "End-to-end project delivery with branding, IT, and facility management",
+      "Agile floor plans that scale with every team milestone",
+      "Enterprise security, visitor management, and dedicated community teams",
     ],
-    linkLabel: "Learn more about our Private Offices",
-    link: "/workspaces/private-cabins",
+    items: [
+      {
+        name: "Managed Offices",
+        slug: "managed-offices",
+        description: "Fully managed floors built for mid to large teams.",
+      },
+      {
+        name: "Enterprise Solutions",
+        slug: "enterprise-solutions",
+        description: "Custom campuses with bespoke branding and security.",
+      },
+    ],
+    linkLabel: "Explore office solutions",
+    link: "/workspaces/managed-offices",
   },
+
   {
-    id: "coworking",
+    id: "coworking-spaces",
     label: "Coworking Spaces",
     image: "/spacetypes/hotdesk.jpg",
-    title: "Work Comfortably From Any Hive Location Today",
+    title: "Coworking Spaces for the Hour, Day, or Month",
     description:
-      "At The Hive, you can sit and get things done at any of our centres while enjoying all the facilities, support, and community advantages.",
+      "Choose how you work each day—drop in for a few hours, secure a dedicated desk, or switch between locations seamlessly.",
     highlights: [
-      "Open Seating: Choose any spot and begin your day at convenience",
-      "Personal Station: A permanent place that's always reserved for you",
-      "Short-Stay Room: A private cabin available for days or weeks",
+      "Flexible passes and memberships for individuals and distributed teams",
+      "Access to premium amenities, programs, and concierge support",
+      "Transparent pricing with unified billing across all Hive centres",
     ],
-    linkLabel: "Explore coworking options",
+    items: [
+      {
+        name: "Dedicated Desks",
+        slug: "dedicated-desks",
+        description: "A permanent workstation that is always yours.",
+      },
+      {
+        name: "Hot Desks",
+        slug: "hot-desks",
+        description: "Any seat, any time across multiple centres.",
+      },
+      {
+        name: "Private Cabins",
+        slug: "private-cabins",
+        description: "Premium cabins that are ready from day one.",
+      },
+    ],
+    linkLabel: "See coworking memberships",
     link: "/workspaces/hot-desks",
   },
+
   {
-    id: "virtual",
-    label: "Virtual Offices",
-    image: virtualOfficeImage,
-    title: "A Strong Business Identity With Trusted Address",
+    id: "additional-solutions",
+    label: "Additional Solutions",
+    image: "/meeting-room.jpg",
+    title: "Solutions That Go Beyond Workspaces",
     description:
-      "Create a solid presence for your brand using The Hive's virtual office solutions. Get a recognised address, organised call support, and managed mail services, perfect for individuals.",
+      "Activate premium venues, boardrooms, and community programs tailored for important meetings and milestone events.",
     highlights: [
-      "Registered Location: Use our centre's address to present your company",
-      "Phone Assistance: Receive a local number with organised call responses",
-      "Dual Plan: Get both options together plus complimentary workspace access",
+      "Hospitality-led teams to support every meeting, training, or launch",
+      "Spaces that adapt to workshops, town halls, and private gatherings",
+      "Add-on services for catering, production, and concierge support",
     ],
-    linkLabel: "See virtual office plans",
-    link: "/",
-  },
-  {
-    id: "enterprise",
-    label: "Managed Enterprise Solutions",
-    image: "/spacetypes/4.jpg",
-    title: "Custom Design Office Space That Fits Your Business",
-    description:
-      "A customised office solution for companies of all sizes. We'll take care of location, branding, IT and more. All you'll have to do is move in and start working in your perfectly designed space right away.",
-    highlights: [
-      "Build your custom office space without upfront capital expenditures required",
-      "Workspace designed for productivity and collaboration with your team members",
+    items: [
+      {
+        name: "Meetings & Event Spaces",
+        slug: "meetings-and-event-spaces",
+        description: "Premium rooms and venues for every occasion.",
+      },
+      {
+        name: "Virtual Offices",
+        slug: "virtual-office",
+        description:
+          "Registered address, managed mail, and phone support to build a professional business presence.",
+      },
     ],
-    linkLabel: "Talk to our enterprise team",
-    link: "/workspaces/enterprise-solutions",
+    linkLabel: "Plan meetings & events",
+    link: "/workspaces/meetings-and-event-spaces",
   },
 ];
+
 
 export const meetingsEventsData = [
   {
@@ -106,11 +137,7 @@ export const solutionOfferings = [
         slug: "enterprise-solutions",
         description: "Custom campuses with bespoke branding and security.",
       },
-      {
-        name: "Private Cabins",
-        slug: "private-cabins",
-        description: "Premium cabins that are ready from day one.",
-      },
+      
     ],
     linkLabel: "Explore office solutions",
   },
@@ -138,6 +165,11 @@ export const solutionOfferings = [
         slug: "hot-desks",
         description: "Any seat, any time across multiple centres.",
       },
+      {
+        name: "Private Cabins",
+        slug: "private-cabins",
+        description: "Premium cabins that are ready from day one.",
+      },
     ],
     linkLabel: "See coworking memberships",
   },
@@ -159,6 +191,11 @@ export const solutionOfferings = [
         name: "Meetings & Event Spaces",
         slug: "meetings-and-event-spaces",
         description: "Premium rooms and venues for every occasion.",
+      },
+      {
+        name: "Virtual Offices",
+        slug: "virtual-office",
+        description: "Registered address, managed mail, and phone support to build a professional business presence.",
       },
     ],
     linkLabel: "Plan meetings & events",

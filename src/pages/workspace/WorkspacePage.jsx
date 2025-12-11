@@ -45,6 +45,7 @@ import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";
 import meetings3 from "../../assets/raw/blr/THEHIVEVR16.jpg";
 
 import whyChooseUs from "../../assets/raw/chn/skcl/IMG_7932.JPG";
+import CityCarousel from "./CityCarousel";
 
 const WorkspacePage = () => {
   const { slug } = useParams();
@@ -118,7 +119,7 @@ const WorkspacePage = () => {
   return (
     <div className={`${bgPrimary} relative pt-18`}>
       {/* HERO */}
-      <section className="relative min-h-[60vh] sm:min-h-[70vh] overflow-hidden">
+      <section className="relative min-h-[80vh] sm:min-h-[80vh] overflow-hidden">
         <div
           className={`absolute inset-0 bg-cover bg-center bg-no-repeat `}
           style={{
@@ -135,7 +136,7 @@ const WorkspacePage = () => {
               Premium Workspace Solution
             </div>
 
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl liber mb-6">
               {workspace.title}
             </h1>
 
@@ -170,13 +171,13 @@ const WorkspacePage = () => {
       </section>
 
       {/* PRICE CARD */}
-      <section className="-mt-20 relative z-20">
+      <section className="-mt-38 relative z-20">
         <div className="max-w-7xl mx-auto px-4">
           <div
             className={`rounded-2xl shadow-2xl p-8 max-w-md mx-auto border ${bgCard}`}
           >
             <div className="text-center">
-              <div className={`text-3xl font-bold ${textPrimary}`}>
+              <div className={`text-3xl liber ${textPrimary}`}>
                 {formatPrice(workspace.pricing.from)}
                 <span className={`text-base ${textSecondary}`}>
                   /{workspace.pricing.period}
@@ -189,7 +190,7 @@ const WorkspacePage = () => {
 
               <a
                 href="#Form"
-                className="w-full mt-6 block bg-gradient-to-r from-black to-gray-800 text-white py-4 rounded-lg hover:scale-105 transition"
+                className="w-full mt-6 block bg-gradient-to-r from-black to-gray-700 text-white py-4 rounded-lg hover:scale-105 transition"
               >
                 Get Started Now
               </a>
@@ -213,12 +214,12 @@ const WorkspacePage = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
           <div>
-            <div className="inline-flex items-center bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm mb-6">
+            {/* <div className="inline-flex items-center bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm mb-6">
               <Camera className="w-4 h-4 mr-2" />
               Real workspace photos
-            </div>
+            </div> */}
 
-            <h2 className={`text-4xl font-bold mb-6 ${textPrimary}`}>
+            <h2 className={`text-4xl liber mb-6 ${textPrimary}`}>
               Experience the Perfect Work Environment
             </h2>
 
@@ -228,12 +229,12 @@ const WorkspacePage = () => {
 
             <div className="grid grid-cols-2 gap-6">
               <div className={`text-center p-4 rounded-xl ${bgCard}`}>
-                <div className={`text-3xl font-bold ${textPrimary}`}>500+</div>
+                <div className={`text-3xl liber ${textPrimary}`}>500+</div>
                 <div className={textSecondary}>Happy Members</div>
               </div>
 
               <div className={`text-center p-4 rounded-xl ${bgCard}`}>
-                <div className={`text-3xl font-bold ${textPrimary}`}>98%</div>
+                <div className={`text-3xl liber ${textPrimary}`}>98%</div>
                 <div className={textSecondary}>Satisfaction Rate</div>
               </div>
             </div>
@@ -255,10 +256,10 @@ const WorkspacePage = () => {
                   <Star className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className={`font-semibold ${textPrimary}`}>
+                  <div className={`font-semibold ${theme === "dark" ? "text-black" : "text-black"}`}>
                     Premium Quality
                   </div>
-                  <div className={textSecondary}>Certified workspace</div>
+                  <div className={`text-gray-800`}>Certified workspace</div>
                 </div>
               </div>
             </div>
@@ -266,14 +267,54 @@ const WorkspacePage = () => {
         </div>
       </section>
 
+      <hr className="text-gray-600 max-w-7xl mx-auto" />
+
+      {/* MANAGED OFFICES CITY CARDS */}
+      {workspace?.slug === "managed-offices" && (
+        <section
+          className={`
+      py-20 transition-colors
+      ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}
+    `}
+        >
+          <div className="max-w-7xl mx-auto px-4">
+
+            <h2
+              className={`text-4xl liber mb-12 text-center 
+        ${theme === "dark" ? "text-white" : "text-black"}`}
+            >
+              Our Managed Offices (Sold Out)
+            </h2>
+
+            <div className="grid md:grid-cols-2 gap-10">
+              <CityCarousel
+                city="Delhi"
+                totalImages={10}
+                basePath="/delhi"
+                theme={theme}
+              />
+
+              <CityCarousel
+                city="Mumbai"
+                totalImages={9}
+                basePath="/mumbai"
+                theme={theme}
+              />
+            </div>
+
+          </div>
+        </section>
+      )}
+
+
+
       {/* FEATURES */}
       <section
         className={`py-20 transition-colors 
-    ${
-      theme === "dark"
-        ? "bg-gradient-to-br from-gray-900 to-gray-800"
-        : "bg-gradient-to-br from-gray-50 to-white"
-    }`}
+    ${theme === "dark"
+            ? "bg-gradient-to-br from-gray-900 to-gray-800"
+            : "bg-gradient-to-br from-gray-50 to-white"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4">
           {/* Heading */}
@@ -285,7 +326,7 @@ const WorkspacePage = () => {
               Everything Included
             </span>
 
-            <h2 className={`text-5xl font-bold mt-6 ${textPrimary}`}>
+            <h2 className={`text-5xl liber mt-6 ${textPrimary}`}>
               Premium Features
             </h2>
 
@@ -302,29 +343,26 @@ const WorkspacePage = () => {
                 <div
                   key={i}
                   className={`p-8 rounded-2xl border shadow-sm transition 
-              ${
-                theme === "dark"
-                  ? "bg-gray-800 border-gray-700 hover:border-gray-400"
-                  : "bg-white border-gray-200 hover:border-gray-600"
-              }`}
+              ${theme === "dark"
+                      ? "bg-gray-800 border-gray-700 hover:border-gray-400"
+                      : "bg-white border-gray-200 hover:border-gray-600"
+                    }`}
                 >
                   {/* Icon Box */}
                   <div
                     className={`w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition
-                ${
-                  theme === "dark"
-                    ? "bg-gradient-to-br from-gray-200 to-gray-400"
-                    : "bg-gradient-to-br from-black to-gray-700"
-                }`}
+                ${theme === "dark"
+                        ? "bg-gradient-to-br from-gray-200 to-gray-400"
+                        : "bg-gradient-to-br from-black to-gray-700"
+                      }`}
                   >
                     <Icon
-                      className={`w-6 h-6 ${
-                        theme === "dark" ? "text-black" : "text-white"
-                      }`}
+                      className={`w-6 h-6 ${theme === "dark" ? "text-black" : "text-white"
+                        }`}
                     />
                   </div>
 
-                  <h3 className={`text-xl font-bold mb-4 ${textPrimary}`}>
+                  <h3 className={`text-xl liber mb-4 ${textPrimary}`}>
                     {f.title}
                   </h3>
 
@@ -340,7 +378,7 @@ const WorkspacePage = () => {
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
-            <h2 className={`text-5xl font-bold ${textPrimary}`}>
+            <h2 className={`text-5xl liber ${textPrimary}`}>
               Why Choose {workspace?.name}?
             </h2>
             <p className={`text-xl mt-4 ${textSecondary}`}>
@@ -389,16 +427,15 @@ const WorkspacePage = () => {
 
       {/* AMENITIES */}
       <section
-        className={`py-20 transition-colors ${
-          theme === "dark"
+        className={`py-20 transition-colors ${theme === "dark"
             ? "bg-gradient-to-br from-gray-900 to-gray-800"
             : "bg-gradient-to-br from-white to-gray-50"
-        }`}
+          }`}
       >
         <div className="max-w-7xl mx-auto px-4">
           {/* Heading */}
           <div className="text-center mb-16">
-            <h2 className={`text-5xl font-bold ${textPrimary}`}>
+            <h2 className={`text-5xl liber ${textPrimary}`}>
               World-Class Amenities
             </h2>
 
@@ -416,20 +453,18 @@ const WorkspacePage = () => {
                 <div
                   key={i}
                   className={`text-center p-6 rounded-xl transition border 
-              ${
-                theme === "dark"
-                  ? "bg-gray-800 border-gray-700 hover:border-gray-400"
-                  : "bg-gray-50 border-gray-200 hover:border-black"
-              }`}
+              ${theme === "dark"
+                      ? "bg-gray-800 border-gray-700 hover:border-gray-400"
+                      : "bg-gray-50 border-gray-200 hover:border-black"
+                    }`}
                 >
                   <div
                     className={`w-16 h-16 rounded-xl flex items-center justify-center mx-auto mb-4 transition
                 ${theme === "dark" ? "bg-white/10" : "bg-black/10"}`}
                   >
                     <Icon
-                      className={`w-8 h-8 transition ${
-                        theme === "dark" ? "text-white" : "text-black"
-                      }`}
+                      className={`w-8 h-8 transition ${theme === "dark" ? "text-white" : "text-black"
+                        }`}
                     />
                   </div>
 
@@ -448,7 +483,7 @@ const WorkspacePage = () => {
       {/* CTA */}
       <section className="py-20">
         <div className="max-w-7xl mx-auto px-4 text-center">
-          <h2 className={`text-5xl font-bold ${textPrimary}`}>
+          <h2 className={`text-5xl liber ${textPrimary}`}>
             Ready to Transform Your Workspace?
           </h2>
 
@@ -466,11 +501,10 @@ const WorkspacePage = () => {
 
             <a
               href="#Form"
-              className={`px-10 py-5 border-2 rounded-xl font-bold transition ${
-                theme === "dark"
+              className={`px-10 py-5 border-2 rounded-xl liber transition ${theme === "dark"
                   ? "border-white text-white hover:bg-white hover:text-black"
                   : "border-black text-black hover:bg-black hover:text-white"
-              }`}
+                }`}
             >
               Get Custom Quote
             </a>

@@ -56,7 +56,7 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
 
   return (
     <span className={theme != "dark" ? "text-white" : "text-black"}>
-      {count} {end != 100  ? "%" : "+"}
+      {count} {end == 0.7 ? "Million" : "+"}
     </span>
   );
 };
@@ -93,86 +93,89 @@ const Stats = () => {
     <div
       ref={statsRef}
       className={`
-        py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 
-        rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto my-2
-        ${
-          theme != "dark"
-            ? "bg-black text-white border border-slate-800"
-            : "bg-white text-black border border-slate-200"
+    py-6 px-4 md:px-12 flex flex-col md:flex-row items-center justify-between gap-6 
+    rounded-tl-[45px] rounded-br-[45px] shadow-lg max-w-6xl mx-auto my-2
+    ${theme != "dark"
+          ? "bg-black text-white border border-slate-800"
+          : "bg-white text-black border border-slate-200"
         }
-      `}
+  `}
     >
       {/* LEFT CTA */}
       <button
         type="button"
         onClick={() => navigate("/about-us")}
         className={`
-          bg-gradient-to-br from-goldt via-gold to-goldt border rounded-tl-[25px] rounded-br-[25px] 
-          px-6 py-3 flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer
-          ${theme != "dark" ? "border-white/20" : "border-black/20"}
-        `}
+      bg-gradient-to-br from-goldt via-gold to-goldt border rounded-tl-[25px] rounded-br-[25px] 
+      px-6 py-3 flex items-center gap-4 hover:scale-105 transition-transform cursor-pointer
+      ${theme != "dark" ? "border-white/20" : "border-black/20"}
+    `}
       >
         <span className="text-sm opacity-90 flex items-center gap-1">
           <span
             className={`
-              font-semibold px-4 py-2 rounded-tl-[15px] rounded-br-[15px] text-sm
-              ${theme != "dark" ? "bg-white text-black" : "bg-black text-white"}
-            `}
+          font-semibold px-4 py-2 rounded-tl-[15px] rounded-br-[15px] text-sm
+          ${theme != "dark" ? "bg-white text-black" : "bg-black text-white"}
+        `}
           >
             Know More
           </span>
           <ArrowUpRight
-            className={`w-4 h-4 ${
-              theme != "dark" ? "text-white" : "text-black"
-            }`}
+            className={`w-4 h-4 ${theme != "dark" ? "text-white" : "text-black"
+              }`}
           />
         </span>
       </button>
 
-      {/* RIGHT STATS */}
+      {/* RIGHT STATS - ASCENDING ORDER */}
       <div
         className={`
-          flex flex-wrap justify-center gap-6 text-center text-sm md:text-base
-          ${theme != "dark" ? "text-white" : "text-black"}
-        `}
+      flex flex-wrap justify-center gap-6 text-center text-sm md:text-base
+      ${theme != "dark" ? "text-white" : "text-black"}
+    `}
       >
+        {/* 6+ Cities */}
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={5} shouldAnimate={isVisible} />{" "}
+            <Counter end={6} shouldAnimate={isVisible} />{" "}
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
-            Prime Locations
+            Cities
           </p>
         </div>
 
+        {/* 14+ Centers */}
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={20000} duration={1} shouldAnimate={isVisible} />{" "}
+            <Counter end={14} shouldAnimate={isVisible} />
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
-            Workstations
+            Centers
           </p>
         </div>
 
+        {/* 10,000+ Seats */}
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={50} shouldAnimate={isVisible} />{" "}
+            <Counter end={10000} shouldAnimate={isVisible} />{" "}
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
-            Meeting Rooms
+            Seats
           </p>
         </div>
 
+        {/* 0.7M Sq.ft Area */}
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={100} shouldAnimate={isVisible} />{" "}
+            <Counter end={0.7} shouldAnimate={isVisible} /> 
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
-            Satisfied Customers
+            Sq.ft Area
           </p>
         </div>
       </div>
     </div>
+
   );
 };
 

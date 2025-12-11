@@ -91,9 +91,8 @@ export default function HiveWorkspaces() {
 
   return (
     <div
-      className={`min-h-screen relative overflow-hidden ${
-        isDark ? "bg-black text-white" : "bg-white text-gray-900"
-      }`}
+      className={`min-h-screen relative overflow-hidden ${isDark ? "bg-black text-white" : "bg-white text-gray-900"
+        }`}
     >
       {/* Animated geometric background */}
       <div className="fixed inset-0 -z-10 pointer-events-none">
@@ -108,16 +107,14 @@ export default function HiveWorkspaces() {
           />
         ))}
         <div
-          className={`absolute inset-0 bg-gradient-to-br ${
-            isDark ? "from-black via-slate-900 to-black" : "from-white via-gray-50 to-white"
-          }`}
+          className={`absolute inset-0 bg-gradient-to-br ${isDark ? "from-black via-slate-900 to-black" : "from-white via-gray-50 to-white"
+            }`}
         ></div>
         <div
-          className={`absolute inset-0 ${
-            isDark
+          className={`absolute inset-0 ${isDark
               ? "bg-[radial-gradient(circle_at_30%_20%,rgba(255,255,255,0.05)_0%,transparent_50%)]"
               : "bg-[radial-gradient(circle_at_30%_20%,rgba(0,0,0,0.03)_0%,transparent_50%)]"
-          }`}
+            }`}
         ></div>
       </div>
 
@@ -133,9 +130,8 @@ export default function HiveWorkspaces() {
             <div className="flex items-center justify-center gap-3 mb-8">
               <div className={`w-16 h-px ${isDark ? "bg-slate-600" : "bg-gray-300"}`}></div>
               <span
-                className={`text-sm font-medium  uppercase ${
-                  isDark ? "text-slate-300" : "text-gray-500"
-                }`}
+                className={`text-sm font-medium  uppercase ${isDark ? "text-slate-300" : "text-gray-500"
+                  }`}
               >
                 Our Identity
               </span>
@@ -167,21 +163,18 @@ export default function HiveWorkspaces() {
               className="relative mb-16"
             >
               <div
-                className={`absolute -inset-0.5 rounded-3xl blur opacity-20 bg-gradient-to-r ${
-                  isDark ? "from-white/60 to-slate-500/60" : "from-black to-gray-800"
-                }`}
+                className={`absolute -inset-0.5 rounded-3xl blur opacity-20 bg-gradient-to-r ${isDark ? "from-white/60 to-slate-500/60" : "from-black to-gray-800"
+                  }`}
               ></div>
               <div
-                className={`relative rounded-3xl p-12 border ${
-                  isDark ? "bg-black/70 border-slate-800" : "bg-white border-gray-100"
-                }`}
+                className={`relative rounded-3xl p-12 border ${isDark ? "bg-black/70 border-slate-800" : "bg-white border-gray-100"
+                  }`}
               >
                 <div className="max-w-3xl mx-auto text-center">
 
                   <p
-                    className={`text-xl md:text-2xl leading-relaxed ${
-                      isDark ? "text-slate-200" : "text-gray-700"
-                    }`}
+                    className={`text-xl md:text-2xl leading-relaxed ${isDark ? "text-slate-200" : "text-gray-700"
+                      }`}
                   >
                     The Hive is more than a shared office... it's a{" "}
                     <span className={` ${isDark ? "text-white" : "text-black"}`}>
@@ -194,26 +187,26 @@ export default function HiveWorkspaces() {
             {/* Core pillars grid */}
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
               {[
-                { 
-                  icon: Building2, 
+                {
+                  icon: Building2,
                   title: "Managed Solutions",
                   description: "Grade-A managed office solutions",
                   color: isDark ? "bg-white/10" : "bg-blue-50"
                 },
-                { 
-                  icon: TrendingUp, 
+                {
+                  icon: TrendingUp,
                   title: "Flexible Models",
                   description: "Flexible leasing and enterprise workspace models",
                   color: isDark ? "bg-white/10" : "bg-green-50"
                 },
-                { 
-                  icon: Zap, 
+                {
+                  icon: Zap,
                   title: "Smart Management",
                   description: "Smart, tech-integrated workplace management",
                   color: isDark ? "bg-white/10" : "bg-purple-50"
                 },
-                { 
-                  icon: Users, 
+                {
+                  icon: Users,
                   title: "Community Driven",
                   description: "Community-focused environments that drive innovation",
                   color: isDark ? "bg-white/10" : "bg-orange-50"
@@ -228,11 +221,10 @@ export default function HiveWorkspaces() {
                   className="group relative"
                 >
                   <div
-                    className={`absolute inset-0 rounded-2xl border transition-all duration-300 bg-gradient-to-br ${
-                      isDark
+                    className={`absolute inset-0 rounded-2xl border transition-all duration-300 bg-gradient-to-br ${isDark
                         ? "from-black/60 to-slate-900/60 border-slate-800 group-hover:border-white/40"
                         : "from-white to-gray-50 border-gray-100 group-hover:border-gray-300"
-                    }`}
+                      }`}
                   ></div>
                   <div className="relative p-8">
                     <div className={`w-14 h-14 rounded-xl ${item.color} flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
@@ -253,9 +245,8 @@ export default function HiveWorkspaces() {
               className="text-center max-w-3xl mx-auto"
             >
               <div
-                className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 ${
-                  isDark ? "bg-white/10" : "bg-gray-50"
-                }`}
+                className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 ${isDark ? "bg-white/10" : "bg-gray-50"
+                  }`}
               >
                 <TargetIcon className={`w-4 h-4 ${isDark ? "text-white" : "text-gray-600"}`} />
                 <span className={`text-sm font-medium ${isDark ? "text-white" : "text-gray-700"}`}>
@@ -263,9 +254,8 @@ export default function HiveWorkspaces() {
                 </span>
               </div>
               <p
-                className={`text-xl leading-relaxed ${
-                  isDark ? "text-slate-300" : "text-gray-600"
-                }`}
+                className={`text-xl leading-relaxed ${isDark ? "text-slate-300" : "text-gray-600"
+                  }`}
               >
                 Our purpose is simple: to help businesses grow better by providing them with spaces that are not just functional, but transformational.
               </p>
@@ -274,159 +264,178 @@ export default function HiveWorkspaces() {
         </div>
       </section>
 
-      {/* Mission & Why Choose Section */}
       <section
-        className={`py-24 bg-gradient-to-b ${
-          isDark ? "from-black via-slate-900 to-black" : "from-white to-gray-50"
-        }`}
+        className={`py-8 bg-gradient-to-b ${isDark ? "from-black via-slate-900 to-black" : "from-white to-gray-50"
+          }`}
       >
-        <div className="max-w-7xl mx-auto px-6">
-          <div className="grid lg:grid-cols-2 gap-16 items-start">
-            {/* Mission */}
-            <motion.div
-              initial={{ opacity: 0, x: -40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="sticky top-24">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
-                  <span
-                    className={`text-sm font-medium  uppercase ${
-                      isDark ? "text-slate-300" : "text-gray-500"
-                    }`}
-                  >
-                    Our Mission
-                  </span>
-                </div>
-                <h2 className="text-4xl md:text-5xl  mb-8 liber">
-                  Driving Business<br />
-                  <span className={isDark ? "text-slate-400" : "text-gray-400"}>
-                    Excellence Forward
-                  </span>
-                </h2>
-                
-                <div className="relative mb-12">
-                  <div
-                    className={`absolute -inset-4 rounded-2xl blur-xl ${
-                      isDark
-                        ? "bg-gradient-to-r from-white/5 to-transparent"
-                        : "bg-gradient-to-r from-black/5 to-transparent"
-                    }`}
-                  ></div>
-                  <div
-                    className={`relative p-10 rounded-2xl bg-gradient-to-br ${
-                      isDark ? "from-white/10 to-slate-800" : "from-black to-gray-800"
-                    } text-white`}
-                  >
-                    <div className="text-5xl  mb-2">"</div>
-                    <p className="text-xl leading-relaxed mb-6">
-                      To provide premium, flexible workspace solutions that empower businesses to scale, innovate, and thrive in a dynamic market environment.
-                    </p>
-                    <div className="flex items-center gap-3">
-                      <div className="w-8 h-0.5 bg-white/50"></div>
-                      <span className="text-sm font-medium">The Hive Promise</span>
-                    </div>
-                  </div>
+        <div className="max-w-5xl mx-auto px-6 space-y-24">
+
+          {/* -----------------------------------------
+       TOP SECTION — MISSION
+    ------------------------------------------ */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-3"
+          >
+            {/* Mission Label */}
+            <div className="flex items-center gap-3">
+              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
+              <span
+                className={`text-sm font-medium uppercase ${isDark ? "text-slate-300" : "text-gray-500"
+                  }`}
+              >
+                Our Mission
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl liber leading-tight">
+              Driving Business Excellence Forward
+              
+            </h2>
+
+            {/* Mission Card */}
+            <div className="relative">
+              <div
+                className={`absolute -inset-4 rounded-2xl blur-xl ${isDark
+                    ? "bg-gradient-to-r from-white/5 to-transparent"
+                    : "bg-gradient-to-r from-black/5 to-transparent"
+                  }`}
+              ></div>
+
+              <div
+                className={`relative p-10 rounded-2xl bg-gradient-to-br ${isDark ? "from-white/10 to-slate-800" : "from-black to-gray-800"
+                  } text-white`}
+              >
+                <div className="text-5xl mb-2">"</div>
+
+                <p className="text-xl leading-relaxed mb-6">
+                  To provide premium, flexible workspace solutions that empower
+                  businesses to scale, innovate, and thrive in a dynamic market
+                  environment.
+                </p>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-0.5 bg-white/50"></div>
+                  <span className="text-sm font-medium">The Hive Promise</span>
                 </div>
               </div>
-            </motion.div>
+            </div>
+          </motion.div>
 
-            {/* Why Choose Us */}
-            <motion.div
-              initial={{ opacity: 0, x: 40 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-            >
-              <div className="space-y-8">
-                <div className="flex items-center gap-3 mb-8">
-                  <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
-                  <span
-                    className={`text-sm font-medium tracking-widest uppercase ${
-                      isDark ? "text-slate-300" : "text-gray-500"
-                    }`}
-                  >
-                    Why Choose Us
-                  </span>
-                </div>
-                
-                <h3 className="text-3xl  mb-10 liber">
-                  The Hive<br />
-                  <span className={isDark ? "text-slate-400" : "text-gray-400"}>Advantage</span>
-                </h3>
+          {/* -----------------------------------------
+       BOTTOM SECTION — WHY CHOOSE US
+    ------------------------------------------ */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-2"
+          >
+            {/* Label */}
+            <div className="flex items-center gap-3">
+              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
+              <span
+                className={`text-sm font-medium uppercase ${isDark ? "text-slate-300" : "text-gray-500"
+                  }`}
+              >
+                Why Choose Us
+              </span>
+            </div>
 
-                {[
-                  {
-                    icon: Sparkles,
-                    title: "Customised Workspace Solutions",
-                    description: "Whether you need a private office, dedicated suite, managed corporate floor, or a fully custom build-to-suit workspace — The Hive delivers."
-                  },
-                  {
-                    icon: MapPin,
-                    title: "Prime Strategic Locations",
-                    description: "Centres placed across high-demand commercial hubs ensure maximum accessibility and business visibility."
-                  },
-                  {
-                    icon: Building2,
-                    title: "Hospitality-Led Experience",
-                    description: "Seamless facilities management, concierge-level support, and frictionless day-to-day experience."
-                  },
-                  {
-                    icon: Users,
-                    title: "Thriving Business Community",
-                    description: "Curated network of founders, innovators, and professionals with events and workshops."
-                  },
-                  {
-                    icon: Leaf,
-                    title: "Sustainable & Smart",
-                    description: "Energy-efficient, eco-friendly, and technology-integrated environment."
-                  }
-                ].map((item, index) => (
-                  <motion.div
-                    key={index}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: index * 0.1 }}
-                    className="group relative"
-                  >
-                    <div
-                      className={`flex gap-6 p-6 rounded-2xl transition-all duration-300 ${
-                        isDark
-                          ? "hover:bg-white/10 hover:shadow-lg"
-                          : "hover:bg-white hover:shadow-lg"
+            {/* Heading */}
+            <h3 className="text-3xl liber leading-tight">
+              The Hive <br />
+              <span className={isDark ? "text-slate-400" : "text-gray-400"}>
+                Advantage
+              </span>
+            </h3>
+
+            {/* List Items */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Sparkles,
+                  title: "Customised Workspace Solutions",
+                  description:
+                    "Private offices, corporate suites, managed floors, or fully custom build-to-suit workspaces."
+                },
+                {
+                  icon: MapPin,
+                  title: "Prime Strategic Locations",
+                  description:
+                    "Centres placed across high-demand commercial hubs for maximum accessibility."
+                },
+                {
+                  icon: Building2,
+                  title: "Hospitality-Led Experience",
+                  description:
+                    "Concierge-level support, seamless facilities, and frictionless operations."
+                },
+                {
+                  icon: Users,
+                  title: "Thriving Business Community",
+                  description:
+                    "A curated network of founders, innovators, and professionals with events and workshops."
+                },
+                {
+                  icon: Leaf,
+                  title: "Sustainable & Smart",
+                  description:
+                    "Eco-friendly, energy-efficient, and technology-integrated workspace environment."
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className={`group flex gap-6 p-6 rounded-2xl transition-all duration-300
+        cursor-default
+        hover:shadow-xl
+        ${isDark ? "bg-gray-900 hover:bg-gray-800" : "hover:bg-white bg-gray-100"}`}
+                >
+                  {/* Icon */}
+                  <div
+                    className={`w-10 h-10 px-2 rounded-xl flex items-center justify-center
+        ${isDark
+                        ? "bg-white/10 group-hover:bg-white/20"
+                        : "bg-gray-200 group-hover:bg-black group-hover:text-white"
                       }`}
+                  >
+                    <item.icon className={`w-4 h-4 ${isDark ? "text-white" : ""}`} />
+                  </div>
+
+                  {/* Text */}
+                  <div>
+                    <h4
+                      className={`text-lg mb-1 ${isDark ? "text-white" : "text-gray-900"
+                        }`}
                     >
-                      <div className="flex-shrink-0">
-                        <div
-                          className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors duration-300 ${
-                            isDark
-                              ? "bg-white/10 group-hover:bg-white/20 group-hover:text-white"
-                              : "bg-gray-100 group-hover:bg-black group-hover:text-white"
-                          }`}
-                        >
-                          <item.icon className={`w-5 h-5 ${isDark ? "text-white" : ""}`} />
-                        </div>
-                      </div>
-                      <div>
-                        <h4 className={`text-lg  mb-2 ${isDark ? "text-white" : "text-gray-900"}`}>
-                          {item.title}
-                        </h4>
-                        <p className={`${isDark ? "text-slate-300" : "text-gray-600"} leading-relaxed`}>
-                          {item.description}
-                        </p>
-                      </div>
-                    </div>
-                  </motion.div>
-                ))}
-              </div>
-            </motion.div>
-          </div>
+                      {item.title}
+                    </h4>
+
+                    <p
+                      className={`leading-relaxed ${isDark ? "text-slate-300" : "text-gray-600"
+                        }`}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
+          </motion.div>
         </div>
       </section>
 
+
       {/* Future Ready Platform */}
-      <section className={`py-24 ${isDark ? "bg-black" : "bg-white"}`}>
+      <section className={`py-8 ${isDark ? "bg-black" : "bg-white"}`}>
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0 }}
@@ -434,13 +443,13 @@ export default function HiveWorkspaces() {
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            
+
             <h2 className="text-3xl md:text-4xl mb-6 liber">
               Future-Ready<br />
               <span className={isDark ? "text-slate-400" : "text-gray-400"}>Platform</span>
             </h2>
             <p className={`text-xl max-w-4xl mx-auto ${isDark ? "text-slate-300" : "text-gray-600"}`}>
-              The future of work is dynamic, digital and hybrid.<br/>&<br/> The Hive is built for it.
+              The future of work is dynamic, digital and hybrid.<br />&<br /> The Hive is built for it.
             </p>
           </motion.div>
 
@@ -462,9 +471,8 @@ export default function HiveWorkspaces() {
                 className="text-center p-8"
               >
                 <div
-                  className={`w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-6 shadow-sm bg-gradient-to-br ${
-                    isDark ? "from-white/10 to-slate-800/50" : "from-gray-100 to-white"
-                  }`}
+                  className={`w-16 h-16 mx-auto rounded-2xl flex items-center justify-center mb-6 shadow-sm bg-gradient-to-br ${isDark ? "from-white/10 to-slate-800/50" : "from-gray-100 to-white"
+                    }`}
                 >
                   <item.icon className={`w-7 h-7 ${isDark ? "text-white" : "text-gray-800"}`} />
                 </div>
@@ -491,7 +499,7 @@ export default function HiveWorkspaces() {
 
 
       {/* Conclusion */}
-      <section className="pyt-2 pb-10 bg-gradient-to-br from-black to-gray-900 text-white">
+      <section className="pt-3 pb-10 bg-gradient-to-br from-black to-gray-900 text-white">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
@@ -513,14 +521,14 @@ export default function HiveWorkspaces() {
                 By combining premium Grade-A infrastructure with scalable, technology-enabled solutions, The Hive delivers value that goes beyond traditional office spaces.
                 With premium amenities, strategic locations, and a forward-thinking roadmap, The Hive is actively shaping the next chapter of work in India.
               </p>
-              
+
             </div>
           </motion.div>
         </div>
       </section>
 
-      
-      
+
+
     </div>
   );
 }

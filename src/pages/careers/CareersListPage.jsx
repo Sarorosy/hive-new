@@ -18,7 +18,7 @@ function CareersListPage({ jobs, jobLoading }) {
         {/* Header */}
         <div className="mb-12 text-center">
           <h1
-            className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${
+            className={`text-3xl sm:text-4xl liber tracking-tight ${
               theme === "dark" ? "text-white" : "text-black"
             }`}
           >

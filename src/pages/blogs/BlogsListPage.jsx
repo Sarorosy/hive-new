@@ -20,7 +20,7 @@ function BlogsListPage({ blogs, blogLoading }) {
         <div className="mb-10 flex items-end justify-between gap-4">
           <div>
             <h1
-              className={`text-3xl sm:text-4xl font-extrabold tracking-tight ${
+              className={`text-3xl sm:text-4xl liber tracking-tight ${
                 isDark ? "text-white" : "text-black"
               }`}
             >
@@ -103,7 +103,7 @@ function BlogsListPage({ blogs, blogLoading }) {
                   >
                     <h2
                       className={`
-                        text-lg sm:text-xl font-bold transition-colors line-clamp-2
+                        text-lg sm:text-xl liber transition-colors line-clamp-2
                         ${isDark ? "text-white group-hover:text-orange-400" : "text-black group-hover:text-orange-500"}
                       `}
                     >
@@ -147,7 +147,7 @@ function BlogsListPage({ blogs, blogLoading }) {
                     <div className="flex items-center gap-3">
                       <div
                         className={`
-                          grid h-9 w-9 place-items-center rounded-full text-xs font-bold
+                          grid h-9 w-9 place-items-center rounded-full text-xs liber
                           ${isDark ? "bg-white text-black" : "bg-black text-white"}
                         `}
                       >

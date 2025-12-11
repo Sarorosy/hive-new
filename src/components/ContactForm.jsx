@@ -8,6 +8,15 @@ import {
   User,
   Users,
   X,
+  Armchair,
+  Zap,
+  Lock,
+  Monitor,
+  Building2,
+  Briefcase,
+  Globe,
+  MessageSquare,
+  Palette,
 } from "lucide-react";
 import toast from "react-hot-toast";
 import { motion } from "framer-motion";
@@ -162,18 +171,42 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
             </a>
           </div>
 
-          <h3 className="font-bold mb-2">We Offer:</h3>
-          <ul className={`list-disc list-inside space-y-1 ${leftText}`}>
-            <li>Hot Desks</li>
-            <li>Flexi Passes</li>
-            <li>Private Cabins</li>
-            <li>Dedicated Desks</li>
-            <li>Managed Offices</li>
-            <li>Enterprise Offices</li>
-            <li>Virtual Offices</li>
-            <li>Meeting Rooms</li>
-            <li>Customized Workspaces</li>
-          </ul>
+          <h3 className="font-bold mb-4">We Offer:</h3>
+          <div className="grid grid-cols-2 gap-4">
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <Armchair className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Hot Desks</span>
+            </div>
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <Zap className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Flexi Passes</span>
+            </div>
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <Lock className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Private Cabins</span>
+            </div>
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <Monitor className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Dedicated Desks</span>
+            </div>
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <Building2 className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Managed Offices</span>
+            </div>
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <Briefcase className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Enterprise Offices</span>
+            </div>
+            
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <MessageSquare className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Meeting Rooms</span>
+            </div>
+            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
+              <Palette className="w-5 h-5 text-orange-500 flex-shrink-0" />
+              <span>Customized Workspaces</span>
+            </div>
+          </div>
         </div>
 
         {/* RIGHT FORM */}

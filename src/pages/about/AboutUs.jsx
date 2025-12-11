@@ -82,14 +82,8 @@ export default function AboutUs() {
 
               <div className="mb-8">
                 <h1 className="text-5xl md:text-6xl font-medium mb-4 liber">
-                  The Hive
-                  <span
-                    className={`block ${
-                      isDark ? "text-slate-300" : "text-gray-600"
-                    }`}
-                  >
-                    Workspaces
-                  </span>
+                  The Hive Workspaces
+                  
                 </h1>
                 <div
                   className={`w-20 h-0.5 mb-6 ${
@@ -220,8 +214,7 @@ export default function AboutUs() {
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                   <Circle size={16} className="mr-2 pt-2" /> The Hive Workspaces was established as part of The Xander
-                    Group's portfolio.
+                   <Circle size={16} className="mr-2 pt-2" /> The Hive Workspaces was founded to deliver premium workspaces for modern businesses across India.
                   </p>
                   <p
                     className={`flex  items-start leading-relaxed text-sm md:text-base ${

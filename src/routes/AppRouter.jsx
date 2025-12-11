@@ -56,6 +56,7 @@ import Contact from "../pages/contact/Contact";
 import AllLocations from "../pages/AllLocations";
 import Sitemap from "../pages/Sitemap";
 import AllWorkspaces from "../pages/AllWorkspaces";
+import VirtualOffice from "../pages/VirtualOffice";
 
 
 export default function AppRouter() {
@@ -165,6 +166,7 @@ export default function AppRouter() {
 
             <Route path="/support/faq" element={<AllFaq />} />
             <Route path="/day_pass" element={<DayPass />} />
+            <Route path="/virtual-office" element={<VirtualOffice />} />
             <Route path="/ecosystem" element={<EcosystemPage />} />
 
             <Route path="/sitemap" element={<Sitemap />} />

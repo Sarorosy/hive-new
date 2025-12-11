@@ -3,10 +3,38 @@ import { ArrowRight, CheckCircle2 } from "lucide-react";
 import WorkspaceTypes from "./home/WorkspaceTypes";
 import MeetingsEvents from "./home/MeetingsEvents";
 import { solutionOfferings } from "../data/workspacesData";
+import { workspaces } from "../data/workspaceData";
+
+// IMAGES
+import ManagedOffices from "../assets/raw/all/DSC07782-min.JPG";
+
+import EnterPriseSol from "../assets/raw/chn/YAV00102-min.JPG";
+
+import privateCabins2 from "../assets/offerings/privatecabins/2.jpg";
+
+import dedicatedDesks from "../assets/raw/chn/skcl/dedicated.jpg";
+
+import hotdesks from "../assets/offerings/hotdesks/2.jpg";
+import meetings3 from "../assets/raw/blr/THEHIVEVR16.jpg";
+import virtual from "../assets/virtual-offices.jpg";
+
 
 const AllWorkspaces = () => {
   const navigate = useNavigate();
   const { theme } = useOutletContext();
+
+  const getWorkspaceImage = (slug) => {
+    const map = {
+      "managed-offices": ManagedOffices,
+      "enterprise-solutions": EnterPriseSol,
+      "private-cabins": privateCabins2,
+      "dedicated-desks": dedicatedDesks,
+      "hot-desks": hotdesks,
+      "meetings-and-event-spaces": meetings3,
+      "virtual-office": virtual,
+    };
+    return map[slug] || ManagedOffices;
+  };
 
   return (
     <main
@@ -42,7 +70,7 @@ const AllWorkspaces = () => {
                 ${theme === "dark" ? "text-gray-300" : "text-black/70"}
               `}
             >
-              Industrious offers dedicated and shared workspaces for individuals and teams.
+              The Hive offers dedicated and shared workspaces for individuals and teams.
             </p>
           </div>
 
@@ -64,13 +92,13 @@ const AllWorkspaces = () => {
       {/* WORKSPACE CATALOG */}
       <section
         className={`
-          py-16 px-4 md:px-8 xl:px-0
+          py-16 px-4 md:px-8 
           ${theme === "dark" ? "bg-black" : "bg-white"}
         `}
       >
-        <div className="max-w-6xl mx-auto space-y-10">
+        <div className="max-w-7xl mx-auto space-y-10">
 
-          <div className="space-y-3">
+          <div className="space-y-3 max-w-lg">
             <p
               className={`
                 text-sm uppercase tracking-[0.3em]
@@ -101,97 +129,84 @@ const AllWorkspaces = () => {
             </p>
           </div>
 
-          {/* WORKSPACE LIST */}
-          <div className="grid gap-6 md:grid-cols-2">
+          {/* WORKSPACE SECTIONS (left heading + right tiles) */}
+          <div className="space-y-12">
             {solutionOfferings.map((offering) => (
-              <article
+              <section
                 key={offering.id}
-                className={`
-                  rounded-2xl p-6 space-y-5 shadow-sm transition-shadow
-                  ${theme === "dark"
-                    ? "border border-white/10 bg-white/5 hover:shadow-lg"
-                    : "border border-slate-200 bg-white hover:shadow-xl"}
-                `}
+                className="flex flex-col md:flex-row items-start gap-6 md:gap-12"
               >
-                <div className="flex items-start gap-4 ">
-                  <div
-                    className={`
-                      w-12 h-12 rounded-full flex items-center justify-center
-                      ${theme === "dark" ? "bg-white/10" : "bg-slate-100"}
-                    `}
-                  >
-                    <img
-                      src={offering.image}
-                      alt={offering.title}
-                      className="w-6 h-6"
-                      loading="lazy"
-                    />
-                  </div>
+                {/* Left: icon + title + description */}
+                <div className="md:w-[280px] flex-shrink-0 flex items-start gap-4">
 
                   <div>
-                    <p
-                      className={`
-                        text-xs uppercase tracking-[0.3em]
-                        ${theme === "dark" ? "text-gray-400" : "text-slate-500"}
-                      `}
-                    >
-                      {offering.subtitle}
-                    </p>
-
                     <h3
-                      className={`
-                        text-2xl liber
-                        ${theme === "dark" ? "text-white" : "text-black"}
-                      `}
+                      className={`text-3xl liber ${theme === "dark" ? "text-white" : "text-black"
+                        }`}
                     >
                       {offering.title}
                     </h3>
+                    <div
+                      className={`w-20 h-0.5 my-2 ${theme == "dark" ? "bg-slate-600" : "bg-gray-300"
+                        }`}
+                    ></div>
+
+                    <p
+                      className={`mt-2 max-w-md ${theme === "dark" ? "text-gray-300" : "text-slate-600"
+                        }`}
+                    >
+                      {offering.description}
+                    </p>
                   </div>
                 </div>
 
-                <p
-                  className={`
-                    leading-relaxed
-                    ${theme === "dark" ? "text-gray-300" : "text-slate-600"}
-                  `}
-                >
-                  {offering.description}
-                </p>
-
-                <ul className="space-y-2">
-                  {offering.highlights.map((highlight) => (
-                    <li
-                      key={highlight}
-                      className={`
-                        flex items-start gap-2 text-sm
-                        ${theme === "dark" ? "text-gray-200" : "text-slate-700"}
-                      `}
-                    >
-                      <CheckCircle2 className="w-4 h-4 text-[#f5c774] shrink-0 mt-0.5" />
-                      <span>{highlight}</span>
-                    </li>
-                  ))}
-                </ul>
-
-                {/* CTA BUTTONS */}
-                <div className="flex flex-wrap gap-3">
+                {/* Right: item tiles */}
+                <div className="flex-1 grid gap-6 md:grid-cols-3">
                   {offering.items.map((item) => (
-                    <button
+                    <div
                       key={item.slug}
-                      onClick={() => navigate(`/workspaces/${item.slug}`)}
-                      className={`
-                        inline-flex items-center gap-2 rounded-full px-4 py-2 text-xs  uppercase tracking-wider transition-colors
-                        ${theme === "dark"
-                          ? "bg-white/20 text-white hover:bg-white/30"
-                          : "bg-[#0e1932] text-white hover:bg-black"}
-                      `}
+                      onClick={() => {
+                        if (item.slug == "virtual-office") {
+                          navigate(`/${item.slug}`)
+                        } else {
+                          navigate(`/workspaces/${item.slug}`)
+                        }
+                      }}
+                      className={`rounded-2xl cursor-pointer p-3 shadow-sm transition-shadow ${theme === "dark"
+                          ? "border border-white/10 bg-white/5 hover:shadow-lg"
+                          : "border border-slate-200 bg-white hover:border-slate-400"
+                        }`}
                     >
-                      {item.name}
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </button>
+                      <div className="h-36 mb-4 overflow-hidden  rounded-lg bg-slate-50">
+                        <img
+                          src={getWorkspaceImage(item.slug)}
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      </div>
+
+                      <h4
+                        className={`text-lg liber ${theme === "dark" ? "text-white" : "text-black"
+                          }`}
+                      >
+                        {item.name}
+                      </h4>
+
+                      {item.description && (
+                        <p
+                          className={`mt-2 text-sm ${theme === "dark" ? "text-gray-300" : "text-slate-600"
+                            }`}
+                        >
+                          {item.description}
+                        </p>
+                      )}
+
+
+                    </div>
                   ))}
                 </div>
-              </article>
+              </section>
             ))}
           </div>
         </div>
@@ -199,11 +214,11 @@ const AllWorkspaces = () => {
 
       {/* Workspace Types */}
       <div className={theme === "dark" ? "bg-gray-900" : "bg-slate-50"}>
-        <WorkspaceTypes />
+        {/* <WorkspaceTypes /> */}
       </div>
 
       {/* Meetings and Events */}
-      <MeetingsEvents />
+      {/* <MeetingsEvents /> */}
 
       {/* CTA SECTION */}
       <section

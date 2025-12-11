@@ -20,7 +20,7 @@ function Home() {
     <div>
         <Hero />
         <WorkspaceTypes />
-        <MeetingsEvents />
+        {/* <MeetingsEvents /> */}
         <Stats />
         {/* <SmallAbout /> */}
         <FeaturedCentres />

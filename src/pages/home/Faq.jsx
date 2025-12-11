@@ -110,12 +110,12 @@ export default function Faq() {
                 navigate("/support/faq");
               }}
               className={`
-                flex items-center cursor-pointer px-4 py-2 rounded-md text-sm font-medium transition
+                flex items-center cursor-pointer px-4 py-2 font-semibold text-sm  transition
                 ${
-                  theme === "dark"
-                    ? "bg-white/10 text-white hover:bg-white hover:text-black"
-                    : "bg-black text-white hover:bg-gray-800"
-                }
+              theme === "dark"
+                ? "text-black bg-white hover:bg-gradient-to-br hover:from-goldt hover:via-gold hover:to-goldt hover:text-black"
+                : "bg-gradient-to-br from-goldt via-gold to-goldt text-black hover:bg-black "
+            }
               `}
             >
               View More <ArrowRight className="ml-2" size={18} />

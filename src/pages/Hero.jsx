@@ -78,26 +78,27 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
   }, [setIsOpen]);
 
   return (
-    <div className="relative " ref={ref}>
+    <div className="relative" ref={ref}>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full border border-gray-300 rounded px-3 py-2 cursor-pointer hover:border-black transition"
+        className={`flex items-center justify-between w-full border rounded px-3 py-2 cursor-pointer transition
+          border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500 bg-white dark:bg-black`}
       >
         <div className="flex items-center gap-2">
-          <MapPin className="w-4 h-4 text-gray-200" />
-          <span className={`text-sm ${selected ? "text-gray-200" : "text-gray-200"}`}>
+          <MapPin className="w-4 h-4 text-gray-600 dark:text-gray-200" />
+          <span className={`text-sm ${selected ? 'text-gray-900 dark:text-gray-200' : 'text-gray-500 dark:text-gray-400'}`}>
             {selected || "Choose a City"}
           </span>
         </div>
-        {isOpen ? ( 
-          <ChevronUp className="w-4 h-4 text-gray-400" />
+        {isOpen ? (
+          <ChevronUp className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-400" />
+          <ChevronDown className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         )}
       </div>
 
       {isOpen && (
-        <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-50 max-h-64 overflow-y-auto">
+        <div className="absolute mt-2 w-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-50 max-h-64 overflow-y-auto">
           {cities.map((city, idx) => (
             <div
               key={idx}
@@ -105,9 +106,9 @@ const CityDropdown = ({ selected, setSelected, isOpen, setIsOpen }) => {
                 setSelected(city);
                 setIsOpen(false);
               }}
-              className="px-4 py-3 hover:bg-gray-50 cursor-pointer"
+              className="px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
             >
-              <div className="text-sm font-medium text-gray-900">{city}</div>
+              <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{city}</div>
             </div>
           ))}
         </div>
@@ -135,25 +136,24 @@ const CenterDropdown = ({ selected, setSelected, selectedCity, isOpen, setIsOpen
     <div className="relative" ref={ref}>
       <div
         onClick={() => selectedCity && setIsOpen(!isOpen)}
-        className={`flex items-center justify-between w-full border border-gray-300 rounded px-3 py-2 transition ${
-          !selectedCity ? " cursor-not-allowed" : "cursor-pointer hover:border-black"
-        }`}
+        className={`flex items-center justify-between w-full border rounded px-3 py-2 transition
+          ${!selectedCity ? 'cursor-not-allowed bg-white dark:bg-black border-gray-200 dark:border-gray-700 text-gray-400 dark:text-gray-500' : 'cursor-pointer bg-white dark:bg-black border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500'}`}
       >
         <div className="flex items-center gap-2">
-          <Building className="w-4 h-4 text-gray-200" />
-          <span className={`text-sm ${selected ? "text-gray-200" : "text-gray-200"}`}>
+          <Building className="w-4 h-4 text-gray-600 dark:text-gray-200" />
+          <span className={`text-sm ${selected ? 'text-gray-900 dark:text-gray-200' : 'text-gray-500 dark:text-gray-400'}`}>
             {selected || "Choose a Center"}
           </span>
         </div>
         {isOpen ? (
-          <ChevronUp className="w-4 h-4 text-gray-400" />
+          <ChevronUp className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-400" />
+          <ChevronDown className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         )}
       </div>
 
       {isOpen && selectedCity && centers.length > 0 && (
-        <div className="absolute mt-2 w-full bg-white border border-gray-300 rounded-xl shadow-lg z-50 max-h-64 overflow-y-auto">
+        <div className="absolute mt-2 w-full bg-white dark:bg-black border border-gray-300 dark:border-gray-700 rounded-xl shadow-lg z-50 max-h-64 overflow-y-auto">
           {centers.map((center, idx) => (
             <div
               key={idx}
@@ -161,9 +161,9 @@ const CenterDropdown = ({ selected, setSelected, selectedCity, isOpen, setIsOpen
                 setSelected(center);
                 setIsOpen(false);
               }}
-              className="px-4 py-3 hover:bg-gray-50 cursor-pointer"
+              className="px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer"
             >
-              <div className="text-sm font-medium text-gray-900">{center}</div>
+              <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{center}</div>
             </div>
           ))}
         </div>
@@ -190,22 +190,23 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
     <div className="relative" ref={ref}>
       <div
         onClick={() => setIsOpen(!isOpen)}
-        className="flex items-center justify-between w-full border border-gray-300 rounded px-3 py-2 transition cursor-pointer hover:border-black"
+        className={`flex items-center justify-between w-full border rounded px-3 py-2 transition cursor-pointer
+          bg-white dark:bg-black border-gray-300 dark:border-gray-700 hover:border-gray-400 dark:hover:border-gray-500`}
       >
         <div className="flex items-center gap-2">
-          <span className={`text-sm ${selected ? "text-gray-200" : "text-gray-200"}`}>
+          <span className={`text-sm ${selected ? 'text-gray-900 dark:text-gray-200' : 'text-gray-500 dark:text-gray-400'}`}>
             {selected || "Choose a Solution"}
           </span>
         </div>
         {isOpen ? (
-          <ChevronUp className="w-4 h-4 text-gray-400" />
+          <ChevronUp className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         ) : (
-          <ChevronDown className="w-4 h-4 text-gray-400" />
+          <ChevronDown className="w-4 h-4 text-gray-500 dark:text-gray-400" />
         )}
       </div>
 
       {isOpen && (
-        <div className="absolute mt-2 w-full bg-white border border-gray-200 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
+        <div className="absolute mt-2 w-full bg-white dark:bg-black border border-gray-200 dark:border-gray-700 rounded-xl shadow-lg z-20 max-h-64 overflow-y-auto">
           {offerings.map((offering, idx) => (
             <div
               key={idx}
@@ -214,12 +215,12 @@ const OfferingDropdown = ({ selected, setSelected,setSelectedOfferingSlug,  isOp
                 setSelectedOfferingSlug(offering.slug);
                 setIsOpen(false);
               }}
-              className="px-4 py-3 hover:bg-gray-50 cursor-pointer flex items-center gap-3"
+              className="px-4 py-3 hover:bg-gray-100 dark:hover:bg-gray-800 cursor-pointer flex items-center gap-3"
             >
               <img loading="lazy" src={offering.slug == "day-pass" ? daypass :  offering.slug == "coworking-spaces" ? building :office} alt="" className="w-6 h-6" />
               <div>
-                <div className="text-sm font-medium text-gray-900">{offering.title}</div>
-                <div className="text-xs text-gray-500">{offering.subtitle}</div>
+                <div className="text-sm font-medium text-gray-900 dark:text-gray-100">{offering.title}</div>
+                <div className="text-xs text-gray-500 dark:text-gray-400">{offering.subtitle}</div>
               </div>
             </div>
           ))}
@@ -336,9 +337,9 @@ const Hero = () => {
           </div>
         </div>
 
-        {/* Bottom Row Form */}
-        <div className="w-full max-w-4xl mx-auto">
-          <div className="bg-white/10 backdrop-blur-lg rounded-xl p-4 md:p-6 shadow-[0_8px_32px_0_rgba(0,0,0,0.37)] flex flex-col gap-4 md:flex-row md:items-center">
+        {/* Bottom Row Form (black/white theme-aware) */}
+        <div className="w-full max-w-2xl mx-auto">
+          <div className="bg-white dark:bg-black rounded-xl p-4  shadow-[0_8px_32px_0_rgba(0,0,0,0.12)] flex flex-col gap-4 md:flex-row md:items-center">
             <div className="flex flex-col gap-4 w-full md:flex-row md:flex-1">
               <div className="flex-1">
                 <CityDropdown
@@ -371,17 +372,19 @@ const Hero = () => {
 
             {/* Search Button */}
             <button
-              disabled={!selectedCity || !selectedCenter}
+              disabled={!selectedCity}
               className={`w-full md:w-auto px-6 py-2 rounded flex items-center justify-center gap-2 font-semibold transition
-                ${(!selectedCity || !selectedCenter)
-                ? "bg-black text-gray-400 cursor-not-allowed"
-                : "bg-black text-white hover:bg-gray-800 cursor-pointer"}`}
-              onClick={()=>{
+                ${!selectedCity
+                ? "bg-gray-200 text-gray-400 cursor-not-allowed dark:bg-gray-800 dark:text-gray-500"
+                : "bg-black text-white hover:opacity-90 dark:bg-white dark:text-black dark:hover:opacity-90 cursor-pointer"}`}
+              onClick={() => {
                 if (selectedCity && selectedCenter) {
                   const branch = citiesData[selectedCity]?.branches.find(b => b.name === selectedCenter);
                   if (branch?.route) {
                     navigate(branch.route);
                   }
+                } else if (selectedCity && !selectedCenter) {
+                  navigate(`/locations?city=${selectedCity}`);
                 }
               }}
             >

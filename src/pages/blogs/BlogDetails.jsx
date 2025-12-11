@@ -83,7 +83,7 @@ function BlogDetails({ blogs, blogLoading }) {
             )}
 
             <h1
-              className={`mt-4 text-3xl sm:text-4xl font-extrabold tracking-tight ${
+              className={`mt-4 text-3xl sm:text-4xl liber tracking-tight ${
                 theme === "dark" ? "text-white" : "text-black"
               }`}
             >
