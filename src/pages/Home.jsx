@@ -20,6 +20,7 @@ function Home() {
     <div>
         <Hero />
         <WorkspaceTypes />
+        {/* <iframe src="https://widgets.sociablekit.com/instagram-feed/iframe/25632273" className='w-full mx-auto h-[400px]' frameborder="0" width="1000px" height="100%"></iframe> */}
         {/* <MeetingsEvents /> */}
         <Stats />
         {/* <SmallAbout /> */}

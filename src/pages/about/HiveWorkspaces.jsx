@@ -191,19 +191,19 @@ export default function HiveWorkspaces() {
                   icon: Building2,
                   title: "Managed Solutions",
                   description: "Grade-A managed office solutions",
-                  color: isDark ? "bg-white/10" : "bg-blue-50"
+                  color: isDark ? "bg-white/10" : "bg-orange-50"
                 },
                 {
                   icon: TrendingUp,
                   title: "Flexible Models",
                   description: "Flexible leasing and enterprise workspace models",
-                  color: isDark ? "bg-white/10" : "bg-green-50"
+                  color: isDark ? "bg-white/10" : "bg-orange-50"
                 },
                 {
                   icon: Zap,
                   title: "Smart Management",
                   description: "Smart, tech-integrated workplace management",
-                  color: isDark ? "bg-white/10" : "bg-purple-50"
+                  color: isDark ? "bg-white/10" : "bg-orange-50"
                 },
                 {
                   icon: Users,

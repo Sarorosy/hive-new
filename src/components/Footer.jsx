@@ -132,7 +132,7 @@ export default function Footer({ theme = "light" }) {
                 Careers
               </li>
               <li
-                onClick={() => navigate("/faq")}
+                onClick={() => navigate("/support/faq")}
                 className="hover:text-orange-500 cursor-pointer duration-200"
               >
                 FAQ
