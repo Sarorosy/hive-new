@@ -289,7 +289,10 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                                     }
                                   `}
                                 >
-                                  {item.name}
+                                  <div className="flex flex-col">
+                                    {item.name}
+                                    <span className="text-gray-500 f-10">{item.description}</span>
+                                  </div>
                                 </button>
                               ))
                           ) : (
