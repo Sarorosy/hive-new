@@ -34,7 +34,7 @@ import omr5 from "../assets/raw/chn/omr/5.jpg";
 import omr6 from "../assets/raw/chn/omr/6.jpg";
 
 //images for chennai SKCL
-// import skcl0 from "../assets/BUILDINGS/1.png";
+import skcl0 from "../assets/BUILDINGS/SKCL.jpg";
 import skcl1 from "../assets/raw/chn/skcl/1.png";
 import skcl2 from "../assets/raw/chn/skcl/s1.jpg";
 import skcl3 from "../assets/raw/chn/skcl/s2.jpg";
@@ -84,6 +84,7 @@ import blr16 from "../assets/raw/blr/IMG_20250318_113128119.jpg";
 import blr17 from "../assets/raw/blr/IMG_20250318_123453359.jpg";
 
 //whitefield
+import wh0 from '../assets/BUILDINGS/PTP.jpg';
 import wh1 from '../assets/raw/blr/whitefield/Common-Areas_2.jpg';
 import wh2 from '../assets/raw/blr/whitefield/Hive-Blr_-Reception.jpg';
 import wh3 from '../assets/raw/blr/whitefield/HiveBlr_Cabin3.jpg';
@@ -175,7 +176,7 @@ export const centersData = {
         ],
         details: "Located near Guindy, this space offers excellent connectivity, collaborative environments, and top-notch facilities.",
         images: [
-          skcl2,skcl1,skcl3,skcl4,skcl5
+          skcl0, skcl2,skcl1,skcl3,skcl4,skcl5
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.362000448057!2d80.20681027512359!3d13.012604287306493!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5267583ea87459%3A0xe203dc67d754aab6!2sThe%20Hive%20-%20Flexible%20Workspace%2CSKCL%20Guindy%2C%20Chennai!5e0!3m2!1sen!2sin!4v1755267876394!5m2!1sen!2sin",
         lat:"13.012813353724379",
@@ -237,7 +238,7 @@ export const centersData = {
         ],
         details: "Perfect for professionals and creatives, located at Prestige Tech Park.",
         images: [
-           blr5
+           wh0, blr5
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8177.653847263165!2d77.68972939874689!3d12.944424787895871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13b26af6ecc7%3A0x8e8d6f4f7363dfb7!2sPrestige%20Tech%20Platina!5e0!3m2!1sen!2sin!4v1755268196685!5m2!1sen!2sin",
         lat:"12.944307674401166",
