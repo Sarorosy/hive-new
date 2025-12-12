@@ -244,15 +244,6 @@ export default function HiveWorkspaces() {
               transition={{ delay: 0.8 }}
               className="text-center max-w-3xl mx-auto"
             >
-              <div
-                className={`inline-flex items-center gap-3 px-6 py-3 rounded-full mb-6 ${isDark ? "bg-white/10" : "bg-gray-50"
-                  }`}
-              >
-                <TargetIcon className={`w-4 h-4 ${isDark ? "text-white" : "text-gray-600"}`} />
-                <span className={`text-sm font-medium ${isDark ? "text-white" : "text-gray-700"}`}>
-                  Our Purpose
-                </span>
-              </div>
               <p
                 className={`text-xl leading-relaxed ${isDark ? "text-slate-300" : "text-gray-600"
                   }`}

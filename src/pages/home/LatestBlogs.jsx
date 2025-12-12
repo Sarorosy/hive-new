@@ -114,7 +114,7 @@ const LatestBlogs = () => {
             <button
               type="button"
               onClick={() => navigate(`/blog/${blog.slug}`)}
-              className="block h-52 overflow-hidden"
+              className=" overflow-hidden"
             >
               <img
                 src={`${API_URL}/${blog.thumbnail}`}

@@ -67,12 +67,12 @@ export default function Members() {
             {duplicatedSponsors.map((sponsor, index) => (
               <div
                 key={`${sponsor.id}-${index}`}
-                className="flex-shrink-0 flex items-center justify-center px-2"
+                className="flex-shrink-0 flex items-center py-2  justify-center px-2"
               >
                 <img
                   src={sponsor.src}
                   alt={sponsor.alt}
-                  className="h-16 md:h-20 w-auto object-contain members-image max-w-[150px]"
+                  className="h-18 rounded-full py-4 px-3 md:h-20 w-auto object-contain members-image max-w-[150px]"
                   loading="lazy"
                 />
               </div>
