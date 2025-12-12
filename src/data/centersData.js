@@ -6,6 +6,7 @@ import pune from '../assets/pune.png';
 
 //images for VR
 
+import vr0 from "../assets/BUILDINGS/VRC-CHENNAI.jpg";
 import vr1 from "../assets/raw/chn/vr/1.jpg";
 import vr2 from "../assets/raw/chn/vr/2.jpg";
 import vr3 from "../assets/raw/chn/vr/3.jpg";
@@ -24,6 +25,7 @@ import ch77 from "../assets/raw/chn/skcl/IMGIDSHCVSHU.jpg";
 
 //images for OMR
 
+import omr0 from "../assets/BUILDINGS/OMR-CHENNAI.jpg";
 import omr1 from "../assets/raw/chn/omr/1.jpg";
 import omr2 from "../assets/raw/chn/omr/2.jpg";
 import omr3 from "../assets/raw/chn/omr/3.jpg";
@@ -32,6 +34,7 @@ import omr5 from "../assets/raw/chn/omr/5.jpg";
 import omr6 from "../assets/raw/chn/omr/6.jpg";
 
 //images for chennai SKCL
+// import skcl0 from "../assets/BUILDINGS/1.png";
 import skcl1 from "../assets/raw/chn/skcl/1.png";
 import skcl2 from "../assets/raw/chn/skcl/s1.jpg";
 import skcl3 from "../assets/raw/chn/skcl/s2.jpg";
@@ -61,6 +64,7 @@ import ch27 from "../assets/raw/chn/YAV00080-min.JPG";
 
 
 //images for bangalore
+import whitefield from "../assets/BUILDINGS/VR,BENGALURE.jpg"
 import blr1 from "../assets/raw/blr/_SPL0002-min.JPG";
 import blr2 from "../assets/raw/blr/_SPL9627-min.JPG";
 import blr3 from "../assets/raw/blr/IMG_20250318_011402314-min.jpg";
@@ -92,6 +96,7 @@ import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.JPG';
 import wh10 from '../assets/raw/blr/whitefield/_SPL9783-min.JPG';
 
 //images for Hyderabad
+import hyd0 from "../assets/BUILDINGS/the_hive_hydrabad.jpg";
 import hyd1 from "../assets/raw/hyd/HiveHyd_15-Seater-Cabin.jpg";
 import hyd2 from "../assets/raw/hyd/HiveHyd_Enterprise-Pantry_11zon.jpg";
 import hyd3 from "../assets/raw/hyd/HiveHyd_Pantry_11zon.jpg";
@@ -102,6 +107,7 @@ import hyd7 from "../assets/raw/hyd/PUR01544-min.jpg";
 import hyd8 from "../assets/raw/hyd/PUR01637-min.JPG";
 
 //images for Pune
+import pune0 from "../assets/BUILDINGS/MILLS-PUNE.jpg";
 import pune1 from "../assets/raw/pune/HivePune_18-Seater-MR.jpg";
 import pune2 from "../assets/raw/pune/HivePune_Amphitheater.jpg";
 import pune3 from "../assets/raw/pune/HivePune_Cafe.jpg";
@@ -139,7 +145,7 @@ export const centersData = {
         ],
         details: "Located in the heart of Anna Nagar, this coworking space offers modern amenities, high-speed internet, meeting rooms, and vibrant interiors.",
         images: [
-          vr1,vr2,vr3,vr5,vr6,vr7
+          vr0, vr1,vr2,vr3,vr5,vr6,vr7
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.2932777426718!2d80.19485637512473!3d13.080590287244858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265b5d8e2606b%3A0x648fcc48a540559f!2sThe%20Hive!5e0!3m2!1sen!2sin!4v1755267396136!5m2!1sen!2sin",
         lat:"13.080893350150644",
@@ -154,7 +160,7 @@ export const centersData = {
         ],
         details: "A premium coworking space situated on Old Mahabalipuram Road, ideal for tech startups and corporates alike.",
         images: [
-         omr1,omr2,omr3,omr4,omr5,omr6
+         omr0, omr1,omr2,omr3,omr4,omr5,omr6
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9123547422114!2d80.24918017512297!3d12.977457387338474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dfe5e034cf9%3A0x1e1d1f590d1c1f4a!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20OMR%20Chennai%20(Pre-toll)!5e0!3m2!1sen!2sin!4v1755267801817!5m2!1sen!2sin",
         lat:"12.977739666919542",
@@ -216,7 +222,7 @@ export const centersData = {
         ],
         details: "A dynamic coworking hub in the bustling Whitefield tech district.",
         images: [
-        wh4,wh5,wh6,wh7,wh8,wh9,wh10
+        whitefield, wh4,wh5,wh6,wh7,wh8,wh9,wh10
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.614679956308!2d77.69306677512326!3d12.99647918732121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110b3c1ae257%3A0x338aab3b907ba3d6!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20VR%20Bengaluru!5e0!3m2!1sen!2sin!4v1755268041583!5m2!1sen!2sin",
         lat : "12.997064975550622",
@@ -259,7 +265,7 @@ export const centersData = {
         ],
         details: "Located in the IT hub of Gachibowli, ideal for startups and enterprises.",
         images: [
-          hyd6,hyd7,hyd8
+          hyd0,hyd6,hyd7,hyd8
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3806.7801531452105!2d78.33395617521116!3d17.422335083470823!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bcb93455c8cb175%3A0xc500bc3048009943!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20Gachibowli%20Hyderabad!5e0!3m2!1sen!2sin!4v1755268250690!5m2!1sen!2sin",
         lat:"17.422550052708335",
@@ -287,7 +293,7 @@ export const centersData = {
         ],
         details: "Set in the vibrant cultural heart of Pune, combining heritage and modern workspaces.",
         images: [
-          pune10,pune11,pune12,pune13,pune14
+          pune0, pune10,pune11,pune12,pune13,pune14
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.9180653057538!2d73.8685052752371!3d18.532604382563267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c107842d09cd%3A0x27f3b911ea375cb4!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20The%20Mills!5e0!3m2!1sen!2sin!4v1755268291348!5m2!1sen!2sin",
         lat:"18.532807831841136",
