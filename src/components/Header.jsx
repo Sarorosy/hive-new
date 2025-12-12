@@ -206,7 +206,7 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
 
                   {workspacesOpen && (
                     <div
-                      className={`absolute left-0 top-7 mt-2 w-3xl z-20 shadow-xl rounded-sm
+                      className={`absolute left-0 top-7 mt-2 w-4xl z-20 shadow-xl rounded-sm
                         ${
                           theme === "dark"
                             ? "bg-gray-900 text-white"
