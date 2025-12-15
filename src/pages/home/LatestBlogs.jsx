@@ -103,7 +103,7 @@ const LatestBlogs = () => {
           <article
             key={blog.id}
             className={`
-              flex flex-col overflow-hidden shadow-sm transition-all duration-200 border
+              flex flex-col overflow-hidden rounded-tl-4xl rounded-br-4xl shadow-sm transition-all duration-200 border
               ${
                 theme === "dark"
                   ? "border-white/10 bg-black hover:border-white/20"
