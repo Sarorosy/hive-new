@@ -120,7 +120,7 @@ export default function FeaturedCentres() {
             {featuredCentres.map((centre) => (
               <SwiperSlide key={centre.id}>
                 <div
-                  className="relative group cursor-pointer overflow-hidden"
+                  className="relative group rounded-tl-4xl rounded-br-4xl cursor-pointer overflow-hidden"
                   onClick={() => navigate(centre.route)}
                 >
                   <div className="relative h-[200px] md:h-[225px] lg:h-[250px] overflow-hidden">
