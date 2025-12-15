@@ -31,8 +31,8 @@ const sections = [
     links: [
       { label: "All Locations", to: "/locations" },
       { label: "Landlord Relationships", to: "/landlord-relationships" },
-      { label: "Book a Tour", to: "/day_pass" },
-      { label: "Explore by Location & Offering", to: "/explore/chennai/hotdesk" },
+      { label: "Book a Tour", to: "/contact" },
+      { label: "Explore by Offerings", to: "/solutions" },
     ],
   },
   {
