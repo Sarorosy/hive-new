@@ -214,15 +214,14 @@ export default function AboutUs() {
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                   <Circle size={16} className="mr-2 pt-2" /> The Hive Workspaces was founded to deliver premium workspaces for modern businesses across India.
+                   <Circle size={16} className="mr-2 pt-2" />The Hive places workspaces within lifestyle destinations, seamlessly combining work, leisure, and community experiences.
                   </p>
                   <p
                     className={`flex  items-start leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                   <Circle size={16} className="mr-2 pt-2" /> The legal entity Hive Workspaces LLP was officially
-                    registered on October 22, 2021.
+                   <Circle size={16} className="mr-2 pt-2" /> Built on its signature Work-Play-Grow approach, The Hive supports enterprises, SMEs, startups, and entrepreneurs alike.
                   </p>
                 </div>
                 <div className="space-y-4">
@@ -231,16 +230,14 @@ export default function AboutUs() {
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    <Circle size={16} className="mr-2 pt-2" /> Before founding The Hive, he served as Vice President of
-                    Investments.
+                    <Circle size={16} className="mr-2 pt-2" /> Members enjoy direct access to retail, hospitality, entertainment, and food & beverage offerings within the same ecosystem.
                   </p>
                   <p
                     className={`flex  items-start leading-relaxed text-sm md:text-base ${
                       isDark ? "text-slate-200" : "text-gray-700"
                     }`}
                   >
-                    <Circle size={16} className="mr-2 pt-2" /> After his tenure as CEO (2018–2020), he moved on to
-                    leadership roles at LOGOS Group.
+                    <Circle size={16} className="mr-2 pt-2" /> By embedding offices in vibrant community hubs rather than standalone buildings, The Hive redefines the coworking experience.
                   </p>
                 </div>
               </div>

@@ -279,7 +279,7 @@ export default function Footer({ theme = "light" }) {
                     onClick={()=>{navigate('/locations')}}
                     className={`cursor-pointer px-2 py-1 rounded-full border ${
                       theme === "dark"
-                        ? "bg-black border-white/20 "
+                        ? "bg-black text-white border-white/20 "
                         : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb]"
                     }`}
                   >
