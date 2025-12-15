@@ -19,6 +19,15 @@ import {
     Headset,   // Support
     Heart,     // Health & Wellness
 } from "lucide-react";
+import { useOutletContext } from "react-router-dom";
+
+
+const AddWorkSpace = () => {
+    const [step, setStep] = useState(0);
+    const [formData, setFormData] = useState({});
+
+    
+const {theme} = useOutletContext();
 
 const steps = [
     { label: "Add Your Coworking Space", icon: Building2 },
@@ -31,7 +40,7 @@ const steps = [
 const amenityCategories = [
     {
         title: "Facilities",
-        icon: <Building2 className="w-4 h-4 text-gray-600" />,
+        icon: <Building2 className={`w-4 h-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />,
         items: [
             "Meeting Room", "Conference Room", "Event Space", "Studio Space",
             "Retail Space", "Co-living Space", "Outdoor area", "Parking", "Cafe"
@@ -39,7 +48,7 @@ const amenityCategories = [
     },
     {
         title: "Workspace Amenities",
-        icon: <Briefcase className="w-4 h-4 text-gray-600" />,
+        icon: <Briefcase className={`w-4 h-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />,
         items: [
             "Dedicated Desks", "Hot Desks", "Virtual Office", "Private Office",
             "Collaboration areas", "Lounge areas", "Quiet zones", "Phone booths",
@@ -48,14 +57,14 @@ const amenityCategories = [
     },
     {
         title: "Technology and Connectivity",
-        icon: <Wifi className="w-4 h-4 text-gray-600" />,
+        icon: <Wifi className={`w-4 h-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />,
         items: [
             "Wi-Fi", "Ethernet", "Video conferencing"
         ]
     },
     {
         title: "Utilities and Services",
-        icon: <Wrench className="w-4 h-4 text-gray-600" />,
+        icon: <Wrench className={`w-4 h-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />,
         items: [
             "Printing", "Scanning", "Mail handling", "Receptionist",
             "Security access controls", "CCTV", "Cleaning services",
@@ -64,31 +73,27 @@ const amenityCategories = [
     },
     {
         title: "Community and Networking",
-        icon: <Users className="w-4 h-4 text-gray-600" />,
+        icon: <Users className={`w-4 h-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />,
         items: [
             "Collaboration areas", "Event Space"
         ]
     },
     {
         title: "Support and Resources",
-        icon: <Headset className="w-4 h-4 text-gray-600" />,
+        icon: <Headset className={`w-4 h-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />,
         items: [
             "Mail handling", "Receptionist"
         ]
     },
     {
         title: "Health and Wellness",
-        icon: <Heart className="w-4 h-4 text-gray-600" />,
+        icon: <Heart className={`w-4 h-4 ${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'}`} />,
         items: [
             "Ergonomic chairs", "Natural lighting"
         ]
     }
 ];
 
-
-const AddWorkSpace = () => {
-    const [step, setStep] = useState(0);
-    const [formData, setFormData] = useState({});
 
     const handleChange = (e) => {
         const { name, value, type, checked } = e.target;
@@ -106,8 +111,7 @@ const AddWorkSpace = () => {
         if (step > 0) setStep(step - 1);
     };
 
-    const commonInputStyle =
-        "border border-black bg-transparent px-4 py-2 w-full placeholder-gray-500 focus:outline-none focus:ring-1 focus:ring-black transition";
+    const commonInputStyle = `border ${theme === 'dark' ? 'border-white' : 'border-black'} bg-transparent px-4 py-2 w-full ${theme === 'dark' ? 'placeholder-gray-400' : 'placeholder-gray-500'} focus:outline-none focus:ring-1 ${theme === 'dark' ? 'focus:ring-white' : 'focus:ring-black'} transition`;
 
     const renderStep = () => {
         switch (step) {
@@ -117,7 +121,7 @@ const AddWorkSpace = () => {
                         <h2 className="text-2xl liber font-bold mb-4">
                             Add Your Coworking Space
                         </h2>
-                        <p className="text-gray-600 mb-6">
+                        <p className={`${theme === 'dark' ? 'text-gray-400' : 'text-gray-600'} mb-6`}>
                             Ready to showcase your coworking space to a global audience? Join our
                             community and gain exposure to thousands of professionals.
                         </p>
@@ -273,7 +277,7 @@ const AddWorkSpace = () => {
 
                         {amenityCategories.map((category, idx) => (
                             <div key={idx} className="mb-6">
-                                <h3 className="flex items-center gap-2 text-lg font-semibold text-gray-800 mb-2">
+                                <h3 className={`flex items-center gap-2 text-lg font-semibold ${theme === 'dark' ? 'text-gray-200' : 'text-gray-800'} mb-2`}>
                                     {category.icon}
                                     {category.title}
                                 </h3>
@@ -316,7 +320,7 @@ const AddWorkSpace = () => {
                             <input
                                 type="file"
                                 multiple
-                                className={`${commonInputStyle} file:border-0 file:bg-black file:text-white`}
+                                className={`${commonInputStyle} file:border-0 ${theme === 'dark' ? 'file:bg-white file:text-black' : 'file:bg-black file:text-white'}`}
                                 onChange={handleChange}
                             />
                         </div>
@@ -344,7 +348,7 @@ const AddWorkSpace = () => {
     };
 
     return (
-        <section className="max-w-4xl mx-auto py-10 px-4 text-black">
+        <section className={`max-w-4xl mx-auto py-10 px-4 ${theme === 'dark' ? 'text-white' : 'text-black'}`}>
             {/* Stepper */}
             <div className="flex justify-between items-center mb-10">
                 {steps.map((stepData, index) => {
@@ -353,15 +357,14 @@ const AddWorkSpace = () => {
                         <div key={index} className="flex-1 flex flex-col items-center">
                             <div
                                 className={`flex items-center justify-center w-12 h-12 rounded-full border-2 ${index === step
-                                        ? "bg-black text-white border-black"
-                                        : "bg-white border-gray-400 text-gray-400"
+                                        ? `${theme === 'dark' ? 'bg-white text-black border-white' : 'bg-black text-white border-black'}`
+                                        : `${theme === 'dark' ? 'bg-black border-gray-600 text-gray-600' : 'bg-white border-gray-400 text-gray-400'}`
                                     } transition`}
                             >
                                 <Icon size={20} />
                             </div>
                             <p
-                                className={`mt-2 text-xs text-center liber ${index === step ? "text-black font-bold" : "text-gray-400"
-                                    }`}
+                                className={`mt-2 text-xs text-center liber ${index === step ? `${theme === 'dark' ? 'text-white' : 'text-black'} font-bold` : `${theme === 'dark' ? 'text-gray-500' : 'text-gray-400'}`}`}
                             >
                                 {stepData.label}
                             </p>
@@ -371,7 +374,7 @@ const AddWorkSpace = () => {
             </div>
 
             {/* Step Form */}
-            <div className="bg-white border border-black rounded-lg p-6 shadow-sm">
+            <div className={`${theme === 'dark' ? 'bg-black border-white' : 'bg-white border-black'} border rounded-lg p-6 shadow-sm`}>
                 {renderStep()}
 
                 {/* Navigation */}
@@ -379,7 +382,7 @@ const AddWorkSpace = () => {
                     {step > 0 && (
                         <button
                             onClick={prevStep}
-                            className="flex items-center gap-2 border border-black px-6 py-2 hover:bg-black hover:text-white transition"
+                            className={`flex items-center gap-2 border ${theme === 'dark' ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-6 py-2 transition`}
                         >
                             <ArrowLeft size={18} /> Back
                         </button>
@@ -387,14 +390,14 @@ const AddWorkSpace = () => {
                     {step < steps.length - 1 ? (
                         <button
                             onClick={nextStep}
-                            className="ml-auto flex items-center gap-2 border border-black px-6 py-2 hover:bg-black hover:text-white transition"
+                            className={`ml-auto flex items-center gap-2 border ${theme === 'dark' ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-6 py-2 transition`}
                         >
                             Next <ArrowRight size={18} />
                         </button>
                     ) : (
                         <button
                             onClick={() => console.log("Submit form", formData)}
-                            className="ml-auto flex items-center gap-2 border border-black px-6 py-2 hover:bg-black hover:text-white transition"
+                            className={`ml-auto flex items-center gap-2 border ${theme === 'dark' ? 'border-white hover:bg-white hover:text-black' : 'border-black hover:bg-black hover:text-white'} px-6 py-2 transition`}
                         >
                             Submit <Send size={18} />
                         </button>

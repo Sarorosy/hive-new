@@ -405,13 +405,13 @@ function Center() {
               {addressData && (
                 <div className="space-y-4">
                   <div className="flex items-start gap-3">
-                    <MapPin className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                    <MapPin className={`w-5 h-5 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                     <p className={isDark ? "text-gray-300" : "text-gray-700"}>
                       {addressData.address}
                     </p>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Mail className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                    <Mail className={`w-5 h-5 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                     <a
                       href={`mailto:${addressData.email}`}
                       className={`hover:text-[#1a3a5c] ${
@@ -422,7 +422,7 @@ function Center() {
                     </a>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Phone className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                    <Phone className={`w-5 h-5 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                     <a
                       href={`tel:${addressData.phone}`}
                       className={`hover:text-[#1a3a5c] ${
@@ -434,14 +434,14 @@ function Center() {
                   </div>
                   {addressData.metro && (
                     <div className="flex items-start gap-3">
-                      <MapPin className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                      <MapPin className={`w-5 h-5 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                       <p className={isDark ? "text-gray-300" : "text-gray-700"}>
                         {addressData.metro}
                       </p>
                     </div>
                   )}
                   <div className="flex items-start gap-3">
-                    <Clock className="w-5 h-5 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                    <Clock className={`w-5 h-5 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                     <p className={isDark ? "text-gray-300" : "text-gray-700"}>
                       {addressData.hours}
                     </p>
@@ -516,7 +516,7 @@ function Center() {
                     isDark ? "bg-gray-900" : "bg-gray-50"
                   }`}
                 >
-                  <Building className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                  <Building className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
                       className={`font-semibold mb-1 ${
@@ -538,7 +538,7 @@ function Center() {
                     isDark ? "bg-gray-900" : "bg-gray-50"
                   }`}
                 >
-                  <Users className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                  <Users className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
                       className={`font-semibold mb-1 ${
@@ -560,7 +560,7 @@ function Center() {
                     isDark ? "bg-gray-900" : "bg-gray-50"
                   }`}
                 >
-                  <Wifi className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                  <Wifi className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
                       className={`font-semibold mb-1 ${
@@ -582,7 +582,7 @@ function Center() {
                     isDark ? "bg-gray-900" : "bg-gray-50"
                   }`}
                 >
-                  <Coffee className="w-6 h-6 text-[#1a3a5c] mt-1 flex-shrink-0" />
+                  <Coffee className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
                       className={`font-semibold mb-1 ${
@@ -629,7 +629,7 @@ function Center() {
                           : "bg-gray-50 hover:bg-gray-100"
                       }`}
                     >
-                      <Icon className="w-8 h-8 text-[#1a3a5c] mx-auto mb-3" />
+                      <Icon className={`w-8 h-8 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mx-auto mb-3`}  />
                       <h3
                         className={`font-semibold text-sm ${
                           isDark ? "text-white" : "text-gray-900"
@@ -652,7 +652,7 @@ function Center() {
                 className="space-y-6 py-10"
                 style={{ scrollMarginTop: sectionScrollMargin }}
               >
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-6">
+                <h2 className={`text-3xl md:text-4xl font-bold ${theme == "dark" ? "text-white" : "text-gray-900"} mb-6`}>
                   Centre Location
                 </h2>
                 <div className="space-y-4">
