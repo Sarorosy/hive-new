@@ -6,7 +6,7 @@ import pune from '../assets/pune.png';
 
 //images for VR
 
-import vr0 from "../assets/BUILDINGS/VRC-CHENNAI.jpg";
+import vr0 from "../assets/BUILDINGS/VRC-CHENNAI.png";
 import vr1 from "../assets/raw/chn/vr/1.jpg";
 import vr2 from "../assets/raw/chn/vr/2.jpg";
 import vr3 from "../assets/raw/chn/vr/3.jpg";
@@ -25,7 +25,7 @@ import ch77 from "../assets/raw/chn/skcl/IMGIDSHCVSHU.jpg";
 
 //images for OMR
 
-import omr0 from "../assets/BUILDINGS/OMR-CHENNAI.jpg";
+import omr0 from "../assets/BUILDINGS/OMR-CHENNAI.png";
 import omr1 from "../assets/raw/chn/omr/1.jpg";
 import omr2 from "../assets/raw/chn/omr/2.jpg";
 import omr3 from "../assets/raw/chn/omr/3.jpg";
@@ -64,7 +64,7 @@ import ch27 from "../assets/raw/chn/YAV00080-min.JPG";
 
 
 //images for bangalore
-import whitefield from "../assets/BUILDINGS/VR,BENGALURE.jpg"
+import whitefield from "../assets/BUILDINGS/VR,BENGALURE.png"
 import blr1 from "../assets/raw/blr/_SPL0002-min.JPG";
 import blr2 from "../assets/raw/blr/_SPL9627-min.JPG";
 import blr3 from "../assets/raw/blr/IMG_20250318_011402314-min.jpg";
