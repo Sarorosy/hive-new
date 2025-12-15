@@ -150,7 +150,7 @@ export default function Footer({ theme = "light" }) {
           
 
           {/* Social Column */}
-          <div className="md:col-span-2">
+          <div className="md:col-span-3 ml-auto">
             <div
               className={`mb-6 flex items-center gap-2 ${
                 theme === "dark" ? "text-black" : "text-black"
