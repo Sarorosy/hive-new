@@ -363,7 +363,7 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
           exit={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
           className={`
-            overflow-y-scroll overflow-x-hidden rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh]
+            overflow-y-scroll overflow-x-hidden rounded-xl shadow-xl w-full max-w-5xl max-h-[90vh]
             ${theme === "dark" ? "bg-[#0d0d0d]" : "bg-gray-100"}
           `}
         >
