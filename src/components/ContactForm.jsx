@@ -25,7 +25,6 @@ import { SITE_KEY, API_URL } from "../utils/constants";
 import axios from "axios";
 
 const ContactForm = ({ type = "regular", onClose, theme }) => {
-
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -122,7 +121,7 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
     >
       <div
         className={`
-          grid grid-cols-1 md:grid-cols-2 gap-8 p-8 rounded-2xl max-w-7xl mx-auto relative
+          grid grid-cols-1 md:grid-cols-2 gap-4 p-4 rounded-xl max-w-5xl mx-auto relative
           ${theme === "dark" ? "text-white" : "text-gray-900"}
         `}
       >
@@ -131,80 +130,80 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
           <button
             onClick={onClose}
             className={`
-              absolute top-4 right-4 p-2 rounded-full cursor-pointer
+              absolute top-2 right-2 p-2 rounded-full cursor-pointer
               ${theme === "dark" ? "bg-gray-800 hover:bg-gray-700" : "bg-gray-200 hover:bg-gray-300"}
             `}
           >
-            <X className="w-5 h-5" />
+            <X className="w-4 h-4" />
           </button>
         )}
 
         {/* LEFT SECTION */}
         <div>
-          <h2 className="text-3xl font-bold liber mb-4">Start a Conversation</h2>
+          <h2 className="text-2xl font-bold liber mb-2">Start a Conversation</h2>
 
-          <p className={`mb-6 ${leftText}`}>
+          <p className={`mb-4 ${leftText}`}>
             We'd love to show you around our collaborative workspaces.
           </p>
 
-          <div className="flex items-center mb-3">
-            <span className="p-3 bg-black rounded-full">
+          <div className="flex items-center mb-2">
+            <span className="p-2 bg-black rounded-full">
               <Phone className="text-white" />
             </span>
             <a
               href="tel:+917022274000"
-              className="ml-3 text-orange-500 font-medium"
+              className="ml-2 text-orange-500 font-medium"
             >
               +91-70222 74000
             </a>
           </div>
 
-          <div className="flex items-center mb-6">
-            <span className="p-3 bg-black rounded-full">
+          <div className="flex items-center mb-4">
+            <span className="p-2 bg-black rounded-full">
               <Mail className="text-white" />
             </span>
             <a
               href="mailto:hello@hiveworkspaces.com"
-              className="ml-3 text-orange-500 font-medium"
+              className="ml-2 text-orange-500 font-medium"
             >
               hello@hiveworkspaces.com
             </a>
           </div>
 
-          <h3 className="font-bold mb-4">We Offer:</h3>
-          <div className="grid grid-cols-2 gap-4">
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <Armchair className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Hot Desks</span>
+          <h3 className="font-bold mb-2">We Offer:</h3>
+          <div className="grid grid-cols-2 gap-2">
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <Armchair className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Hot Desks</span>
             </div>
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <Zap className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Flexi Passes</span>
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <Zap className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Flexi Passes</span>
             </div>
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <Lock className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Private Cabins</span>
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <Lock className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Private Cabins</span>
             </div>
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <Monitor className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Dedicated Desks</span>
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <Monitor className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Dedicated Desks</span>
             </div>
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <Building2 className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Managed Offices</span>
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <Building2 className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Managed Offices</span>
             </div>
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <Briefcase className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Enterprise Offices</span>
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <Briefcase className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Enterprise Offices</span>
             </div>
             
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <MessageSquare className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Meeting Rooms</span>
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <MessageSquare className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Meeting Rooms</span>
             </div>
-            <div className={`flex items-center gap-3 py-2 ${leftText}`}>
-              <Palette className="w-5 h-5 text-orange-500 flex-shrink-0" />
-              <span>Customized Workspaces</span>
+            <div className={`flex items-center gap-2 py-1 ${leftText}`}>
+              <Palette className="w-4 h-4 text-orange-500 flex-shrink-0" />
+              <span className="f-12">Customized Workspaces</span>
             </div>
           </div>
         </div>
@@ -212,71 +211,71 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
         {/* RIGHT FORM */}
         <form
           onSubmit={handleSubmit}
-          className={`shadow-xl p-6 rounded-2xl ${formClasses}`}
+          className={`shadow-md p-4 rounded-xl ${formClasses}`}
         >
-          <h3 className="text-2xl font-bold mb-4 liber">Book A Tour</h3>
+          <h3 className="text-xl font-bold mb-2 liber">Book A Tour</h3>
 
           {/* Name + Email */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
 
             <div
-              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+              className={`flex items-center border rounded-lg px-2 ${inputClasses}`}
             >
-              <User className="text-gray-400 mr-2" />
+              <User className="text-gray-400 mr-1" />
               <input
                 type="text"
                 name="name"
                 placeholder="Name"
                 value={formData.name}
                 onChange={handleChange}
-                className={`w-full py-2 outline-none ${inputClasses}`}
+                className={`w-full py-1 outline-none ${inputClasses}`}
               />
             </div>
 
             <div
-              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+              className={`flex items-center border rounded-lg px-2 ${inputClasses}`}
             >
-              <Mail className="text-gray-400 mr-2" />
+              <Mail className="text-gray-400 mr-1" />
               <input
                 type="email"
                 name="email"
                 placeholder="Email"
                 value={formData.email}
                 onChange={handleChange}
-                className={`w-full py-2 outline-none ${inputClasses}`}
+                className={`w-full py-1 outline-none ${inputClasses}`}
               />
             </div>
 
           </div>
 
           {/* Phone + Seats */}
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-2 mb-2">
 
             <div
-              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+              className={`flex items-center border rounded-lg px-2 ${inputClasses}`}
             >
-              <Phone className="text-gray-400 mr-2" />
+              <Phone className="text-gray-400 mr-1" />
               <input
                 type="text"
                 name="phone"
                 placeholder="Phone"
                 value={formData.phone}
                 onChange={handleChange}
-                className={`w-full py-2 outline-none ${inputClasses}`}
+                className={`w-full py-1 outline-none ${inputClasses}`}
               />
             </div>
 
             <div
-              className={`flex items-center border rounded-lg px-3 ${inputClasses}`}
+              className={`flex items-center border rounded-lg px-2 ${inputClasses}`}
             >
-              <Users className="text-gray-400 mr-2" />
+              <Users className="text-gray-400 mr-1" />
               <input
                 type="number"
                 name="seats"
                 placeholder="Seats"
                 value={formData.seats}
                 onChange={handleChange}
-                className={`w-full py-2 outline-none ${inputClasses}`}
+                className={`w-full py-1 outline-none ${inputClasses}`}
               />
             </div>
 
@@ -284,29 +283,29 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
 
           {/* Message */}
           <div
-            className={`flex items-center border rounded-lg px-3 mb-4 ${inputClasses}`}
+            className={`flex items-center border rounded-lg px-2 mb-2 ${inputClasses}`}
           >
-            <MessageSquareText className="text-gray-400 mr-2" />
+            <MessageSquareText className="text-gray-400 mr-1" />
             <textarea
               name="message"
               placeholder="Message"
               value={formData.message}
               onChange={handleChange}
-              rows="3"
-              className={`w-full py-2 outline-none ${inputClasses}`}
+              rows="2"
+              className={`w-full py-1 outline-none ${inputClasses}`}
             />
           </div>
 
           {/* Location */}
           <div
-            className={`flex items-center border rounded-lg px-3 mb-4 ${inputClasses}`}
+            className={`flex items-center border rounded-lg px-2 mb-2 ${inputClasses}`}
           >
-            <MapPin className="text-gray-400 mr-2" />
+            <MapPin className="text-gray-400 mr-1" />
             <select
               name="location"
               value={formData.location}
               onChange={handleChange}
-              className={`w-full py-2 outline-none ${inputClasses}`}
+              className={`w-full py-1 outline-none ${inputClasses}`}
             >
               <option value="">Select Location</option>
               {allLocations.map((loc, idx) => (
@@ -322,7 +321,7 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
           </div>
 
           {/* CAPTCHA */}
-          <div className="flex justify-center mb-4">
+          <div className="flex justify-center mb-2">
             <ReCAPTCHA
               ref={recaptchaRef}
               sitekey={SITE_KEY}
@@ -335,7 +334,7 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
             type="submit"
             disabled={submitting}
             className={`
-              w-full cursor-pointer py-3 font-medium rounded-lg shadow-lg transition
+              w-full cursor-pointer py-2 font-medium rounded-lg shadow-md transition
               ${submitting ? "opacity-50" : ""}
               ${theme === "dark"
                 ? "bg-white text-black hover:opacity-90"
@@ -356,7 +355,7 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
         initial={{ opacity: 0, y: 50 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 50 }}
-        className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-4"
+        className="fixed inset-0 flex items-center justify-center bg-black/50 z-50 p-2"
       >
         <motion.div
           initial={{ scale: 0.95 }}
@@ -364,7 +363,7 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
           exit={{ scale: 0.95 }}
           transition={{ duration: 0.2 }}
           className={`
-            overflow-y-scroll overflow-x-hidden rounded-2xl shadow-2xl w-full max-w-5xl max-h-[90vh]
+            overflow-y-scroll overflow-x-hidden rounded-xl shadow-xl w-full max-w-4xl max-h-[90vh]
             ${theme === "dark" ? "bg-[#0d0d0d]" : "bg-gray-100"}
           `}
         >
