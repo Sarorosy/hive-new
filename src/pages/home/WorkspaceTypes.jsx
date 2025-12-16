@@ -118,7 +118,7 @@ const WorkspaceTypes = () => {
         {/* Content */}
         <div
           className={`
-            rounded-sm shadow-xl border overflow-hidden
+            rounded-sm shadow-xl rounded-tl-[70px]  border overflow-hidden
             ${theme === "dark"
               ? "bg-black border-slate-800"
               : "bg-white border-slate-100"
@@ -128,13 +128,13 @@ const WorkspaceTypes = () => {
           <div className="grid md:grid-cols-2 min-h-[520px]">
             {/* Left - Image */}
             {/* Left - Image Carousel */}
-            <div className="relative h-[280px] md:h-[520px] overflow-hidden">
+            <div className="relative h-[280px] md:h-[520px]  overflow-hidden">
 
               <img
                 key={imageList[currentSlide]}
                 src={imageList[currentSlide]}
                 alt={activeWorkspace.label}
-                className="absolute inset-0 w-full h-full object-cover transition-opacity duration-500"
+                className="absolute rounded-tl-[70px] rounded-br-[70px] inset-0 w-full h-full object-cover transition-opacity duration-500"
               />
 
               {/* Optional gradient overlay */}
