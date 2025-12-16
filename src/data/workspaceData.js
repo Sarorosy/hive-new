@@ -221,7 +221,7 @@ export const workspaces = [
       'No overhead costs for utilities, maintenance, or cleaning'
     ],
     targetAudience: 'Entrepreneurs, consultants, and small teams (1-4 people)',
-    capacity: '1-4 people',
+    capacity: '1-10 people',
     pricing: {
       from: 15000,
       period: 'month'

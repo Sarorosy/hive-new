@@ -56,7 +56,7 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
 
   return (
     <span className={theme != "dark" ? "text-white" : "text-black"}>
-      {count} {end == 7 ? "Lakhs" : "+"}
+      {count} {end == 0.7 ? "Million" : "+"}
     </span>
   );
 };
@@ -167,7 +167,7 @@ const Stats = () => {
         {/* 0.7M Sq.ft Area */}
         <div>
           <p className="text-xl md:text-2xl font-bold">
-            <Counter end={7} shouldAnimate={isVisible} /> 
+            <Counter end={0.7} shouldAnimate={isVisible} /> 
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
             Sq.ft Area

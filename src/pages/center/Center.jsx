@@ -479,11 +479,11 @@ function Center() {
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
                   {servicesToRender.map((service, idx) => (
-                    <div key={idx} className="p-6 bg-gray-50 rounded-lg h-full">
-                      <h3 className="text-xl font-semibold mb-2 text-gray-900">{service.title}</h3>
-                      <p className="text-gray-700">{service.description}</p>
+                    <div key={idx} className={`p-6 rounded-lg h-full ${isDark ? 'bg-gray-800' : 'bg-gray-50'}`}>
+                      <h3 className={`text-xl font-semibold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{service.title}</h3>
+                      <p className={`${isDark ? 'text-gray-300' : 'text-gray-700'}`}>{service.description}</p>
                       {service.bullets && (
-                        <ul className="mt-4 space-y-2 text-gray-700 text-sm list-disc list-inside">
+                        <ul className={`mt-4 space-y-2 text-sm list-disc list-inside ${isDark ? 'text-gray-300' : 'text-gray-700'}`}>
                           {service.bullets.map((item, bulletIdx) => (
                             <li key={bulletIdx}>{item}</li>
                           ))}
