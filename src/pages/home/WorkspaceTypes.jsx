@@ -7,7 +7,7 @@ import ManagedOffices from "../../assets/raw/all/DSC07782-min.JPG";
 import EnterPriseSol from "../../assets/raw/chn/YAV00102-min.JPG";
 import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
 import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpg";
-import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
+import hotdesks from "../../assets/offerings/hotdesks/hotdesk-2.jpg";
 import meetings3 from "../../assets/raw/blr/THEHIVEVR16.jpg";
 import virtual from "../../assets/virtual-offices.jpg";
 

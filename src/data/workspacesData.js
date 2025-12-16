@@ -32,7 +32,7 @@ export const workspaceTabs = [
   {
     id: "coworking-spaces",
     label: "Coworking Spaces",
-    image: "/spacetypes/hotdesk.jpg",
+    image: "/spacetypes/hotdesk-2.jpg",
     title: "Coworking Spaces for the Hour, Day, or Month",
     description:
       "Choose how you work each day—drop in for a few hours, secure a dedicated desk, or switch between locations seamlessly.",
@@ -148,7 +148,7 @@ export const solutionOfferings = [
     subtitle: "Coworking spaces for the hour, day, or month",
     description:
       "Choose how you work each day—drop in for a few hours, secure a dedicated desk, or switch between locations seamlessly.",
-    image: "/spacetypes/hotdesk.jpg",
+    image: "/spacetypes/hotdesk-2.jpg",
     highlights: [
       "Flexible passes and memberships for individuals and distributed teams",
       "Access to premium amenities, programs, and concierge support",

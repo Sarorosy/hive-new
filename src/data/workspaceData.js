@@ -282,8 +282,8 @@ export const workspaces = [
     slug: 'hot-desks',
     name: 'Hot Desks',
     title: 'The Hive Hot Desks',
-    image: '/hotdesk.jpg',
-    image2: '/offerings/hotdesks/2.jpg',
+    image: '/hotdesk-2.jpg',
+    image2: '/offerings/hotdesks/hotdesk-2.jpg',
     description:
       'Flexible workspace solution that allows you to work from any available desk, perfect for those who value variety and spontaneity.',
     features: [

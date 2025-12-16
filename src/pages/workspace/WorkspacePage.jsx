@@ -38,7 +38,7 @@ import privateCabins3 from "../../assets/offerings/privatecabins/1.jpg";
 import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpg";
 import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
 
-import hotdesks from "../../assets/offerings/hotdesks/2.jpg";
+import hotdesks from "../../assets/offerings/hotdesks/hotdesk-2.jpg";
 import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
 
 import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";
