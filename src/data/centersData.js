@@ -148,7 +148,11 @@ export const centersData = {
         ],
         details: "Located in the heart of Anna Nagar, this coworking space offers modern amenities, high-speed internet, meeting rooms, and vibrant interiors.",
         images: [
-          vr0,vr00, vr1,vr2,vr3,vr5,vr6,vr7
+          vr0, 
+          // vr1,
+          // vr2,
+          vr3,vr5,vr6,
+          // vr7
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3886.2932777426718!2d80.19485637512473!3d13.080590287244858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5265b5d8e2606b%3A0x648fcc48a540559f!2sThe%20Hive!5e0!3m2!1sen!2sin!4v1755267396136!5m2!1sen!2sin",
         lat:"13.080893350150644",
