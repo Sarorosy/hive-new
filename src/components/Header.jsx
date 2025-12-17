@@ -124,13 +124,14 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
       </div>
 
       <header
-        className={`fixed top-0 left-0 right-0  z-50 transition-all duration-500 ease-in-out ${
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
           isHeaderVisible
             ? ""
             : `${
                 theme === "dark" ? " bg-black" : " bg-white border-white/50"
               }`
         }`}
+        style={{ fontSize: "1.1rem" }} // Increased font size globally for the header
       >
         <div
           className={`
@@ -166,6 +167,7 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                   hidden md:flex items-center space-x-8 text-sm font-medium ml-8 transition-colors duration-300
                   ${theme === "dark" ? "text-white" : "text-black"}
                 `}
+                style={{ fontSize: "1.1rem" }} // Increased font size for navigation links
               >
                 <RouterLink className="hover:underline" to="/about-us">
                   About Us
@@ -452,6 +454,7 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                 ${theme === "dark" ? "text-white" : "text-black"}
               `}
               onClick={() => setMobileOpen(!mobileOpen)}
+              style={{ fontSize: "1.1rem" }} // Increased font size for mobile menu icon
             >
               {mobileOpen ? <X /> : <Menu />}
             </button>
@@ -461,6 +464,7 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
               className={`hidden md:flex items-center space-x-6 text-sm transition-colors duration-300
                 ${theme === "dark" ? "text-white" : "text-black"}
               `}
+              style={{ fontSize: "1.1rem" }} // Increased font size for right actions
             >
               <button
                 onClick={onBookTourClick}
@@ -526,6 +530,7 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                   : "bg-white/70 text-black border-black/20"
               }
             `}
+              style={{ fontSize: "1.1rem" }} // Increased font size for mobile panel
             >
               {/* ---- ABOUT US ---- */}
               <RouterLink

@@ -167,6 +167,68 @@ const amenities = [
   { icon: Users, name: "Concierge Services" },
 ];
 
+function ExploreOtherCenters({ theme }) {
+  const navigate = useNavigate();
+
+
+  // Extract and group centers by city
+  const groupedCenters = Object.keys(centersData).reduce((acc, city) => {
+    const cityBranches = Object.keys(centersData[city].branches).map((branchKey) => {
+      const branch = centersData[city].branches[branchKey];
+      return {
+        city,
+        branch: branch.name,
+        id: `${city}-${branchKey}`,
+        image: branch.images[0], // Use the first image as a thumbnail
+      };
+    });
+    acc[city] = cityBranches;
+    return acc;
+  }, {});
+
+  const isDark =( theme == "dark");
+  console.log("isDark", isDark);
+
+  return (
+    <div
+      className={`explore-other-centers sticky top-20 ${
+        isDark ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"
+      }`}
+    >
+      <h3 className="text-lg font-bold">Explore Other Centers</h3>
+      {Object.keys(groupedCenters).map((city) => (
+        <div key={city} className="city-group mt-4">
+          <h4 className="text-md font-semibold mb-2">{city}</h4>
+          <div className="center-cards grid grid-cols-1 sm:grid-cols-2 gap-4">
+            {groupedCenters[city].map((center) => (
+              <div
+                key={center.id}
+                className={`center-card p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer ${
+                  isDark ? "bg-gray-800" : "bg-white"
+                }`}
+                onClick={() =>
+                  navigate(
+                    `/center/${center.city.toLowerCase()}/${center.id.split("-")[1]}`
+                  )
+                }
+              >
+                <div className="image-carousel mb-2">
+                  <img
+                    src={center.image}
+                    alt={`${center.branch}`}
+                    className="w-full h-32 object-cover rounded-md"
+                  />
+                </div>
+                <h5 className="text-sm font-medium text-center">{center.branch}</h5>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+
 function Center() {
   const { city, branch } = useParams();
   const navigate = useNavigate();
@@ -202,14 +264,6 @@ function Center() {
       navigate("/404", { replace: true });
     }
   }, [city, branch, cityData, branchData, navigate]);
-
-  if (!cityData || (branch && !branchData)) {
-    return null;
-  }
-
-  const displayName = branchData ? branchData.name : cityData.name;
-  const displayDescription = branchData ? branchData.details : cityData.description;
-  const images = branchData ? branchData.images : cityData.centerImages;
 
   useEffect(() => {
     const observerOptions = {
@@ -284,6 +338,14 @@ function Center() {
     { id: "amenities", label: "Amenities" },
     { id: "location", label: "Centre Location" },
   ];
+
+  if (!cityData || (branch && !branchData)) {
+    return null;
+  }
+
+  const displayName = branchData ? branchData.name : cityData.name;
+  const displayDescription = branchData ? branchData.details : cityData.description;
+  const images = branchData ? branchData.images : cityData.centerImages;
 
   return (
     <div
@@ -713,7 +775,10 @@ function Center() {
             )}
           </div>
 
-          
+          {/* Right Sidebar - Explore Other Centers */}
+          <div className="hidden lg:block lg:col-span-1">
+            <ExploreOtherCenters theme={theme} />
+          </div>
         </div>
       </div>
 
@@ -722,5 +787,67 @@ function Center() {
     </div>
   );
 }
+
+// Add CSS for the cards and carousel
+const styles = `
+  .explore-other-centers {
+    padding: 16px;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  .explore-other-centers h3 {
+    margin-bottom: 16px;
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .city-group {
+    margin-bottom: 24px;
+  }
+  .city-group h4 {
+    margin-bottom: 12px;
+    font-size: 16px;
+    font-weight: bold;
+  }
+  .center-cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 16px;
+  }
+  .center-card {
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .center-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  }
+  .center-card .image-carousel {
+    width: 100%;
+    height: 120px;
+    overflow: hidden;
+    border-radius: 8px;
+    margin-bottom: 8px;
+  }
+  .center-card .image-carousel img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .center-card h5 {
+    margin: 0;
+    font-size: 14px;
+    font-weight: bold;
+    text-align: center;
+  }
+`;
+
+// Inject styles into the document
+const styleSheet = document.createElement("style");
+styleSheet.type = "text/css";
+styleSheet.innerText = styles;
+document.head.appendChild(styleSheet);
 
 export default Center;

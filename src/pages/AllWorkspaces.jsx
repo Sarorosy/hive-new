@@ -16,7 +16,7 @@ import dedicatedDesks from "../assets/raw/chn/skcl/dedicated.jpg";
 
 import hotdesks from "../assets/offerings/hotdesks/hotdesk-2.jpg";
 import meetings3 from "../assets/raw/blr/THEHIVEVR16.jpg";
-import virtual from "../assets/virtual-offices.jpg";
+import virtual from "../assets/virtual-offices2.jpg";
 
 
 const AllWorkspaces = () => {
