@@ -178,8 +178,8 @@ export default function AppRouter() {
             <Route path="/test" element={<Test />} />
 
 
-            <Route path="*" element={<NotFound />} />
-            <Route path="/404" element={<NotFound />} />
+            {/* <Route path="*" element={<NotFound />} /> */}
+            {/* <Route path="/404" element={<NotFound />} /> */}
           </Route>
         </Route>
         <Route path="/verify-email" element={<VerifyToken />} />

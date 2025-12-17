@@ -178,7 +178,7 @@ function ExploreOtherCenters({ theme }) {
       return {
         city,
         branch: branch.name,
-        id: `${city}-${branchKey}`,
+        id: `${branchKey}`,
         image: branch.images[0], // Use the first image as a thumbnail
       };
     });
@@ -208,8 +208,9 @@ function ExploreOtherCenters({ theme }) {
                 }`}
                 onClick={() =>
                   navigate(
-                    `/${center.city.toLowerCase()}/${center.id.split("-")[1]}`
+                    `/${center.city.toLowerCase()}/${center.id}`
                   )
+                  // console.log("Clicked center:", center)
                 }
               >
                 <div className="image-carousel mb-2">
@@ -261,7 +262,7 @@ function Center() {
 
   useEffect(() => {
     if (!cityData || (branch && !branchData)) {
-      navigate("/404", { replace: true });
+      // navigate("/404", { replace: true });
     }
   }, [city, branch, cityData, branchData, navigate]);
 

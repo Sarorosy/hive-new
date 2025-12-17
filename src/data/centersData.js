@@ -140,6 +140,7 @@ export const centersData = {
     branches: {
       "anna-nagar": {
         name: "The Hive at Anna Nagar, Chennai",
+        slug: "anna-nagar",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Chennai", path: "/chennai" },
@@ -155,6 +156,7 @@ export const centersData = {
       },
       "omr": {
         name: "The Hive at OMR, Chennai",
+        slug: "omr",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Chennai", path: "/chennai" },
@@ -170,6 +172,7 @@ export const centersData = {
       },
       "skcl-guindy": {
         name: "The Hive at SKCL Guindy, Chennai",
+        slug: "skcl-guindy",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Chennai", path: "/chennai" },
@@ -185,6 +188,7 @@ export const centersData = {
       },
       "porur": {
         name: "The Hive at Keppal One Paramount, Chennai",
+        slug: "porur",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Chennai", path: "/chennai" },
@@ -217,6 +221,7 @@ export const centersData = {
     branches: {
       "whitefield": {
         name: "The Hive at Whitefield, Bangalore",
+        slug: "whitefield",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Bangalore", path: "/bangalore" },
@@ -232,6 +237,7 @@ export const centersData = {
       },
       "ptp": {
         name: "The Hive at PTP, Bengaluru",
+        slug: "ptp",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Bangalore", path: "/bangalore" },
@@ -260,6 +266,7 @@ export const centersData = {
     branches: {
       "gachibowli": {
         name: "The Hive at Gachibowli, Hyderabad",
+        slug: "gachibowli",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Hyderabad", path: "/hyderabad" },
@@ -288,6 +295,7 @@ export const centersData = {
     branches: {
       "mills": {
         name: "The Hive at Mills, Pune",
+        slug: "mills",
         breadcrumb: [
           { label: "Home", path: "/" },
           { label: "Coworking Spaces in Pune", path: "/pune" },
