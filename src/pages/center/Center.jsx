@@ -208,7 +208,7 @@ function ExploreOtherCenters({ theme }) {
                 }`}
                 onClick={() =>
                   navigate(
-                    `/center/${center.city.toLowerCase()}/${center.id.split("-")[1]}`
+                    `/${center.city.toLowerCase()}/${center.id.split("-")[1]}`
                   )
                 }
               >
