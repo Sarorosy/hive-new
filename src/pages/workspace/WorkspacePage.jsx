@@ -177,7 +177,7 @@ const WorkspacePage = () => {
             className={`rounded-2xl shadow-2xl p-8 max-w-md mx-auto border ${bgCard}`}
           >
             <div className="text-center">
-              <div className={`text-3xl liber ${textPrimary}`}>
+              {/* <div className={`text-3xl liber ${textPrimary}`}>
                 {formatPrice(workspace.pricing.from)}
                 <span className={`text-base ${textSecondary}`}>
                   /{workspace.pricing.period}
@@ -186,7 +186,7 @@ const WorkspacePage = () => {
 
               <p className={`${textSecondary} mt-2`}>
                 Starting from • All inclusive
-              </p>
+              </p> */}
 
               <a
                 href="#Form"
