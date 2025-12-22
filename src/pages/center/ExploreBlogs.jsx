@@ -59,7 +59,7 @@ const ExploreBlogs = () => {
       `}
     >
       {/* Header */}
-      <div className="hidden flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-10">
+      <div className=" flex flex-col gap-3 sm:flex-row sm:items-end sm:justify-between mb-10">
         <div>
           <h2
             className={`
@@ -70,18 +70,18 @@ const ExploreBlogs = () => {
             Latest Blogs
           </h2>
 
-          <p
+          {/* <p
             className={`
               text-sm mt-2
               ${theme === "dark" ? "text-gray-400" : "text-gray-500"}
             `}
           >
             Fresh perspectives from The Hive team to keep you inspired.
-          </p>
+          </p> */}
         </div>
 
         {/* View All button */}
-        <button
+        {/* <button
           type="button"
           onClick={() => navigate("/blog")}
           className={`
@@ -94,7 +94,7 @@ const ExploreBlogs = () => {
           `}
         >
           View all <ArrowRight size={16} className="ml-2" />
-        </button>
+        </button> */}
       </div>
 
       {/* Blog Cards */}
