@@ -5,7 +5,7 @@ export const API_URL = "https://ryupunch.com/hiveback";
 
 
 // export const FRONTEND_URL = "http://localhost:5175";
-export const FRONTEND_URL = "https://kavin-hive-two.vercel.app";
+export const FRONTEND_URL = "https://kavin-hive-2.vercel.app";
 
 
 export function formatTime(dateString) {

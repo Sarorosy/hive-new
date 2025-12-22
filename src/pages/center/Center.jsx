@@ -5,12 +5,12 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination, Autoplay } from "swiper/modules";
 import { centersData } from "../../data/centersData";
 import Breadcrumb from "../../components/BreadCrumb";
-import { 
-  ChevronLeftIcon, 
-  ChevronRight, 
-  MapPin, 
-  Mail, 
-  Phone, 
+import {
+  ChevronLeftIcon,
+  ChevronRight,
+  MapPin,
+  Mail,
+  Phone,
   Clock,
   Wifi,
   Users,
@@ -24,6 +24,8 @@ import {
 } from "lucide-react";
 import ContactForm from "../../components/ContactForm";
 import Faq from '../home/Faq';
+import LatestBlogs from "../home/LatestBlogs";
+import ExploreBlogs from "./ExploreBlogs";
 
 // Address and size data mapping
 const branchAddresses = {
@@ -167,69 +169,6 @@ const amenities = [
   { icon: Users, name: "Concierge Services" },
 ];
 
-function ExploreOtherCenters({ theme }) {
-  const navigate = useNavigate();
-
-
-  // Extract and group centers by city
-  const groupedCenters = Object.keys(centersData).reduce((acc, city) => {
-    const cityBranches = Object.keys(centersData[city].branches).map((branchKey) => {
-      const branch = centersData[city].branches[branchKey];
-      return {
-        city,
-        branch: branch.name,
-        id: `${branchKey}`,
-        image: branch.images[0], // Use the first image as a thumbnail
-      };
-    });
-    acc[city] = cityBranches;
-    return acc;
-  }, {});
-
-  const isDark =( theme == "dark");
-  console.log("isDark", isDark);
-
-  return (
-    <div
-      className={`explore-other-centers sticky top-20 ${
-        isDark ? "bg-gray-900 text-gray-100" : "bg-gray-100 text-gray-900"
-      }`}
-    >
-      <h3 className="text-lg font-bold">Explore Other Centers</h3>
-      {Object.keys(groupedCenters).map((city) => (
-        <div key={city} className="city-group mt-4">
-          <h4 className="text-md font-semibold mb-2">{city}</h4>
-          <div className="center-cards grid grid-cols-1 sm:grid-cols-2 gap-4">
-            {groupedCenters[city].map((center) => (
-              <div
-                key={center.id}
-                className={`center-card p-4 rounded-lg shadow-md hover:shadow-lg transition-shadow cursor-pointer ${
-                  isDark ? "bg-gray-800" : "bg-white"
-                }`}
-                onClick={() =>
-                  navigate(
-                    `/${center.city.toLowerCase()}/${center.id}`
-                  )
-                  // console.log("Clicked center:", center)
-                }
-              >
-                <div className="image-carousel mb-2">
-                  <img
-                    src={center.image}
-                    alt={`${center.branch}`}
-                    className="w-full h-32 object-cover rounded-md"
-                  />
-                </div>
-                <h5 className="text-sm font-medium text-center">{center.branch}</h5>
-              </div>
-            ))}
-          </div>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function Center() {
   const { city, branch } = useParams();
   const navigate = useNavigate();
@@ -350,9 +289,8 @@ function Center() {
 
   return (
     <div
-      className={`min-h-screen ${
-        isDark ? "bg-gray-950 text-gray-100" : "bg-white text-gray-900"
-      }`}
+      className={`min-h-screen ${isDark ? "bg-gray-950 text-gray-100" : "bg-white text-gray-900"
+        }`}
     >
       {/* Hero Section */}
       <div className="relative w-full">
@@ -411,10 +349,9 @@ function Center() {
 
       {/* Tab Navigation */}
       <div
-        className={`sticky z-40 shadow-md w-full left-0 right-0 top-0 ${
-          isDark ? "bg-gray-900 text-gray-100" : "bg-black text-white"
-        }`}
-        // style={{ top: layoutOffset.header ? `${layoutOffset.header}px` : 0 }}
+        className={`sticky z-40 shadow-md w-full left-0 right-0 top-0 ${isDark ? "bg-gray-900 text-gray-100" : "bg-black text-white"
+          }`}
+      // style={{ top: layoutOffset.header ? `${layoutOffset.header}px` : 0 }}
       >
         <div className="max-w-7xl mx-auto px-4 md:px-8" ref={tabsWrapperRef}>
           <div className="flex overflow-x-auto scrollbar-hide">
@@ -422,11 +359,10 @@ function Center() {
               <button
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
-                className={`px-6 py-4 font-medium text-sm md:text-base whitespace-nowrap border-b-2 transition-colors ${
-                  activeTab === tab.id
+                className={`px-6 py-4 font-medium text-sm md:text-base whitespace-nowrap border-b-2 transition-colors ${activeTab === tab.id
                     ? "border-white text-white"
                     : "border-transparent text-white/70 hover:text-white hover:border-white/50"
-                }`}
+                  }`}
               >
                 {tab.label}
               </button>
@@ -450,16 +386,14 @@ function Center() {
             >
               <div>
                 <h2
-                  className={`text-3xl md:text-4xl font-bold mb-4 ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
+                  className={`text-3xl md:text-4xl font-bold mb-4 ${isDark ? "text-white" : "text-gray-900"
+                    }`}
                 >
                   {displayName}
                 </h2>
                 <p
-                  className={`text-lg leading-relaxed mb-6 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
+                  className={`text-lg leading-relaxed mb-6 ${isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
                 >
                   {displayDescription}
                 </p>
@@ -477,9 +411,8 @@ function Center() {
                     <Mail className={`w-5 h-5 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                     <a
                       href={`mailto:${addressData.email}`}
-                      className={`hover:text-[#1a3a5c] ${
-                        isDark ? "text-gray-300" : "text-gray-700"
-                      }`}
+                      className={`hover:text-[#1a3a5c] ${isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
                     >
                       {addressData.email}
                     </a>
@@ -488,9 +421,8 @@ function Center() {
                     <Phone className={`w-5 h-5 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                     <a
                       href={`tel:${addressData.phone}`}
-                      className={`hover:text-[#1a3a5c] ${
-                        isDark ? "text-gray-300" : "text-gray-700"
-                      }`}
+                      className={`hover:text-[#1a3a5c] ${isDark ? "text-gray-300" : "text-gray-700"
+                        }`}
                     >
                       {addressData.phone}
                     </a>
@@ -523,22 +455,20 @@ function Center() {
                 style={{ scrollMarginTop: sectionScrollMargin }}
               >
                 <h2
-                  className={`text-3xl md:text-4xl font-bold mb-3 ${
-                    isDark ? "text-white" : "text-gray-900"
-                  }`}
+                  className={`text-3xl md:text-4xl font-bold mb-3 ${isDark ? "text-white" : "text-gray-900"
+                    }`}
                 >
                   Our Services
                 </h2>
                 <p
-                  className={`mb-6 ${
-                    isDark ? "text-gray-300" : "text-gray-700"
-                  }`}
+                  className={`mb-6 ${isDark ? "text-gray-300" : "text-gray-700"
+                    }`}
                 >
                   {showCoworkingServices && showEnterpriseSolutions
                     ? "This centre offers flexible coworking products and fully managed enterprise solutions."
                     : showCoworkingServices
-                    ? "This centre focuses on our coworking products."
-                    : "This centre is tailored for bespoke enterprise solutions."}
+                      ? "This centre focuses on our coworking products."
+                      : "This centre is tailored for bespoke enterprise solutions."}
                 </p>
                 <div className="grid md:grid-cols-2 gap-6">
                   {servicesToRender.map((service, idx) => (
@@ -566,25 +496,22 @@ function Center() {
               className="space-y-6 py-10 border-b border-gray-200"
               style={{ scrollMarginTop: sectionScrollMargin }}
             >
-                <h2
-                  className={`text-3xl md:text-4xl font-bold mb-6 ${
-                    isDark ? "text-white" : "text-gray-900"
+              <h2
+                className={`text-3xl md:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"
                   }`}
-                >
-                  Centre Features
-                </h2>
+              >
+                Centre Features
+              </h2>
               <div className="space-y-4">
                 <div
-                  className={`flex items-start gap-4 p-4 rounded-lg ${
-                    isDark ? "bg-gray-900" : "bg-gray-50"
-                  }`}
+                  className={`flex items-start gap-4 p-4 rounded-lg ${isDark ? "bg-gray-900" : "bg-gray-50"
+                    }`}
                 >
                   <Building className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
-                      className={`font-semibold mb-1 ${
-                        isDark ? "text-white" : "text-gray-900"
-                      }`}
+                      className={`font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"
+                        }`}
                     >
                       Modern Infrastructure
                     </h3>
@@ -597,16 +524,14 @@ function Center() {
                   </div>
                 </div>
                 <div
-                  className={`flex items-start gap-4 p-4 rounded-lg ${
-                    isDark ? "bg-gray-900" : "bg-gray-50"
-                  }`}
+                  className={`flex items-start gap-4 p-4 rounded-lg ${isDark ? "bg-gray-900" : "bg-gray-50"
+                    }`}
                 >
                   <Users className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
-                      className={`font-semibold mb-1 ${
-                        isDark ? "text-white" : "text-gray-900"
-                      }`}
+                      className={`font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"
+                        }`}
                     >
                       Collaborative Spaces
                     </h3>
@@ -619,16 +544,14 @@ function Center() {
                   </div>
                 </div>
                 <div
-                  className={`flex items-start gap-4 p-4 rounded-lg ${
-                    isDark ? "bg-gray-900" : "bg-gray-50"
-                  }`}
+                  className={`flex items-start gap-4 p-4 rounded-lg ${isDark ? "bg-gray-900" : "bg-gray-50"
+                    }`}
                 >
                   <Wifi className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
-                      className={`font-semibold mb-1 ${
-                        isDark ? "text-white" : "text-gray-900"
-                      }`}
+                      className={`font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"
+                        }`}
                     >
                       High-Speed Connectivity
                     </h3>
@@ -641,16 +564,14 @@ function Center() {
                   </div>
                 </div>
                 <div
-                  className={`flex items-start gap-4 p-4 rounded-lg ${
-                    isDark ? "bg-gray-900" : "bg-gray-50"
-                  }`}
+                  className={`flex items-start gap-4 p-4 rounded-lg ${isDark ? "bg-gray-900" : "bg-gray-50"
+                    }`}
                 >
                   <Coffee className={`w-6 h-6 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mt-1 flex-shrink-0`} />
                   <div>
                     <h3
-                      className={`font-semibold mb-1 ${
-                        isDark ? "text-white" : "text-gray-900"
-                      }`}
+                      className={`font-semibold mb-1 ${isDark ? "text-white" : "text-gray-900"
+                        }`}
                     >
                       Premium Pantry
                     </h3>
@@ -674,9 +595,8 @@ function Center() {
               style={{ scrollMarginTop: sectionScrollMargin }}
             >
               <h2
-                className={`text-3xl md:text-4xl font-bold mb-6 ${
-                  isDark ? "text-white" : "text-gray-900"
-                }`}
+                className={`text-3xl md:text-4xl font-bold mb-6 ${isDark ? "text-white" : "text-gray-900"
+                  }`}
               >
                 Amenities
               </h2>
@@ -686,17 +606,15 @@ function Center() {
                   return (
                     <div
                       key={idx}
-                      className={`p-6 rounded-lg text-center transition-colors ${
-                        isDark
+                      className={`p-6 rounded-lg text-center transition-colors ${isDark
                           ? "bg-gray-900 hover:bg-gray-800"
                           : "bg-gray-50 hover:bg-gray-100"
-                      }`}
-                    >
-                      <Icon className={`w-8 h-8 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mx-auto mb-3`}  />
-                      <h3
-                        className={`font-semibold text-sm ${
-                          isDark ? "text-white" : "text-gray-900"
                         }`}
+                    >
+                      <Icon className={`w-8 h-8 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mx-auto mb-3`} />
+                      <h3
+                        className={`font-semibold text-sm ${isDark ? "text-white" : "text-gray-900"
+                          }`}
                       >
                         {amenity.name}
                       </h3>
@@ -720,14 +638,12 @@ function Center() {
                 </h2>
                 <div className="space-y-4">
                   <div
-                    className={`p-6 rounded-lg ${
-                      isDark ? "bg-gray-900" : "bg-gray-50"
-                    }`}
+                    className={`p-6 rounded-lg ${isDark ? "bg-gray-900" : "bg-gray-50"
+                      }`}
                   >
                     <h3
-                      className={`font-semibold mb-3 flex items-center gap-2 ${
-                        isDark ? "text-white" : "text-gray-900"
-                      }`}
+                      className={`font-semibold mb-3 flex items-center gap-2 ${isDark ? "text-white" : "text-gray-900"
+                        }`}
                     >
                       <MapPin className="w-5 h-5 text-[#1a3a5c]" />
                       Address
@@ -738,14 +654,12 @@ function Center() {
                   </div>
                   {addressData.metro && (
                     <div
-                      className={`p-6 rounded-lg ${
-                        isDark ? "bg-gray-900" : "bg-gray-50"
-                      }`}
+                      className={`p-6 rounded-lg ${isDark ? "bg-gray-900" : "bg-gray-50"
+                        }`}
                     >
                       <h3
-                        className={`font-semibold mb-3 flex items-center gap-2 ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
+                        className={`font-semibold mb-3 flex items-center gap-2 ${isDark ? "text-white" : "text-gray-900"
+                          }`}
                       >
                         <MapPin className="w-5 h-5 text-[#1a3a5c]" />
                         Public Transport
@@ -776,14 +690,14 @@ function Center() {
             )}
           </div>
 
-          {/* Right Sidebar - Explore Other Centers */}
+          {/* Right Sidebar - Latest Blogs */}
           <div className="hidden lg:block lg:col-span-1">
-            <ExploreOtherCenters theme={theme} />
+            <ExploreBlogs />
           </div>
         </div>
       </div>
 
-      <ContactForm type="regular" theme={theme}/>
+      <ContactForm type="regular" theme={theme} />
       <Faq />
     </div>
   );
