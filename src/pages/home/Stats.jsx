@@ -130,7 +130,7 @@ const Stats = () => {
       {/* RIGHT STATS - ASCENDING ORDER */}
       <div
         className={`
-      flex flex-wrap justify-center gap-6 text-center text-sm md:text-base
+      flex flex-wrap justify-center gap-10 text-center text-sm md:text-base
       ${theme != "dark" ? "text-white" : "text-black"}
     `}
       >
