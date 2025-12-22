@@ -130,13 +130,13 @@ const Stats = () => {
       {/* RIGHT STATS - ASCENDING ORDER */}
       <div
         className={`
-      flex flex-wrap justify-center gap-10 text-center text-sm md:text-base
+      flex flex-wrap justify-center gap-32 text-center text-sm md:text-base
       ${theme != "dark" ? "text-white" : "text-black"}
     `}
       >
         {/* 6+ Cities */}
         <div>
-          <p className="text-xl md:text-2xl font-bold">
+          <p className="text-xl md:text-3xl ">
             <Counter end={6} shouldAnimate={isVisible} />{" "}
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
@@ -146,7 +146,7 @@ const Stats = () => {
 
         {/* 14+ Centers */}
         <div>
-          <p className="text-xl md:text-2xl font-bold">
+          <p className="text-xl md:text-3xl ">
             <Counter end={14} shouldAnimate={isVisible} />
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
@@ -156,7 +156,7 @@ const Stats = () => {
 
         {/* 10,000+ Seats */}
         <div>
-          <p className="text-xl md:text-2xl font-bold">
+          <p className="text-xl md:text-3xl ">
             <Counter end={10000} shouldAnimate={isVisible} />{" "}
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
@@ -166,7 +166,7 @@ const Stats = () => {
 
         {/* 0.7M Sq.ft Area */}
         <div>
-          <p className="text-xl md:text-2xl font-bold">
+          <p className="text-xl md:text-3xl">
             <Counter end={0.7} shouldAnimate={isVisible} /> 
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
