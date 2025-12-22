@@ -18,7 +18,8 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
     }
 
     const getStep = (value) => {
-      if (value >= 10000) return 80;
+      if (value > 10000) return 2000;
+      if (value == 10000) return 90;
       if (value >= 5000) return 50;
       if (value >= 1000) return 50;
       if (value >= 500) return 50;
@@ -29,7 +30,7 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
 
     const getInterval = (value) => {
       if (duration) return Math.max(10, duration);
-      if (value >= 10000) return 20;
+      if (value >= 10000) return 1;
       if (value >= 1000) return 25;
       if (value >= 500) return 30;
       if (value >= 100) return 35;
@@ -56,7 +57,7 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
 
   return (
     <span className={theme != "dark" ? "text-white" : "text-black"}>
-      {count} {end == 0.7 ? "Million" : "+"}
+      {count} {end == 700000 ? "Million" : "+"}
     </span>
   );
 };
@@ -167,7 +168,7 @@ const Stats = () => {
         {/* 0.7M Sq.ft Area */}
         <div>
           <p className="text-xl md:text-3xl">
-            <Counter end={0.7} shouldAnimate={isVisible} /> 
+            <Counter end={700000} shouldAnimate={isVisible} /> 
           </p>
           <p className={`${theme != "dark" ? "opacity-70" : "opacity-80"}`}>
             Sq.ft Area

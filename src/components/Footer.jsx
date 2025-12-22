@@ -27,30 +27,27 @@ export default function Footer({ theme = "light" }) {
   return (
     <footer
       className={`
-        relative z-50 py-16 px-6
-        ${
-          theme === "dark"
-            ? "bg-gray-100 text-[#1c2c44]"
-            : "bg-gray-100 text-[#1c2c44]"
+        relative z-50 py-8 px-6
+        ${theme === "dark"
+          ? "bg-gray-100 text-[#1c2c44]"
+          : "bg-gray-100 text-[#1c2c44]"
         }
       `}
     >
       <div className="max-w-7xl mx-auto">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 gap-8 md:grid-cols-5">
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-5">
           {/* About Section */}
           <div>
             <h3
-              className={`text-lg font-bold mb-4 ${
-                theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
-              }`}
+              className={`text-lg font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+                }`}
             >
               About
             </h3>
             <ul
-              className={`space-y-2 text-sm ${
-                theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
-              }`}
+              className={`space-y-1 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+                }`}
             >
               <li
                 onClick={() => navigate("/")}
@@ -64,14 +61,14 @@ export default function Footer({ theme = "light" }) {
               >
                 About Us
               </li>
-              
+
               <li
                 onClick={() => navigate("/blog")}
                 className="hover:text-orange-500 cursor-pointer duration-200"
               >
                 Blogs
               </li>
-              
+
               <li
                 onClick={() => navigate("/locations")}
                 className="hover:text-orange-500 cursor-pointer duration-200"
@@ -96,16 +93,14 @@ export default function Footer({ theme = "light" }) {
           {/* Second Column */}
           <div>
             <h3
-              className={`text-lg font-bold mb-4 ${
-                theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
-              }`}
+              className={`text-lg font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+                }`}
             >
               Connect
             </h3>
             <ul
-              className={`space-y-2 text-sm mt-8 md:mt-0 ${
-                theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
-              }`}
+              className={`space-y-1 text-sm mt-4 md:mt-0 ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+                }`}
             >
               <li
                 onClick={() => navigate("/account/profile")}
@@ -113,17 +108,17 @@ export default function Footer({ theme = "light" }) {
               >
                 My Account
               </li>
-              
+
               <li
-                
+
                 className="hover:text-orange-500 cursor-pointer duration-200"
               >
                 <a
-                href="tel:+917022274000"
-                className="flex items-center gap-1"
-              >
-                Call us
-              </a>
+                  href="tel:+917022274000"
+                  className="flex items-center gap-1"
+                >
+                  Call us
+                </a>
               </li>
               <li
                 onClick={() => navigate("/careers")}
@@ -143,23 +138,22 @@ export default function Footer({ theme = "light" }) {
               >
                 Sitemap
               </li>
-              
+
             </ul>
           </div>
 
-          
+
 
           {/* Social Column */}
           <div className="md:col-span-3 ml-auto">
             <div
-              className={`mb-6 flex items-center gap-2 ${
-                theme === "dark" ? "text-black" : "text-black"
-              }`}
+              className={`mb-3 flex items-center gap-2 ${theme === "dark" ? "text-black" : "text-black"
+                }`}
             >
               <Globe size={15} /> India
             </div>
 
-            <div className="flex gap-4">
+            <div className="flex gap-3">
               {[
                 {
                   href: "https://www.facebook.com/hiveworkspaces/",
@@ -207,15 +201,14 @@ export default function Footer({ theme = "light" }) {
 
         {/* Bottom Legal */}
         <div
-          className={`mt-16 pt-6 border-t ${
-            theme === "dark" ? "border-white/10" : "border-[#e4e7ee]"
-          }`}
+          className={`mt-8 pt-4 border-t ${theme === "dark" ? "border-white/10" : "border-[#e4e7ee]"
+            }`}
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-4">
+          <div className="flex flex-col md:flex-row md:items-center gap-3">
             <img
               src={assetPath("logo-transparent.png")}
               alt="Logo"
-              width={120}
+              width={100}
               className="rounded-md transition-all duration-300"
               style={{
                 filter: theme === "darkk" ? "invert(1) brightness(1.3)" : "none",
@@ -223,9 +216,8 @@ export default function Footer({ theme = "light" }) {
             />
 
             <div
-              className={`flex flex-wrap items-center gap-2 text-sm ${
-                theme === "dark" ? "text-gray-300" : "text-[#4b576a]"
-              }`}
+              className={`flex flex-wrap items-center gap-2 text-sm ${theme === "dark" ? "text-gray-300" : "text-[#4b576a]"
+                }`}
             >
               {[
                 ["Privacy Policy", "/privacy-policy"],
@@ -235,9 +227,8 @@ export default function Footer({ theme = "light" }) {
                 <React.Fragment key={i}>
                   <button
                     onClick={() => navigate(url)}
-                    className={`hover:underline ${
-                      theme === "dark" ? "text-orange-600" : "text-orange-600"
-                    }`}
+                    className={`hover:underline ${theme === "dark" ? "text-orange-600" : "text-orange-600"
+                      }`}
                   >
                     {label}
                   </button>
@@ -248,22 +239,20 @@ export default function Footer({ theme = "light" }) {
           </div>
 
           <div
-            className={`mt-4 text-sm ${
-              theme === "dark" ? "text-gray-400" : "text-[#4b576a]"
-            }`}
+            className={`mt-2 text-sm ${theme === "dark" ? "text-gray-400" : "text-[#4b576a]"
+              }`}
           >
             <p>©Copyright 2011 - 2025 The Hive. All rights reserved</p>
 
-            <div className="mt-4">
+            <div className="mt-2 text-xs">
               <p
-                className={`font-semibold mb-2 text-xs md:text-sm ${
-                  theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
-                }`}
+                className={`font-semibold mb-1 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+                  }`}
               >
                 Key Locations
               </p>
 
-              <div className="flex flex-wrap gap-2 text-[11px] md:text-xs">
+              <div className="flex flex-wrap gap-2 text-[10px] md:text-[11px]">
                 {[
                   "Anna Nagar, Chennai",
                   "OMR Chennai (Pre-toll)",
@@ -276,12 +265,11 @@ export default function Footer({ theme = "light" }) {
                 ].map((loc, i) => (
                   <span
                     key={i}
-                    onClick={()=>{navigate('/locations')}}
-                    className={`cursor-pointer px-2 py-1 rounded-full border ${
-                      theme === "dark"
-                        ? "bg-black text-white border-white/20 "
-                        : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb]"
-                    }`}
+                    onClick={() => { navigate('/locations') }}
+                    className={`cursor-pointer px-1.5 py-0.5 rounded-full border ${theme === "dark"
+                      ? "bg-black text-white border-white/20 "
+                      : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb]"
+                      }`}
                   >
                     {loc}
                   </span>

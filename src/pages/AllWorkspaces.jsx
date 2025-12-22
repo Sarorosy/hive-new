@@ -12,11 +12,11 @@ import EnterPriseSol from "../assets/raw/chn/YAV00102-min.JPG";
 
 import privateCabins2 from "../assets/offerings/privatecabins/2.jpg";
 
-import dedicatedDesks from "../assets/raw/chn/skcl/dedicated.jpg";
+import dedicatedDesks from "../assets/offerings/dedicateddesks/2.jpg";
 
 import hotdesks from "../assets/offerings/hotdesks/hotdesk-2.jpg";
 import meetings3 from "../assets/raw/blr/THEHIVEVR16.jpg";
-import virtual from "../assets/virtual-offices2.jpg";
+import virtual from "../assets/virtual-offices3.jpeg";
 
 
 const AllWorkspaces = () => {
@@ -78,7 +78,7 @@ const AllWorkspaces = () => {
           <div className="relative w-full aspect-[6/4] md:aspect-[8/3] md:ml-auto md:mr-[-2rem] lg:mr-[-4rem]">
             <div className="absolute inset-0 rounded-bl-full overflow-hidden">
               <img
-                src="/imagecompressor/14.jpg"
+                src="/CB_26495.jpg"
                 className="h-full w-full object-cover"
                 alt="workspace"
                 loading="lazy"

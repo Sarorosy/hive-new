@@ -19,25 +19,22 @@ export default function Faq() {
 
   return (
     <section
-      className={`py-8 ${
-        theme === "dark" ? "bg-black text-white" : "bg-white text-black"
-      }`}
+      className={`py-8 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+        }`}
     >
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">
         {/* Left title */}
         <div>
           <p
-            className={`text-sm mb-2 ${
-              theme === "dark" ? "text-gray-400" : "text-gray-500"
-            }`}
+            className={`text-sm mb-2 ${theme === "dark" ? "text-gray-400" : "text-gray-500"
+              }`}
           >
             / FAQ /
           </p>
 
           <h2
-            className={`text-4xl md:text-5xl liber font-bold leading-tight ${
-              theme === "dark" ? "text-white" : "text-black"
-            }`}
+            className={`text-4xl md:text-5xl liber font-bold leading-tight ${theme === "dark" ? "text-white" : "text-black"
+              }`}
           >
             Frequently Asked <br /> Questions.
           </h2>
@@ -51,20 +48,18 @@ export default function Faq() {
             return (
               <div
                 key={idx}
-                className={`rounded-md shadow-sm overflow-hidden transition ${
-                  theme === "dark"
+                className={`rounded-md shadow-sm overflow-hidden transition ${theme === "dark"
                     ? "bg-white/5 border border-white/10"
                     : "bg-white border border-black/10"
-                }`}
+                  }`}
               >
                 <button
                   className="w-full flex justify-between items-center px-6 py-4 text-left cursor-pointer"
                   onClick={() => setOpenIndex(isOpen ? null : idx)}
                 >
                   <span
-                    className={`font-medium ${
-                      theme === "dark" ? "text-white" : "text-gray-800"
-                    }`}
+                    className={`font-medium ${theme === "dark" ? "text-white" : "text-gray-800"
+                      }`}
                   >
                     {item.q}
                   </span>
@@ -74,9 +69,8 @@ export default function Faq() {
                     transition={{ duration: 0.2 }}
                   >
                     <ChevronDown
-                      className={`w-5 h-5 ${
-                        theme === "dark" ? "text-gray-300" : "text-gray-500"
-                      }`}
+                      className={`w-5 h-5 ${theme === "dark" ? "text-gray-300" : "text-gray-500"
+                        }`}
                     />
                   </motion.div>
                 </button>
@@ -90,9 +84,8 @@ export default function Faq() {
                       transition={{ duration: 0.3 }}
                     >
                       <div
-                        className={`px-6 pb-4 text-sm ${
-                          theme === "dark" ? "text-gray-300" : "text-gray-600"
-                        }`}
+                        className={`px-6 pb-4 text-sm ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                          }`}
                       >
                         {item.a}
                       </div>
@@ -104,7 +97,7 @@ export default function Faq() {
           })}
 
           {/* View More Button */}
-          <div className="text-center pt-6 flex justify-end">
+          {/* <div className="text-center pt-6 flex justify-end">
             <button
               onClick={() => {
                 navigate("/support/faq");
@@ -120,7 +113,7 @@ export default function Faq() {
             >
               View More <ArrowRight className="ml-2" size={18} />
             </button>
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

@@ -157,7 +157,7 @@ const VirtualOffice = () => {
               <div className={`bg-gradient-to-br p-2 ${
                 theme === 'dark' ? 'from-slate-900 to-slate-800' : 'from-orange-50 to-white'
               }`}>
-                <div className={`h-64 rounded-xl bg-[url('/virtual-offices2.jpg')] bg-center bg-cover flex items-center justify-center text-white ${
+                <div className={`h-64 rounded-xl bg-[url('/virtual-offices3.jpeg')] bg-center bg-cover flex items-center justify-center text-white ${
                   theme === 'dark' ? 'bg-slate-800' : 'bg-slate-100'
                 }`}>
                   

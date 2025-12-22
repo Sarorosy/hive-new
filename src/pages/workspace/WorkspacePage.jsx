@@ -35,7 +35,7 @@ import EnterPriseSol2 from "../../assets/raw/chn/PUR08687-min.jpg";
 import privateCabins2 from "../../assets/offerings/privatecabins/2.jpg";
 import privateCabins3 from "../../assets/offerings/privatecabins/1.jpg";
 
-import dedicatedDesks from "../../assets/raw/chn/skcl/dedicated.jpg";
+import dedicatedDesks from "../../assets/offerings/dedicateddesks/2.jpg";
 import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
 
 import hotdesks from "../../assets/offerings/hotdesks/hotdesk-2.jpg";
