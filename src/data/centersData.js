@@ -94,7 +94,7 @@ import wh5 from '../assets/raw/blr/whitefield/_SPL9466-min.JPG';
 // import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.JPG';
 import wh7 from '../assets/raw/blr/whitefield/_SPL9535-min.JPG';
 import wh8 from '../assets/raw/blr/whitefield/_SPL9549-min.JPG';
-import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.JPG';
+import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.jpg';
 import wh10 from '../assets/raw/blr/whitefield/_SPL9783-min.JPG';
 
 //images for Hyderabad
