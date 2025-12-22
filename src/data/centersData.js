@@ -91,7 +91,7 @@ import wh2 from '../assets/raw/blr/whitefield/Hive-Blr_-Reception.jpg';
 import wh3 from '../assets/raw/blr/whitefield/HiveBlr_Cabin3.jpg';
 import wh4 from '../assets/raw/blr/whitefield/21.png';
 import wh5 from '../assets/raw/blr/whitefield/_SPL9466-min.JPG';
-import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.JPG';
+// import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.JPG';
 import wh7 from '../assets/raw/blr/whitefield/_SPL9535-min.JPG';
 import wh8 from '../assets/raw/blr/whitefield/_SPL9549-min.JPG';
 import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.JPG';
@@ -233,7 +233,7 @@ export const centersData = {
         ],
         details: "A dynamic coworking hub in the bustling Whitefield tech district.",
         images: [
-        whitefield, wh4,wh5,wh6,wh7,wh9
+        whitefield, wh4,wh5,wh7,wh9
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.614679956308!2d77.69306677512326!3d12.99647918732121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110b3c1ae257%3A0x338aab3b907ba3d6!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20VR%20Bengaluru!5e0!3m2!1sen!2sin!4v1755268041583!5m2!1sen!2sin",
         lat : "12.997064975550622",
