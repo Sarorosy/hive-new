@@ -20,6 +20,9 @@ import {
   Users,
   Target,
   Circle,
+  MapPin,
+  Building2,
+  Leaf,
 } from "lucide-react";
 
 import Members from "../home/Members";
@@ -242,6 +245,176 @@ export default function AboutUs() {
                 </div>
               </div>
             </div>
+          </motion.div>
+        </div>
+      </section>
+
+      
+      <section
+        className={`py-8 bg-gradient-to-b ${isDark ? "from-black via-slate-900 to-black" : "from-white to-gray-50"
+          }`}
+      >
+        <div className="max-w-5xl mx-auto px-6 space-y-24">
+
+          {/* -----------------------------------------
+       TOP SECTION — MISSION
+    ------------------------------------------ */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-3"
+          >
+            {/* Mission Label */}
+            <div className="flex items-center gap-3">
+              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
+              <span
+                className={`text-sm font-medium uppercase ${isDark ? "text-slate-300" : "text-gray-500"
+                  }`}
+              >
+                Our Mission
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h2 className="text-4xl md:text-5xl liber leading-tight">
+              Driving Business Excellence Forward
+              
+            </h2>
+
+            {/* Mission Card */}
+            <div className="relative">
+              <div
+                className={`absolute -inset-4 rounded-2xl blur-xl ${isDark
+                    ? "bg-gradient-to-r from-white/5 to-transparent"
+                    : "bg-gradient-to-r from-black/5 to-transparent"
+                  }`}
+              ></div>
+
+              <div
+                className={`relative p-10 rounded-2xl bg-gradient-to-br ${isDark ? "from-white/10 to-slate-800" : "from-black to-gray-800"
+                  } text-white`}
+              >
+                <div className="text-5xl mb-2">"</div>
+
+                <p className="text-xl leading-relaxed mb-6">
+                  To provide premium, flexible workspace solutions that empower
+                  businesses to scale, innovate, and thrive in a dynamic market
+                  environment.
+                </p>
+
+                <div className="flex items-center gap-3">
+                  <div className="w-8 h-0.5 bg-white/50"></div>
+                  <span className="text-sm font-medium">The Hive Promise</span>
+                </div>
+              </div>
+            </div>
+          </motion.div>
+
+          {/* -----------------------------------------
+       BOTTOM SECTION — WHY CHOOSE US
+    ------------------------------------------ */}
+          <motion.div
+            initial={{ opacity: 0, y: 40 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="space-y-2"
+          >
+            {/* Label */}
+            <div className="flex items-center gap-3">
+              <div className={`w-12 h-0.5 ${isDark ? "bg-white" : "bg-black"}`}></div>
+              <span
+                className={`text-sm font-medium uppercase ${isDark ? "text-slate-300" : "text-gray-500"
+                  }`}
+              >
+                Why Choose Us
+              </span>
+            </div>
+
+            {/* Heading */}
+            <h3 className="text-3xl liber leading-tight">
+              The Hive <br />
+              <span className={isDark ? "text-slate-400" : "text-gray-400"}>
+                Advantage
+              </span>
+            </h3>
+
+            {/* List Items */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              {[
+                {
+                  icon: Sparkles,
+                  title: "Customised Workspace Solutions",
+                  description:
+                    "Private offices, corporate suites, managed floors, or fully custom build-to-suit workspaces."
+                },
+                {
+                  icon: MapPin,
+                  title: "Prime Strategic Locations",
+                  description:
+                    "Centres placed across high-demand commercial hubs for maximum accessibility."
+                },
+                {
+                  icon: Building2,
+                  title: "Hospitality-Led Experience",
+                  description:
+                    "Concierge-level support, seamless facilities, and frictionless operations."
+                },
+                {
+                  icon: Users,
+                  title: "Thriving Business Community",
+                  description:
+                    "A curated network of founders, innovators, and professionals with events and workshops."
+                },
+                {
+                  icon: Leaf,
+                  title: "Sustainable & Smart",
+                  description:
+                    "Eco-friendly, energy-efficient, and technology-integrated workspace environment."
+                }
+              ].map((item, index) => (
+                <motion.div
+                  key={index}
+                  initial={{ opacity: 0, y: 15 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: index * 0.08 }}
+                  className={`group flex gap-6 p-6 rounded-2xl transition-all duration-300
+        cursor-default
+        hover:shadow-xl
+        ${isDark ? "bg-gray-900 hover:bg-gray-800" : "hover:bg-white bg-gray-100"}`}
+                >
+                  {/* Icon */}
+                  <div
+                    className={`w-10 h-10 px-2 rounded-xl flex items-center justify-center
+        ${isDark
+                        ? "bg-white/10 group-hover:bg-white/20"
+                        : "bg-gray-200 group-hover:bg-black group-hover:text-white"
+                      }`}
+                  >
+                    <item.icon className={`w-4 h-4 ${isDark ? "text-white" : ""}`} />
+                  </div>
+
+                  {/* Text */}
+                  <div>
+                    <h4
+                      className={`text-lg mb-1 ${isDark ? "text-white" : "text-gray-900"
+                        }`}
+                    >
+                      {item.title}
+                    </h4>
+
+                    <p
+                      className={`leading-relaxed ${isDark ? "text-slate-300" : "text-gray-600"
+                        }`}
+                    >
+                      {item.description}
+                    </p>
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+
           </motion.div>
         </div>
       </section>
