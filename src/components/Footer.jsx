@@ -27,16 +27,16 @@ export default function Footer({ theme = "light" }) {
   return (
     <footer
       className={`
-        relative z-50 py-8 px-6
-        ${theme === "dark"
+          relative z-50 py-8 px-6
+          ${theme === "dark"
           ? "bg-gray-100 text-[#1c2c44]"
           : "bg-gray-100 text-[#1c2c44]"
         }
-      `}
+        `}
     >
       <div className="max-w-7xl mx-auto">
         {/* Main Grid */}
-        <div className="grid grid-cols-1 gap-6 md:grid-cols-5">
+        <div className=" w-ful flex justify-between items-center space-x-2">
           {/* About Section */}
           <div>
             <h3
@@ -46,7 +46,7 @@ export default function Footer({ theme = "light" }) {
               About
             </h3>
             <ul
-              className={`space-y-1 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+              className={`flex space-x-3 space-y-1 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
                 }`}
             >
               <li
@@ -91,7 +91,7 @@ export default function Footer({ theme = "light" }) {
           </div>
 
           {/* Second Column */}
-          <div>
+          <div className="">
             <h3
               className={`text-lg font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
@@ -99,7 +99,7 @@ export default function Footer({ theme = "light" }) {
               Connect
             </h3>
             <ul
-              className={`space-y-1 text-sm mt-4 md:mt-0 ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+              className={`flex space-x-3 space-y-1 text-sm mt-4 md:mt-0 ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
                 }`}
             >
               <li
@@ -145,7 +145,7 @@ export default function Footer({ theme = "light" }) {
 
 
           {/* Social Column */}
-          <div className="md:col-span-3 ml-auto">
+          <div className="md:col-span-3 ">
             <div
               className={`mb-3 flex items-center gap-2 ${theme === "dark" ? "text-black" : "text-black"
                 }`}
@@ -201,7 +201,7 @@ export default function Footer({ theme = "light" }) {
 
         {/* Bottom Legal */}
         <div
-          className={`mt-8 pt-4 border-t ${theme === "dark" ? "border-white/10" : "border-[#e4e7ee]"
+          className={`mt-3 pt-4 border-t ${theme === "dark" ? "border-white/10" : "border-[#e4e7ee]"
             }`}
         >
           <div className="flex flex-col md:flex-row md:items-center gap-3">
