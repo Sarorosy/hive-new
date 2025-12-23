@@ -256,7 +256,7 @@ const WorkspacePage = () => {
                   <Star className="w-6 h-6 text-white" />
                 </div>
                 <div>
-                  <div className={`font-semibold ${theme === "dark" ? "text-black" : "text-black"}`}>
+                  <div className={`font-semibold ${theme == "dark" ? "text-white" : "text-black"}`}>
                     Premium Quality
                   </div>
                   <div className={`text-gray-800`}>Certified workspace</div>
