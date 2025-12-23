@@ -57,7 +57,7 @@ const Counter = ({ end, duration = 0, shouldAnimate = false }) => {
 
   return (
     <span className={theme != "dark" ? "text-white" : "text-black"}>
-      {count} {end == 700000 ? "Million" : "+"}
+      {count} {end == 700000 ? "" : "+"}
     </span>
   );
 };

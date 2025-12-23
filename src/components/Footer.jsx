@@ -27,14 +27,14 @@ export default function Footer({ theme = "light" }) {
   return (
     <footer
       className={`
-          relative z-50 py-8 px-6
+          relative z-50 py-8 
           ${theme === "dark"
           ? "bg-gray-100 text-[#1c2c44]"
           : "bg-gray-100 text-[#1c2c44]"
         }
         `}
     >
-      <div className="max-w-7xl mx-auto">
+      <div className="max-w-[90%] mx-auto">
         {/* Main Grid */}
         <div className=" w-ful flex justify-between items-center space-x-2">
           {/* About Section */}
