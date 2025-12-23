@@ -168,7 +168,7 @@ export const centersData = {
         ],
         details: "A premium coworking space situated on Old Mahabalipuram Road, ideal for tech startups and corporates alike.",
         images: [
-         omr0, omr1,omr2,omr3,omr4,omr5,omr6
+         omr0, omr4,omr5,omr6
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.9123547422114!2d80.24918017512297!3d12.977457387338474!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a525dfe5e034cf9%3A0x1e1d1f590d1c1f4a!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20OMR%20Chennai%20(Pre-toll)!5e0!3m2!1sen!2sin!4v1755267801817!5m2!1sen!2sin",
         lat:"12.977739666919542",
@@ -307,7 +307,7 @@ export const centersData = {
         ],
         details: "Set in the vibrant cultural heart of Pune, combining heritage and modern workspaces.",
         images: [
-          pune0, pune10,pune11,pune12,pune13,pune14
+          pune0, pune10,pune11,pune12,pune14
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3782.9180653057538!2d73.8685052752371!3d18.532604382563267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bc2c107842d09cd%3A0x27f3b911ea375cb4!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20The%20Mills!5e0!3m2!1sen!2sin!4v1755268291348!5m2!1sen!2sin",
         lat:"18.532807831841136",
