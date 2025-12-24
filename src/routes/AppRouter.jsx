@@ -57,6 +57,8 @@ import AllLocations from "../pages/AllLocations";
 import Sitemap from "../pages/Sitemap";
 import AllWorkspaces from "../pages/AllWorkspaces";
 import VirtualOffice from "../pages/VirtualOffice";
+import LandingPage from "../pages/landing/LandingPage";
+import LandingLayout from "../layouts/LandingLayout";
 
 
 export default function AppRouter() {
@@ -181,7 +183,17 @@ export default function AppRouter() {
             {/* <Route path="*" element={<NotFound />} /> */}
             {/* <Route path="/404" element={<NotFound />} /> */}
           </Route>
+
         </Route>
+
+        <Route element={<PrivateRoute />}>
+
+          <Route element={<LandingLayout />}>
+            <Route path="/landing/:branch" element={<LandingPage />} />
+
+          </Route>
+        </Route>
+
         <Route path="/verify-email" element={<VerifyToken />} />
 
 

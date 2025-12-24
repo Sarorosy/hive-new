@@ -330,7 +330,7 @@ export default function HiveWorkspaces() {
             viewport={{ once: true }}
             className="text-center"
           >
-            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full mb-8">
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/10 backdrop-blur-sm rounded-full my-4">
               <Award className="w-4 h-4" />
               <span className="text-sm font-medium">CONCLUSION</span>
             </div>
