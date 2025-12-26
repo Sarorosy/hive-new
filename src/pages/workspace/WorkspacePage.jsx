@@ -519,8 +519,11 @@ const WorkspacePage = () => {
           </div>
         </div>
       </section>
+      <div className="pb-10">
 
       <LearnMoreForm />
+      </div>
+
     </div>
   );
 };

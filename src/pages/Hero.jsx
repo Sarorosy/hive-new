@@ -328,7 +328,7 @@ const Hero = () => {
         <div className="flex-1 flex flex-col justify-end">
             <div className="w-full mx-auto text-white space-y-4 pb-4">
               <h1 className="text-3xl xl:text-4xl font-bold leading-tight text-center filter drop-shadow-[0_4px_10px_rgba(0,0,0,0.5)]">
-              Elevate Your <span className="text-orange-400 ml-2">Ambition.</span>
+              Elevate Your <span className="text-orange-400 ml-2">Ambition.  </span>
               
                   Redefine Your 
                 <span className="text-orange-400 ml-2">Workspace.</span>
