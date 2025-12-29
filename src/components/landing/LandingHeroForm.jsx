@@ -9,7 +9,9 @@ const LandingHeroForm = ({ city }) => {
   const [formData, setFormData] = useState({
     name: "",
     phone: "",
+    organization: "",
     email: "",
+    seats: "",
   });
 
   const [captchaValue, setCaptchaValue] = useState(null);
@@ -22,14 +24,17 @@ const LandingHeroForm = ({ city }) => {
   const handleCaptchaChange = (value) => setCaptchaValue(value);
 
   const validateForm = () => {
-    if (!formData.name.trim()) return toast.error("Please enter your name.");
+    if (!formData.name.trim()) return toast.error("Please enter your full name.");
     if (!formData.phone.trim()) return toast.error("Enter your phone number.");
     const cleanPhone = formData.phone.replace(/\D/g, "");
     if (!/^[0-9]{10,}$/.test(cleanPhone))
       return toast.error("Enter a valid phone number.");
-    if (!formData.email.trim()) return toast.error("Please enter your email.");
+    if (!formData.organization.trim())
+      return toast.error("Please enter your organization name.");
+    if (!formData.email.trim()) return toast.error("Please enter your work email.");
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email))
       return toast.error("Please enter a valid email.");
+    if (!formData.seats) return toast.error("Please select the number of seats.");
     if (!captchaValue)
       return toast.error("Please complete the reCAPTCHA verification.");
     return true;
@@ -52,7 +57,7 @@ const LandingHeroForm = ({ city }) => {
 
       if (response.data.status) {
         toast.success("Thank you! We’ll contact you shortly.");
-        setFormData({ name: "", phone: "", email: "" });
+        setFormData({ name: "", phone: "", organization: "", email: "", seats: "" });
         recaptchaRef.current?.reset();
         setCaptchaValue(null);
       } else {
@@ -93,7 +98,7 @@ const LandingHeroForm = ({ city }) => {
       </div>
 
       {/* Form */}
-      <form onSubmit={handleSubmit} className="space-y-4 w-full flex-1">
+      <form onSubmit={handleSubmit} className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full flex-1">
         <input
           type="text"
           name="name"
@@ -115,6 +120,16 @@ const LandingHeroForm = ({ city }) => {
         />
 
         <input
+          type="text"
+          name="organization"
+          value={formData.organization}
+          onChange={handleChange}
+          placeholder="Organization name *"
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+            focus:border-orange-500 outline-none"
+        />
+
+        <input
           type="email"
           name="email"
           value={formData.email}
@@ -124,8 +139,25 @@ const LandingHeroForm = ({ city }) => {
             focus:border-orange-500 outline-none"
         />
 
+        <select
+          name="seats"
+          value={formData.seats}
+          onChange={handleChange}
+          className="w-full rounded-lg border border-gray-300 px-4 py-3 text-sm
+            focus:border-orange-500 outline-none"
+        >
+          <option value="" disabled>
+            Select number of seats *
+          </option>
+          <option value="1-10">1-10</option>
+          <option value="10-20">10-20</option>
+          <option value="20-50">20-50</option>
+          <option value="50-200">50-200</option>
+          <option value="200+">200+</option>
+        </select>
+
         {/* reCAPTCHA */}
-        <div className="pt-1 scale-[0.92] origin-left">
+        <div className="pt-1 scale-[0.92] origin-left md:col-span-2">
           <ReCAPTCHA
             ref={recaptchaRef}
             sitekey={SITE_KEY}
@@ -139,11 +171,10 @@ const LandingHeroForm = ({ city }) => {
           disabled={submitting}
           className="w-full rounded-xl bg-black py-3.5 text-sm font-semibold
             text-white transition hover:bg-gray-900
-            disabled:opacity-70 disabled:cursor-not-allowed"
+            disabled:opacity-70 disabled:cursor-not-allowed md:col-span-2"
         >
           {submitting ? "Requesting..." : "Request Callback"}
         </button>
-
       </form>
     </div>
   );

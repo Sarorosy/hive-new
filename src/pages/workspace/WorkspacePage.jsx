@@ -273,7 +273,7 @@ const WorkspacePage = () => {
       {workspace?.slug === "managed-offices" && (
         <section
           className={`
-      py-20 transition-colors
+      py-6 transition-colors
       ${theme === "dark" ? "bg-gray-900 text-white" : "bg-gray-100 text-black"}
     `}
         >
@@ -310,7 +310,7 @@ const WorkspacePage = () => {
 
       {/* FEATURES */}
       <section
-        className={`py-20 transition-colors 
+        className={`py-6 transition-colors 
     ${theme === "dark"
             ? "bg-gradient-to-br from-gray-900 to-gray-800"
             : "bg-gradient-to-br from-gray-50 to-white"
@@ -370,7 +370,7 @@ const WorkspacePage = () => {
       </section>
 
       {/* BENEFITS */}
-      <section className="py-20">
+      <section className="py-6">
         <div className="max-w-7xl mx-auto px-4">
           <div className="text-center mb-16">
             <h2 className={`text-5xl liber ${textPrimary}`}>
@@ -422,7 +422,7 @@ const WorkspacePage = () => {
 
       {/* AMENITIES */}
       <section
-        className={`py-20 transition-colors ${theme === "dark"
+        className={`py-6 transition-colors ${theme === "dark"
             ? "bg-gradient-to-br from-gray-900 to-gray-800"
             : "bg-gradient-to-br from-white to-gray-50"
           }`}
@@ -476,7 +476,7 @@ const WorkspacePage = () => {
       </section>
 
       {/* CTA */}
-      <section className="py-20">
+      <section className="py-8">
         <div className="max-w-7xl mx-auto px-4 text-center">
           <h2 className={`text-5xl liber ${textPrimary}`}>
             Ready to Transform Your Workspace?
