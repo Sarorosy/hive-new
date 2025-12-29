@@ -122,7 +122,7 @@ export default function Contact() {
   <div
     className={`min-h-screen py-24 ${
       theme === "dark"
-        ? "bg-[#0b0b0b] text-white"
+        ? "bg-gray-900 text-white"
         : "bg-[#fafafa] text-gray-900"
     }`}
   >

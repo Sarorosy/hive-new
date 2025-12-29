@@ -59,6 +59,7 @@ import AllWorkspaces from "../pages/AllWorkspaces";
 import VirtualOffice from "../pages/VirtualOffice";
 import LandingPage from "../pages/landing/LandingPage";
 import LandingLayout from "../layouts/LandingLayout";
+import LandingCenterPage from "../pages/landing/LandingCenterPage";
 
 
 export default function AppRouter() {
@@ -189,7 +190,7 @@ export default function AppRouter() {
         <Route element={<PrivateRoute />}>
 
           <Route element={<LandingLayout />}>
-            <Route path="/landing/:branch" element={<LandingPage />} />
+            <Route path="/landing/:branch" element={<LandingCenterPage />} />
 
           </Route>
         </Route>
