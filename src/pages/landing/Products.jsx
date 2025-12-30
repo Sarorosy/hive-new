@@ -133,17 +133,6 @@ const Products = ({ city }) => {
                     <p className="text-gray-400 text-xs mt-1">{space.location}</p>
                   )}
 
-
-
-
-
-
-
-
-
-
-
-
                   {/* Price and Button */}
                   <div className="flex items-center justify-between mt-5">
                     <div className="text-left">

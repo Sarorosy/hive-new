@@ -1,11 +1,21 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Orders from "./components/Orders";
 import Address from "./components/Address";
 import AccountDetails from "./components/AccountDetails";
 import Logout from "./components/Logout";
+import { useAuth } from "../../utils/idb";
+import { useNavigate } from "react-router-dom";
 
 export default function Profile() {
   const [activeTab, setActiveTab] = useState("orders");
+
+  const {user} = useAuth();
+  const navigate = useNavigate();
+  useEffect(()=>{
+    if(!user || !user?.id || !user?.email){
+      navigate('/account/login')
+    }
+  },[user])
 
   const renderContent = () => {
     if (activeTab === "orders") return <Orders />;

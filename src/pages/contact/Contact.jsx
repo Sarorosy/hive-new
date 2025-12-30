@@ -1,5 +1,5 @@
 
-import { useOutletContext } from "react-router-dom";
+import { useNavigate, useOutletContext } from "react-router-dom";
 import React, { useState, useRef } from "react";
 import { centersData } from "../../data/centersData";
 import {
@@ -118,181 +118,292 @@ export default function Contact() {
 
   const leftText = theme === "dark" ? "text-gray-300" : "text-gray-600";
 
+  const navigate = useNavigate();
+
   return (
-  <div
-    className={`min-h-screen py-24 ${
-      theme === "dark"
-        ? "bg-gray-900 text-white"
-        : "bg-[#fafafa] text-gray-900"
-    }`}
-  >
-    <section className="max-w-6xl mx-auto px-6">
-      {/* HEADER */}
-      <div className="text-center max-w-2xl mx-auto mb-8">
-        <p className="text-xs tracking-[0.3em] uppercase text-orange-500 font-semibold">
-          Contact
-        </p>
-        <h1 className="mt-4 text-4xl font-semibold liber">
-          Let’s find your ideal workspace
-        </h1>
-        <p className="mt-4 text-base text-gray-500">
-          Tell us about your team and requirements. Our workspace advisors will
-          reach out within 24 hours.
-        </p>
-      </div>
-
-      {/* MAIN CARD */}
-      <div
-        className={`grid md:grid-cols-2 rounded-2xl overflow-hidden border ${
-          theme === "dark"
-            ? "bg-[#111] border-gray-800"
-            : "bg-white border-gray-200"
+    <div
+      className={`min-h-screen py-16 transition-colors duration-300 ${theme === "dark"
+          ? "bg-gray-900 text-white"
+          : "bg-[#fafafa] text-gray-900"
         }`}
+    >
+      <section
+        className={`transition-colors duration-300 ${theme === "dark" ? "bg-gray-900" : "bg-[#faf9f7]"
+          }`}
       >
-        {/* LEFT INFO */}
-        <div className="p-10">
-          <h2 className="text-2xl font-semibold liber mb-4">
-            Start a conversation
-          </h2>
-          <p className="text-gray-500 mb-8">
-            Speak with our workspace specialists and schedule a tour at your
-            preferred location.
-          </p>
-
-          <div className="space-y-4 mb-10">
-            <div className="flex items-center gap-3">
-              <Phone className="w-4 h-4 text-orange-500" />
-              <a
-                href="tel:+917022274000"
-                className="font-medium text-gray-700 dark:text-gray-300"
+        <div className="mx-auto max-w-7xl px-4 py-16">
+          <div className="grid gap-12 lg:grid-cols-12">
+            {/* LEFT */}
+            <div className="lg:col-span-8">
+              <h1
+                className={`text-4xl liber font-medium transition-colors duration-300 ${theme === "dark" ? "text-white" : "text-gray-900"
+                  }`}
               >
-                +91 70222 74000
-              </a>
-            </div>
-            <div className="flex items-center gap-3">
-              <Mail className="w-4 h-4 text-orange-500" />
-              <a
-                href="mailto:hello@hiveworkspaces.com"
-                className="font-medium text-gray-700 dark:text-gray-300"
-              >
-                hello@hiveworkspaces.com
-              </a>
-            </div>
-          </div>
+                Hey there, how can we help?
+              </h1>
 
-          <div>
-            <p className="text-sm font-semibold mb-4 text-gray-600 dark:text-gray-400">
-              Workspace Solutions
-            </p>
-            <ul className="grid grid-cols-2 gap-y-2 text-sm text-gray-500">
-              <li>Hot Desks</li>
-              <li>Dedicated Desks</li>
-              <li>Private Cabins</li>
-              <li>Managed Offices</li>
-              <li>Enterprise Suites</li>
-              <li>Meeting Rooms</li>
-            </ul>
+              <p
+                className={`mt-4 max-w-2xl transition-colors duration-300 ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                  }`}
+              >
+                The best way to experience our workspace is to see it for
+                yourself. Complete the form and our team will reach out to
+                understand your needs.
+              </p>
+
+              <hr
+                className={`my-8 ${theme === "dark" ? "border-gray-700" : "border-gray-200"
+                  }`}
+              />
+
+              <form
+                onSubmit={handleSubmit}
+                className={`p-10 rounded-xl border transition-colors duration-300 ${theme === "dark"
+                    ? "bg-[#0e0e0e] border-gray-800"
+                    : "bg-[#fbfbfb] border-gray-200"
+                  }`}
+              >
+
+                <div className="space-y-4">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Full Name"
+                    value={formData.name}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent transition-colors duration-300 ${theme === "dark"
+                        ? "border-gray-700 placeholder-gray-500 text-white"
+                        : "border-gray-200 placeholder-gray-400 text-gray-900"
+                      }`}
+                  />
+
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Work Email"
+                    value={formData.email}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent transition-colors duration-300 ${theme === "dark"
+                        ? "border-gray-700 placeholder-gray-500 text-white"
+                        : "border-gray-200 placeholder-gray-400 text-gray-900"
+                      }`}
+                  />
+
+                  <input
+                    type="text"
+                    name="phone"
+                    placeholder="Phone Number"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    className={`w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent transition-colors duration-300 ${theme === "dark"
+                        ? "border-gray-700 placeholder-gray-500 text-white"
+                        : "border-gray-200 placeholder-gray-400 text-gray-900"
+                      }`}
+                  />
+
+                  <div className="grid grid-cols-2 gap-4">
+                    <input
+                      type="number"
+                      name="seats"
+                      placeholder="Seats"
+                      value={formData.seats}
+                      onChange={handleChange}
+                      className={`w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent transition-colors duration-300 ${theme === "dark"
+                          ? "border-gray-700 placeholder-gray-500 text-white"
+                          : "border-gray-200 placeholder-gray-400 text-gray-900"
+                        }`}
+                    />
+
+                    <select
+                      name="location"
+                      value={formData.location}
+                      onChange={handleChange}
+                      className={`w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent transition-colors duration-300 ${theme === "dark"
+                          ? "border-gray-700 text-white [&>option]:bg-gray-900"
+                          : "border-gray-200 text-gray-900"
+                        }`}
+                    >
+                      <option value="">Location</option>
+                      {allLocations.map((loc, idx) => (
+                        <option key={idx} value={loc}>
+                          {loc}
+                        </option>
+                      ))}
+                    </select>
+                  </div>
+
+                  <textarea
+                    name="message"
+                    placeholder="Tell us about your requirements (optional)"
+                    value={formData.message}
+                    onChange={handleChange}
+                    rows={3}
+                    className={`w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent transition-colors duration-300 ${theme === "dark"
+                        ? "border-gray-700 placeholder-gray-500 text-white"
+                        : "border-gray-200 placeholder-gray-400 text-gray-900"
+                      }`}
+                  />
+
+                  <div className="flex justify-center pt-2">
+                    <ReCAPTCHA
+                      ref={recaptchaRef}
+                      sitekey={SITE_KEY}
+                      onChange={handleCaptchaChange}
+                      theme={theme === "dark" ? "dark" : "light"}
+                    />
+                  </div>
+
+                  <button
+                    type="submit"
+                    disabled={submitting}
+                    className={`w-full mt-4 rounded-lg py-3 text-sm font-medium transition ${submitting
+                        ? "opacity-50"
+                        : "bg-orange-500 text-white hover:bg-orange-600"
+                      }`}
+                  >
+                    {submitting ? "Submitting..." : "Request Callback"}
+                  </button>
+                </div>
+              </form>
+            </div>
+
+            {/* RIGHT SIDEBAR */}
+            <aside className="lg:col-span-4">
+              <div className="space-y-10">
+                <div>
+                  <h3
+                    className={`text-xl liber font-medium transition-colors duration-300 ${theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                  >
+                    Prefer to call now?
+                  </h3>
+                  <p
+                    className={`mt-2 transition-colors duration-300 ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      }`}
+                  >
+                    You can reach us at{" "}
+                    <a
+                      href="tel:7022274000"
+                      className="font-medium text-orange-500 hover:text-orange-400 underline"
+                    >
+                      7022274000
+                    </a>{" "}
+                    Monday–Saturday, 8am–5pm.
+                  </p>
+                </div>
+
+                <hr
+                  className={`${theme === "dark" ? "border-gray-700" : "border-gray-200"
+                    }`}
+                />
+
+                <div>
+                  <h3
+                    className={`text-xl liber font-medium transition-colors duration-300 ${theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                  >
+                    Prefer to email?
+                  </h3>
+                  <p
+                    className={`mt-2 transition-colors duration-300 ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      }`}
+                  >
+                    Drop us a line at{" "}
+                    <a
+                      href="mailto:hello@hiveworkspaces.com"
+                      className="font-medium text-orange-500 hover:text-orange-400 underline"
+                    >
+                      hello@hiveworkspaces.com
+                    </a>
+                  </p>
+                </div>
+
+                <hr
+                  className={`${theme === "dark" ? "border-gray-700" : "border-gray-200"
+                    }`}
+                />
+
+                <div>
+                  <h3
+                    className={`text-xl liber font-medium transition-colors duration-300 ${theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                  >
+                    Already a member?
+                  </h3>
+                  <p
+                    className={`mt-2 transition-colors duration-300 ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      }`}
+                  >
+                    <button
+                      onClick={() => {
+                        navigate("/account/login");
+                      }}
+                      className="text-orange-500 hover:text-orange-400 underline"
+                    >
+                      Sign in
+                    </button>{" "}
+                    to manage reservations, account details, and more.
+                  </p>
+                </div>
+
+                <hr
+                  className={`${theme === "dark" ? "border-gray-700" : "border-gray-200"
+                    }`}
+                />
+
+                <div>
+                  <h3
+                    className={`text-xl liber font-medium transition-colors duration-300 ${theme === "dark" ? "text-white" : "text-gray-900"
+                      }`}
+                  >
+                    Ready to join now?
+                  </h3>
+                  <p
+                    className={`mt-2 transition-colors duration-300 ${theme === "dark" ? "text-gray-400" : "text-gray-600"
+                      }`}
+                  >
+                    <button
+                      onClick={() => {
+                        navigate("/solutions");
+                      }}
+                      className="text-orange-500 hover:text-orange-400 underline"
+                    >
+                      Get instant access
+                    </button>{" "}
+                    to coworking and meeting spaces with our Access Membership.
+                  </p>
+                </div>
+
+                <hr
+                  className={`${theme === "dark" ? "border-gray-700" : "border-gray-200"
+                    }`}
+                />
+
+                <div>
+                  <p
+                    className={`text-sm font-medium mb-4 transition-colors duration-300 ${theme === "dark" ? "text-gray-300" : "text-gray-600"
+                      }`}
+                  >
+                    Workspace Solutions
+                  </p>
+                  <ul
+                    className={`grid grid-cols-2 gap-y-2 text-sm transition-colors duration-300 ${theme === "dark" ? "text-gray-500" : "text-gray-500"
+                      }`}
+                  >
+                    <li>Hot Desks</li>
+                    <li>Dedicated Desks</li>
+                    <li>Private Cabins</li>
+                    <li>Managed Offices</li>
+                    <li>Enterprise Suites</li>
+                    <li>Meeting Rooms</li>
+                  </ul>
+                </div>
+              </div>
+            </aside>
           </div>
         </div>
-
-        {/* RIGHT FORM */}
-        <form
-          onSubmit={handleSubmit}
-          className={`p-10 ${
-            theme === "dark" ? "bg-[#0e0e0e]" : "bg-[#fbfbfb]"
-          }`}
-        >
-          <h3 className="text-xl font-semibold mb-6 liber">
-            Book a tour
-          </h3>
-
-          <div className="space-y-4">
-            <input
-              type="text"
-              name="name"
-              placeholder="Full Name"
-              value={formData.name}
-              onChange={handleChange}
-              className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent"
-            />
-
-            <input
-              type="email"
-              name="email"
-              placeholder="Work Email"
-              value={formData.email}
-              onChange={handleChange}
-              className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent"
-            />
-
-            <input
-              type="text"
-              name="phone"
-              placeholder="Phone Number"
-              value={formData.phone}
-              onChange={handleChange}
-              className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent"
-            />
-
-            <div className="grid grid-cols-2 gap-4">
-              <input
-                type="number"
-                name="seats"
-                placeholder="Seats"
-                value={formData.seats}
-                onChange={handleChange}
-                className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent"
-              />
-
-              <select
-                name="location"
-                value={formData.location}
-                onChange={handleChange}
-                className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent"
-              >
-                <option value="">Location</option>
-                {allLocations.map((loc, idx) => (
-                  <option key={idx} value={loc}>
-                    {loc}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            <textarea
-              name="message"
-              placeholder="Tell us about your requirements (optional)"
-              value={formData.message}
-              onChange={handleChange}
-              rows={3}
-              className="w-full rounded-lg border px-4 py-3 text-sm outline-none focus:ring-2 focus:ring-orange-500 bg-transparent"
-            />
-
-            <div className="flex justify-center pt-2">
-              <ReCAPTCHA
-                ref={recaptchaRef}
-                sitekey={SITE_KEY}
-                onChange={handleCaptchaChange}
-                theme={theme === "dark" ? "dark" : "light"}
-              />
-            </div>
-
-            <button
-              type="submit"
-              disabled={submitting}
-              className={`w-full mt-4 rounded-lg py-3 text-sm font-semibold transition ${
-                submitting
-                  ? "opacity-50"
-                  : "bg-orange-500 text-white hover:bg-orange-600"
-              }`}
-            >
-              {submitting ? "Submitting..." : "Request Callback"}
-            </button>
-          </div>
-        </form>
-      </div>
-    </section>
-  </div>
-);
+      </section>
+    </div>
+  );
 
 }
