@@ -282,7 +282,7 @@ export default function Footer({ theme = "light" }) {
 
       {/* WhatsApp Widget */}
       <FloatingWhatsApp
-        phoneNumber="918072075487"
+        phoneNumber="917022274000"
         accountName="The Hive"
         avatar="/Hive-Favicon.png"
         statusMessage="Typically replies in minutes"

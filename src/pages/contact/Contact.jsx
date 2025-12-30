@@ -323,7 +323,7 @@ export default function Contact() {
                     }`}
                 />
 
-                <div>
+                {/* <div>
                   <h3
                     className={`text-xl liber font-medium transition-colors duration-300 ${theme === "dark" ? "text-white" : "text-gray-900"
                       }`}
@@ -344,12 +344,12 @@ export default function Contact() {
                     </button>{" "}
                     to manage reservations, account details, and more.
                   </p>
-                </div>
+                </div> */}
 
-                <hr
+                {/* <hr
                   className={`${theme === "dark" ? "border-gray-700" : "border-gray-200"
                     }`}
-                />
+                /> */}
 
                 <div>
                   <h3
@@ -362,14 +362,13 @@ export default function Contact() {
                     className={`mt-2 transition-colors duration-300 ${theme === "dark" ? "text-gray-400" : "text-gray-600"
                       }`}
                   >
-                    <button
-                      onClick={() => {
-                        navigate("/solutions");
-                      }}
-                      className="text-orange-500 hover:text-orange-400 underline"
+                    <a
+                      href="tel:7022274000"
+                      className="font-medium text-orange-500 hover:text-orange-400 underline"
                     >
                       Get instant access
-                    </button>{" "}
+                    </a>
+                    {" "}
                     to coworking and meeting spaces with our Access Membership.
                   </p>
                 </div>
