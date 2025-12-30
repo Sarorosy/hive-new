@@ -4,7 +4,7 @@ import { Monitor, Wifi, Snowflake, ChevronRight, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../utils/constants";
 
-const Products = () => {
+const Products = ({ city }) => {
 
   const [loading, setLoading] = useState(false);
   const [spaces, setSpaces] = useState([]);
@@ -16,7 +16,7 @@ const Products = () => {
       setError(null);
       const res = await fetch(`${API_URL}/api/products`);
       const data = await res.json();
-      
+
       if (data.status && data.products) {
         // Map API data to match component expectations
         const mappedSpaces = data.products.map(product => ({
@@ -54,7 +54,7 @@ const Products = () => {
   // Extract unique categories from API data
   const categories = ["All", ...new Set(spaces.map(space => space.category).filter(Boolean))];
 
-  const [activeCategory, setActiveCategory] = useState("All");
+  const [activeCategory, setActiveCategory] = useState(city);
 
   const filteredSpaces =
     activeCategory === "All"
@@ -69,10 +69,10 @@ const Products = () => {
     <div className="bg-gray-50 py-10">
       {/* Heading */}
       <div className="max-w-6xl mx-auto px-4">
-        
+
 
         {/* Filters */}
-        <div className="flex flex-wrap items-center gap-3 mt-6">
+        {/* <div className="flex flex-wrap items-center gap-3 mt-6">
           {categories.map((cat) => (
             <button
               key={cat}
@@ -86,7 +86,7 @@ const Products = () => {
             </button>
           ))}
 
-        </div>
+        </div> */}
 
         {/* Loading State */}
         {loading && (
@@ -99,7 +99,7 @@ const Products = () => {
         {error && (
           <div className="text-center py-20">
             <p className="text-red-500 mb-4">{error}</p>
-            <button 
+            <button
               onClick={fetchSpaces}
               className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
             >
@@ -127,13 +127,22 @@ const Products = () => {
                 <div className="p-5">
                   <h3 className="text-lg font-semibold line-clamp-1">{space.title}</h3>
                   <p className="text-gray-500 text-sm line-clamp-2">{space.desc}</p>
-                  
+
                   {/* Location */}
                   {space.location && (
                     <p className="text-gray-400 text-xs mt-1">{space.location}</p>
                   )}
 
-                  
+
+
+
+
+
+
+
+
+
+
 
                   {/* Price and Button */}
                   <div className="flex items-center justify-between mt-5">
@@ -141,14 +150,14 @@ const Products = () => {
                       <span className="text-lg font-bold">{space.price}</span>
                       <span className="text-gray-500 text-sm ml-1">{space.unit}</span>
                     </div>
+                  </div>
                     <button
                       onClick={() => handleCall("+911234567890")}
-                    //    onClick={() => { navigate(space.route) }}
-                      className="flex items-center bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white transition-colors"
+                      //    onClick={() => { navigate(space.route) }}
+                      className="flex w-full text-center items-center justify-center mt-2 bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white transition-colors"
                     >
-                      <Phone size={15} className="mr-2" /> Know More
+                      <Phone size={15} className="mr-2" /> Call us to book now
                     </button>
-                  </div>
                 </div>
               </div>
             ))}

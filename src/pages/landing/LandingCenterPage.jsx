@@ -188,6 +188,7 @@ function LandingCenterPage() {
 
     // Resolve city and branch from param
     let city, branch, cityData, branchData;
+    
 
     if (branchParam) {
         for (const [cKey, cData] of Object.entries(centersData)) {
@@ -226,8 +227,11 @@ function LandingCenterPage() {
     useEffect(() => {
         if (!cityData || (branch && !branchData)) {
             // navigate("/404", { replace: true });
+
+            
         }
     }, [city, branch, cityData, branchData, navigate]);
+
 
     useEffect(() => {
         const observerOptions = {
@@ -717,7 +721,7 @@ function LandingCenterPage() {
                     {/* Right Sidebar - Latest Blogs */}
                     <div className="hidden lg:block lg:col-span-1">
                         {/* <ExploreBlogs /> */}
-                        <Products />
+                        <Products city={cityData?.name} />
                     </div>
                 </div>
             </div>
