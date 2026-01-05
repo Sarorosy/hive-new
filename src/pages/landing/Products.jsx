@@ -4,7 +4,7 @@ import { Monitor, Wifi, Snowflake, ChevronRight, Phone } from "lucide-react";
 import { useNavigate } from "react-router-dom";
 import { API_URL } from "../../utils/constants";
 
-const Products = ({ city }) => {
+const Products = ({ city, theme }) => {
 
   const [loading, setLoading] = useState(false);
   const [spaces, setSpaces] = useState([]);
@@ -65,8 +65,10 @@ const Products = ({ city }) => {
     window.location.href = `tel:${phoneNumber}`;
   };
 
+  const isDark = theme === "dark";
+
   return (
-    <div className="bg-gray-50 py-10">
+    <div className={`py-10 ${isDark ? "bg-gray-900" : "bg-gray-50"}`}>
       {/* Heading */}
       <div className="max-w-6xl mx-auto px-4">
 
@@ -78,8 +80,8 @@ const Products = ({ city }) => {
               key={cat}
               onClick={() => setActiveCategory(cat)}
               className={`px-4 py-2 rounded-full cursor-pointer border transition ${activeCategory === cat
-                ? "bg-black text-white"
-                : "bg-gray-100 text-gray-700 hover:bg-gray-200"
+                ? (isDark ? "bg-white text-black" : "bg-black text-white")
+                : (isDark ? "bg-gray-800 text-gray-300 border-gray-700 hover:bg-gray-700" : "bg-gray-100 text-gray-700 hover:bg-gray-200")
                 }`}
             >
               {cat}
@@ -91,7 +93,7 @@ const Products = ({ city }) => {
         {/* Loading State */}
         {loading && (
           <div className="flex justify-center items-center py-20">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-black"></div>
+            <div className={`animate-spin rounded-full h-12 w-12 border-b-2 ${isDark ? "border-white" : "border-black"}`}></div>
           </div>
         )}
 
@@ -101,7 +103,7 @@ const Products = ({ city }) => {
             <p className="text-red-500 mb-4">{error}</p>
             <button
               onClick={fetchSpaces}
-              className="bg-black text-white px-4 py-2 rounded-lg hover:bg-gray-800"
+              className={`px-4 py-2 rounded-lg transition-colors ${isDark ? "bg-white text-black hover:bg-gray-200" : "bg-black text-white hover:bg-gray-800"}`}
             >
               Try Again
             </button>
@@ -110,11 +112,11 @@ const Products = ({ city }) => {
 
         {/* Cards */}
         {!loading && !error && (
-          <div className="grid grid-cols-1 gap-6 mt-8">
+          <div className="grid grid-cols-1 gap-6 mt-2">
             {filteredSpaces.map((space, idx) => (
               <div
                 key={space.id || idx}
-                className="bg-white rounded-2xl overflow-hidden border border-gray-200 p-1"
+                className={`rounded-2xl overflow-hidden border p-1 transition-colors ${isDark ? "bg-gray-900 border-gray-800" : "bg-white border-gray-200"}`}
               >
                 <img
                   src={space.img}
@@ -125,28 +127,29 @@ const Products = ({ city }) => {
                   }}
                 />
                 <div className="p-5">
-                  <h3 className="text-lg font-semibold line-clamp-1">{space.title}</h3>
-                  <p className="text-gray-500 text-sm line-clamp-2">{space.desc}</p>
+                  <h3 className={`text-lg font-semibold line-clamp-1 ${isDark ? "text-white" : "text-black"}`}>{space.title}</h3>
+                  <p className={`text-sm line-clamp-2 ${isDark ? "text-gray-400" : "text-gray-500"}`}>{space.desc}</p>
 
                   {/* Location */}
                   {space.location && (
-                    <p className="text-gray-400 text-xs mt-1">{space.location}</p>
+                    <p className={`text-xs mt-1 ${isDark ? "text-gray-500" : "text-gray-400"}`}>{space.location}</p>
                   )}
 
                   {/* Price and Button */}
                   <div className="flex items-center justify-between mt-5">
                     <div className="text-left">
-                      <span className="text-lg font-bold">{space.price}</span>
-                      <span className="text-gray-500 text-sm ml-1">{space.unit}</span>
+                      <span className={`text-lg font-bold ${isDark ? "text-white" : "text-black"}`}>{space.price}</span>
+                      <span className={`text-sm ml-1 ${isDark ? "text-gray-400" : "text-gray-500"}`}>{space.unit}</span>
                     </div>
                   </div>
-                    <button
-                      onClick={() => handleCall("+911234567890")}
-                      //    onClick={() => { navigate(space.route) }}
-                      className="flex w-full text-center items-center justify-center mt-2 bg-white text-black border border-black px-4 py-2 rounded-lg hover:bg-black hover:text-white transition-colors"
-                    >
-                      <Phone size={15} className="mr-2" /> Call us to book now
-                    </button>
+                  <button
+                    onClick={() => handleCall("+911234567890")}
+                    className={`flex w-full text-center items-center justify-center mt-2 px-4 py-2 rounded-lg border transition-colors ${isDark
+                      ? "bg-gray-900 text-white border-white hover:bg-white hover:text-black"
+                      : "bg-white text-black border-black hover:bg-black hover:text-white"}`}
+                  >
+                    <Phone size={15} className="mr-2" /> Call us to book now
+                  </button>
                 </div>
               </div>
             ))}
@@ -156,7 +159,7 @@ const Products = ({ city }) => {
         {/* No Results */}
         {!loading && !error && filteredSpaces.length === 0 && (
           <div className="text-center py-20">
-            <p className="text-gray-500">No products found for the selected category.</p>
+            <p className={`${isDark ? "text-gray-400" : "text-gray-500"}`}>No products found for the selected category.</p>
           </div>
         )}
       </div>
