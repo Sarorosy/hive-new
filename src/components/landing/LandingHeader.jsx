@@ -121,15 +121,26 @@ const LandingHeader = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                             <a
                                 href="tel:+917022274000"
                                 className=" items-center gap-1 hover:underline"
+                                id="call-us"
                             >
                                 <span className="f-11">
-                                    Looking for a workspace? <br/>
+                                    Looking for a workspace? <br />
                                 </span>
                                 <span className="f-12 flex items-center gap-1">
-                                    <Phone className="w-4 h-4" /> +91 7022274000  
+                                    <Phone className="w-4 h-4" /> +91 7022274000
                                 </span>
 
                             </a>
+
+                            <button
+                                onClick={() => navigate("/contact")}
+                                className={`px-6 py-2 rounded-full font-medium transition-all duration-300 ${theme === "dark"
+                                        ? "bg-white text-black hover:bg-gray-100"
+                                        : "bg-black text-white hover:bg-gray-900"
+                                    } cursor-pointer`}
+                            >
+                                Contact Us
+                            </button>
 
 
                         </div>
@@ -156,6 +167,17 @@ const LandingHeader = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                             >
                                 <Phone className="w-5 h-5" /> Call Us
                             </a>
+
+                            <button
+                                onClick={() => {
+                                    setMobileOpen(false);
+                                    if (onBookTourClick) onBookTourClick();
+                                    else navigate("/contact");
+                                }}
+                                className="flex items-center gap-2 py-2 text-lg text-left w-full cursor-pointer"
+                            >
+                                <ArrowRight className="w-5 h-5" /> Contact Us
+                            </button>
                         </div>
                     )}
                 </div>

@@ -26,7 +26,7 @@ import ch77 from "../assets/raw/chn/skcl/IMGIDSHCVSHU.jpg";
 
 //images for OMR
 
-import omr0 from "../assets/BUILDINGS/OMR-CHENNAI.jpg";
+import omr0 from "../assets/BUILDINGS/OMR-CHENNAI.png";
 import omr1 from "../assets/raw/chn/omr/1.jpg";
 import omr2 from "../assets/raw/chn/omr/2.jpg";
 import omr3 from "../assets/raw/chn/omr/3.jpg";
@@ -47,9 +47,9 @@ import skcl5 from "../assets/raw/chn/skcl/s4.jpg";
 import ch11 from "../assets/raw/chn/porur/868cd7b9f7db93a1b44f0f2d1c105e1bb2bd2c0e1a9b9ae9c6cb761320c9c8b2.jpeg";
 import ch12 from "../assets/raw/chn/porur/85537134.jpeg";
 import ch13 from "../assets/raw/chn/porur/bg_9_5700fae993.webp";
-import ch14 from "../assets/raw/chn/porur/9.jpg";
+import ch14 from "../assets/raw/chn/porur/9.png";
 import ch15 from "../assets/raw/chn/porur/two.jpg";
-import ch16 from "../assets/raw/chn/porur/three.jpg";
+import ch16 from "../assets/raw/chn/porur/three.png";
 
 import ch17 from "../assets/raw/chn/skcl/IMG_7927.JPG";
 import ch18 from "../assets/raw/chn/skcl/IMG_7928.JPG";
@@ -65,7 +65,7 @@ import ch27 from "../assets/raw/chn/YAV00080-min.JPG";
 
 
 //images for bangalore
-import whitefield from "../assets/BUILDINGS/VR,BENGALURE.jpg"
+import whitefield from "../assets/BUILDINGS/VR,BENGALURE.png"
 import blr1 from "../assets/raw/blr/_SPL0002-min.JPG";
 import blr2 from "../assets/raw/blr/_SPL9627-min.JPG";
 import blr3 from "../assets/raw/blr/IMG_20250318_011402314-min.jpg";
@@ -94,7 +94,7 @@ import wh5 from '../assets/raw/blr/whitefield/_SPL9466-min.JPG';
 // import wh6 from '../assets/raw/blr/whitefield/_SPL9496-min.JPG';
 import wh7 from '../assets/raw/blr/whitefield/_SPL9535-min.JPG';
 import wh8 from '../assets/raw/blr/whitefield/_SPL9549-min.JPG';
-import wh9 from '../assets/raw/blr/whitefield/_SPL9627-min.jpg';
+import wh9 from '../assets/raw/blr/whitefield/new_modified.png';
 import wh10 from '../assets/raw/blr/whitefield/_SPL9783-min.JPG';
 
 //images for Hyderabad
@@ -233,7 +233,7 @@ export const centersData = {
         ],
         details: "A dynamic coworking hub in the bustling Whitefield tech district.",
         images: [
-        whitefield, wh4,wh5,wh7,wh9
+        whitefield, wh4,wh5,wh9
         ],
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.614679956308!2d77.69306677512326!3d12.99647918732121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110b3c1ae257%3A0x338aab3b907ba3d6!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20VR%20Bengaluru!5e0!3m2!1sen!2sin!4v1755268041583!5m2!1sen!2sin",
         lat : "12.997064975550622",

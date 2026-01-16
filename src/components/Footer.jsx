@@ -36,17 +36,17 @@ export default function Footer({ theme = "light" }) {
     >
       <div className="max-w-[90%] mx-auto">
         {/* Main Grid */}
-        <div className=" w-ful flex justify-between items-center space-x-2">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 items-start">
           {/* About Section */}
-          <div>
+          <div className="flex flex-col">
             <h3
-              className={`text-lg font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+              className={`text-lg font-bold mb-4 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
             >
               About
             </h3>
             <ul
-              className={`flex space-x-3 space-y-1 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+              className={`flex flex-col gap-2 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
                 }`}
             >
               <li
@@ -91,15 +91,15 @@ export default function Footer({ theme = "light" }) {
           </div>
 
           {/* Second Column */}
-          <div className="">
+          <div className="flex flex-col">
             <h3
-              className={`text-lg font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+              className={`text-lg font-bold mb-4 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
             >
               Connect
             </h3>
             <ul
-              className={`flex space-x-3 space-y-1 text-sm mt-4 md:mt-0 ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+              className={`flex flex-col gap-2 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
                 }`}
             >
               <li
@@ -110,7 +110,6 @@ export default function Footer({ theme = "light" }) {
               </li>
 
               <li
-
                 className="hover:text-orange-500 cursor-pointer duration-200"
               >
                 <a
@@ -138,22 +137,25 @@ export default function Footer({ theme = "light" }) {
               >
                 Sitemap
               </li>
-
             </ul>
           </div>
 
-
-
           {/* Social Column */}
-          <div className="md:col-span-3 ">
+          <div className="flex flex-col sm:col-span-2 md:col-span-1">
+            <h3
+              className={`text-lg font-bold mb-4 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+                }`}
+            >
+              Follow Us
+            </h3>
             <div
-              className={`mb-3 flex items-center gap-2 ${theme === "dark" ? "text-black" : "text-black"
+              className={`mb-4 flex items-center gap-2 text-sm ${theme === "dark" ? "text-gray-600" : "text-gray-600"
                 }`}
             >
               <Globe size={15} /> India
             </div>
 
-            <div className="flex gap-3">
+            <div className="flex flex-wrap gap-4">
               {[
                 {
                   href: "https://www.facebook.com/hiveworkspaces/",
@@ -177,7 +179,8 @@ export default function Footer({ theme = "light" }) {
                   href={item.href}
                   target="_blank"
                   rel="noreferrer"
-                  className={theme === "dark" ? "text-black" : "text-black"}
+                  className={`${theme === "dark" ? "text-black" : "text-black"
+                    } hover:text-orange-500 transition-colors duration-200`}
                 >
                   {item.icon}
                 </a>
@@ -188,6 +191,7 @@ export default function Footer({ theme = "light" }) {
                 href="https://twitter.com/hiveworkspaces?s=20"
                 target="_blank"
                 rel="noreferrer"
+                className="hover:opacity-75 transition-opacity duration-200"
               >
                 <img
                   src={assetPath("twitter.png")}
@@ -201,80 +205,76 @@ export default function Footer({ theme = "light" }) {
 
         {/* Bottom Legal */}
         <div
-          className={`mt-3 pt-4 border-t ${theme === "dark" ? "border-white/10" : "border-[#e4e7ee]"
+          className={`mt-12 pt-6 border-t ${theme === "dark" ? "border-gray-200" : "border-[#e4e7ee]"
             }`}
         >
-          <div className="flex flex-col md:flex-row md:items-center gap-3">
-            <img
-              src={assetPath("logo-transparent.png")}
-              alt="Logo"
-              width={100}
-              className="rounded-md transition-all duration-300"
-              style={{
-                filter: theme === "darkk" ? "invert(1) brightness(1.3)" : "none",
-              }}
-            />
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+            <div className="flex flex-col md:flex-row md:items-center gap-4">
+              <img
+                src={assetPath("logo-transparent.png")}
+                alt="Logo"
+                width={100}
+                className="rounded-md transition-all duration-300"
+                style={{
+                  filter: theme === "dark" ? "invert(1) brightness(1.3)" : "none",
+                }}
+              />
 
-            <div
-              className={`flex flex-wrap items-center gap-2 text-sm ${theme === "dark" ? "text-gray-300" : "text-[#4b576a]"
-                }`}
-            >
-              {[
-                ["Privacy Policy", "/privacy-policy"],
-                ["Terms of Use", "/terms-and-conditions"],
-                ["Cookie Policy", "/cookie-policy"],
-              ].map(([label, url], i) => (
-                <React.Fragment key={i}>
+              <div
+                className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-sm ${theme === "dark" ? "text-gray-500" : "text-[#4b576a]"
+                  }`}
+              >
+                {[
+                  ["Privacy Policy", "/privacy-policy"],
+                  ["Terms of Use", "/terms-and-conditions"],
+                  ["Cookie Policy", "/cookie-policy"],
+                ].map(([label, url], i) => (
                   <button
+                    key={i}
                     onClick={() => navigate(url)}
-                    className={`hover:underline ${theme === "dark" ? "text-orange-600" : "text-orange-600"
-                      }`}
+                    className="hover:text-orange-600 hover:underline transition-colors duration-200"
                   >
                     {label}
                   </button>
-                  {i < 2 && <span>|</span>}
-                </React.Fragment>
-              ))}
-            </div>
-          </div>
-
-          <div
-            className={`mt-2 text-sm ${theme === "dark" ? "text-gray-400" : "text-[#4b576a]"
-              }`}
-          >
-            <p>©Copyright 2011 - 2025 The Hive. All rights reserved</p>
-
-            <div className="mt-2 text-xs">
-              <p
-                className={`font-semibold mb-1 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
-                  }`}
-              >
-                Key Locations
-              </p>
-
-              <div className="flex flex-wrap gap-2 text-[10px] md:text-[11px]">
-                {[
-                  "Anna Nagar, Chennai",
-                  "OMR Chennai (Pre-toll)",
-                  "SKCL Guindy, Chennai",
-                  "Keppal One Paramount, Chennai",
-                  "VR Bengaluru",
-                  "Prestige Tech Platina, Bengaluru",
-                  "Gachibowli, Hyderabad",
-                  "The Mills, Pune",
-                ].map((loc, i) => (
-                  <span
-                    key={i}
-                    onClick={() => { navigate('/locations') }}
-                    className={`cursor-pointer px-1.5 py-0.5 rounded-full border ${theme === "dark"
-                      ? "bg-black text-white border-white/20 "
-                      : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb]"
-                      }`}
-                  >
-                    {loc}
-                  </span>
                 ))}
               </div>
+            </div>
+
+            <p className={`text-sm ${theme === "dark" ? "text-gray-500" : "text-[#4b576a]"}`}>
+              ©Copyright 2011 - {new Date().getFullYear()} The Hive. All rights reserved
+            </p>
+          </div>
+
+          <div className="mt-8 text-sm">
+            <p
+              className={`font-semibold mb-3 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+                }`}
+            >
+              Key Locations
+            </p>
+
+            <div className="flex flex-wrap gap-2 text-[10px] md:text-[11px]">
+              {[
+                "Anna Nagar, Chennai",
+                "OMR Chennai (Pre-toll)",
+                "SKCL Guindy, Chennai",
+                "Keppal One Paramount, Chennai",
+                "VR Bengaluru",
+                "Prestige Tech Platina, Bengaluru",
+                "Gachibowli, Hyderabad",
+                "The Mills, Pune",
+              ].map((loc, i) => (
+                <span
+                  key={i}
+                  onClick={() => { navigate('/locations') }}
+                  className={`cursor-pointer px-3 py-1 rounded-full border transition-all duration-200 ${theme === "dark"
+                    ? "bg-white text-black border-gray-200 hover:bg-gray-50"
+                    : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb] hover:border-orange-200"
+                    }`}
+                >
+                  {loc}
+                </span>
+              ))}
             </div>
           </div>
         </div>
