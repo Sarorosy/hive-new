@@ -98,7 +98,7 @@ import wh9 from '../assets/raw/blr/whitefield/new_modified.png';
 import wh10 from '../assets/raw/blr/whitefield/_SPL9783-min.JPG';
 
 //images for Hyderabad
-import hyd0 from "../assets/BUILDINGS/the_hive_hydrabad.jpg";
+import hyd0 from "../assets/BUILDINGS/the_hive_hydrabad.png";
 import hyd1 from "../assets/raw/hyd/HiveHyd_15-Seater-Cabin.jpg";
 import hyd2 from "../assets/raw/hyd/HiveHyd_Enterprise-Pantry_11zon.jpg";
 import hyd3 from "../assets/raw/hyd/HiveHyd_Pantry_11zon.jpg";
