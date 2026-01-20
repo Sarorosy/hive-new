@@ -104,7 +104,7 @@ export default function RetrofuturismRoadmap() {
               { value: "6+", label: "Cities", icon: MapPin },
               { value: "14 +", label: "Centers", icon: MapPin },
               { value: "10000 +", label: "Seats", icon: Building },
-              { value: "700000", label: "Sq.ft Area", icon: Presentation }
+              { value: "0.7 Million", label: "Sq.ft Area", icon: Presentation }
             ].map((stat, index) => {
               const Icon = stat.icon;
 

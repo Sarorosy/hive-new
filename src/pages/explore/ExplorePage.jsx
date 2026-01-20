@@ -44,8 +44,8 @@ function ExplorePage() {
     },
     {
       icon: "/icons/additional.svg",
-      title: "Additional Solutions",
-      slug: "additional-solutions",
+      title: "Value Added Services",
+      slug: "value-added-services",
       subtitle: "Solutions that go beyond workspaces",
     },
   ];

@@ -98,7 +98,7 @@ const AllWorkspaces = () => {
       >
         <div className="max-w-7xl mx-auto space-y-10">
 
-          <div className="space-y-3 max-w-lg">
+          <div className="space-y-3 max-w-3xl mx-auto text-center">
             <p
               className={`
                 text-sm uppercase tracking-[0.3em]
@@ -119,7 +119,6 @@ const AllWorkspaces = () => {
 
             <p
               className={`
-                max-w-3xl
                 ${theme === "dark" ? "text-gray-300" : "text-slate-600"}
               `}
             >
@@ -173,8 +172,8 @@ const AllWorkspaces = () => {
                         }
                       }}
                       className={`rounded-2xl cursor-pointer p-3 shadow-sm transition-shadow ${theme === "dark"
-                          ? "border border-white/10 bg-white/5 hover:shadow-lg"
-                          : "border border-slate-200 bg-white hover:border-slate-400"
+                        ? "border border-white/10 bg-white/5 hover:shadow-lg"
+                        : "border border-slate-200 bg-white hover:border-slate-400"
                         }`}
                     >
                       <div className="h-36 mb-4 overflow-hidden  rounded-lg bg-slate-50">

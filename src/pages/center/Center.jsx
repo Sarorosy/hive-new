@@ -60,7 +60,7 @@ const branchAddresses = {
     hours: "Open 24/7"
   },
   "chennai-porur": {
-    address: "Level 3, Keppal One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
+    address: "Level 3, Keppel One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
     netSize: 20000,
     grossSize: 33000,
     floors: 1,
@@ -360,8 +360,8 @@ function Center() {
                 key={tab.id}
                 onClick={() => handleTabClick(tab.id)}
                 className={`px-6 py-4 font-medium text-sm md:text-base whitespace-nowrap border-b-2 transition-colors ${activeTab === tab.id
-                    ? "border-white text-white"
-                    : "border-transparent text-white/70 hover:text-white hover:border-white/50"
+                  ? "border-white text-white"
+                  : "border-transparent text-white/70 hover:text-white hover:border-white/50"
                   }`}
               >
                 {tab.label}
@@ -607,8 +607,8 @@ function Center() {
                     <div
                       key={idx}
                       className={`p-6 rounded-lg text-center transition-colors ${isDark
-                          ? "bg-gray-900 hover:bg-gray-800"
-                          : "bg-gray-50 hover:bg-gray-100"
+                        ? "bg-gray-900 hover:bg-gray-800"
+                        : "bg-gray-50 hover:bg-gray-100"
                         }`}
                     >
                       <Icon className={`w-8 h-8 ${isDark ? 'text-white' : 'text-[#1a3a5c]'} mx-auto mb-3`} />

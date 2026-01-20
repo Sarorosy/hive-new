@@ -50,7 +50,7 @@ const branchAddresses = {
         hours: "Open 24/7"
     },
     "chennai-porur": {
-        address: "Level 3, Keppal One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
+        address: "Level 3, Keppel One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
         email: "porur@thehive.com",
         phone: "+91 44 6633 7780",
         metro: "Porur Metro Station (4 mins walk away)",
@@ -323,7 +323,7 @@ function LandingPage() {
                     Flexible workspace solutions for fast-growing businesses
                 </h2>
                 <p className={`text-sm md:text-base leading-relaxed max-w-2xl mx-auto ${isDark ? "text-slate-300" : "text-gray-600"}`}>
-                 <span className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>The Hive Workspaces</span> delivers private offices, managed floors, and custom build-to-suit programs backed by experienced operations and dedicated account management.
+                    <span className={`font-semibold ${isDark ? "text-white" : "text-gray-900"}`}>The Hive Workspaces</span> delivers private offices, managed floors, and custom build-to-suit programs backed by experienced operations and dedicated account management.
                 </p>
             </div>
 
@@ -332,7 +332,7 @@ function LandingPage() {
                     { value: "6+", label: "Cities", icon: MapPin },
                     { value: "14 +", label: "Centers", icon: MapPin },
                     { value: "10000 +", label: "Seats", icon: Building },
-                    { value: "700000", label: "Sq.ft Area", icon: Presentation }
+                    { value: "0.7 Million", label: "Sq.ft Area", icon: Presentation }
                 ].map((stat, index) => {
                     const Icon = stat.icon;
 
@@ -364,7 +364,7 @@ function LandingPage() {
             </div>
             <div className="pb-4">
 
-            <LearnMoreForm />
+                <LearnMoreForm />
             </div>
 
         </div>

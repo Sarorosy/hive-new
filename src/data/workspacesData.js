@@ -1,34 +1,7 @@
 import virtualOfficeImage from "../assets/offerings/privatecabins/3.jpg";
 
 export const workspaceTabs = [
-  {
-    id: "office-spaces",
-    label: "Office Spaces",
-    image: "/spacetypes/privatecabin-2.jpg",
-    title: "Ready-to-Move-In or Customisable Private Offices",
-    description:
-      "Create a branded headquarters with private floors, executive cabins, and enterprise-grade infrastructure managed entirely by us.",
-    highlights: [
-      "End-to-end project delivery with branding, IT, and facility management",
-      "Agile floor plans that scale with every team milestone",
-      "Enterprise security, visitor management, and dedicated community teams",
-    ],
-    items: [
-      {
-        name: "Managed Offices",
-        slug: "managed-offices",
-        description: "Fully managed floors built for mid to large teams.",
-      },
-      {
-        name: "Enterprise Solutions",
-        slug: "enterprise-solutions",
-        description: "Custom campuses with bespoke branding and security.",
-      },
-    ],
-    linkLabel: "Explore office solutions",
-    link: "/workspaces/managed-offices",
-  },
-
+  
   {
     id: "coworking-spaces",
     label: "Coworking Spaces",
@@ -61,10 +34,36 @@ export const workspaceTabs = [
     linkLabel: "See coworking memberships",
     link: "/workspaces/hot-desks",
   },
-
   {
-    id: "additional-solutions",
-    label: "Additional Solutions",
+    id: "office-spaces",
+    label: "Office Spaces",
+    image: "/spacetypes/privatecabin-2.jpg",
+    title: "Ready-to-Move-In or Customisable Private Offices",
+    description:
+      "Create a branded headquarters with private floors, executive cabins, and enterprise-grade infrastructure managed entirely by us.",
+    highlights: [
+      "End-to-end project delivery with branding, IT, and facility management",
+      "Agile floor plans that scale with every team milestone",
+      "Enterprise security, visitor management, and dedicated community teams",
+    ],
+    items: [
+      {
+        name: "Managed Offices",
+        slug: "managed-offices",
+        description: "Fully managed floors built for mid to large teams.",
+      },
+      {
+        name: "Enterprise Solutions",
+        slug: "enterprise-solutions",
+        description: "Custom campuses with bespoke branding and security.",
+      },
+    ],
+    linkLabel: "Explore office solutions",
+    link: "/workspaces/managed-offices",
+  },
+  {
+    id: "value-added-services",
+    label: "Value Added Services",
     image: "/meeting-room.jpg",
     title: "Solutions That Go Beyond Workspaces",
     description:
@@ -114,34 +113,6 @@ export const meetingsEventsData = [
 
 export const solutionOfferings = [
   {
-    id: "office-spaces",
-    icon: "/icons/office.svg",
-    title: "Office Spaces",
-    subtitle: "Ready-to-move-in or customisable private offices",
-    description:
-      "Create a branded headquarters with private floors, executive cabins, and enterprise-grade infrastructure managed entirely by us.",
-    image: "/spacetypes/privatecabin-2.jpg",
-    highlights: [
-      "End-to-end project delivery with branding, IT, and facility management",
-      "Agile floor plans that scale with every team milestone",
-      "Enterprise security, visitor management, and dedicated community teams",
-    ],
-    items: [
-      {
-        name: "Managed Offices",
-        slug: "managed-offices",
-        description: "Fully managed floors built for mid to large teams.",
-      },
-      {
-        name: "Enterprise Solutions",
-        slug: "enterprise-solutions",
-        description: "Custom campuses with bespoke branding and security.",
-      },
-      
-    ],
-    linkLabel: "Explore office solutions",
-  },
-  {
     id: "coworking",
     icon: "/icons/coworking.svg",
     title: "Coworking Spaces",
@@ -174,9 +145,37 @@ export const solutionOfferings = [
     linkLabel: "See coworking memberships",
   },
   {
+    id: "office-spaces",
+    icon: "/icons/office.svg",
+    title: "Office Spaces",
+    subtitle: "Ready-to-move-in or customisable private offices",
+    description:
+      "Create a branded headquarters with private floors, executive cabins, and enterprise-grade infrastructure managed entirely by us.",
+    image: "/spacetypes/privatecabin-2.jpg",
+    highlights: [
+      "End-to-end project delivery with branding, IT, and facility management",
+      "Agile floor plans that scale with every team milestone",
+      "Enterprise security, visitor management, and dedicated community teams",
+    ],
+    items: [
+      {
+        name: "Managed Offices",
+        slug: "managed-offices",
+        description: "Fully managed floors built for mid to large teams.",
+      },
+      {
+        name: "Enterprise Solutions",
+        slug: "enterprise-solutions",
+        description: "Custom campuses with bespoke branding and security.",
+      },
+      
+    ],
+    linkLabel: "Explore office solutions",
+  },
+  {
     id: "additional",
     icon: "/icons/additional.svg",
-    title: "Additional Solutions",
+    title: "Value Added Services",
     subtitle: "Solutions that go beyond workspaces",
     description:
       "Activate premium venues, boardrooms, and community programs tailored for important meetings and milestone events.",

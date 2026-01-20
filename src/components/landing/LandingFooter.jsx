@@ -256,7 +256,7 @@ export default function LandingFooter({ theme = "light" }) {
                   "Anna Nagar, Chennai",
                   "OMR Chennai (Pre-toll)",
                   "SKCL Guindy, Chennai",
-                  "Keppal One Paramount, Chennai",
+                  "Keppel One Paramount, Chennai",
                   "VR Bengaluru",
                   "Prestige Tech Platina, Bengaluru",
                   "Gachibowli, Hyderabad",

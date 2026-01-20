@@ -27,7 +27,7 @@ export default function Footer({ theme = "light" }) {
   return (
     <footer
       className={`
-          relative z-50 py-8 
+          relative z-50 py-6 
           ${theme === "dark"
           ? "bg-gray-100 text-[#1c2c44]"
           : "bg-gray-100 text-[#1c2c44]"
@@ -36,17 +36,17 @@ export default function Footer({ theme = "light" }) {
     >
       <div className="max-w-[90%] mx-auto">
         {/* Main Grid */}
-        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-10 items-start">
+        <div className="w-full grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6 items-start">
           {/* About Section */}
           <div className="flex flex-col">
             <h3
-              className={`text-lg font-bold mb-4 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+              className={`text-base font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
             >
               About
             </h3>
             <ul
-              className={`flex flex-col gap-2 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+              className={`flex flex-col gap-1 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
                 }`}
             >
               <li
@@ -93,13 +93,13 @@ export default function Footer({ theme = "light" }) {
           {/* Second Column */}
           <div className="flex flex-col">
             <h3
-              className={`text-lg font-bold mb-4 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+              className={`text-base font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
             >
               Connect
             </h3>
             <ul
-              className={`flex flex-col gap-2 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
+              className={`flex flex-col gap-1 text-sm ${theme === "dark" ? "text-[#4b576a]" : "text-[#4b576a]"
                 }`}
             >
               <li
@@ -143,19 +143,19 @@ export default function Footer({ theme = "light" }) {
           {/* Social Column */}
           <div className="flex flex-col sm:col-span-2 md:col-span-1">
             <h3
-              className={`text-lg font-bold mb-4 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+              className={`text-base font-bold mb-2 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
             >
               Follow Us
             </h3>
             <div
-              className={`mb-4 flex items-center gap-2 text-sm ${theme === "dark" ? "text-gray-600" : "text-gray-600"
+              className={`mb-2 flex items-center gap-1.5 text-sm ${theme === "dark" ? "text-gray-600" : "text-gray-600"
                 }`}
             >
               <Globe size={15} /> India
             </div>
 
-            <div className="flex flex-wrap gap-4">
+            <div className="flex flex-wrap gap-3">
               {[
                 {
                   href: "https://www.facebook.com/hiveworkspaces/",
@@ -205,23 +205,23 @@ export default function Footer({ theme = "light" }) {
 
         {/* Bottom Legal */}
         <div
-          className={`mt-12 pt-6 border-t ${theme === "dark" ? "border-gray-200" : "border-[#e4e7ee]"
+          className={`mt-4 sm:mt-8 pt-4 border-t ${theme === "dark" ? "border-gray-200" : "border-[#e4e7ee]"
             }`}
         >
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
-            <div className="flex flex-col md:flex-row md:items-center gap-4">
+          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+            <div className="flex flex-col md:flex-row md:items-center gap-3">
               <img
                 src={assetPath("logo-transparent.png")}
                 alt="Logo"
-                width={100}
+                width={80}
                 className="rounded-md transition-all duration-300"
                 style={{
-                  filter: theme === "dark" ? "invert(1) brightness(1.3)" : "none",
+                  // filter: theme === "dark" ? "invert(1) brightness(1.3)" : "none",
                 }}
               />
 
               <div
-                className={`flex flex-wrap items-center gap-x-4 gap-y-2 text-sm ${theme === "dark" ? "text-gray-500" : "text-[#4b576a]"
+                className={`flex flex-wrap items-center gap-x-3 gap-y-1 text-sm ${theme === "dark" ? "text-gray-500" : "text-[#4b576a]"
                   }`}
               >
                 {[
@@ -245,9 +245,9 @@ export default function Footer({ theme = "light" }) {
             </p>
           </div>
 
-          <div className="mt-8 text-sm">
+          <div className="mt-6 text-sm">
             <p
-              className={`font-semibold mb-3 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
+              className={`font-semibold mb-1.5 ${theme === "dark" ? "text-[#0d2847]" : "text-[#0d2847]"
                 }`}
             >
               Key Locations
@@ -258,7 +258,7 @@ export default function Footer({ theme = "light" }) {
                 "Anna Nagar, Chennai",
                 "OMR Chennai (Pre-toll)",
                 "SKCL Guindy, Chennai",
-                "Keppal One Paramount, Chennai",
+                "Keppel One Paramount, Chennai",
                 "VR Bengaluru",
                 "Prestige Tech Platina, Bengaluru",
                 "Gachibowli, Hyderabad",
@@ -267,7 +267,7 @@ export default function Footer({ theme = "light" }) {
                 <span
                   key={i}
                   onClick={() => { navigate('/locations') }}
-                  className={`cursor-pointer px-3 py-1 rounded-full border transition-all duration-200 ${theme === "dark"
+                  className={`cursor-pointer px-2 py-0.5 rounded-full border transition-all duration-200 ${theme === "dark"
                     ? "bg-white text-black border-gray-200 hover:bg-gray-50"
                     : "bg-white border-[#e4e7ee] hover:bg-[#f5f7fb] hover:border-orange-200"
                     }`}

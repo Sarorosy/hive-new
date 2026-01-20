@@ -134,7 +134,7 @@ const WorkspaceTypes = () => {
                 key={imageList[currentSlide]}
                 src={imageList[currentSlide]}
                 alt={activeWorkspace.label}
-                className={`absolute ${activeWorkspace.label === "Additional Solutions" ? "object-left" : "object-center"} rounded-tl-[70px] rounded-br-[70px] inset-0 w-full h-full object-cover  transition-opacity duration-500`}
+                className={`absolute ${activeWorkspace.label === "Value Added Services" ? "object-left" : "object-center"} rounded-tl-[70px] rounded-br-[70px] inset-0 w-full h-full object-cover  transition-opacity duration-500`}
               />
 
               {/* Optional gradient overlay */}

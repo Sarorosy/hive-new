@@ -61,7 +61,7 @@ const branchAddresses = {
         hours: "Open 24/7"
     },
     "chennai-porur": {
-        address: "Level 3, Keppal One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
+        address: "Level 3, Keppel One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
         netSize: 20000,
         grossSize: 33000,
         floors: 1,

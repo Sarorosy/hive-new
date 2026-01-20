@@ -22,7 +22,7 @@ const branchAddresses = {
     phone: "+91 44 6633 7779",
   },
   "chennai-porur": {
-    address: "Level 3, Keppal One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
+    address: "Level 3, Keppel One Paramount, Mount Poonamallee Road, Porur, Chennai, Tamil Nadu 600116, India",
     email: "porur@thehive.com",
     phone: "+91 44 6633 7780",
   },
@@ -134,15 +134,14 @@ function CityBranches() {
                   return (
                     <div
                       key={branchKey}
-                      className={`group bg-white rounded-xl overflow-hidden cursor-pointer transition-all duration-500 ease-out ${
-                        isSelected
+                      className={`group bg-white rounded-xl overflow-hidden cursor-pointer transition-all duration-500 ease-out ${isSelected
                           ? "ring-4 ring-black/20 shadow-2xl shadow-black/10 border-2 border-black scale-[1.02]"
                           : "border border-gray-200 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-200/50 hover:-translate-y-1"
-                      }`}
+                        }`}
                     >
                       <div className="flex flex-col">
                         {/* Thumbnail Image */}
-                        <div 
+                        <div
                           className="relative w-full h-64 overflow-hidden"
                           onClick={() => setSelectedBranchKey(branchKey)}
                         >
@@ -150,22 +149,20 @@ function CityBranches() {
                           <img
                             src={thumbnailImage}
                             alt={branchData.name}
-                            className={`w-full h-full object-cover transition-transform duration-500 ${
-                              isSelected ? "scale-110" : "group-hover:scale-110"
-                            }`}
+                            className={`w-full h-full object-cover transition-transform duration-500 ${isSelected ? "scale-110" : "group-hover:scale-110"
+                              }`}
                           />
-                          
+
                         </div>
 
                         {/* Content */}
-                        <div 
+                        <div
                           className="flex-1 p-6 flex flex-col bg-gradient-to-br from-white to-gray-50/50"
                           onClick={() => setSelectedBranchKey(branchKey)}
                         >
                           <div className="flex-1 mb-4">
-                            <h3 className={`text-2xl font-bold text-gray-900 mb-3 transition-colors ${
-                              isSelected ? "text-black" : "group-hover:text-black"
-                            }`}>
+                            <h3 className={`text-2xl font-bold text-gray-900 mb-3 transition-colors ${isSelected ? "text-black" : "group-hover:text-black"
+                              }`}>
                               {branchData.name}
                             </h3>
                             {branchData.details && (
@@ -191,9 +188,8 @@ function CityBranches() {
                               e.stopPropagation();
                               navigate(`/${city}/${branchKey}`);
                             }}
-                            className={`w-full bg-black text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:shadow-black/30 active:scale-95  ${
-                              isSelected ? "ring-2 ring-black/30" : ""
-                            }`}
+                            className={`w-full bg-black text-white px-8 py-3 rounded-xl font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl hover:shadow-black/30 active:scale-95  ${isSelected ? "ring-2 ring-black/30" : ""
+                              }`}
                           >
                             <span className="relative z-10">Know More</span>
                             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1 relative z-10" />
