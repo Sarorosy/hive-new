@@ -255,14 +255,14 @@ export default function Footer({ theme = "light" }) {
 
             <div className="flex flex-wrap gap-2 text-[10px] md:text-[11px]">
               {[
-                "Anna Nagar, Chennai",
-                "OMR Chennai (Pre-toll)",
-                "SKCL Guindy, Chennai",
-                "Keppel One Paramount, Chennai",
-                "VR Bengaluru",
-                "Prestige Tech Platina, Bengaluru",
-                "Gachibowli, Hyderabad",
-                "The Mills, Pune",
+                "VR, Anna Nagar",
+                "SRP Stratford, OMR",
+                "SKCL Infinite Tower, Guindy",
+                "One Paramount, Porur",
+                "VR, Whitefield",
+                "Prestige Tech Platina, ORR",
+                "Corporate Capital, Gachibowli",
+                "The Mills, Sangamvadi",
               ].map((loc, i) => (
                 <span
                   key={i}

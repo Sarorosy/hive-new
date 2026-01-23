@@ -139,7 +139,7 @@ export const centersData = {
     ],
     branches: {
       "anna-nagar": {
-        name: "Anna Nagar, Chennai",
+        name: "VR, Anna Nagar",
         slug: "anna-nagar",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -159,7 +159,7 @@ export const centersData = {
         lng: "80.19744202450015"
       },
       "porur": {
-        name: "Keppel One Paramount, Chennai",
+        name: "One Paramount, Porur",
         slug: "porur",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -175,7 +175,7 @@ export const centersData = {
         lng: "80.16790792698652"
       },
       "omr": {
-        name: "OMR, Chennai",
+        name: "SRP Stratford, OMR",
         slug: "omr",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -191,7 +191,7 @@ export const centersData = {
         lng: "80.25175509566282"
       },
       "skcl-guindy": {
-        name: "SKCL Guindy, Chennai",
+        name: "SKCL Infinite Tower, Guindy",
         slug: "skcl-guindy",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -225,7 +225,7 @@ export const centersData = {
     ],
     branches: {
       "ptp": {
-        name: "Prestige Tech Platina, Bengaluru",
+        name: "Prestige Tech Platina, ORR",
         slug: "ptp",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -241,7 +241,7 @@ export const centersData = {
         lng: "77.695802846027"
       },
       "whitefield": {
-        name: "Whitefield, Bangalore",
+        name: "VR, Whitefield",
         slug: "whitefield",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -271,7 +271,7 @@ export const centersData = {
     ],
     branches: {
       "gachibowli": {
-        name: "Gachibowli, Hyderabad",
+        name: "Corporate Capital, Gachibowli",
         slug: "gachibowli",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -300,7 +300,7 @@ export const centersData = {
     ],
     branches: {
       "mills": {
-        name: "Mills, Pune",
+        name: "The Mills, Sangamvadi",
         slug: "mills",
         breadcrumb: [
           { label: "Home", path: "/" },
@@ -325,19 +325,19 @@ export const citiesData = {
     image: chennai,
     branches: [
       {
-        name: "Anna Nagar, Chennai",
+        name: "VR, Anna Nagar",
         route: "/chennai/anna-nagar",
       },
       {
-        name: "OMR, Chennai",
+        name: "SRP Stratford, OMR",
         route: "/chennai/omr",
       },
       {
-        name: "SKCL Guindy, Chennai",
+        name: "SKCL Infinite Tower, Guindy",
         route: "/chennai/skcl-guindy",
       },
       {
-        name: "Keppel One Paramount, Chennai",
+        name: "One Paramount, Porur",
         route: "/chennai/porur",
       },
     ],
@@ -346,11 +346,11 @@ export const citiesData = {
     image: bangalore,
     branches: [
       {
-        name: "Whitefield, Bangalore",
+        name: "VR, Whitefield",
         route: "/bangalore/whitefield",
       },
       {
-        name: "Prestige Tech Platina, Bengaluru",
+        name: "Prestige Tech Platina, ORR",
         route: "/bangalore/ptp",
       },
     ],
@@ -359,7 +359,7 @@ export const citiesData = {
     image: hyderabad,
     branches: [
       {
-        name: "Gachibowli, Hyderabad",
+        name: "Corporate Capital, Gachibowli",
         route: "/hyderabad/gachibowli",
       },
     ],
@@ -368,7 +368,7 @@ export const citiesData = {
     image: pune,
     branches: [
       {
-        name: "Mills, Pune",
+        name: "The Mills, Sangamvadi",
         route: "/pune/mills",
       },
     ],
