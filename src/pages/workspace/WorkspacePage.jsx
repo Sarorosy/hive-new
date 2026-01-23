@@ -41,7 +41,7 @@ import dedicatedDesks2 from "../../assets/offerings/dedicateddesks/5.jpg";
 import hotdesks from "../../assets/offerings/hotdesks/hotdesk-2.jpg";
 import hotdesks2 from "../../assets/offerings/hotdesks/1.jpg";
 
-import meetings2 from "../../assets/raw/blr/_SPL9744-min.JPG";
+import meetings2 from "../../assets/meetingroom.jpg";
 import meetings3 from "../../assets/raw/blr/THEHIVEVR16.jpg";
 
 import whyChooseUs from "../../assets/raw/chn/skcl/IMG_7932.JPG";
@@ -211,9 +211,9 @@ const WorkspacePage = () => {
       </section>
 
       {/* CONTENT */}
-      <section className="py-20">
+      <section className="py-10">
         <div className="max-w-7xl mx-auto px-4 grid lg:grid-cols-2 gap-16">
-          <div>
+          <div className="flex flex-col justify-center">
             {/* <div className="inline-flex items-center bg-gray-200 dark:bg-gray-700 px-4 py-2 rounded-full text-sm mb-6">
               <Camera className="w-4 h-4 mr-2" />
               Real workspace photos
@@ -226,18 +226,6 @@ const WorkspacePage = () => {
             <p className={`text-xl leading-relaxed mb-8 ${textSecondary}`}>
               Step into a world where productivity meets comfort.
             </p>
-
-            <div className="grid grid-cols-2 gap-6">
-              <div className={`text-center p-4 rounded-xl ${bgCard}`}>
-                <div className={`text-3xl liber ${textPrimary}`}>500+</div>
-                <div className={textSecondary}>Happy Members</div>
-              </div>
-
-              <div className={`text-center p-4 rounded-xl ${bgCard}`}>
-                <div className={`text-3xl liber ${textPrimary}`}>98%</div>
-                <div className={textSecondary}>Satisfaction Rate</div>
-              </div>
-            </div>
           </div>
 
           {/* Workspace Image */}
@@ -319,7 +307,7 @@ const WorkspacePage = () => {
         <div className="max-w-7xl mx-auto px-4">
           {/* Heading */}
           <div className="text-center mb-16">
-            
+
 
             <h2 className={`text-5xl liber mt-6 ${textPrimary}`}>
               Premium Features
@@ -423,8 +411,8 @@ const WorkspacePage = () => {
       {/* AMENITIES */}
       <section
         className={`py-6 transition-colors ${theme === "dark"
-            ? "bg-gradient-to-br from-gray-900 to-gray-800"
-            : "bg-gradient-to-br from-white to-gray-50"
+          ? "bg-gradient-to-br from-gray-900 to-gray-800"
+          : "bg-gradient-to-br from-white to-gray-50"
           }`}
       >
         <div className="max-w-7xl mx-auto px-4">
@@ -496,9 +484,9 @@ const WorkspacePage = () => {
 
             <a
               href="#Form"
-              className={`px-10 py-5 border-2 rounded-xl liber transition ${theme === "dark"
-                  ? "border-white text-white hover:bg-white hover:text-black"
-                  : "border-black text-black hover:bg-black hover:text-white"
+              className={`px-10 py-5 border-2 rounded-xl  transition ${theme === "dark"
+                ? "border-white text-white hover:bg-white hover:text-black"
+                : "border-black text-black hover:bg-black hover:text-white"
                 }`}
             >
               Get Custom Quote
@@ -521,7 +509,7 @@ const WorkspacePage = () => {
       </section>
       <div className="pb-10">
 
-      <LearnMoreForm />
+        <LearnMoreForm />
       </div>
 
     </div>

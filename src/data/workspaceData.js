@@ -171,7 +171,7 @@ export const workspaces = [
       'Comprehensive reporting and analytics'
     ],
     targetAudience: 'Large corporations and multinational companies',
-    capacity: '500+ employees',
+    capacity: '50 - 200 Seats',
     pricing: {
       from: 100000,
       period: 'month'

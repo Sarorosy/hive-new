@@ -54,7 +54,7 @@ const LatestBlogs = () => {
     <div className={`w-full ${theme == "dark" ? "bg-black" : "bg-white"}`}>
     <section
       className={`
-        max-w-[90%] mx-auto px-4 py-12
+        max-w-[90%] mx-auto px-4 py-4
         ${theme === "dark" ? "text-white bg-black" : "text-black"}
       `}
     >

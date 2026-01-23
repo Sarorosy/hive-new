@@ -25,19 +25,18 @@ const CityCarousel = ({ city, totalImages, basePath, theme }) => {
         ${theme === "dark" ? "bg-gray-800 border-gray-700" : "bg-white border-gray-200"}
       `}
     >
-      {/* SOLD OUT STRIP */}
-      <div
-        className={`
-          absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 
-          z-20 w-full text-center font-bold text-lg py-2 shadow-lg
-          ${theme === "dark" ? "bg-white/90 text-black" : "bg-white text-black"}
-        `}
-      >
-        SOLD OUT
-      </div>
-
       {/* IMAGE WRAPPER */}
-      <div className="relative h-64 overflow-hidden">
+      <div className="relative h-64 overflow-hidden cursor-not-allowed">
+        {/* SOLD OUT BADGE */}
+        <div
+          className={`
+            absolute bottom-4 right-4 z-30 
+            px-3 py-1 rounded-full font-bold text-[10px] uppercase tracking-wider shadow-lg
+            ${theme === "dark" ? "bg-white/95 text-black" : "bg-black text-white"}
+          `}
+        >
+          SOLD OUT
+        </div>
         <img
           key={images[index]}
           src={images[index]}
@@ -59,9 +58,8 @@ const CityCarousel = ({ city, totalImages, basePath, theme }) => {
                 e.stopPropagation();
                 setIndex(i);
               }}
-              className={`w-1.5 h-1.5 rounded-full ${
-                i === index ? "bg-white" : "bg-white/50"
-              }`}
+              className={`w-1.5 h-1.5 rounded-full ${i === index ? "bg-white" : "bg-white/50"
+                }`}
             />
           ))}
         </div>

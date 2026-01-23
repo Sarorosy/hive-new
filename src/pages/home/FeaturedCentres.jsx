@@ -53,7 +53,7 @@ export default function FeaturedCentres() {
   return (
     <section
       className={`
-        py-12
+        py-8
         ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}
       `}
     >

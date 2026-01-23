@@ -158,6 +158,22 @@ export const centersData = {
         lat: "13.080893350150644",
         lng: "80.19744202450015"
       },
+      "porur": {
+        name: "Keppel One Paramount, Chennai",
+        slug: "porur",
+        breadcrumb: [
+          { label: "Home", path: "/" },
+          { label: "Coworking Spaces in Chennai", path: "/chennai" },
+          { label: "Keppel One Paramount, porur" },
+        ],
+        details: "Located in the heart of Porur, this coworking space offers modern amenities, high-speed internet, meeting rooms, and vibrant interiors.",
+        images: [
+          ch11, ch13, ch14, ch15, ch16
+        ],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0864119176167!2d80.1679723!3d13.030168999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260dfaa0769c7%3A0xcf7641206670f745!2sOne%20Paramount%2C%20110%2C%20Mount%20Poonamallee%20Rd%2C%20Porur%2C%20Chennai%2C%20Tamil%20Nadu%20600116!5e0!3m2!1sen!2sin!4v1758278930855!5m2!1sen!2sin",
+        lat: "13.03036759902071",
+        lng: "80.16790792698652"
+      },
       "omr": {
         name: "OMR, Chennai",
         slug: "omr",
@@ -190,22 +206,7 @@ export const centersData = {
         lat: "13.012813353724379",
         lng: "80.20940665333461"
       },
-      "porur": {
-        name: "Keppel One Paramount, Chennai",
-        slug: "porur",
-        breadcrumb: [
-          { label: "Home", path: "/" },
-          { label: "Coworking Spaces in Chennai", path: "/chennai" },
-          { label: "Keppel One Paramount, porur" },
-        ],
-        details: "Located in the heart of Porur, this coworking space offers modern amenities, high-speed internet, meeting rooms, and vibrant interiors.",
-        images: [
-          ch11, ch13, ch14, ch15, ch16
-        ],
-        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.0864119176167!2d80.1679723!3d13.030168999999999!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a5260dfaa0769c7%3A0xcf7641206670f745!2sOne%20Paramount%2C%20110%2C%20Mount%20Poonamallee%20Rd%2C%20Porur%2C%20Chennai%2C%20Tamil%20Nadu%20600116!5e0!3m2!1sen!2sin!4v1758278930855!5m2!1sen!2sin",
-        lat: "13.03036759902071",
-        lng: "80.16790792698652"
-      },
+
     }
   },
   bangalore: {
@@ -223,22 +224,6 @@ export const centersData = {
       { label: "Coworking Spaces in Bangalore" }
     ],
     branches: {
-      "whitefield": {
-        name: "Whitefield, Bangalore",
-        slug: "whitefield",
-        breadcrumb: [
-          { label: "Home", path: "/" },
-          { label: "Coworking Spaces in Bangalore", path: "/bangalore" },
-          { label: "Whitefield" }
-        ],
-        details: "A dynamic coworking hub in the bustling Whitefield tech district.",
-        images: [
-          whitefield, wh4, wh5, wh9
-        ],
-        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.614679956308!2d77.69306677512326!3d12.99647918732121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110b3c1ae257%3A0x338aab3b907ba3d6!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20VR%20Bengaluru!5e0!3m2!1sen!2sin!4v1755268041583!5m2!1sen!2sin",
-        lat: "12.997064975550622",
-        lng: "77.69565291534232"
-      },
       "ptp": {
         name: "Prestige Tech Platina, Bengaluru",
         slug: "ptp",
@@ -254,7 +239,24 @@ export const centersData = {
         map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d8177.653847263165!2d77.68972939874689!3d12.944424787895871!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae13b26af6ecc7%3A0x8e8d6f4f7363dfb7!2sPrestige%20Tech%20Platina!5e0!3m2!1sen!2sin!4v1755268196685!5m2!1sen!2sin",
         lat: "12.944307674401166",
         lng: "77.695802846027"
+      },
+      "whitefield": {
+        name: "Whitefield, Bangalore",
+        slug: "whitefield",
+        breadcrumb: [
+          { label: "Home", path: "/" },
+          { label: "Coworking Spaces in Bangalore", path: "/bangalore" },
+          { label: "Whitefield" }
+        ],
+        details: "A dynamic coworking hub in the bustling Whitefield tech district.",
+        images: [
+          whitefield, wh4, wh5, wh9
+        ],
+        map: "https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3887.614679956308!2d77.69306677512326!3d12.99647918732121!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3bae110b3c1ae257%3A0x338aab3b907ba3d6!2sThe%20Hive%20-%20Flexible%20Workspaces%2C%20VR%20Bengaluru!5e0!3m2!1sen!2sin!4v1755268041583!5m2!1sen!2sin",
+        lat: "12.997064975550622",
+        lng: "77.69565291534232"
       }
+
     }
   },
   hyderabad: {

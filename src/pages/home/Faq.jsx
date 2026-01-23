@@ -19,7 +19,7 @@ export default function Faq() {
 
   return (
     <section
-      className={`py-8 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"
+      className={`py-4 ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"
         }`}
     >
       <div className="max-w-6xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-12">

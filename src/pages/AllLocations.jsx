@@ -116,7 +116,7 @@ const AllLocations = () => {
   return (
     <div
       className={`
-        min-h-screen pt-20
+        min-h-screen pt-20 pb-10
         ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}
       `}
     >

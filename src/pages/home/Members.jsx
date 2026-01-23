@@ -30,7 +30,7 @@ export default function Members() {
   return (
     <section
       className={`
-        py-16 overflow-hidden relative mx-auto
+        py-6 overflow-hidden relative mx-auto
         ${theme === "dark" ? "bg-black text-white" : "bg-white text-black"}
       `}
     >
@@ -87,7 +87,7 @@ export default function Members() {
           100% { transform: translateX(calc(-100% / .2)); }
         }
         .animate-marquee {
-          animation: marquee 60s linear infinite;
+          animation: marquee 80s linear infinite;
           will-change: transform;
         }
       `}</style>

@@ -60,24 +60,21 @@ export default function AboutUs() {
 
   return (
     <div
-      className={`w-full pt-8 overflow-hidden ${
-        isDark ? "bg-black text-white" : "bg-white text-gray-900"
-      }`}
+      className={`w-full pt-8 overflow-hidden ${isDark ? "bg-black text-white" : "bg-white text-gray-900"
+        }`}
     >
       {/* Hero Section - Elegant Card */}
       <section
-        className={`py-16 md:py-20 bg-gradient-to-b ${
-          isDark ? "from-black to-slate-900" : "from-white to-gray-50"
-        }`}
+        className={`py-16 md:py-20 bg-gradient-to-b ${isDark ? "from-black to-slate-900" : "from-white to-gray-50"
+          }`}
       >
         <div className="max-w-7xl mx-auto px-5">
           <div className="grid lg:grid-cols-2 gap-12 items-center">
             <div>
               <div className="inline-block mb-6">
                 <span
-                  className={`text-xs font-medium  uppercase ${
-                    isDark ? "text-slate-300" : "text-gray-500"
-                  }`}
+                  className={`text-xs font-medium  uppercase ${isDark ? "text-slate-300" : "text-gray-500"
+                    }`}
                 >
                   Designed for Modern Businesses
                 </span>
@@ -86,26 +83,23 @@ export default function AboutUs() {
               <div className="mb-8">
                 <h1 className="text-5xl md:text-6xl font-medium mb-4 liber">
                   The Hive Workspaces
-                  
+
                 </h1>
                 <div
-                  className={`w-20 h-0.5 mb-6 ${
-                    isDark ? "bg-slate-600" : "bg-gray-300"
-                  }`}
+                  className={`w-20 h-0.5 mb-6 ${isDark ? "bg-slate-600" : "bg-gray-300"
+                    }`}
                 ></div>
               </div>
 
               <div
-                className={`rounded-xl p-8 shadow-sm border mb-8 ${
-                  isDark
+                className={`rounded-xl p-8 shadow-sm border mb-8 ${isDark
                     ? "bg-black/60 border-slate-800"
                     : "bg-white border-gray-100"
-                }`}
+                  }`}
               >
                 <p
-                  className={`mb-6 leading-relaxed ${
-                    isDark ? "text-slate-200" : "text-gray-700"
-                  }`}
+                  className={`mb-6 leading-relaxed ${isDark ? "text-slate-200" : "text-gray-700"
+                    }`}
                 >
                   The Hive Workspaces is a leading provider of premium managed
                   office spaces in India, offering flexible, fully serviced, and
@@ -114,28 +108,24 @@ export default function AboutUs() {
                 <div className="space-y-3">
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-2 h-2 rounded-full ${
-                        isDark ? "bg-white" : "bg-gray-800"
-                      }`}
+                      className={`w-2 h-2 rounded-full shrink-0 ${isDark ? "bg-white" : "bg-gray-800"
+                        }`}
                     ></div>
                     <span
-                      className={`text-sm ${
-                        isDark ? "text-slate-200" : "text-gray-600"
-                      }`}
+                      className={`text-sm ${isDark ? "text-slate-200" : "text-gray-600"
+                        }`}
                     >
                       With a growing presence across major commercial districts
                     </span>
                   </div>
                   <div className="flex items-center gap-3">
                     <div
-                      className={`w-2 h-2 rounded-full ${
-                        isDark ? "bg-white" : "bg-gray-800"
-                      }`}
+                      className={`w-2 h-2 rounded-full shrink-0 ${isDark ? "bg-white" : "bg-gray-800"
+                        }`}
                     ></div>
                     <span
-                      className={`text-sm ${
-                        isDark ? "text-slate-200" : "text-gray-600"
-                      }`}
+                      className={`text-sm ${isDark ? "text-slate-200" : "text-gray-600"
+                        }`}
                     >
                       The Hive delivers a seamless mix of Grade-A
                       infrastructure, hospitality-driven service, and a
@@ -148,9 +138,8 @@ export default function AboutUs() {
 
             <div className="relative">
               <div
-                className={`rounded-2xl shadow-lg overflow-hidden border ${
-                  isDark ? "bg-black border-slate-800" : "bg-white border-gray-100"
-                }`}
+                className={`rounded-2xl shadow-lg overflow-hidden border ${isDark ? "bg-black border-slate-800" : "bg-white border-gray-100"
+                  }`}
               >
                 <div className="aspect-[4/3] relative">
                   <img
@@ -164,16 +153,14 @@ export default function AboutUs() {
                   <div className="flex items-center justify-between">
                     <div>
                       <h3
-                        className={`font-medium mb-1 ${
-                          isDark ? "text-white" : "text-gray-900"
-                        }`}
+                        className={`font-medium mb-1 ${isDark ? "text-white" : "text-gray-900"
+                          }`}
                       >
                         Premium Managed Workspaces
                       </h3>
                       <p
-                        className={`text-sm ${
-                          isDark ? "text-slate-400" : "text-gray-500"
-                        }`}
+                        className={`text-sm ${isDark ? "text-slate-400" : "text-gray-500"
+                          }`}
                       >
                         Grade-A Infrastructure • Hospitality-Driven •
                         Collaborative
@@ -194,11 +181,10 @@ export default function AboutUs() {
             initial={{ opacity: 0 }}
             whileInView={{ opacity: 1 }}
             viewport={{ once: true }}
-            className={`relative rounded-3xl border backdrop-blur-sm p-8 md:p-10 shadow-sm ${
-              isDark
+            className={`relative rounded-3xl border backdrop-blur-sm p-8 md:p-10 shadow-sm ${isDark
                 ? "border-slate-800 bg-black/40"
                 : "border-gray-100 bg-white/70"
-            }`}
+              }`}
           >
             <div className="relative z-10">
               <div className="flex items-center gap-3 mb-6">
@@ -213,32 +199,28 @@ export default function AboutUs() {
               <div className="grid md:grid-cols-2 gap-6">
                 <div className="space-y-4">
                   <p
-                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
-                      isDark ? "text-slate-200" : "text-gray-700"
-                    }`}
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${isDark ? "text-slate-200" : "text-gray-700"
+                      }`}
                   >
-                   <Circle size={16} className="mr-2 pt-2" />The Hive places workspaces within lifestyle destinations, seamlessly combining work, leisure, and community experiences.
+                    <Circle size={16} className="mr-2 pt-2" />The Hive places workspaces within lifestyle destinations, seamlessly combining work, leisure, and community experiences.
                   </p>
                   <p
-                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
-                      isDark ? "text-slate-200" : "text-gray-700"
-                    }`}
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${isDark ? "text-slate-200" : "text-gray-700"
+                      }`}
                   >
-                   <Circle size={16} className="mr-2 pt-2" /> Built on its signature Work-Play-Grow approach, The Hive supports enterprises, SMEs, startups, and entrepreneurs alike.
+                    <Circle size={16} className="mr-2 pt-2" /> Built on its signature Work-Play-Grow approach, The Hive supports enterprises, SMEs, startups, and entrepreneurs alike.
                   </p>
                 </div>
                 <div className="space-y-4">
                   <p
-                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
-                      isDark ? "text-slate-200" : "text-gray-700"
-                    }`}
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${isDark ? "text-slate-200" : "text-gray-700"
+                      }`}
                   >
                     <Circle size={16} className="mr-2 pt-2" /> Members enjoy direct access to retail, hospitality, entertainment, and food & beverage offerings within the same ecosystem.
                   </p>
                   <p
-                    className={`flex  items-start leading-relaxed text-sm md:text-base ${
-                      isDark ? "text-slate-200" : "text-gray-700"
-                    }`}
+                    className={`flex  items-start leading-relaxed text-sm md:text-base ${isDark ? "text-slate-200" : "text-gray-700"
+                      }`}
                   >
                     <Circle size={16} className="mr-2 pt-2" /> By embedding offices in vibrant community hubs rather than standalone buildings, The Hive redefines the coworking experience.
                   </p>
@@ -249,7 +231,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      
+
       <section
         className={`py-8 bg-gradient-to-b ${isDark ? "from-black via-slate-900 to-black" : "from-white to-gray-50"
           }`}
@@ -279,15 +261,15 @@ export default function AboutUs() {
             {/* Heading */}
             <h2 className="text-4xl md:text-5xl liber leading-tight">
               Driving Business Excellence Forward
-              
+
             </h2>
 
             {/* Mission Card */}
             <div className="relative">
               <div
                 className={`absolute -inset-4 rounded-2xl blur-xl ${isDark
-                    ? "bg-gradient-to-r from-white/5 to-transparent"
-                    : "bg-gradient-to-r from-black/5 to-transparent"
+                  ? "bg-gradient-to-r from-white/5 to-transparent"
+                  : "bg-gradient-to-r from-black/5 to-transparent"
                   }`}
               ></div>
 
@@ -430,14 +412,13 @@ export default function AboutUs() {
             viewport={{ once: true }}
           >
             <div className="text-center mb-10">
-              
+
               <h2 className="text-3xl md:text-4xl  mt-4 mb-2 liber">
                 Premium Amenities
               </h2>
               <p
-                className={`max-w-2xl mx-auto text-sm md:text-base ${
-                  isDark ? "text-slate-300" : "text-gray-600"
-                }`}
+                className={`max-w-2xl mx-auto text-sm md:text-base ${isDark ? "text-slate-300" : "text-gray-600"
+                  }`}
               >
                 All workspace options include comprehensive amenities designed
                 for modern businesses
@@ -464,37 +445,32 @@ export default function AboutUs() {
                     className="group relative"
                   >
                     <div
-                      className={`absolute inset-0 border rounded-xl transition-colors ${
-                        isDark
+                      className={`absolute inset-0 border rounded-xl transition-colors ${isDark
                           ? "border-slate-800 group-hover:border-white/40"
                           : "border-gray-100 group-hover:border-black/30"
-                      }`}
+                        }`}
                     ></div>
                     <div
-                      className={`relative p-5 rounded-xl backdrop-blur-sm ${
-                        isDark ? "bg-black/50" : "bg-white/90"
-                      }`}
+                      className={`relative p-5 rounded-xl backdrop-blur-sm ${isDark ? "bg-black/50" : "bg-white/90"
+                        }`}
                     >
                       <div className="flex items-start gap-3">
                         <div
-                          className={`p-2.5 rounded-lg transition-colors ${
-                            isDark
+                          className={`p-2.5 rounded-lg transition-colors ${isDark
                               ? "bg-white/10 group-hover:bg-white/20"
                               : "bg-black/5 group-hover:bg-black/10"
-                          }`}
+                            }`}
                         >
                           <Icon
-                            className={`w-5 h-5 ${
-                              isDark ? "text-white" : "text-black"
-                            }`}
+                            className={`w-5 h-5 ${isDark ? "text-white" : "text-black"
+                              }`}
                           />
                         </div>
                         <p
-                          className={`leading-relaxed text-sm md:text-base font-medium transition-colors ${
-                            isDark
+                          className={`leading-relaxed text-sm md:text-base font-medium transition-colors ${isDark
                               ? "text-slate-200 group-hover:text-white"
                               : "text-gray-700 group-hover:text-gray-900"
-                          }`}
+                            }`}
                         >
                           {a.label}
                         </p>
@@ -508,7 +484,7 @@ export default function AboutUs() {
         </div>
       </section>
 
-      <Members />
+      {/* <Members /> */}
       <HiveWorkspaces />
 
       {/* Floating CTA */}
@@ -519,12 +495,11 @@ export default function AboutUs() {
         className="fixed bottom-6 left-6 z-50"
       >
         <button
-          className={`px-5 py-3 font-medium rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 text-sm ${
-            isDark ? "bg-white text-black" : "bg-black text-white"
-          }`}
-          onClick={()=>{navigate("/solutions")}}
+          className={`px-5 py-3 font-medium rounded-full shadow-lg hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 flex items-center gap-2 text-sm ${isDark ? "bg-white text-black" : "bg-black text-white"
+            }`}
+          onClick={() => { navigate("/solutions") }}
         >
-          <span>Explore Workspaces</span>
+          <span>Explore Solutions</span>
           <ChevronRight className="w-4 h-4" />
         </button>
       </motion.div>
