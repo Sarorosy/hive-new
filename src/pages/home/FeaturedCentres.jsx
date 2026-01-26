@@ -38,7 +38,7 @@ export default function FeaturedCentres() {
       }
     });
 
-    return centres;
+    return centres.sort((a, b) => a.name.localeCompare(b.name));
   }, []);
 
   useEffect(() => {
@@ -62,17 +62,15 @@ export default function FeaturedCentres() {
         <div className="flex flex-col lg:flex-row justify-between items-start lg:items-center mb-8">
           <div>
             <p
-              className={`text-sm mb-2 ${
-                theme === "dark" ? "text-gray-300" : "text-gray-500"
-              }`}
+              className={`text-sm mb-2 ${theme === "dark" ? "text-gray-300" : "text-gray-500"
+                }`}
             >
               / Featured Centres /
             </p>
 
             <h2
-              className={`text-2xl md:text-3xl font-bold leading-snug mb-4 liber ${
-                theme === "dark" ? "text-white" : "text-black"
-              }`}
+              className={`text-2xl md:text-3xl font-bold leading-snug mb-4 liber ${theme === "dark" ? "text-white" : "text-black"
+                }`}
             >
               Featured Centres
             </h2>
@@ -151,18 +149,16 @@ export default function FeaturedCentres() {
               featured-prev absolute -left-5 top-1/2 -translate-y-1/2 z-10 
               w-12 h-12 rounded-full shadow-xl flex items-center justify-center 
               backdrop-blur-lg transition-all duration-300 hover:scale-105
-              ${
-                theme === "dark"
-                  ? "bg-white/10 border border-white/20 hover:bg-white/20"
-                  : "bg-black border border-gray-200 hover:bg-gray-900"
+              ${theme === "dark"
+                ? "bg-white/10 border border-white/20 hover:bg-white/20"
+                : "bg-black border border-gray-200 hover:bg-gray-900"
               }
             `}
             aria-label="Previous slide"
           >
             <ChevronLeft
-              className={`w-6 h-6 ${
-                theme === "dark" ? "text-white" : "text-white"
-              }`}
+              className={`w-6 h-6 ${theme === "dark" ? "text-white" : "text-white"
+                }`}
             />
           </button>
 
@@ -172,18 +168,16 @@ export default function FeaturedCentres() {
               featured-next absolute -right-5 top-1/2 -translate-y-1/2 z-10 
               w-12 h-12 rounded-full shadow-xl flex items-center justify-center 
               backdrop-blur-lg transition-all duration-300 hover:scale-105
-              ${
-                theme === "dark"
-                  ? "bg-white/10 border border-white/20 hover:bg-white/20"
-                  : "bg-black border border-gray-200 hover:bg-gray-900"
+              ${theme === "dark"
+                ? "bg-white/10 border border-white/20 hover:bg-white/20"
+                : "bg-black border border-gray-200 hover:bg-gray-900"
               }
             `}
             aria-label="Next slide"
           >
             <ChevronRight
-              className={`w-6 h-6 ${
-                theme === "dark" ? "text-white" : "text-white"
-              }`}
+              className={`w-6 h-6 ${theme === "dark" ? "text-white" : "text-white"
+                }`}
             />
           </button>
         </div>

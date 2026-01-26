@@ -41,7 +41,8 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
   // Flatten locations
   const allLocations = Object.values(centersData)
     .map((city) => Object.values(city.branches).map((branch) => branch.name))
-    .flat();
+    .flat()
+    .sort((a, b) => a.localeCompare(b));
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -196,7 +197,7 @@ const ContactForm = ({ type = "regular", onClose, theme }) => {
               <Briefcase className="w-4 h-4 text-orange-500 flex-shrink-0" />
               <span className="f-12">Enterprise Offices</span>
             </div>
-            
+
             <div className={`flex items-center gap-2 py-1 ${leftText}`}>
               <MessageSquare className="w-4 h-4 text-orange-500 flex-shrink-0" />
               <span className="f-12">Meeting Rooms</span>

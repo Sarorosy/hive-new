@@ -7,12 +7,14 @@ const workspaceLinks = workspaces.map((ws) => ({
   to: `/workspaces/${ws.slug}`,
 }));
 
-const centerLinks = Object.values(citiesData).flatMap((city) =>
-  city.branches.map((branch) => ({
-    label: branch.name,
-    to: branch.route,
-  }))
-);
+const centerLinks = Object.values(citiesData)
+  .flatMap((city) =>
+    city.branches.map((branch) => ({
+      label: branch.name,
+      to: branch.route,
+    }))
+  )
+  .sort((a, b) => a.label.localeCompare(b.label));
 
 const sections = [
   {
@@ -71,7 +73,7 @@ export default function Sitemap() {
     <div className="min-h-screen bg-gray-50">
       <div className="max-w-6xl mx-auto px-4 py-12 md:py-16">
         <header className="mb-10">
-          
+
           <h1 className="mt-2 text-3xl md:text-4xl font-bold text-gray-900">
             Sitemap
           </h1>

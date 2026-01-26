@@ -73,7 +73,9 @@ function CityBranches() {
     return null;
   }
 
-  const branches = Object.entries(cityData.branches || {});
+  const branches = Object.entries(cityData.branches || {}).sort((a, b) =>
+    a[1].name.localeCompare(b[1].name)
+  );
   const selectedBranch = selectedBranchKey
     ? cityData.branches[selectedBranchKey]
     : null;
@@ -135,8 +137,8 @@ function CityBranches() {
                     <div
                       key={branchKey}
                       className={`group bg-white rounded-xl overflow-hidden cursor-pointer transition-all duration-500 ease-out ${isSelected
-                          ? "ring-4 ring-black/20 shadow-2xl shadow-black/10 border-2 border-black scale-[1.02]"
-                          : "border border-gray-200 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-200/50 hover:-translate-y-1"
+                        ? "ring-4 ring-black/20 shadow-2xl shadow-black/10 border-2 border-black scale-[1.02]"
+                        : "border border-gray-200 hover:border-gray-300 hover:shadow-xl hover:shadow-gray-200/50 hover:-translate-y-1"
                         }`}
                     >
                       <div className="flex flex-col">

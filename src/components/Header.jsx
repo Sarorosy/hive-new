@@ -109,11 +109,10 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
     <>
       {/* ⭐ THEME APPLIED HERE */}
       <div
-        className={`z-50 ${
-          theme === "dark"
+        className={`z-50 ${theme === "dark"
             ? "bg-black text-white border-white"
             : "bg-white text-black border-black"
-        } hover:bg-black hover:text-white border rounded hidden md:block fixed -right-10 top-1/2  -translate-y-1/2 -rotate-90 origin-center`}
+          } hover:bg-black hover:text-white border rounded hidden md:block fixed -right-10 top-1/2  -translate-y-1/2 -rotate-90 origin-center`}
       >
         <button
           onClick={onBookTourClick}
@@ -124,23 +123,20 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
       </div>
 
       <header
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${
-          isHeaderVisible
+        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-500 ease-in-out ${isHeaderVisible
             ? ""
-            : `${
-                theme === "dark" ? " bg-black" : " bg-white border-white/50"
-              }`
-        }`}
+            : `${theme === "dark" ? " bg-black" : " bg-white border-white/50"
+            }`
+          }`}
         style={{ fontSize: "1.1rem" }} // Increased font size globally for the header
       >
         <div
           className={`
           w-full mx-0  transition-all duration-300 ease-in-out 
-          ${
-            theme === "dark"
+          ${theme === "dark"
               ? " hover:bg-black/70"
               : " hover:bg-white hover:border-white/50"
-          }
+            }
         `}
         >
           {/* Main Navigation */}
@@ -209,10 +205,9 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                   {workspacesOpen && (
                     <div
                       className={`absolute left-0 top-7 mt-2 w-4xl z-20 shadow-xl rounded-sm
-                        ${
-                          theme === "dark"
-                            ? "bg-gray-900 text-white"
-                            : "bg-white text-black"
+                        ${theme === "dark"
+                          ? "bg-gray-900 text-white"
+                          : "bg-white text-black"
                         }`}
                     >
                       {/* arrow */}
@@ -220,20 +215,18 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                         className={`absolute top-0 left-1 -translate-y-full w-0 h-0 
                         border-l-[10px] border-r-[10px] border-b-[20px]
                         border-l-transparent border-r-transparent
-                        ${
-                          theme === "dark" ? "border-b-black" : "border-b-white"
-                        }
+                        ${theme === "dark" ? "border-b-black" : "border-b-white"
+                          }
                       `}
                       />
 
                       {/* Content */}
                       <div className="flex">
                         <div
-                          className={`w-1/2 p-4 border-r ${
-                            theme === "dark"
+                          className={`w-1/2 p-4 border-r ${theme === "dark"
                               ? "border-gray-800"
                               : "border-gray-300"
-                          }`}
+                            }`}
                         >
                           <h3 className="text-xs uppercase tracking-wide mb-3 opacity-70">
                             Workspace Types
@@ -242,13 +235,12 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                           {offerings.map((offering) => (
                             <div
                               key={offering.title}
-                              className={`py-3 px-2 cursor-pointer rounded transition-colors ${
-                                hoveredOffering === offering.title
+                              className={`py-3 px-2 cursor-pointer rounded transition-colors ${hoveredOffering === offering.title
                                   ? theme === "dark"
                                     ? "bg-gray-800"
                                     : "bg-gray-200"
                                   : ""
-                              }`}
+                                }`}
                               onMouseEnter={() =>
                                 setHoveredOffering(offering.title)
                               }
@@ -275,19 +267,18 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                                 <button
                                   key={index}
                                   onClick={() => {
-                                    if(item.slug === "virtual-office") {
-                                    navigate("/virtual-office");
-                                    setWorkspacesOpen(false);
-                                    return;
-                                  }
+                                    if (item.slug === "virtual-office") {
+                                      navigate("/virtual-office");
+                                      setWorkspacesOpen(false);
+                                      return;
+                                    }
                                     navigate(`/workspaces/${item.slug}`);
                                     setWorkspacesOpen(false);
                                   }}
                                   className={`block w-full text-left py-3 px-2 rounded text-sm transition-colors
-                                    ${
-                                      theme === "dark"
-                                        ? "hover:bg-gray-800"
-                                        : "hover:bg-gray-200"
+                                    ${theme === "dark"
+                                      ? "hover:bg-gray-800"
+                                      : "hover:bg-gray-200"
                                     }
                                   `}
                                 >
@@ -306,11 +297,10 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                       </div>
 
                       <div
-                        className={`border-t px-4 py-3 text-sm ${
-                          theme === "dark"
+                        className={`border-t px-4 py-3 text-sm ${theme === "dark"
                             ? "border-gray-800"
                             : "border-gray-300"
-                        }`}
+                          }`}
                       >
                         <RouterLink
                           to="/solutions"
@@ -355,46 +345,42 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                   {centresOpen && (
                     <div
                       className={`absolute left-0 top-7 mt-2 w-xl rounded-sm z-20 shadow-xl
-                      ${
-                        theme === "dark"
+                      ${theme === "dark"
                           ? "bg-gray-900 text-white"
                           : "bg-white text-black"
-                      }`}
+                        }`}
                     >
                       {/* arrow */}
                       <div
                         className={`absolute top-0 left-1 -translate-y-full w-0 h-0 
                         border-l-[10px] border-r-[10px] border-b-[20px]
                         border-l-transparent border-r-transparent
-                        ${
-                          theme === "dark" ? "border-b-black" : "border-b-white"
-                        }
+                        ${theme === "dark" ? "border-b-black" : "border-b-white"
+                          }
                       `}
                       />
 
                       <div className="flex">
                         <div
-                          className={`w-1/3 p-4 border-r ${
-                            theme === "dark"
+                          className={`w-1/3 p-4 border-r ${theme === "dark"
                               ? "border-gray-800"
                               : "border-gray-300"
-                          }`}
+                            }`}
                         >
                           <h3 className="text-xs uppercase tracking-wide mb-3 opacity-70">
                             Cities
                           </h3>
 
-                          {Object.keys(citiesData).map((city) => (
+                          {Object.keys(citiesData).sort().map((city) => (
                             <div
                               key={city}
                               className={`py-2 px-2 cursor-pointer rounded transition-colors flex items-center justify-between 
-                              ${
-                                hoveredCity === city
+                              ${hoveredCity === city
                                   ? theme === "dark"
                                     ? "bg-gray-800"
                                     : "bg-gray-200"
                                   : ""
-                              }`}
+                                }`}
                               onMouseEnter={() => setHoveredCity(city)}
                             >
                               {city}
@@ -413,23 +399,23 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                           </h3>
 
                           {hoveredCity ? (
-                            citiesData[hoveredCity].branches.map(
-                              (branch, index) => (
+                            [...citiesData[hoveredCity].branches]
+                              .sort((a, b) => a.name.localeCompare(b.name))
+                              .map((branch, index) => (
                                 <button
                                   key={index}
                                   onClick={() => navigate(branch.route)}
                                   className={`block w-full text-left py-4 px-2 rounded text-sm transition-colors
-                                  ${
-                                    theme === "dark"
+                                  ${theme === "dark"
                                       ? "hover:bg-gray-800"
                                       : "hover:bg-gray-200"
-                                  }
+                                    }
                                   `}
                                 >
                                   {branch.name}
                                 </button>
                               )
-                            )
+                              )
                           ) : (
                             <div className="opacity-70 text-sm">
                               Hover over a city to see branches
@@ -507,10 +493,9 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                 type="button"
                 onClick={onToggleTheme}
                 className={`flex items-center justify-center w-9 h-9 rounded-full border transition-colors bg-transparent
-                  ${
-                    theme === "dark"
-                      ? "border-white text-white bg-black"
-                      : "border-black text-black bg-white"
+                  ${theme === "dark"
+                    ? "border-white text-white bg-black"
+                    : "border-black text-black bg-white"
                   }
                 `}
               >
@@ -524,11 +509,10 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
             <div
               className={`
               md:hidden border-t px-4 py-4 space-y-4 rounded-b-2xl transition-all
-              ${
-                theme === "dark"
+              ${theme === "dark"
                   ? "bg-black/70 text-white border-white/20"
                   : "bg-white/70 text-black border-black/20"
-              }
+                }
             `}
               style={{ fontSize: "1.1rem" }} // Increased font size for mobile panel
             >
@@ -558,9 +542,8 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                 >
                   Workspaces
                   <ChevronDown
-                    className={`transition-transform ${
-                      mobileSolutionsOpen ? "rotate-180" : ""
-                    }`}
+                    className={`transition-transform ${mobileSolutionsOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
@@ -580,11 +563,10 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                         >
                           {off.title}
                           <ChevronRight
-                            className={`transition-transform ${
-                              mobileSelectedOffering === off.title
+                            className={`transition-transform ${mobileSelectedOffering === off.title
                                 ? "rotate-90"
                                 : ""
-                            }`}
+                              }`}
                           />
                         </button>
 
@@ -596,7 +578,7 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                                 key={item.slug}
                                 className="block py-1"
                                 onClick={() => {
-                                  if(item.slug === "virtual-office") {
+                                  if (item.slug === "virtual-office") {
                                     navigate("/virtual-office");
                                     setMobileOpen(false);
                                     return;
@@ -633,15 +615,14 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                 >
                   Centres
                   <ChevronDown
-                    className={`transition-transform ${
-                      mobileCentresOpen ? "rotate-180" : ""
-                    }`}
+                    className={`transition-transform ${mobileCentresOpen ? "rotate-180" : ""
+                      }`}
                   />
                 </button>
 
                 {mobileCentresOpen && (
                   <div className="pl-4 space-y-2">
-                    {Object.keys(citiesData).map((city) => (
+                    {Object.keys(citiesData).sort().map((city) => (
                       <div key={city}>
                         <button
                           onClick={() =>
@@ -653,26 +634,27 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
                         >
                           {city}
                           <ChevronRight
-                            className={`transition-transform ${
-                              mobileSelectedCity === city ? "rotate-90" : ""
-                            }`}
+                            className={`transition-transform ${mobileSelectedCity === city ? "rotate-90" : ""
+                              }`}
                           />
                         </button>
 
                         {mobileSelectedCity === city && (
                           <div className="pl-4 space-y-1 text-sm">
-                            {citiesData[city].branches.map((branch) => (
-                              <button
-                                key={branch.name}
-                                className="block py-1"
-                                onClick={() => {
-                                  navigate(branch.route);
-                                  setMobileOpen(false);
-                                }}
-                              >
-                                {branch.name}
-                              </button>
-                            ))}
+                            {[...citiesData[hoveredCity || city].branches]
+                              .sort((a, b) => a.name.localeCompare(b.name))
+                              .map((branch) => (
+                                <button
+                                  key={branch.name}
+                                  className="block py-1"
+                                  onClick={() => {
+                                    navigate(branch.route);
+                                    setMobileOpen(false);
+                                  }}
+                                >
+                                  {branch.name}
+                                </button>
+                              ))}
                           </div>
                         )}
                       </div>
@@ -736,11 +718,10 @@ const Header = ({ onBookTourClick, theme = "dark", onToggleTheme }) => {
               {/* ---- THEME TOGGLE ---- */}
               <button
                 onClick={onToggleTheme}
-                className={`flex items-center justify-center w-10 h-10 rounded-full border ${
-                  theme === "dark"
+                className={`flex items-center justify-center w-10 h-10 rounded-full border ${theme === "dark"
                     ? "border-white text-white bg-black"
                     : "border-black text-black bg-white"
-                }`}
+                  }`}
               >
                 {theme === "dark" ? <Sun /> : <Moon />}
               </button>

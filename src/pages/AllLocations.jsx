@@ -50,16 +50,18 @@ const AllLocations = () => {
       );
     });
 
-    return list;
+    return list.sort((a, b) => a.name.localeCompare(b.name));
   }, []);
 
   const cityOptions = useMemo(() => {
-    return [{ value: "all", label: "City" }].concat(
-      Object.entries(centersData).map(([key, value]) => ({
-        value: key,
-        label: value.name,
-      }))
-    );
+    const cities = Object.entries(centersData).map(([key, value]) => ({
+      value: key,
+      label: value.name,
+    }));
+
+    cities.sort((a, b) => a.label.localeCompare(b.label));
+
+    return [{ value: "all", label: "City" }].concat(cities);
   }, []);
 
   const [cityFilter, setCityFilter] = useState(cityParam);
